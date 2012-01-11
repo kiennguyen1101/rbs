@@ -1,0 +1,46 @@
+/* CSS Document */
+
+body{
+	font-family:"Arial", Helvetica, sans-serif;
+	font-size:80%;  /*-- Enables font size scaling in MSIE  --*/
+	margin:0;
+	padding:0;
+	color:#000;
+}
+html > body{
+	font-size:9.5pt;
+}
+html{
+	min-height: 100%;
+	height:auto;	
+}
+	#top,#header h2,#footer h2,#sideBar h3{		/*-- Nomensa Method to hide the content --*/
+		position:absolute;
+		left:-999em;
+		width:990em;
+	}
+	form,table,p,h1,h2,h3,h4,h5,h6,ul,li,div,dl{
+		margin:0;
+		padding:0;
+	}
+	li{
+		padding:0;
+		margin:0;
+		list-style:none;
+	}
+	a{
+	text-decoration:none;
+	outline:none;
+	}
+	a:hover{
+		text-decoration:underline;
+	}
+	img{
+		border:0;
+		vertical-align:middle;
+	}
+	
+	font 
+	{
+	font-size:12px;
+	}

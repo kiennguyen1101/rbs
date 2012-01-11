@@ -1,0 +1,1 @@
+[10-Jan-2012 16:40:45] PHP Fatal error:  Call to a member function library() on a non-object in /home/nhcomr2z/public_html/rbs/app/config/email.php on line 9
