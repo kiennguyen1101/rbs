@@ -33,12 +33,12 @@
 								foreach($portfolio->result() as $portfolio)
 									{	?>
 							         <tr>
-										<td><a href="<?php echo site_url('programmer/viewPortfolio/'.$portfolio->id);?>">
+										<td><a href="<?php echo site_url('seller/viewPortfolio/'.$portfolio->id);?>">
 										<img border="0" src="<?php echo pimage_url(get_thumb($portfolio->main_img));?>" alt="portfolio"/></a></td> 
 										<td valign="middle">
 										<table style="border:none;" cellpadding="3">
 											<tbody><tr>
-											<td width="15%"><b><?php echo $this->lang->line('Title:');?> </b></td> <td><a href="<?php echo site_url('programmer/viewPortfolio/'.$portfolio->id);?>"><?php echo $portfolio->title;?></a> 
+											<td width="15%"><b><?php echo $this->lang->line('Title:');?> </b></td> <td><a href="<?php echo site_url('seller/viewPortfolio/'.$portfolio->id);?>"><?php echo $portfolio->title;?></a> 
 											</td>
 											</tr>
 											<tr>

@@ -65,10 +65,10 @@
 								  <td class="<?php echo $class;?>"><?php echo getProjectStatus($latestProject->project_status);?></td>
 								  <td class="<?php echo $class;?>"><?php echo get_date($latestProject->created);?></td>
                                   <td class="<?php echo $class;?>">
-								  <?php if($latestProject->programmer_id == $programmer_id){  ?>
+								  <?php if($latestProject->seller_id == $seller_id){  ?>
 								  <a href="<?php echo site_url('project/acceptProject/'.$latestProject->id."/".$latestProject->checkstamp);?>" onclick="return confirm('Do you want to accept the project?');"><?php echo $this->lang->line('Accept');?></a>/<a href="<?php echo site_url('project/denyProject/'.$latestProject->id)."/".$latestProject->checkstamp;?>" onclick="return confirm('Do you want to deny the project?');"><?php echo $this->lang->line('Deny');?></a>
 								  <?php } else {?>
-								  <a href="<?php echo site_url('programmer/retractBid/'.$latestProject->bidid);?>"><?php echo $this->lang->line('Retract your bid');?></a>
+								  <a href="<?php echo site_url('seller/retractBid/'.$latestProject->bidid);?>"><?php echo $this->lang->line('Retract your bid');?></a>
 								  <?php } ?>
 								  </td>
                                 </tr>
@@ -101,7 +101,7 @@
 								$i=0;
 								foreach($wonBids->result() as $wonBid)
 								{
-									$reviewDetails = getReviewStatusProgrammer($wonBid->id,$wonBid->programmer_id);
+									$reviewDetails = getReviewStatusProgrammer($wonBid->id,$wonBid->seller_id);
 									
 									$reviewDetails = $reviewDetails->row();
 									
@@ -129,7 +129,7 @@
                                   <td class="<?php echo $class;?>"><?php echo getBidsInfo($wonBid->id); ?></td>
 								  <td class="<?php echo $class;?>"><?php echo getProjectStatus($wonBid->project_status);?></td>
 								  <td class="<?php echo $class;?>"><?php echo get_date($wonBid->created);?></td> 
-								  <td class="<?php echo $class;?>"><a href="<?php echo site_url('programmer/reviewBuyer/'.$wonBid->id);?>"><?php echo $this->lang->line('Review');?></a></td>
+								  <td class="<?php echo $class;?>"><a href="<?php echo site_url('seller/reviewBuyer/'.$wonBid->id);?>"><?php echo $this->lang->line('Review');?></a></td>
                                 </tr>
                                 <?php		
 						  			$i++;		
@@ -180,7 +180,7 @@
 									<td> <?php if(isset($bookMark->budget_min) or ($bookMark->budget_max)) echo '$ '.$bookMark->budget_min.' - '.$bookMark->budget_max; else echo 'N/A'; ?> </td>
 									<td><?php echo get_date($bookMark->created);?></td>
 									<td><?php echo getProjectStatus($bookMark->project_status); ?></td>
-									<td><a href="<?php echo site_url('programmer/remove/'.$bookMark->project_id); ?>"><?php echo $this->lang->line('Remove');?></a></td>
+									<td><a href="<?php echo site_url('seller/remove/'.$bookMark->project_id); ?>"><?php echo $this->lang->line('Remove');?></a></td>
 								  </tr>
                           <?php		
 						  			$i++;						

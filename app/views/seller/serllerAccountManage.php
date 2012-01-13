@@ -138,7 +138,7 @@
 									<div id="selDoubleDiv" class="clearfix">
 					
 						<div class="clsImageDiv clsFloatLeft">
-						<p class="clsBorder"><a href="<?php echo site_url('programmer/viewProfile/'.$loggedInUser->id);?>">
+						<p class="clsBorder"><a href="<?php echo site_url('seller/viewProfile/'.$loggedInUser->id);?>">
 								<?php
 								if($loggedInUser->logo != NULL)
 								echo '<img src="'.uimage_url(get_thumb($loggedInUser->logo)).'" />';
@@ -173,7 +173,7 @@
 								<?php } 
 								  }
 								   }?>
-!(<?php if(($loggedInUser->num_reviews) !='0') { ?><img height="7" border="0" width="81" alt="10.00/10" src="<?php echo image_url('rating_'.$loggedInUser->user_rating.'.gif');?>"/> <b><?php } if(($loggedInUser->num_reviews) !='0') echo $loggedInUser->num_reviews; if(($loggedInUser->num_reviews) =='0') echo 'No Feedback Yet';?> </b> <a href="<?php echo site_url('programmer/review/'.$loggedInUser->id);?>">  <?php if(($loggedInUser->num_reviews) !='0') echo $this->lang->line('reviews');?></a>) </p>
+!(<?php if(($loggedInUser->num_reviews) !='0') { ?><img height="7" border="0" width="81" alt="10.00/10" src="<?php echo image_url('rating_'.$loggedInUser->user_rating.'.gif');?>"/> <b><?php } if(($loggedInUser->num_reviews) !='0') echo $loggedInUser->num_reviews; if(($loggedInUser->num_reviews) =='0') echo 'No Feedback Yet';?> </b> <a href="<?php echo site_url('seller/review/'.$loggedInUser->id);?>">  <?php if(($loggedInUser->num_reviews) !='0') echo $this->lang->line('reviews');?></a>) </p>
 						
                         <form name="mailList1" action="<?php echo site_url('projectNotify/mailList'); ?>" method="post" class="clsSitelinksForm">
                           <input name="unread" type="hidden" value="unread" />
@@ -372,11 +372,11 @@
                           <tr class="<?php echo $class; ?>">
                             <td><?php echo $i+1;?></td>
                             <td><a href="<?php echo site_url('project/view/'.$closedProject->id); ?>"><?php echo $closedProject->project_name; ?></a></td>
-                            <td><a href="<?php echo site_url('programmer/viewProfile/'.$closedProject->userid);?>"><?php echo $closedProject->user_name; ?></a> </td>
-                            <td><?php echo getLowestBid($closedProject->id,$closedProject->programmer_id); ?> </td>
+                            <td><a href="<?php echo site_url('seller/viewProfile/'.$closedProject->userid);?>"><?php echo $closedProject->user_name; ?></a> </td>
+                            <td><?php echo getLowestBid($closedProject->id,$closedProject->seller_id); ?> </td>
 									
-                            <td><a href="<?php echo site_url('programmer/reviewBuyer/'.$closedProject->id);?>">
-						<?php $reviewDetails = getReviewStatusProgrammer($closedProject->id,$closedProject->programmer_id);
+                            <td><a href="<?php echo site_url('seller/reviewBuyer/'.$closedProject->id);?>">
+						<?php $reviewDetails = getReviewStatusProgrammer($closedProject->id,$closedProject->seller_id);
 							$reviewDetails = $reviewDetails->row();
 							if(!is_object($reviewDetails))
 										 echo $this->lang->line('Review');
@@ -424,7 +424,7 @@
                                    <tr class="<?php echo $class; ?>">
                                     <td><?php echo $i+1;?></td>
 									<td><a href="<?php echo site_url('project/view/'.$bookMark->project_id); ?>"><?php echo $bookMark->project_name; ?></a></td>
-									<td><a href="<?php echo site_url('programmer/viewProfile/'.$bookMark->creator_id);?>"><?php foreach($getUsers->result() as $user) { if($user->id == $bookMark->creator_id) { echo $user->user_name; break; } } ?></a> </td>
+									<td><a href="<?php echo site_url('seller/viewProfile/'.$bookMark->creator_id);?>"><?php foreach($getUsers->result() as $user) { if($user->id == $bookMark->creator_id) { echo $user->user_name; break; } } ?></a> </td>
 									<td> <?php if(isset($bookMark->budget_min) or ($bookMark->budget_max)) echo '$ '.$bookMark->budget_min.' - '.$bookMark->budget_max; else echo 'N/A'; ?> </td>
 									<td><?php echo get_date($bookMark->created);?></td>
 									<td><?php echo getProjectStatus($bookMark->project_status); ?></td>
@@ -468,11 +468,11 @@
                             <tr class="<?php echo $class; ?>">
                               <td><?php echo $k; ?></td>
                               <td ><?php foreach($usersList->result() as $user) { if($user->id == $res->creator_id) { ?>
-                                <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('programmer/viewProfile/'.$user->id);?>">
+                                <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('seller/viewProfile/'.$user->id);?>">
                                 <?php  echo $user->user_name; break; } }  ?>
                                 </a></td>
                               <td ><?php foreach($usersList->result() as $user) { if($user->id == $res->reciever_id) { ?>
-                                <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('programmer/viewProfile/'.$user->id);?>">
+                                <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('seller/viewProfile/'.$user->id);?>">
                                 <?php  echo $user->user_name; break; } }  ?>
                                 </a></td>
                               <td><?php echo $res->amount; ?></td>

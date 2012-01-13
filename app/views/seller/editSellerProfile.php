@@ -22,7 +22,7 @@ $userCategoryInfo = $userCategories->row();
                           <div class="cls100_p">
                             <div class="clsInnerCommon clsFormSpan">
 
-								<form method="post" action="<?php echo site_url('programmer/editProfile') ;  ?>" enctype="multipart/form-data">
+								<form method="post" action="<?php echo site_url('seller/editProfile') ;  ?>" enctype="multipart/form-data">
 								  <?=form_token();?>
 								  <h2><?php echo $this->lang->line('edit_account'); ?></h2>
 								  <p><span><?php echo $this->lang->line('name'); ?></span> <?php echo $userData->user_name; ?></p>
@@ -159,7 +159,7 @@ $userCategoryInfo = $userCategories->row();
 								
 								<p><span><?php echo $this->lang->line('Current Photo'); ?> : </span>
 								 <?php if($userData->logo){?>
-                                  <img src="<?php echo uimage_url(get_thumb($userData->logo));?>"/><a href="<?php echo site_url('programmer/removePhoto/'.$userData->id."/2");?>" onclick="return confirm('Do you want to delete this image?');"><img src="<?php echo image_url('delete.png');?>" border="0" alt="delete" title="delete"/></a>
+                                  <img src="<?php echo uimage_url(get_thumb($userData->logo));?>"/><a href="<?php echo site_url('seller/removePhoto/'.$userData->id."/2");?>" onclick="return confirm('Do you want to delete this image?');"><img src="<?php echo image_url('delete.png');?>" border="0" alt="delete" title="delete"/></a>
                                   <?php } 
 								  else
 								  echo '<img src="'.image_url('noImage.jpg').'" width="49" height="48" />';
@@ -217,7 +217,7 @@ $userCategoryInfo = $userCategories->row();
 								
                               <?php echo form_error('signup_agree_contact'); ?></p>
 							  <p><span>&nbsp;</span><input type="hidden" name="confirmKey" value="<?php echo $userData->activation_key; ?>" />
-                                <input type="submit" class="clsMini" value="<?php echo $this->lang->line('Edit'); ?>" name="updateProgrammerConfirm" />
+                                <input type="submit" class="clsMini" value="<?php echo $this->lang->line('Edit'); ?>" name="updateSellerConfirm" />
 								</p>
 							 
                             </form>

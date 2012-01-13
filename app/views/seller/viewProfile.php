@@ -56,7 +56,7 @@ if(isset($userDetails) and $userDetails->num_rows()>0)
 							 <?php  if (isset($loggedInUser->role_id)) { if ($loggedInUser->role_id=='1') { ?>
 							  <a href="<?php echo site_url('userList/addFavouriteUsers/'.$user->id); ?>"><img src="<?php echo image_url('star.jpg'); ?>" width="22" height="21"  alt="Add To Favourite" title="<?php echo $this->lang->line('Add To Favourite');?>"/> </a>
 							  <a href="<?php echo site_url('userList/addBlockedUsers/'.$user->id); ?>"><img src="<?php echo image_url('cross.jpg'); ?>" width="22" height="22" alt="BlackList User" title="<?php echo $this->lang->line('BlackList User');?>"/> </a><?php } } ?>
-  <!-- Used to make invite to the programmers -->
+  <!-- Used to make invite to the sellers -->
 							  
 							  
 							  
@@ -121,7 +121,7 @@ if(isset($userDetails) and $userDetails->num_rows()>0)
 
 							echo '(No Feedback Yet) ';
 							else{ ?>
-                               <img height="7" border="0" width="81" src="<?php echo image_url('rating_'.$user->user_rating.'.gif');?>"/> <?php echo $this->lang->line('(');?><b><?php echo $user->num_reviews;?> </b><a href="<?php echo site_url('programmer/review/'.$user->id);?>"><?php echo $this->lang->line('reviews');?>)</a>
+                               <img height="7" border="0" width="81" src="<?php echo image_url('rating_'.$user->user_rating.'.gif');?>"/> <?php echo $this->lang->line('(');?><b><?php echo $user->num_reviews;?> </b><a href="<?php echo site_url('seller/review/'.$user->id);?>"><?php echo $this->lang->line('reviews');?>)</a>
                               <?php } ?></td>								  
 		                        </tr>
                                 <tr>
@@ -224,13 +224,13 @@ if(isset($userDetails) and $userDetails->num_rows()>0)
 										{
 									?>
 										<tr>
-										<td class="dt1 dt0"><a href="<?php echo site_url('programmer/viewPortfolio/'.$portfolio->id);?>"> <img border="0" src="<?php echo pimage_url(get_thumb($portfolio->main_img));?>"/></a> </td>
+										<td class="dt1 dt0"><a href="<?php echo site_url('seller/viewPortfolio/'.$portfolio->id);?>"> <img border="0" src="<?php echo pimage_url(get_thumb($portfolio->main_img));?>"/></a> </td>
 										<td valign="middle" class="dt1 dt0">
 										  <table style="border:none;" cellpadding="2">
 										  <tbody>
 											<tr>
 											  <td width="50"><b><?php echo $this->lang->line('Title:');?> </b></td>
-										      <td><a href="<?php echo site_url('programmer/viewPortfolio/'.$portfolio->id);?>"><?php echo $portfolio->title;?></a></td>
+										      <td><a href="<?php echo site_url('seller/viewPortfolio/'.$portfolio->id);?>"><?php echo $portfolio->title;?></a></td>
 											</tr>
 											<tr>
 											  <td valign="top"><b><?php echo $this->lang->line('Description:');?> </b></td>

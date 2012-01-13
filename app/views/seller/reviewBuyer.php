@@ -34,7 +34,7 @@ $projectDetails = $projectDetails->row();
 									   <td width="10%" class="dt"><?php echo $this->lang->line('comments');?></td>						  
 									</tr>
 									<tr>
-									  <td><a href="<?php echo site_url('programmer/viewProfile/'.$loggedInUser->id);?>"><?php echo $loggedInUser->user_name; ?></a></td>
+									  <td><a href="<?php echo site_url('seller/viewProfile/'.$loggedInUser->id);?>"><?php echo $loggedInUser->user_name; ?></a></td>
 									  <td><a href="<?php echo site_url('project/view/'.$reviewDetails->projectid);?>"><?php echo $reviewDetails->project_name; ?></a></td>
 									  <td><?php echo get_date($reviewDetails->created); ?></td>
 									  <td><img src="<?php echo image_url('rating_'.$reviewDetails->rating.'.gif');?>" /></td>

@@ -31,7 +31,7 @@
     contact us from http://www.cogzidel.com/contact
 
  */
-class Programmer extends Controller {
+class Seller extends Controller {
 	//Global variable  
     public $outputData;		//Holds the output data for each view
 	public $loggedInUser;/**
@@ -39,7 +39,7 @@ class Programmer extends Controller {
 	 *
 	 * Loads language files and models needed for this controller
 	 */
-	function Programmer()
+	function Seller()
 	{
 	   parent::Controller();
 	      

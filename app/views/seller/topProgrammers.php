@@ -35,7 +35,7 @@
 									   ?>
 									  <tr class="<?php echo $class; ?>">
 										<td><?php echo $i=$i+1;?></td>
-										<td><a href="<?php echo site_url('programmer/viewProfile/'.$user->id);?>"><?php echo $user->user_name;?></a>
+										<td><a href="<?php echo site_url('seller/viewProfile/'.$user->id);?>"><?php echo $user->user_name;?></a>
 										<?php $condition1=array('subscriptionuser.username'=>$user->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition1);
 								if($certified1->num_rows()>0)

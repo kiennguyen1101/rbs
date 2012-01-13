@@ -14,7 +14,7 @@
                       <div class="inner_bl">
                         <div class="inner_br">
                           <div class="cls100_p">
-						  <form method="post" action="<?php echo site_url('programmer/retractBid');?>">
+						  <form method="post" action="<?php echo site_url('seller/retractBid');?>">
                             <div class="clsInnerCommon">
                               <h2><?php echo $this->lang->line('Retract Bid !');?></h2>
 							  <p><?php echo $this->lang->line('Are you sure you want to retract your bid');?></p>

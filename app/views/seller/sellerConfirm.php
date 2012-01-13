@@ -159,7 +159,7 @@
 								  <p><?php if(form_error('signup_agree_contact')) { echo '<span>&nbsp;</span>';echo form_error('signup_agree_contact'); echo '<br>'; }  ?></p>
 								  <p>
 									<input type="hidden" name="confirmKey" value="<?php echo $this->uri->segment(3); ?>" />
-									<input type="submit" class="clsSmall" value="<?php echo $this->lang->line('sign_up'); ?>" name="programmerConfirm" />
+									<input type="submit" class="clsSmall" value="<?php echo $this->lang->line('sign_up'); ?>" name="sellerConfirm" />
 								  </p>
 								</form>
 							  </div>

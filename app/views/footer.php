@@ -19,9 +19,8 @@
 		   ?>						
 		<li class="clsNoBorder"><a href="<?php echo site_url('contact'); ?>"><?php echo $this->lang->line('Contact Support');?></a></li>								
 	</ul>
-	<p><?php echo $this->lang->line('copy');?></p>
-	<p><?php echo $this->lang->line('Designed by:');?> <a href="http://cogzideltemplates.com" target="_blank"><?php echo $this->lang->line('Cogzidel Templates');?></a> | <?php echo $this->lang->line('Powered By:');?><a href="http://cogzidel.com" target="_blank"><?php echo $this->lang->line('Cogzidel Technologies');?></a></p>
-	<p>Valid <a href="http://validator.w3.org/check/referer" target="_blank">XHTML</a> | Valid <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">CSS</a></p>
+	<p>&#169; copyright 2012, iCrowdShop All Rights Reserved.</p>
+	
 	<!-- Creative Commons License -->
 	<p>
 <a href="http://creativecommons.org/licenses/GPL/2.0/">

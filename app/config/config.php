@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://com247.vn/rbs/";
+$config['base_url']	= "http://localhost/rbs";
 
 /*
 |--------------------------------------------------------------------------
@@ -323,9 +323,9 @@ $config['language_code'] 				= 'english';
 
 //DB
 $config['hostname'] = "localhost";
-$config['db_username'] = "nhcomr2z";
-$config['db_password'] = "tNvJHW2lYrpSCx";
-$config['db'] = "nhcomr2z_com247";
+$config['db_username'] = "root";
+$config['db_password'] = "";
+$config['db'] = "rbsrc3";
 //Common listings limit
 $config['listing_limit'] 				= 10;
 

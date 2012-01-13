@@ -1,0 +1,53 @@
+<!--LR01 block -->
+	<div style="clear:both;"></div>
+	<h2>Love & Romance</h2>
+		<div style="float:left;width:300px;margin:20px;margin-top:0">
+			LR01
+			<div style="width:280px;height:210px;background-color:#000;border: 2px solid white">
+			</div>
+			
+			<div id="lr01" style="background-image:url('http://v-bump.org/videos/lr01.jpg');background-size: 100%;cursor:pointer;display:block;width:280px;height:210px;border:2px solid white">&nbsp;
+            <img src="http://v-bump.org/videos/play_btn.png" alt="Play this video" style="display:block;margin:auto;margin-top:50px"/>
+            </div>
+            
+			<script type="text/javascript" language="JavaScript">
+				$f("lr01", "http://v-bump.org/flowplayer/flowplayer.swf", {
+				clip: {
+					url: "http://v-bump.org/videos/lr01.flv",
+					scaling: "fit",onStop: function () {
+					var self = this;
+					setTimeout(function () {
+					self.unload();
+				}, 0);
+				},
+				onFinish: function () {
+					this.getPlugin("play").hide();
+				this.unload();
+				}
+			  },
+			canvas: {
+			   backgroundColor: '#000000',
+			   backgroundGradient: 'none'
+			},
+			  play: { opacity: 0 },
+			  plugins: {
+				controls: {
+				stop: true,
+				autoHide: "always",		
+				backgroundColor: "transparent",
+				backgroundGradient: "none",
+				sliderColor: '#FFFFFF',
+				sliderBorder: '1.5px solid rgba(160,160,160,0.7)',
+				volumeSliderColor: '#FFFFFF',
+				volumeBorder: '1.5px solid rgba(160,160,160,0.7)',
+				timeColor: '#ffffff',
+				durationColor: '#535353',
+				tooltipColor: 'rgba(255, 255, 255, 0.7)',
+				tooltipTextColor: '#000000'}
+				}
+			});
+			</script>
+			
+			<span style="margin-left: 60px;">Click here to select this video</span><input type="radio" name="video" value="lr01" />
+		</div>
+<!--End LR01 block -->

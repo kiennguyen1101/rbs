@@ -42,7 +42,7 @@
                                 <td><table style="border-bottom:1px solid #BFBFBF;" cellspacing="0" cellpadding="0" width="100%">
                                     <tbody>
                                       <tr>
-                                        <td align="center" width="20%" style="padding:20px 0 0;" ><a href="<?php echo site_url('programmer/viewPortfolio/'.$portfolio->id);?>"> <img border="0" src="<?php echo pimage_url(get_thumb($portfolio->main_img));?>"/></a></td>
+                                        <td align="center" width="20%" style="padding:20px 0 0;" ><a href="<?php echo site_url('seller/viewPortfolio/'.$portfolio->id);?>"> <img border="0" src="<?php echo pimage_url(get_thumb($portfolio->main_img));?>"/></a></td>
                                         <td style="padding:10px 0 0;" width="70%" ><table border="0" cellpadding="5" cellspacing="0" style="border:none;" width="90%">
                                             <tbody>
                                               <tr>
@@ -80,7 +80,7 @@
                                               </tr>
                                               <tr>
                                                 <td>&nbsp;</td>
-                                                <td><a class="buttonBlackShad" href="<?php echo site_url('programmer/managePortfolio/'.$portfolio->id);?>"><span><?php echo $this->lang->line('Edit');?></span></a> <a class="buttonBlackShad" href="<?php echo site_url('programmer/deletePortfolio/'.$portfolio->id);?>" onclick="return confirm('Do you want to delete this portfolio?');"><span><?php echo $this->lang->line('Delete');?></span></a></td>
+                                                <td><a class="buttonBlackShad" href="<?php echo site_url('seller/managePortfolio/'.$portfolio->id);?>"><span><?php echo $this->lang->line('Edit');?></span></a> <a class="buttonBlackShad" href="<?php echo site_url('seller/deletePortfolio/'.$portfolio->id);?>" onclick="return confirm('Do you want to delete this portfolio?');"><span><?php echo $this->lang->line('Delete');?></span></a></td>
                                               </tr>
                                             </tbody>
                                           </table></td>
@@ -97,7 +97,7 @@
                           </table>
                           <div class=" clsEditProfile">
                             <?php if(is_object($editPortfolio)){?>
-                            <form method="post" action="<?php echo site_url('programmer/editPortfolio');?>" enctype="multipart/form-data" name="myForm">
+                            <form method="post" action="<?php echo site_url('seller/editPortfolio');?>" enctype="multipart/form-data" name="myForm">
                               <?=form_token();?>
                               <p><span><?php echo $this->lang->line('title'); ?></span>
                                 <input type="text" size="35" value="<?php echo $editPortfolio->title; ?>" name="title"/>
@@ -143,14 +143,14 @@
                                   <input type="file" name="attachment1" />
                                   (Allowed Types : JPEG, JPG, GIF, PNG )<?php echo form_error('attachment1'); ?> &nbsp;
                                   <?php if($editPortfolio->attachment1){?>
-                                  <img src="<?php echo pimage_url(get_thumb($editPortfolio->attachment1));?>"/><a href="<?php echo site_url('programmer/removeAttachment/1/'.$editPortfolio->id);?>" onclick="return confirm('Do you want to delete this image?');"><img src="<?php echo image_url('delete.png');?>" border="0" alt="delete" title="delete"/></a>
+                                  <img src="<?php echo pimage_url(get_thumb($editPortfolio->attachment1));?>"/><a href="<?php echo site_url('seller/removeAttachment/1/'.$editPortfolio->id);?>" onclick="return confirm('Do you want to delete this image?');"><img src="<?php echo image_url('delete.png');?>" border="0" alt="delete" title="delete"/></a>
                                   <?php } ?>
                                 </p>
                                 <p> <span class="clsTopMargin"><strong><?php echo $this->lang->line('Attachment'); ?>#2</strong></span><strong>:</strong>
                                   <input type="file" name="attachment2" />
                                   (Allowed Types : JPEG, JPG, GIF, PNG )<?php echo form_error('attachment2'); ?> &nbsp;
                                   <?php if($editPortfolio->attachment2){?>
-                                  <img src="<?php echo pimage_url(get_thumb($editPortfolio->attachment2));?>"/><a href="<?php echo site_url('programmer/removeAttachment/2/'.$editPortfolio->id);?>" onclick="return confirm('Do you want to delete this image?');"><img src="<?php echo image_url('delete.png');?>" border="0" alt="delete" title="delete"/></a>
+                                  <img src="<?php echo pimage_url(get_thumb($editPortfolio->attachment2));?>"/><a href="<?php echo site_url('seller/removeAttachment/2/'.$editPortfolio->id);?>" onclick="return confirm('Do you want to delete this image?');"><img src="<?php echo image_url('delete.png');?>" border="0" alt="delete" title="delete"/></a>
                                   <?php } ?>
                                 </p>
                               </div>
