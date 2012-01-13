@@ -32,7 +32,7 @@
 								<!--PROJECT MESSAGE BOARD--> 
 									  <div id="selPMB" class="clsMarginTop">
 									
-									 <p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a> (<a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout') ?></a>).
+									 <p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a> (<a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout') ?></a>).
 								</p>
 								<br />
 								 
@@ -99,7 +99,7 @@
 									 
 									  foreach($wonProjects as $res)
 										{ 
-										  //Make transfer only for buyer to programmer
+										  //Make transfer only for buyer to seller
 										  if($loggedInUser->role_id == '1')
 											{
 											  if($res->creator_id == $loggedInUser->id)
@@ -108,10 +108,10 @@
 												  <?php 	
 												}	
 											}
-										  //Make transfer only for programmer to buyer
+										  //Make transfer only for seller to buyer
 										  if($loggedInUser->role_id == '2')
 											{
-											  if($res->programmer_id == $loggedInUser->id)
+											  if($res->seller_id == $loggedInUser->id)
 												{ ?>
 												 <option value="<?php echo $res->id; ?>" > <?php echo $res->project_name; ?></option> <?php 	
 												}	
@@ -130,7 +130,7 @@
 									 
 									  foreach($wonProjects as $res)
 										{ 
-										  //Make transfer only for buyer to programmer
+										  //Make transfer only for buyer to seller
 										  if($loggedInUser->role_id == '1')
 											{
 											  if($res->creator_id == $loggedInUser->id)
@@ -139,10 +139,10 @@
 												  <?php 	
 												}	
 											}
-										  //Make transfer only for programmer to buyer
+										  //Make transfer only for seller to buyer
 										  if($loggedInUser->role_id == '2')
 											{
-											  if($res->programmer_id == $loggedInUser->id)
+											  if($res->seller_id == $loggedInUser->id)
 												{ ?>
 												 <option value="<?php echo $res->id; ?>" > <?php echo $res->project_name; ?></option> <?php 	
 												}	
@@ -182,7 +182,7 @@
  <script type="text/javascript">
 <!-- Function used to load the corresponding users to make transfer for corresponding project
 // Argument                   --     Nil
-//Return value                --     Programmername or buyername -->
+//Return value                --     Sellername or buyername -->
 function load_user(value)
 {
   var utype = value;

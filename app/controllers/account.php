@@ -295,7 +295,7 @@ class Account extends Controller {
 		$this->outputData['page']	=  $page;
 		
 		
-		if(isProgrammer()){
+		if(isSeller()){
 			$provider_id	 = $this->loggedInUser->id;
 			
 			$conditions		= array('projects.programmer_id'=>$provider_id,'projects.project_status !=' => '2');

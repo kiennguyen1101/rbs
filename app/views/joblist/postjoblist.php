@@ -56,7 +56,7 @@ function showfields(id)
 							   <?php $this->load->view('joblist/draftControl'); ?>
 								<p> <?php echo $this->lang->line('note1');?> <a href="#"><?php echo $this->lang->line('Click here');?></a> <?php echo $this->lang->line('to post a job listing instead.');?> </p>
 								<h3><span class="clsFileManager"><?php echo $this->lang->line('Account Login Details...');?></span></h3>
-								<p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a> (<a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout') ?></a>).</p>
+								<p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a> (<a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout') ?></a>).</p>
 					<form method="post" action="<?php echo site_url('joblist/create'); ?>" name="form"  enctype="multipart/form-data">
 								
 								<?php 
@@ -300,7 +300,7 @@ form.setAttribute("target", "_blank");
 }
 
 /* For laod favouriteusers list into the textarea box */
-function loadProgrammers(num)
+function loadSellers(num)
 {
    document.getElementById('private_listfill').value += num;
    return TRUE;

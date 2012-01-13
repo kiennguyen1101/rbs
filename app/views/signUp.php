@@ -28,12 +28,12 @@ if($msg = $this->session->flashdata('flash_message'))
 							  <form method="post" action="buyers.cgi">
 							  <input type="hidden" name="new" value="user"/>
 							  
-							  <p>Not a Buyer? <a href="freelancers.cgi?new=user">Click here</a> to signup as a Programmer to place bids instead.
+							  <p>Not a Buyer? <a href="freelancers.cgi?new=user">Click here</a> to signup as a Seller to place bids instead.
 							  <p>Tip: We recommend you <a href="buyers.cgi?new=project"><big>Post your project</big></a> <i>before</i> signing up.
 							  <p><strong>E-mail Address:</strong>
 								<input type="text" name="email" size="40"/>
 								<input type="submit" class="clsSmall" value="Submit" name="submit"/><br />
-								<small>Please provide a valid e-mail address. Only Programmers you choose to work with<br /> will see your e-mail address. <a href="#">View our Privacy Policy</a>.</small></p>
+								<small>Please provide a valid e-mail address. Only Sellers you choose to work with<br /> will see your e-mail address. <a href="#">View our Privacy Policy</a>.</small></p>
 							</form>
 						  <!-- Show skills using tabs -->
 						  </div>

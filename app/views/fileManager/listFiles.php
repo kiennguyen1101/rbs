@@ -18,7 +18,7 @@
                             <div class="clsInnerCommon">
                               <h3><span class="clsFileManager"><?php echo $this->lang->line('File Manager'); ?></span></h3>
 							   
-                              <p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a>
+                              <p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a>
 							  <?php 
 							  $condition1=array('subscriptionuser.username'=>$loggedInUser->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition1);

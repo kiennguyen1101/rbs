@@ -14,7 +14,7 @@
                       <p class="clsHead clsClearFix">
 					  <table cellspacing="1" cellpadding="2" width="96%">
                                 <tbody><tr>
-                                  <td width="15%" class="dt"><?php echo $this->lang->line('Programmers');?></td>
+                                  <td width="15%" class="dt"><?php echo $this->lang->line('Sellers');?></td>
 								  <td width="100" class="dt"><?php echo $this->lang->line('Bids'); ?></td>
 								  <td width="100" class="dt"><?php echo $this->lang->line('Delivery Time');?></td>
 								  <td width="100" class="dt"><?php echo $this->lang->line('Time of Bid');?></td>
@@ -32,7 +32,7 @@
 								  $class = "dt2 dt0"; 	  
 							?>
                       
-					          <tr class="<?php echo $class;?>"><td ><a href="<?php echo site_url('programmer/viewProfile/'.$bid->uid);?>"><?php echo $bid->user_name; 
+					          <tr class="<?php echo $class;?>"><td ><a href="<?php echo site_url('seller/viewProfile/'.$bid->uid);?>"><?php echo $bid->user_name; 
 					             //Get the Favourite and Blocked users
 								 if(isset($favourite))
 								     {
@@ -58,7 +58,7 @@
                         <?php if($bid->num_reviews == 0)
 							echo '(No Feedback Yet) ';
 							else{ ?>
-                         <img height="7" border="0" width="81" alt="10.00/10" src="<?php echo image_url('rating_'.$bid->user_rating.'.gif');?>"/> ( <b><?php echo $bid->num_reviews;?> </b> <a href="<?php echo site_url('programmer/review/'.$bid->uid);?>"><?php echo $this->lang->line('reviews');?></a> )
+                         <img height="7" border="0" width="81" alt="10.00/10" src="<?php echo image_url('rating_'.$bid->user_rating.'.gif');?>"/> ( <b><?php echo $bid->num_reviews;?> </b> <a href="<?php echo site_url('seller/review/'.$bid->uid);?>"><?php echo $this->lang->line('reviews');?></a> )
                         <?php } ?>
 						<?php 
 							if(isset($this->loggedInUser->id))

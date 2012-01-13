@@ -1,8 +1,8 @@
 <?php
 /**
- * Reverse bidding system Programmer Class
+ * Reverse bidding system Seller Class
  *
- * Programmer related functions are handled by this controller.
+ * Seller related functions are handled by this controller.
  *
  * @package		Reverse bidding system
  * @subpackage	Controllers
@@ -77,7 +77,7 @@ class Seller extends Controller {
 
 		//language file
 		$this->lang->load('enduser/common', $this->config->item('language_code'));
-  		$this->lang->load('enduser/programmerConfirm', $this->config->item('language_code'));
+  		$this->lang->load('enduser/sellerConfirm', $this->config->item('language_code'));
 		$this->outputData['current_page'] = 'provider';
 
 		//Load helpers
@@ -87,7 +87,7 @@ class Seller extends Controller {
 	// --------------------------------------------------------------------
 	
 	/**
-	 * Loads Programmer signUp page.
+	 * Loads Seller signUp page.
 	 *
 	 * @access	public
 	 * @param	nil
@@ -96,7 +96,7 @@ class Seller extends Controller {
 	function signUp()
 	{	
 		//language file - Change this file to do display text modification
-		$this->lang->load('enduser/programmerSignup', $this->config->item('language_code'));
+		$this->lang->load('enduser/sellerSignup', $this->config->item('language_code'));
 
 		//load validation libraray
 		$this->load->library('form_validation');
@@ -108,20 +108,20 @@ class Seller extends Controller {
 		$this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
 
 		//Get Form Data	
-		if($this->input->post('programmerSignup'))
+		if($this->input->post('sellerSignup'))
 		{	
 			//Set rules
-			$this->form_validation->set_rules('email','lang:programmer_email_validation','required|trim|valid_email|xss_clean|callback__check_programmer_email');
+			$this->form_validation->set_rules('email','lang:seller_email_validation','required|trim|valid_email|xss_clean|callback__check_seller_email');
 			if($this->form_validation->run())
 			{	
 				if(check_form_token()===false)
 				 {
 				  	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('token_error')));
-				  	redirect('programmer/signUp');
+				  	redirect('seller/signUp');
 				  }				  
 				$insertData              		  = array();	
 			    $insertData['email']    		  = $this->input->post('email');
-				$insertData['role_id']   		  = $this->user_model->getRoleId('programmer');
+				$insertData['role_id']   		  = $this->user_model->getRoleId('seller');
 				$insertData['activation_key']   = md5(time());
 				$insertData['created']  		  = get_est_time();
 				//Create User
@@ -137,10 +137,10 @@ class Seller extends Controller {
 				$this->load->model('email_model');
 				
 				//Send Mail
-				$conditionUserMail = array('email_templates.type'=>'programmers_signup');
+				$conditionUserMail = array('email_templates.type'=>'sellers_signup');
 				$result            = $this->email_model->getEmailSettings($conditionUserMail);
 				$rowUserMailConent = $result->row();
-				$splVars = array("!site_title" => $this->config->item('site_title'), "!activation_url" => site_url('programmer/confirm/'.$insertData['activation_key']), "!contact_url" => site_url('contact'));
+				$splVars = array("!site_title" => $this->config->item('site_title'), "!activation_url" => site_url('seller/confirm/'.$insertData['activation_key']), "!contact_url" => site_url('contact'));
 				$mailSubject = strtr($rowUserMailConent->mail_subject, $splVars);
 				$mailContent = strtr($rowUserMailConent->mail_body, $splVars);		
 				$toEmail = $insertData['email'];
@@ -152,10 +152,10 @@ class Seller extends Controller {
 				
 				//Notification message
 				$this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$success_msg));
-				redirect('programmer/signUp');
+				redirect('seller/signUp');
 		 	}  //Form Validation End
 		} //If - Form Submission End	
-	   $this->load->view('programmer/programmerSignup',$this->outputData);	
+	   $this->load->view('seller/sellerSignup',$this->outputData);	
 	} //Function signUp End
 	
 	// --------------------------------------------------------------------
@@ -169,7 +169,7 @@ class Seller extends Controller {
 	function resendActLink()
 	{
 		//language file
-		$this->lang->load('enduser/programmerSignup', $this->config->item('language_code'));
+		$this->lang->load('enduser/sellerSignup', $this->config->item('language_code'));
 		
 		//load validation library
 		$this->load->library('form_validation');
@@ -184,12 +184,12 @@ class Seller extends Controller {
 		if($this->input->post('resend',TRUE))
 		{	
 			//Set rules
-			$this->form_validation->set_rules('email2','lang:programmer_email_validation','required|trim|valid_email|xss_clean|callback__check_resendprogrammer_email');
+			$this->form_validation->set_rules('email2','lang:seller_email_validation','required|trim|valid_email|xss_clean|callback__check_resendseller_email');
 			if($this->form_validation->run())
 			{
 				$email    		  = $this->input->post('email2',TRUE);
 				//Conditions
-				$conditions		= array('users.email' => $email,'users.role_id'=> $this->user_model->getRoleId('programmer'));
+				$conditions		= array('users.email' => $email,'users.role_id'=> $this->user_model->getRoleId('seller'));
 				$query 			= $this->user_model->getUsers($conditions);
 				$userRow = $query->row();
 				
@@ -197,10 +197,10 @@ class Seller extends Controller {
 				$this->load->model('email_model');
 				
 				//Send Mail
-				$conditionUserMail = array('email_templates.type'=>'programmers_signup');
+				$conditionUserMail = array('email_templates.type'=>'sellers_signup');
 				$result            = $this->email_model->getEmailSettings($conditionUserMail);
 				$rowUserMailConent = $result->row();
-				$splVars = array("!site_title" => $this->config->item('site_title'), "!activation_url" => site_url('programmer/confirm/'.$userRow->activation_key), "!contact_url" => site_url('contact'));
+				$splVars = array("!site_title" => $this->config->item('site_title'), "!activation_url" => site_url('seller/confirm/'.$userRow->activation_key), "!contact_url" => site_url('contact'));
 				$mailSubject = strtr($rowUserMailConent->mail_subject, $splVars);
 				$mailContent = strtr($rowUserMailConent->mail_body, $splVars);		
 				$toEmail = $email;
@@ -212,15 +212,15 @@ class Seller extends Controller {
 				  
 				//Notification message
 				$this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$success_msg));
-				redirect('programmer/signUp');
+				redirect('seller/signUp');
 			}
 		}
-		$this->load->view('programmer/programmerSignup',$this->outputData);
+		$this->load->view('seller/sellerSignup',$this->outputData);
 	}
 	// --------------------------------------------------------------------
 
 	/**
-	 * Loads confirm page for programmer
+	 * Loads confirm page for seller
 	 *
 	 * @access	public
 	 * @param	nil
@@ -229,7 +229,7 @@ class Seller extends Controller {
 	function confirm()
 	{
 		//language file
-		$this->lang->load('enduser/programmerConfirm', $this->config->item('language_code'));
+		$this->lang->load('enduser/sellerConfirm', $this->config->item('language_code'));
 		$check_key = $this->uri->segment(3,0);	
 		
 		//load validation libraray
@@ -242,10 +242,10 @@ class Seller extends Controller {
 		$this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
 
 		//Get Form Data	
-		if($this->input->post('programmerConfirm'))
+		if($this->input->post('sellerConfirm'))
 		{	
 			//Set rules
-			$this->form_validation->set_rules('username','lang:programmer_name_validation','required|trim|min_length[5]|xss_clean|callback__check_username|alpha_space');
+			$this->form_validation->set_rules('username','lang:seller_name_validation','required|trim|min_length[5]|xss_clean|callback__check_username|alpha_space');
 			$this->form_validation->set_rules('pwd','lang:password_validation','required|trim|min_length[5]|max_length[16]|xss_clean|matches[ConfirmPassword]');
 			$this->form_validation->set_rules('ConfirmPassword','ConfirmPassword','required|trim|xss_clean');
 			$this->form_validation->set_rules('name','lang:name_confirm_validation','trim|min_length[5]|xss_clean');
@@ -370,7 +370,7 @@ class Seller extends Controller {
 					
 				  $rowUserMailConent = $result->row();
 					
-				  $splVars = array("!site_name" => $this->config->item('site_title'),"!username" => $updateData['user_name'],"!password" => $this->input->post('pwd'),"!usertype" => 'Programmer', "!siteurl" => site_url(), "!contact_url" => site_url('contact'));
+				  $splVars = array("!site_name" => $this->config->item('site_title'),"!username" => $updateData['user_name'],"!password" => $this->input->post('pwd'),"!usertype" => 'Seller', "!siteurl" => site_url(), "!contact_url" => site_url('contact'));
 				  $mailSubject = strtr($rowUserMailConent->mail_subject, $splVars);
 				  $mailContent = strtr($rowUserMailConent->mail_body, $splVars);		
 				  $toEmail     = $registerusers->email;
@@ -389,7 +389,7 @@ class Seller extends Controller {
 				           
 				  //Notification message
 /*
-				  $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('programmer_confirm_success')));
+				  $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('seller_confirm_success')));
 
 				  redirect('info/index/success');*/
 
@@ -439,9 +439,9 @@ class Seller extends Controller {
 
 		} else {
 
-			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('programmer_activationkey_error')));
+			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('seller_activationkey_error')));
 
-			redirect('programmer/signUp');
+			redirect('seller/signUp');
 
 		}	
 
@@ -460,7 +460,7 @@ class Seller extends Controller {
 
 		
 
-		$this->load->view('programmer/programmerConfirm',$this->outputData);
+		$this->load->view('seller/sellerConfirm',$this->outputData);
 
 		
 
@@ -590,7 +590,7 @@ class Seller extends Controller {
 
 	/**
 
-	 * Loads ediit Programmer Profile .
+	 * Loads ediit Seller Profile .
 
 	 *
 
@@ -652,7 +652,7 @@ class Seller extends Controller {
 
 		  // feb 13.2009
 
-		if($this->input->post('updateProgrammerConfirm'))
+		if($this->input->post('updateSellerConfirm'))
 
 		{	
 
@@ -662,7 +662,7 @@ class Seller extends Controller {
 
 			$this->form_validation->set_rules('logo','lang:logo_validation','callback__logo_check');
 
-			$this->form_validation->set_rules('name','lang:programmer_name_validation','required|trim|min_length[5]|xss_clean');
+			$this->form_validation->set_rules('name','lang:seller_name_validation','required|trim|min_length[5]|xss_clean');
 
 			$this->form_validation->set_rules('categories[]','lang:categories_validation','required|xss_clean');
 
@@ -1005,7 +1005,7 @@ class Seller extends Controller {
 				  $this->email_model->sendHtmlMail($toEmail,$fromEmail,$mailSubject,$mailContent);
 				  //Notification message
 
-				  $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('update_programmer_confirm_success')));
+				  $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('update_seller_confirm_success')));
 
 				  redirect('info/index/success');
 
@@ -1063,7 +1063,7 @@ class Seller extends Controller {
 
 		
 
-		$this->load->view('programmer/editProgrammerProfile',$this->outputData);
+		$this->load->view('seller/editSellerProfile',$this->outputData);
 
 				
 
@@ -1079,7 +1079,7 @@ class Seller extends Controller {
 
 
 
-	 * Check for programmer mail id
+	 * Check for seller mail id
 
 
 
@@ -1103,7 +1103,7 @@ class Seller extends Controller {
 
 
 
-	function _check_programmer_email($mail)
+	function _check_seller_email($mail)
 
 	{
 
@@ -1111,7 +1111,7 @@ class Seller extends Controller {
 
 
 
-		$this->lang->load('enduser/programmerSignup', $this->config->item('language_code'));
+		$this->lang->load('enduser/sellerSignup', $this->config->item('language_code'));
 
 
 
@@ -1119,7 +1119,7 @@ class Seller extends Controller {
 
 
 
-	  	$role_id	= $this->user_model->getRoleId('programmer');
+	  	$role_id	= $this->user_model->getRoleId('seller');
 
 			
 
@@ -1153,7 +1153,7 @@ class Seller extends Controller {
 
 
 
-			$this->form_validation->set_message('_check_programmer_email', $this->lang->line('programmer_email_check'));
+			$this->form_validation->set_message('_check_seller_email', $this->lang->line('seller_email_check'));
 
 
 
@@ -1176,13 +1176,13 @@ class Seller extends Controller {
 	 * @param	nil
 	 * @return	void
 	 */ 
-	function _check_resendprogrammer_email($mail)
+	function _check_resendseller_email($mail)
 	{
 		
 		//language file
-		$this->lang->load('enduser/programmerSignup', $this->config->item('language_code'));
+		$this->lang->load('enduser/sellerSignup', $this->config->item('language_code'));
 		//Get Role Id For Buyers
-	  	$role_id	= $this->user_model->getRoleId('programmer');
+	  	$role_id	= $this->user_model->getRoleId('seller');
 			
 		//Conditions
 		$conditions		= array('users.email'=>$mail,'users.role_id'=>$role_id,'users.user_status' => '0');
@@ -1198,11 +1198,11 @@ class Seller extends Controller {
 		}
 		else if ($result2->num_rows() == 0 && $resultmail->num_rows() != 0)
 		{
-		$this->form_validation->set_message('_check_resendprogrammer_email', $this->lang->line('buyer_email_ban'));
+		$this->form_validation->set_message('_check_resendseller_email', $this->lang->line('buyer_email_ban'));
 			return false;			
 		}  
 		else if($result2->num_rows() != 0 || $resultmail->num_rows() == 0) {
-				$this->form_validation->set_message('_check_resendprogrammer_email', $this->lang->line('not_registered'));
+				$this->form_validation->set_message('_check_resendseller_email', $this->lang->line('not_registered'));
 			return false;
 		}//If end 
 	
@@ -1221,7 +1221,7 @@ class Seller extends Controller {
 
 
 
-		$this->lang->load('enduser/programmerSignup', $this->config->item('language_code'));
+		$this->lang->load('enduser/sellerSignup', $this->config->item('language_code'));
 
 
 
@@ -1229,7 +1229,7 @@ class Seller extends Controller {
 
 
 
-	  	$role_id	= $this->user_model->getRoleId('programmer');
+	  	$role_id	= $this->user_model->getRoleId('seller');
 
 			
 
@@ -1263,7 +1263,7 @@ class Seller extends Controller {
 
 
 
-			$this->form_validation->set_message('_check_username', $this->lang->line('programmer_username_check'));
+			$this->form_validation->set_message('_check_username', $this->lang->line('seller_username_check'));
 
 
 
@@ -1287,7 +1287,7 @@ class Seller extends Controller {
 
 	/**
 
-	 * View programmer's profile
+	 * View seller's profile
 
 	 *
 
@@ -1315,7 +1315,7 @@ class Seller extends Controller {
 			 redirect('info');
 		  } 	
 
-		$programmerId = $this->uri->segment(3,'0');
+		$sellerId = $this->uri->segment(3,'0');
 
 		
 
@@ -1323,7 +1323,7 @@ class Seller extends Controller {
 
 		
 
-		$conditions = array('users.id' => $programmerId);
+		$conditions = array('users.id' => $sellerId);
 
 		
 
@@ -1341,7 +1341,7 @@ class Seller extends Controller {
 
 		//Get Portfolio
 
-		$condition = array('portfolio.user_id' => $programmerId);
+		$condition = array('portfolio.user_id' => $sellerId);
 
 		$this->outputData['portfolio']	= $this->user_model->getPortfolio($condition);
 
@@ -1351,7 +1351,7 @@ class Seller extends Controller {
 
 		
 
-		$conditions2 = array('user_contacts.user_id' => $programmerId);
+		$conditions2 = array('user_contacts.user_id' => $sellerId);
 
 		
 
@@ -1371,7 +1371,7 @@ class Seller extends Controller {
 
 		// get Users Categories  from user Categories  table
 
-	     $conditions								= array('user_categories.user_id'=>$programmerId);
+	     $conditions								= array('user_categories.user_id'=>$sellerId);
 
 		 $this->outputData['userCategories'] 		= $this->user_model->getUserCategories($conditions);
 
@@ -1385,7 +1385,7 @@ class Seller extends Controller {
 
 		
 
-		$this->load->view('programmer/viewProfile',$this->outputData);
+		$this->load->view('seller/viewProfile',$this->outputData);
 
 		
 
@@ -1399,7 +1399,7 @@ class Seller extends Controller {
 
 	/**
 
-	 * View projects bidding by a programmer
+	 * View projects bidding by a seller
 
 	 *
 
@@ -1421,9 +1421,9 @@ class Seller extends Controller {
 		$this->lang->load('enduser/editProfile', $this->config->item('language_code'));
 		
 		//Check For Buyer Session
-		if(!isProgrammer())
+		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller')));
 			redirect('info');
 		}
 		  
@@ -1434,7 +1434,7 @@ class Seller extends Controller {
 			redirect('info');
 		}
 		//Get buyer id
-		$programmer_id	 = $this->loggedInUser->id;
+		$seller_id	 = $this->loggedInUser->id;
 		
 		$page = $this->uri->segment(3,'0');
 		
@@ -1493,7 +1493,7 @@ class Seller extends Controller {
 		$max = array($page_rows,($page - 1) * $page_rows);
 
 		//Conditions
-		$conditions2		= array('bids.user_id '=>$programmer_id,'projects.project_status !=' => '2');
+		$conditions2		= array('bids.user_id '=>$seller_id,'projects.project_status !=' => '2');
 
 		$bids  =  $this->skills_model->getProjectByBid($conditions2,NULL,NULL,$max,$orderby);
 		
@@ -1501,9 +1501,9 @@ class Seller extends Controller {
 
 		$this->outputData['biddingProjects']	= $bids;
 
-		$this->outputData['programmer_id']	= $programmer_id;
+		$this->outputData['seller_id']	= $seller_id;
 
-		$conditions3		= array('bids.user_id '=>$programmer_id,'projects.project_status =' => '2','projects.programmer_id' => $programmer_id);
+		$conditions3		= array('bids.user_id '=>$seller_id,'projects.project_status =' => '2','projects.seller_id' => $seller_id);
 
 		$wonbids  =  $this->skills_model->getProjectByBid($conditions3);
 
@@ -1512,7 +1512,7 @@ class Seller extends Controller {
 		//Pagination
 		$this->load->library('pagination');
 
-		$config['base_url'] 	= site_url('programmer/viewMyProjects');
+		$config['base_url'] 	= site_url('seller/viewMyProjects');
 
 		$config['total_rows'] 	= $bids2->num_rows();		
 		
@@ -1526,7 +1526,7 @@ class Seller extends Controller {
 		
 			//pr($bids->result());exit;
 
-		$this->load->view('programmer/myProjects',$this->outputData);
+		$this->load->view('seller/myProjects',$this->outputData);
 
 		
 
@@ -1580,7 +1580,7 @@ class Seller extends Controller {
 
 			 $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('Your bid has been removed')));
 
-			redirect('programmer/viewMyProjects');
+			redirect('seller/viewMyProjects');
 
 		}
 
@@ -1588,7 +1588,7 @@ class Seller extends Controller {
 
 		//pr($bids->result());exit;
 
-		$this->load->view('programmer/retractBid',$this->outputData);
+		$this->load->view('seller/retractBid',$this->outputData);
 
 		
 
@@ -1623,9 +1623,9 @@ class Seller extends Controller {
 		$this->lang->load('enduser/review', $this->config->item('language_code'));
 		
 		//Check For Buyer Session
-		if(!isProgrammer())
+		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer to review Buyer')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller to review Buyer')));
 			redirect('info');
 		}
 		
@@ -1660,7 +1660,7 @@ class Seller extends Controller {
 			$rev = $this->skills_model->getReviews($condition);
 			//pr($rev->result());exit;
 			//Send Mail
-			$conditionUserMail = array('email_templates.type'=>'programmer_review');
+			$conditionUserMail = array('email_templates.type'=>'seller_review');
 			$result            = $this->email_model->getEmailSettings($conditionUserMail);
 			$rowUserMailConent = $result->row();
 			
@@ -1673,7 +1673,7 @@ class Seller extends Controller {
 			$getuser = $this->user_model->getUsers(array('users.id' => $insertData['buyer_id']));
 			$user = $getuser->row();
 			
-			$splVars = array("!programmer_name" => $this->loggedInUser->user_name, "!project_name" => $prjRow->project_name,"!site_name" => site_url(''),'!site_title' => $this->config->item('site_title'));
+			$splVars = array("!seller_name" => $this->loggedInUser->user_name, "!project_name" => $prjRow->project_name,"!site_name" => site_url(''),'!site_title' => $this->config->item('site_title'));
 			$mailSubject = strtr($rowUserMailConent->mail_subject, $splVars);
 			$mailContent = strtr($rowUserMailConent->mail_body, $splVars);
 			$toEmail = $user->email;
@@ -1780,7 +1780,7 @@ class Seller extends Controller {
 
 		
 
-		$this->load->view('programmer/reviewBuyer',$this->outputData);
+		$this->load->view('seller/reviewBuyer',$this->outputData);
 
 		
 
@@ -1868,7 +1868,7 @@ class Seller extends Controller {
 
 		
 
-		$this->load->view('programmer/review',$this->outputData);
+		$this->load->view('seller/review',$this->outputData);
 
 				
 
@@ -1882,11 +1882,11 @@ class Seller extends Controller {
 
 	 /**
 
-	 * Get top programmers
+	 * Get top sellers
 
 	 *
 
-	 * Returns all programmers rating reviews
+	 * Returns all sellers rating reviews
 
 	 *
 
@@ -1898,7 +1898,7 @@ class Seller extends Controller {
 
 	 */
 
-	function getProgrammersreview()
+	function getSellersreview()
 	{
 	
 	  //language file
@@ -1908,11 +1908,11 @@ class Seller extends Controller {
 	
 		//Get reviews
 
-		$result     = $this->skills_model->getTopprogrammers();
+		$result     = $this->skills_model->getTopsellers();
 
-		$this->outputData['getProgrammers'] =  $result;	
+		$this->outputData['getSellers'] =  $result;	
 
-		$this->load->view('programmer/topProgrammers',$this->outputData);
+		$this->load->view('seller/topSellers',$this->outputData);
 
 	} //End of getBuyerReview function
 
@@ -1926,7 +1926,7 @@ class Seller extends Controller {
 
 	 *
 
-	 * Returns all programmers rating reviews
+	 * Returns all sellers rating reviews
 
 	 *
 
@@ -1947,9 +1947,9 @@ class Seller extends Controller {
 		$this->lang->load('enduser/editProfile', $this->config->item('language_code'));
 		
 		/*//Check For Buyer Session
-		if(!isProgrammer())
+		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller')));
 			redirect('info');
 		}*/
 
@@ -2055,7 +2055,7 @@ class Seller extends Controller {
 
 				  $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('provider_portfolio_success')));
 
-				  redirect('programmer/managePortfolio');
+				  redirect('seller/managePortfolio');
 
 		 	}  //Form Validation End
 
@@ -2092,7 +2092,7 @@ class Seller extends Controller {
        
 		//pr($this->outputData['getPortfolio']->result());exit;
 
-		$this->load->view('programmer/managePorfolio',$this->outputData);
+		$this->load->view('seller/managePorfolio',$this->outputData);
 
 	} //End of getBuyerReview function
 
@@ -2108,7 +2108,7 @@ class Seller extends Controller {
 
 	 *
 
-	 * Returns all programmers rating reviews
+	 * Returns all sellers rating reviews
 
 	 *
 
@@ -2130,9 +2130,9 @@ class Seller extends Controller {
 
 		
 		//Check For Buyer Session
-		if(!isProgrammer())
+		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller')));
 			redirect('info');
 		}
 			
@@ -2288,7 +2288,7 @@ class Seller extends Controller {
 
 				  $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('provider_portfolio_success')));
 
-				  redirect('programmer/managePortfolio');
+				  redirect('seller/managePortfolio');
 
 		 	}  //Form Validation End
 
@@ -2324,7 +2324,7 @@ class Seller extends Controller {
 
 		//pr($this->outputData['getPortfolio']->result());exit;
 
-		$this->load->view('programmer/managePorfolio',$this->outputData);
+		$this->load->view('seller/managePorfolio',$this->outputData);
 
 	} //End of editPortfolio function
 
@@ -2340,7 +2340,7 @@ class Seller extends Controller {
 
 	 *
 
-	 * Returns all programmers rating reviews
+	 * Returns all sellers rating reviews
 
 	 *
 
@@ -2378,7 +2378,7 @@ class Seller extends Controller {
 
 		//pr($this->outputData['portfolio']->row());exit;
 
-		$this->load->view('programmer/viewPortfolio',$this->outputData);
+		$this->load->view('seller/viewPortfolio',$this->outputData);
 
 	}
 
@@ -2514,7 +2514,7 @@ class Seller extends Controller {
 
 		
 
-		redirect('programmer/managePortfolio');
+		redirect('seller/managePortfolio');
 
 	}//Function deletePortfolio End
 
@@ -2670,9 +2670,9 @@ class Seller extends Controller {
 		$this->lang->load('enduser/editProfile', $this->config->item('language_code'));
 		
 		//Check For Buyer Session
-		if(!isProgrammer())
+		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller')));
 			redirect('info');
 		}
 		
@@ -2703,7 +2703,7 @@ class Seller extends Controller {
 		$this->user_model->updatePortfolio($updateKey,$updateData);
 		
 		$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error','Attachment deleted successfully'));
-		 redirect('programmer/managePortfolio/'.$portid);
+		 redirect('seller/managePortfolio/'.$portid);
 	}//Function removeAttachment End
 
 	// --------------------------------------------------------------------
@@ -2728,9 +2728,9 @@ class Seller extends Controller {
 		
 		//Check For Buyer Session
 		if($this->uri->segment(4) == '2'){
-			if(!isProgrammer())
+			if(!isSeller())
 			{
-				$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer')));
+				$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller')));
 				redirect('info');
 			}
 		}
@@ -2766,7 +2766,7 @@ class Seller extends Controller {
 		
 		$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error','Profile photo deleted successfully'));
 		if($this->uri->segment(4) == '2')
-		redirect('programmer/editProfile/');
+		redirect('seller/editProfile/');
 		elseif($this->uri->segment(4) == '1')
 		redirect('buyer/editProfile/');
 	}//Function removeAttachment End
@@ -2777,13 +2777,13 @@ class Seller extends Controller {
 		$conditions   = array('bookmark.project_id'=>$project_id,'bookmark.creator_id'=>$this->loggedInUser->id);
 		$bookMarks    = $this->common_model->deleteTableData('bookmark',$conditions);
 		$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error','Bookmark deleted successfully'));
-		redirect('programmer/viewMyProjects/');
+		redirect('seller/viewMyProjects/');
 	}
 }
 
-//End  Programmer Class
+//End  Seller Class
 
-/* End of file Programmer.php */ 
+/* End of file Seller.php */ 
 
 /* Location: ./app/controllers/Buyer.php */
 

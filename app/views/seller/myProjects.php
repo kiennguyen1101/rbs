@@ -101,7 +101,7 @@
 								$i=0;
 								foreach($wonBids->result() as $wonBid)
 								{
-									$reviewDetails = getReviewStatusProgrammer($wonBid->id,$wonBid->seller_id);
+									$reviewDetails = getReviewStatusSeller($wonBid->id,$wonBid->seller_id);
 									
 									$reviewDetails = $reviewDetails->row();
 									

@@ -39,8 +39,8 @@
          <div class="clsprogram">
               <h2>IBoxAudio Affiliate Program</h2>
 			  <h3>Earn 50% Commission!</h3>
-			  <p>IBoxAudio pays affiliates half the fees we charge users to participate in projects. If you refer a Buyer we will pay you <?php if(isset($affiliate['buyer_affiliate_fee'])) echo $affiliate['buyer_affiliate_fee']; ?>% of ALL the fees we charge that user, as well as <?php if(isset($affiliate['buyer_affiliate_fee'])) echo $affiliate['buyer_affiliate_fee']; ?>% of the fees we charge the Programmer he works with! If you refer a Programmer you will earn <?php if(isset($affiliate['programmer_affiliate_fee'])) echo $affiliate['programmer_affiliate_fee']; ?>% of ALL the fees we charge that user, as well as the Buyer he works with. On top of that you will also earn 50% of <a href="#">Certified Member</a> fees ($5-$12.50) and 50% of <a href="#">Job Listing</a> fees ($19.50). If you refer another affiliate we will also pay you <?php if(isset($affiliate['programmer_affiliate_fee'])) echo $affiliate['programmer_affiliate_fee']; ?>% of whatever they earn!</p>
-			  <p>Here's a table that shows what we pay affiliates. Note that we charge Buyers free to post a regular project and we charge Programmers <?php if(isset($settings['PROVIDER_COMMISSION_AMOUNT'])) echo $settings['PROVIDER_COMMISSION_AMOUNT']; ?>% of their bid amount.</p>
+			  <p>IBoxAudio pays affiliates half the fees we charge users to participate in projects. If you refer a Buyer we will pay you <?php if(isset($affiliate['buyer_affiliate_fee'])) echo $affiliate['buyer_affiliate_fee']; ?>% of ALL the fees we charge that user, as well as <?php if(isset($affiliate['buyer_affiliate_fee'])) echo $affiliate['buyer_affiliate_fee']; ?>% of the fees we charge the Seller he works with! If you refer a Seller you will earn <?php if(isset($affiliate['seller_affiliate_fee'])) echo $affiliate['seller_affiliate_fee']; ?>% of ALL the fees we charge that user, as well as the Buyer he works with. On top of that you will also earn 50% of <a href="#">Certified Member</a> fees ($5-$12.50) and 50% of <a href="#">Job Listing</a> fees ($19.50). If you refer another affiliate we will also pay you <?php if(isset($affiliate['seller_affiliate_fee'])) echo $affiliate['seller_affiliate_fee']; ?>% of whatever they earn!</p>
+			  <p>Here's a table that shows what we pay affiliates. Note that we charge Buyers free to post a regular project and we charge Sellers <?php if(isset($settings['PROVIDER_COMMISSION_AMOUNT'])) echo $settings['PROVIDER_COMMISSION_AMOUNT']; ?>% of their bid amount.</p>
               <!-- project details -->
          <div class="clsAffiliateTable">
                             <table width="650" cellspacing="1" cellpadding="2">
@@ -48,19 +48,19 @@
                                 <tr>
                                   <td width="148" align="center" class="dt">&nbsp;</td>
 								  <td width="248" class="dt">Refer aBuyer earn...</td>
-                                  <td width="248" align="center" class="dt">Refer a Programmer earn...</td>
+                                  <td width="248" align="center" class="dt">Refer a Seller earn...</td>
                                 </tr>
                                 <tr>
                                   <td class="dt1 dt0"><b>Regular Project</b></td>
-                                  <td class="dt1"><b><?php if(isset($affiliate['buyer_affiliate_fee'])) echo $affiliate['buyer_affiliate_fee']; ?>%</b> of fee we charge their selected Programmer (Min: $<?php if(isset($affiliate['buyer_min_amount'])) echo $affiliate['buyer_min_amount']; ?>)<br />
+                                  <td class="dt1"><b><?php if(isset($affiliate['buyer_affiliate_fee'])) echo $affiliate['buyer_affiliate_fee']; ?>%</b> of fee we charge their selected Seller (Min: $<?php if(isset($affiliate['buyer_min_amount'])) echo $affiliate['buyer_min_amount']; ?>)<br />
                                   <br />Minimum payout per project: <b>$<?php if(isset($affiliate['buyer_min_payout'])) echo $affiliate['buyer_min_payout']; ?>.00</b><br />Maximum payout per project: <b><?php if(isset($affiliate['buyer_max_payout'])) echo $affiliate['buyer_max_payout']; ?></b></td>
-                                  <td class="dt1"><b><?php if(isset($affiliate['programmer_affiliate_fee'])) echo $affiliate['programmer_affiliate_fee']; ?>%</b> of fee charged to Programmer (Min: $<?php if(isset($affiliate['programmer_min_amount'])) echo $affiliate['programmer_min_amount']; ?>                                    )<br />
-                                  <br />Minimum payout per project: <b>$<?php if(isset($affiliate['programmer_min_payout'])) echo $affiliate['programmer_min_payout']; ?>.00</b><br />Maximum payout per project: <b><?php if(isset($affiliate['programmer_max_payout'])) echo $affiliate['programmer_max_payout']; ?></b></td>
+                                  <td class="dt1"><b><?php if(isset($affiliate['seller_affiliate_fee'])) echo $affiliate['seller_affiliate_fee']; ?>%</b> of fee charged to Seller (Min: $<?php if(isset($affiliate['seller_min_amount'])) echo $affiliate['seller_min_amount']; ?>                                    )<br />
+                                  <br />Minimum payout per project: <b>$<?php if(isset($affiliate['seller_min_payout'])) echo $affiliate['seller_min_payout']; ?>.00</b><br />Maximum payout per project: <b><?php if(isset($affiliate['seller_max_payout'])) echo $affiliate['seller_max_payout']; ?></b></td>
                                 </tr>
                                 <tr>
                                   <td class="dt2 dt0"><b>Featured Project (?)</b></td>								
-                                  <td class="dt2"><b><?php if(isset($affiliate['buyer_project_fee'])) echo $affiliate['buyer_project_fee']; ?>%</b> of Featured project fee ($10). Plus <?php if(isset($affiliate['buyer_project_fee'])) echo $affiliate['buyer_project_fee']; ?>% of fee charged to selected Programmer.</td>
-                                  <td  class="dt2"><b><?php if(isset($affiliate['programmer_project_fee'])) echo $affiliate['programmer_project_fee']; ?>%</b> of Featured project fee ($2.50). Plus <?php if(isset($affiliate['programmer_project_fee'])) echo $affiliate['programmer_project_fee']; ?>% of fee charged to selected Programmer.</td>
+                                  <td class="dt2"><b><?php if(isset($affiliate['buyer_project_fee'])) echo $affiliate['buyer_project_fee']; ?>%</b> of Featured project fee ($10). Plus <?php if(isset($affiliate['buyer_project_fee'])) echo $affiliate['buyer_project_fee']; ?>% of fee charged to selected Seller.</td>
+                                  <td  class="dt2"><b><?php if(isset($affiliate['seller_project_fee'])) echo $affiliate['seller_project_fee']; ?>%</b> of Featured project fee ($2.50). Plus <?php if(isset($affiliate['seller_project_fee'])) echo $affiliate['seller_project_fee']; ?>% of fee charged to selected Seller.</td>
                                 </tr>
 
                               </tbody>
@@ -133,7 +133,7 @@
 									  <p>Dimensions: <b>468 x 60</b></p>
 									  <p>Size: <b>17.8 KB</b></p>
 									  <p><img src="<?php echo base_url() ?>app/css/images/banner_9_468x60.jpg" width="468" height="60" alt="banner"/></p>
-									  <p><textarea cols="70" rows="3" name="select1"><a href="<? echo base_url(); ?>index.php/affiliate/ref/<? if(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<? echo base_url(); ?>app/css/images/banner_9_468x60.jpg" WIDTH="468" HEIGHT="60" BORDER="0" ALT="Find programmers and graphic design experts at ifindaudio.com"></a></textarea></p>
+									  <p><textarea cols="70" rows="3" name="select1"><a href="<? echo base_url(); ?>index.php/affiliate/ref/<? if(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<? echo base_url(); ?>app/css/images/banner_9_468x60.jpg" WIDTH="468" HEIGHT="60" BORDER="0" ALT="Find sellers and graphic design experts at ifindaudio.com"></a></textarea></p>
 									  <p><a href="#">Select HTML</a></p>
 								   </div>
 								   
@@ -153,7 +153,7 @@
 									  <p>Dimensions: <b>300 x 250</b></p>
 									  <p>Size: <b>49.8 KB</b></p>
 									  <p><img src="<?php echo base_url() ?>app/css/images/banner_2_300x250.jpg" width="300" height="250" alt="banner"/></p>
-									  <p><textarea cols="70" rows="3" name="select1"><a href="<? echo base_url(); ?>index.php/affiliate/ref/<? if(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<? echo base_url(); ?>app/css/images/banner_2_300x250.jpg" WIDTH="300" HEIGHT="250" BORDER="0" ALT="Outsource your projects to thousands of programmers at ifindaudio.com"></a></textarea></p>
+									  <p><textarea cols="70" rows="3" name="select1"><a href="<? echo base_url(); ?>index.php/affiliate/ref/<? if(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<? echo base_url(); ?>app/css/images/banner_2_300x250.jpg" WIDTH="300" HEIGHT="250" BORDER="0" ALT="Outsource your projects to thousands of sellers at ifindaudio.com"></a></textarea></p>
 									  <p><a href="#">Select HTML</a></p>
 								   </div>
 								   

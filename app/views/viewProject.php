@@ -78,7 +78,7 @@
 
                                 <?php
 
-							//Make only this featured properties only for programmer to make featurd
+							//Make only this featured properties only for seller to make featurd
 
 							
 
@@ -292,7 +292,7 @@
 
                                                   <tr>
 
-                                                    <td width="15%" class="dt"><?php echo $this->lang->line('Programmers');?></td>
+                                                    <td width="15%" class="dt"><?php echo $this->lang->line('Sellers');?></td>
 													
 
                                                     <td width="100" class="dt"><?php echo $this->lang->line('Bids'); ?></td>
@@ -327,7 +327,7 @@
 
                                                   <tr class="<?php echo $class;?>">
 
-                                                    <td ><a href="<?php echo site_url('programmer/viewProfile/'.$bid->uid);?>"><?php echo $bid->user_name; 
+                                                    <td ><a href="<?php echo site_url('seller/viewProfile/'.$bid->uid);?>"><?php echo $bid->user_name; 
 
 					             //Get the Favourite and Blocked users
 
@@ -389,7 +389,7 @@
 
 							else{ ?>
 
-                                                      <a href="<?php echo site_url('programmer/review/'.$bid->uid);?>"> <img height="7" border="0" width="81" alt="10.00/10" src="<?php echo image_url('rating_'.$bid->user_rating.'.gif');?>"/> (<b><?php echo $bid->num_reviews;?> </b> <?php echo $this->lang->line('reviews');?>)</a>
+                                                      <a href="<?php echo site_url('seller/review/'.$bid->uid);?>"> <img height="7" border="0" width="81" alt="10.00/10" src="<?php echo image_url('rating_'.$bid->user_rating.'.gif');?>"/> (<b><?php echo $bid->num_reviews;?> </b> <?php echo $this->lang->line('reviews');?>)</a>
 
                                                       <?php } ?>
 

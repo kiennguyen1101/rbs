@@ -40,7 +40,7 @@
 								
 								<div id="selPMB" class="clsMarginTop">
 								  
-								  <p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php echo site_url('programmer/viewProfile/'.$this->loggedInUser->id);?>">
+								  <p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php echo site_url('seller/viewProfile/'.$this->loggedInUser->id);?>">
 									<?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?>
 									</a> (<a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout') ?></a>). </p>
 								  <p><label><?php echo $this->lang->line('Your Bid'); ?>:</label>$ <input name="bidAmt" type="text" value="<?php if(isset($bid->bid_amount)) echo $bid->bid_amount; else echo set_value('bidAmt');?>" size="8" />

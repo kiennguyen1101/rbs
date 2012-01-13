@@ -28,11 +28,11 @@
 						
 								<form method="post" action="<?php echo site_url('buyer/signUp'); ?>">
 								  <input type="hidden" name="new" value="user"/>
-								  <h2><?php echo $this->lang->line('Invite Programmer'); ?></h2>
+								  <h2><?php echo $this->lang->line('Invite Seller'); ?></h2>
 								  <br />
 								  <p><label><?php echo $this->lang->line('From'); ?>:</label><?php echo $loggedInUser->user_name; ?></p>
 								  <p><label><?php echo $this->lang->line('To'); ?>:</label>
-									 <select name="programmers[]" multiple="multiple"> <?php 
+									 <select name="sellers[]" multiple="multiple"> <?php 
 										  foreach($favouriteList->result() as $user)
 										  { ?>
 											 <option value="<?php echo $user->user_id; ?>"><?php echo $user->user_name; ?></option> <?php 

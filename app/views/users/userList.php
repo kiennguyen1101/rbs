@@ -39,7 +39,7 @@
 									<a class="glow" href="<?php if($loggedInUser->role_id == '1') { echo site_url('buyer/viewProfile/'.$loggedInUser->id);   } 
 									   if($loggedInUser->role_id == '2') 
 										 { 
-										   echo site_url('programmer/viewProfile/'.$loggedInUser->id);
+										   echo site_url('seller/viewProfile/'.$loggedInUser->id);
 										 } ?>" >
 										<?php echo $loggedInUser->user_name; ?>
 									</a>
@@ -110,7 +110,7 @@
 												 <a href="<?php if($users->role_id == '1') { echo site_url('buyer/viewProfile/'.$users->id);   } 
 												   if($users->role_id == '2') 
 												   { 
-													 echo site_url('programmer/viewProfile/'.$users->id);
+													 echo site_url('seller/viewProfile/'.$users->id);
 													} ?>">
 													<?php echo $users->user_name;?>
 													<?php $condition=array('subscriptionuser.username'=>$res->id);
@@ -172,7 +172,7 @@
 								}
 							  if($loggedInUser->role_id == '1')
 								{
-								   echo $this->lang->line('Add Programmer to favorites');
+								   echo $this->lang->line('Add Seller to favorites');
 								}	
 							  ?>
 							  <input type="hidden" name="role" value="1">
@@ -223,7 +223,7 @@
 												 <a href="<?php if($users->role_id == '1') { echo site_url('buyer/viewProfile/'.$users->id);   } 
 												   if($users->role_id == '2') 
 												   { 
-													 echo site_url('programmer/viewProfile/'.$users->id);
+													 echo site_url('seller/viewProfile/'.$users->id);
 
 													} ?>"><?php echo $users->user_name;?>
 													<?php 
@@ -278,7 +278,7 @@
 									}
 								  if($loggedInUser->role_id == '1')
 									{
-									   echo $this->lang->line('Blacklist a Programmer');
+									   echo $this->lang->line('Blacklist a Seller');
 									}	
 								  ?>
 								  <input type="hidden" name="role" value="2">

@@ -19,7 +19,7 @@
 							 $condition1=array('subscriptionuser.username'=>$loggedInUser->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition1);  
 							  ?></span></h3>
-                              <p class="clsSitelinks"><span><?php echo $this->lang->line('User name');?> :</span><a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name?></a>
+                              <p class="clsSitelinks"><span><?php echo $this->lang->line('User name');?> :</span><a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name?></a>
 							  <?php if(count($certified1->result())>0)
 								{?>
 								<img src="<?php echo image_url('certified.gif');?>" />

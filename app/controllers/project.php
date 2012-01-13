@@ -919,7 +919,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 		$this->lang->load('enduser/createBids', $this->config->item('language_code'));
 
 		//Check For Buyer Session
-		if(!isProgrammer())
+		if(!isSeller())
 		{
         	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer to bid projects')));
 			redirect('info');
@@ -1038,7 +1038,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 		$this->lang->load('enduser/createBids', $this->config->item('language_code'));
 
 		//Check For Buyer Session
-		if(!isProgrammer())
+		if(!isSeller())
 		{
         	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer to bid projects')));
 			redirect('info');
@@ -1385,7 +1385,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 		$this->lang->load('enduser/postBid', $this->config->item('language_code'));
 		
 		//Check For Programmer Session
-		if(!isProgrammer())
+		if(!isSeller())
 		{
         	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a programmer to place a bid')));
 			redirect('info');
@@ -1849,7 +1849,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 		$this->lang->load('enduser/acceptProject', $this->config->item('language_code'));
 		                
 		//Check For Programmer Session
-		if(!isProgrammer())
+		if(!isSeller())
 		{
         	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a programmer to accept projects')));
 			redirect('users/login');

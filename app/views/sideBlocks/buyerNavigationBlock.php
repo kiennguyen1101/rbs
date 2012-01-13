@@ -17,7 +17,7 @@
 							  <li><a href="<?php echo site_url('buyer/editProfile'); ?>"><?php echo $this->lang->line('edit_profile'); ?></a></li>
 							 <!-- <li><a href="<?php echo site_url('project/create'); ?>"><?php echo $this->lang->line('Post a Project'); ?></a></li>-->
                               <li><a href="<?php echo site_url('buyer/viewMyProjects'); ?>"><?php echo $this->lang->line('View My Projects'); ?></a></li>
-                              <!--<li><a href="<?php echo site_url('programmer/getProgrammersreview'); ?>"><?php echo $this->lang->line('Top Programmer'); ?></a></li>-->
+                              <!--<li><a href="<?php echo site_url('seller/getSellersreview'); ?>"><?php echo $this->lang->line('Top Seller'); ?></a></li>-->
                               <li class="clsNoborder"><a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout'); ?></a></li>
 							  
                             </ul>

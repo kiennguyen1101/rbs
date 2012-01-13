@@ -6,7 +6,7 @@
   <div id="selSignUp">
     <form method="post" action=""  enctype="multipart/form-data">
       <?=form_token();?>
-      <h2>New Programmer Signup (Step 2)</h2>
+      <h2>New Seller Signup (Step 2)</h2>
       <p> Confirmed E-mail1:
         <?php if(isset($confirmed_mail)) echo $confirmed_mail; ?>
       </p>

@@ -48,7 +48,7 @@ margin-right:20px;
 			
 							 if(isset($loggedInUser->role_id))
     	 					 {
-									if($loggedInUser->role_id =='1' && ($project->project_status == 0 || $project->project_status == 1) && $loggedInUser->id==$project->creator_id && $project->programmer_id==0)
+									if($loggedInUser->role_id =='1' && ($project->project_status == 0 || $project->project_status == 1) && $loggedInUser->id==$project->creator_id && $project->seller_id==0)
 								{ 
 									
 							echo '<a class="clsIcons clsFloatLeft" href="'.site_url('project/cancelProject/'.$project->id).'"><img alt="Cancel" title="Cancel" src="'.image_url('cancel.png').'"/></a>'; 
@@ -78,7 +78,7 @@ margin-right:20px;
 
                                 <?php
 
-							//Make only this featured properties only for programmer to make featurd
+							//Make only this featured properties only for seller to make featurd
 
 							
 
@@ -204,7 +204,7 @@ margin-right:20px;
                               </tr>
                               <tr>
                               <td class="dt2 dt0"><?php echo $this->lang->line('Status');?>:</td>
-								<?php $status=getCurrentStatus($project->project_status,$project->programmer_id,$project->id)?>
+								<?php $status=getCurrentStatus($project->project_status,$project->seller_id,$project->id)?>
 							   <td class="dt2"><?php echo '<b style="color:green;">' .$status['status'].'</b>'; if(isset($status['message']))echo $status['message']; ?> </td>
 
                               </tr>
@@ -292,7 +292,7 @@ margin-right:20px;
                               </tr>
                               <tr>
                               <td class="dt1 dt0"><?php echo $this->lang->line('Status');?>:</td>
-								<?php $status=getCurrentStatus($project->project_status,$project->programmer_id,$project->id)?>
+								<?php $status=getCurrentStatus($project->project_status,$project->seller_id,$project->id)?>
 							   <td class="dt1"><?php echo '<b style="color:green;">' .$status['status'].'</b>'; if(isset($status['message']))echo $status['message']; ?> </td>
 
                               </tr>
@@ -404,7 +404,7 @@ margin-right:20px;
                                               <table cellspacing="1" cellpadding="2" width="96%">
                                                 <tbody>
                                                   <tr>
-                                                    <td width="10%" class="dt"><?php echo $this->lang->line('Programmers');?></td>
+                                                    <td width="10%" class="dt"><?php echo $this->lang->line('Sellers');?></td>
 													<td width="20%" class="dt"><?php echo $this->lang->line('Message');?></td>
                                                     <td width="10%" class="dt"><?php echo $this->lang->line('Bids'); ?></td>
                                                     <td width="10%" class="dt"><?php echo $this->lang->line('Delivery Time');?></td>
@@ -450,7 +450,7 @@ margin-right:20px;
 								   }?>
 
 
-                                                    <td ><a href="<?php echo site_url('programmer/viewProfile/'.$bid->uid);?>"><?php echo $bid->user_name; 
+                                                    <td ><a href="<?php echo site_url('seller/viewProfile/'.$bid->uid);?>"><?php echo $bid->user_name; 
 					             //Get the Favourite and Blocked users
 								 if(isset($favourite))
 								     {
@@ -519,7 +519,7 @@ margin-right:20px;
                                                     <td><?php if($bid->num_reviews == 0)
 							echo '(No Feedback Yet) ';
 							else{ ?>
-                                                      <a href="<?php echo site_url('programmer/review/'.$bid->uid);?>"> <img height="7" border="0" width="81" alt="rating" src="<?php echo image_url('rating_'.$bid->user_rating.'.gif');?>"/> (<b><?php echo $bid->num_reviews;?> </b> <?php echo $this->lang->line('reviews');?>)</a>
+                                                      <a href="<?php echo site_url('seller/review/'.$bid->uid);?>"> <img height="7" border="0" width="81" alt="rating" src="<?php echo image_url('rating_'.$bid->user_rating.'.gif');?>"/> (<b><?php echo $bid->num_reviews;?> </b> <?php echo $this->lang->line('reviews');?>)</a>
                                                       <?php } ?>
                                                       <?php 
 							if(isset($this->loggedInUser->id))
@@ -536,12 +536,12 @@ margin-right:20px;
 			<td>							
 			<?php if(isset($loggedInUser->role_id))
     	 	 {
-				if($loggedInUser->role_id =='1' && ($project->project_status == 0 || $project->project_status == 1) && $loggedInUser->id==$project->creator_id && $project->programmer_id==0)
+				if($loggedInUser->role_id =='1' && ($project->project_status == 0 || $project->project_status == 1) && $loggedInUser->id==$project->creator_id && $project->seller_id==0)
 	  		 { 
 		 			 
 		 			echo '<a class="glow" href="'.site_url('project/selProvider/'.$bid->id).'">'.$this->lang->line('Pick Provider').'</a>';
 			
-		  }elseif($loggedInUser->role_id =='1' &&   $loggedInUser->id==$project->creator_id && $project->programmer_id!=0)
+		  }elseif($loggedInUser->role_id =='1' &&   $loggedInUser->id==$project->creator_id && $project->seller_id!=0)
 			 {
 						echo 'Already Picked';
 			  }
@@ -557,7 +557,7 @@ margin-right:20px;
 						else
 						{
 						
-					              	if(!isProgrammer())
+					              	if(!isSeller())
 	                 	             {
         	                         echo '<tr class="dt2 dt0"><td colspan=8>'.$this->lang->line('no_bids1').'.</td></tr>';
 		                             }
@@ -583,9 +583,9 @@ margin-right:20px;
                           <!--END OF RC-->
                         </div>
                         <?php 
-						if(!isProgrammer())
+						if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a programmer to place a bid')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a seller to place a bid')));
 			//redirect('info');
 		}
 				else

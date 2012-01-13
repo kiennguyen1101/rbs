@@ -43,7 +43,7 @@
 
 
 
-                             <p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a><?php 
+                             <p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a><?php 
 
 							    $condition1=array('subscriptionuser.username'=>$loggedInUser->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition1);
@@ -258,7 +258,7 @@ form.setAttribute("target", "_blank");
 }
 
 /* For laod favouriteusers list into the textarea box */
-function loadProgrammers(num)
+function loadSellers(num)
 {
    document.getElementById('private_listfill').value += num;
    return TRUE;

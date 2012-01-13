@@ -29,7 +29,7 @@
 	  <tr><td><?php echo $this->lang->line('project_title'); ?></td><td><a href="<?php echo admin_url('skills/projectDeatils/'.$projectCase->project_id);?>"><?php echo $projectCase->project_name;?></a></td></tr>
 	  <tr><td><?php echo $this->lang->line('project_id'); ?></td><td><?php echo $projectCase->project_id;?></td></tr>
 	  <tr><td><?php echo $this->lang->line('Buyer'); ?></td><td><a href="<?php echo admin_url('users/userDetails/'.$projectCase->creator_id);?>"><?php echo getUserDetails($projectCase->creator_id,'user_name');?></a></td></tr>
-	  <tr><td><?php echo $this->lang->line('Provider'); ?></td><td><a href="<?php echo admin_url('users/userDetails/'.$projectCase->programmer_id);?>"><?php echo getUserDetails($projectCase->programmer_id,'user_name');?></a></td></tr>
+	  <tr><td><?php echo $this->lang->line('Provider'); ?></td><td><a href="<?php echo admin_url('users/userDetails/'.$projectCase->seller_id);?>"><?php echo getUserDetails($projectCase->seller_id,'user_name');?></a></td></tr>
 	  <tr><td><?php echo $this->lang->line('Case Type');?></td><td></span><?php echo $projectCase->case_type;?></td></tr>
 	  <tr><td><?php echo $this->lang->line('Case Reason');?></td><td></span><?php echo $projectCase->case_reason;?></td></tr>
 	  <tr><td><?php echo $this->lang->line('payment_requested')?></td><td></span>$<?php echo $projectCase->payment;?></td></tr>
@@ -106,7 +106,7 @@
 		  <tr><td><?php echo $this->lang->line('Remove review');?> <b><?php echo getUserDetails($projectCase->user_id,'user_name');?></b></td><td>
 		  <?php if(getUserDetails($projectCase->user_id,'role_id') == '1'){?>
 		  <input type="button" value="<?php echo $this->lang->line('delete');?>" class="clsSubmitBt1" onclick="removeReview('1',<?php echo $projectCase->project_id; ?>,<?php echo $projectCase->creator_id; ?>)"/><?php } if(getUserDetails($projectCase->user_id,'role_id') == '2'){ ?>
-		  <input type="button" value="<?php echo $this->lang->line('delete');?>" class="clsSubmitBt1" onclick="removeReview('2',<?php echo $projectCase->project_id; ?>,<?php echo $projectCase->programmer_id; ?>)"/><?php } ?>&nbsp;
+		  <input type="button" value="<?php echo $this->lang->line('delete');?>" class="clsSubmitBt1" onclick="removeReview('2',<?php echo $projectCase->project_id; ?>,<?php echo $projectCase->seller_id; ?>)"/><?php } ?>&nbsp;
 		  <div id="rremove_review" style="color:#FF0000;"></div></td></tr>
 		  <?php //} ?>
 	  </table>

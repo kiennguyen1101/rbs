@@ -1,6 +1,6 @@
 <div id="main">
       <!--POST PROJECT-->
-      <div class="clsTopProgrammer">
+      <div class="clsTopSeller">
         <div class="block">
           <div class="inner_t">
             <div class="inner_r">

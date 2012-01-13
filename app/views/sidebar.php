@@ -12,10 +12,10 @@
 		  {
 				$this->load->view('sideBlocks/buyerNavigationBlock');
 		  }
-		  //Load Naigation Block For Programmer - If user logged in
-		  if(is_object($loggedInUser) and $loggedInUser->role_name == 'programmer')
+		  //Load Naigation Block For Seller - If user logged in
+		  if(is_object($loggedInUser) and $loggedInUser->role_name == 'seller')
 		  {
-				$this->load->view('sideBlocks/programmerNavigationBlock');
+				$this->load->view('sideBlocks/sellerNavigationBlock');
 		  }
 		  
 		 //Load services and features Block

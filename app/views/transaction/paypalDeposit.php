@@ -17,7 +17,7 @@
                           <div class="cls100_p ">
                             <div class="clsInnerCommon">
                               <h3><span class="clsHigh"><?php echo $this->lang->line('Deposit Funds');?></span></h3>
-								<p><?php echo $this->lang->line('User name :');?><?php echo $this->lang->line('user_name'); ?><a href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name?></a></p>
+								<p><?php echo $this->lang->line('User name :');?><?php echo $this->lang->line('user_name'); ?><a href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name?></a></p>
 								<p><?php echo $this->lang->line('Account Balance:');?> $ <?php if(isset($userAvailableBalance)) echo $userAvailableBalance.'.00'; ?></p>
 								<p><font color="#FF0000">The amount includes the paypal commission <?php echo $commission;?>%</font></p>
 								  

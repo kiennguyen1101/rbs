@@ -31,7 +31,7 @@
  * @param	string
  * @return	string
  */
-	function isProgrammer()
+	function isSeller()
 	{
 		$CI 	=& get_instance();
 		return  $CI->session->userdata('role') == 'programmer'?TRUE:FALSE;

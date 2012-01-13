@@ -58,7 +58,7 @@ function showfields(id)
 								<p> <?php echo $this->lang->line('note1');?> <a href="#"><?php echo $this->lang->line('Click here');?></a> <?php echo $this->lang->line('to post a job listing instead.');?> </p>
 								<h3><span class="clsFileManager"><?php echo $this->lang->line('Account Login Details...');?></span></h3>
 
-								<p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a><?php $condition1=array('subscriptionuser.username'=>$loggedInUser->id);
+								<p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a><?php $condition1=array('subscriptionuser.username'=>$loggedInUser->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition1);
 								if($certified1->num_rows()>0)
 			                    {
@@ -98,7 +98,7 @@ function showfields(id)
 									 
 							 <h3><div class="clsFileManager"><div id="showjoblist" style="display:none"><?php  echo $this->lang->line('Required Job Listing Details');?></div><div id="showprojectlist" style="display:block"><?php  echo $this->lang->line('Required Project  Details');?></div></div></h3>
 							  <p class="clsSitelinks">
-							  <input type="radio" name="postProject" onclick="showfields(1)"  value="Project" checked="checked"/><?php echo $this->lang->line('Project');?> (Hire a Programmer to complete a single project.)<br />
+							  <input type="radio" name="postProject" onclick="showfields(1)"  value="Project" checked="checked"/><?php echo $this->lang->line('Project');?> (Hire a Seller to complete a single project.)<br />
 							  <input type="radio" name="postProject" value="Joblist" onclick="showfields(2)"/><?php echo $this->lang->line('Job Listing');?> (Post a help wanted ad to find a long-term employee or partner. $<?php $paymentSettings = $this->settings_model->getSiteSettings(); 
 							echo $joblistamount  = $paymentSettings['JOBLISTING_PROJECT_AMOUNT']; ?> for <?php $paymentSettings = $this->settings_model->getSiteSettings(); 
 							echo $joblistamount  = $paymentSettings['JOBLIST_VALIDITY_LIMIT']; ?> days of exposure.)<br/>
@@ -106,7 +106,7 @@ function showfields(id)
 							  <?php } else { ?> 
 							   <h3><div class="clsFileManager"><div id="showjoblist" style="display:block"><?php  echo $this->lang->line('Required Job Listing Details');?></div><div id="showprojectlist" style="display:none"><?php  echo $this->lang->line('Required Project  Details');?></div></div></h3>
 							  <p class="clsSitelinks">
-							  <input type="radio" name="postProject" onclick="showfields(1)"  value="Project" /><?php echo $this->lang->line('Project');?> (Hire a Programmer to complete a single project.)<br />
+							  <input type="radio" name="postProject" onclick="showfields(1)"  value="Project" /><?php echo $this->lang->line('Project');?> (Hire a Seller to complete a single project.)<br />
 							  
 							  <input type="radio" name="postProject" checked="checked" value="Joblist" onclick="showfields(2)"/><?php echo $this->lang->line('Job Listing');?> (Post a help wanted ad to find a long-term employee or partner. $<?php $paymentSettings = $this->settings_model->getSiteSettings(); 
 							echo $joblistamount  = $paymentSettings['JOBLISTING_PROJECT_AMOUNT']; ?> for <?php $paymentSettings = $this->settings_model->getSiteSettings(); 
@@ -254,8 +254,8 @@ function showfields(id)
 									<li>
 									<?php if($draft->is_private==0) {?>
 									<ul class="clsLiFloat clsClearFix">
-									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Programmers'); ?></b><br /><br />
-									   <span><a href="#private_list" onclick="javascript:loadProgrammers('<?php foreach($favouriteUsers->result() as $users) {  
+									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Sellers'); ?></b><br /><br />
+									   <span><a href="#private_list" onclick="javascript:loadSellers('<?php foreach($favouriteUsers->result() as $users) {  
 									   echo $users->user_name.',\n';  } ?>');"><?php echo $this->lang->line('Invite Favourite'); ?></a> </span></li>
 									   <li class="clsRate"></li>
 									  <li class="clsDescription"> <span><textarea name="private_list" id="private_listfill" rows="7" cols="30" disabled="disabled"><?php echo $draft->private_users;?> </textarea></span></li>
@@ -263,8 +263,8 @@ function showfields(id)
 									 </li>
 									 <?php }else {?>
 									 <ul class="clsLiFloat clsClearFix">
-									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Programmers'); ?></b><br /><br />
-									   <span><a href="#private_list" onclick="javascript:loadProgrammers('<?php foreach($favouriteUsers->result() as $users) {  
+									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Sellers'); ?></b><br /><br />
+									   <span><a href="#private_list" onclick="javascript:loadSellers('<?php foreach($favouriteUsers->result() as $users) {  
 									   echo $users->user_name.',\n';  } ?>');"><?php echo $this->lang->line('Invite Favourite'); ?></a> </span></li>
 									   <li class="clsRate"></li>
 									  <li class="clsDescription"> <span><textarea name="private_list" id="private_listfill" rows="7" cols="30"><?php echo $draft->private_users;?> </textarea></span></li>
@@ -379,8 +379,8 @@ function showfields(id)
 									<li>
 									<?php if($draft->is_private==0) {?>
 									<ul class="clsLiFloat clsClearFix">
-									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Programmers'); ?></b><br /><br />
-									   <span><a href="#private_list" onclick="javascript:loadProgrammers('<?php foreach($favouriteUsers->result() as $users) {  
+									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Sellers'); ?></b><br /><br />
+									   <span><a href="#private_list" onclick="javascript:loadSellers('<?php foreach($favouriteUsers->result() as $users) {  
 									   echo $users->user_name.',\n';  } ?>');"><?php echo $this->lang->line('Invite Favourite'); ?></a> </span></li>
 									   <li class="clsRate"></li>
 									  <li class="clsDescription"> <span><textarea name="private_list" id="private_listfill" rows="7" cols="30" disabled="disabled"><?php echo $draft->private_users;?> </textarea></span></li>
@@ -388,8 +388,8 @@ function showfields(id)
 									 </li>
 									 <?php }else {?>
 									 <ul class="clsLiFloat clsClearFix">
-									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Programmers'); ?></b><br /><br />
-									   <span><a href="#private_list" onclick="javascript:loadProgrammers('<?php foreach($favouriteUsers->result() as $users) {  
+									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Sellers'); ?></b><br /><br />
+									   <span><a href="#private_list" onclick="javascript:loadSellers('<?php foreach($favouriteUsers->result() as $users) {  
 									   echo $users->user_name.',\n';  } ?>');"><?php echo $this->lang->line('Invite Favourite'); ?></a> </span></li>
 									   <li class="clsRate"></li>
 									  <li class="clsDescription"> <span><textarea name="private_list" id="private_listfill" rows="7" cols="30"><?php echo $draft->private_users;?> </textarea></span></li>
@@ -507,7 +507,7 @@ function submitDraft()
 </script>
 <script type="text/javascript">
 /* For laod favouriteusers list into the textarea box */
-function loadProgrammers(num)
+function loadSellers(num)
 {
    document.getElementById('private_listfill').value += num;
    return TRUE;

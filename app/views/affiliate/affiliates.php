@@ -40,15 +40,15 @@
                                             <div class="cls100_p ">
                                               <div class="clsprogram1">
                                                 <h2>RBS Affiliate Program</h2>
-                                                <h3 class="fsize">Earn <?php echo $affiliate['buyer_affiliate_fee']+$affiliate['programmer_affiliate_fee']; ?>% Commission!</h3>
+                                                <h3 class="fsize">Earn <?php echo $affiliate['buyer_affiliate_fee']+$affiliate['seller_affiliate_fee']; ?>% Commission!</h3>
                                                 <p class="fsize1">RBS pays affiliates half the fees we charge users to participate in projects. If you refer a Buyer we will pay you
                                                   <?php if(isset($affiliate['buyer_affiliate_fee'])) echo $affiliate['buyer_affiliate_fee']; ?>
                                                   % of ALL the fees we charge that user, as well as
                                                   <?php if(isset($affiliate['buyer_affiliate_fee'])) echo $affiliate['buyer_affiliate_fee']; ?>
-                                                  % of the fees we charge the Programmer he works with! If you refer a Programmer you will earn
-                                                  <?php if(isset($affiliate['programmer_affiliate_fee'])) echo $affiliate['programmer_affiliate_fee']; ?>
+                                                  % of the fees we charge the Seller he works with! If you refer a Seller you will earn
+                                                  <?php if(isset($affiliate['seller_affiliate_fee'])) echo $affiliate['seller_affiliate_fee']; ?>
                                                   % of ALL the fees we charge that user, as well as the Buyer he works with.</p>
-                                                <p class="fsize1">Here's a table that shows what we pay affiliates. Note that we charge Buyers free to post a regular project and we charge Programmers
+                                                <p class="fsize1">Here's a table that shows what we pay affiliates. Note that we charge Buyers free to post a regular project and we charge Sellers
                                                   <?php if(isset($settings['PROVIDER_COMMISSION_AMOUNT'])) echo $settings['PROVIDER_COMMISSION_AMOUNT']; ?>
                                                   % of their bid amount.</p>
                                                 <!-- project details -->
@@ -58,13 +58,13 @@
                                                       <tr>
                                                         <td width="148" align="center" class="dt">&nbsp;</td>
                                                         <td width="248" class="dt">Refer aBuyer earn...</td>
-                                                        <td width="248" align="center" class="dt">Refer a Programmer earn...</td>
+                                                        <td width="248" align="center" class="dt">Refer a Seller earn...</td>
                                                       </tr>
                                                       <tr class="BdrLeft">
                                                         <td class="dt1 dt0"><b>Regular Project</b></td>
                                                         <td class="dt1"><b>
                                                           <?php if(isset($affiliate['buyer_affiliate_fee'])) echo $affiliate['buyer_affiliate_fee']; ?>
-                                                          %</b> of fee we charge their selected Programmer 
+                                                          %</b> of fee we charge their selected Seller 
                                      
                                                           <br />
                                                           <br />
@@ -73,12 +73,12 @@
                                                           <?php if(isset($affiliate['buyer_max_payout'])) echo $affiliate['buyer_max_payout']; ?>
                                                           </b></td>
                                                         <td class="dt1"><b>
-                                                          <?php if(isset($affiliate['programmer_affiliate_fee'])) echo $affiliate['programmer_affiliate_fee']; ?>
-                                                          %</b> of fee charged to Programmer
+                                                          <?php if(isset($affiliate['seller_affiliate_fee'])) echo $affiliate['seller_affiliate_fee']; ?>
+                                                          %</b> of fee charged to Seller
                                                           <br />
                                                          <br />
                                                           Maximum payout per project: <b>
-                                                          <?php if(isset($affiliate['programmer_max_payout'])) echo $affiliate['programmer_max_payout']; ?>
+                                                          <?php if(isset($affiliate['seller_max_payout'])) echo $affiliate['seller_max_payout']; ?>
                                                           </b></td>
                                                       </tr>
                                                       <tr class="BdrLeft">
@@ -87,12 +87,12 @@
                                                           <?php if(isset($affiliate['buyer_project_fee'])) echo $affiliate['buyer_project_fee']; ?>
                                                           %</b> of Featured project fee ($<? echo $settings['FEATURED_PROJECT_AMOUNT'] * $affiliate['buyer_project_fee']/100; ?>). Plus
                                                           <?php if(isset($affiliate['buyer_project_fee'])) echo $affiliate['buyer_project_fee']; ?>
-                                                          % of fee charged to selected Programmer.</td>
+                                                          % of fee charged to selected Seller.</td>
                                                         <td  class="dt2"><b>
-                                                          <?php if(isset($affiliate['programmer_project_fee'])) echo $affiliate['programmer_project_fee']; ?>
-                                                          %</b> of Featured project fee ($<? echo $settings['FEATURED_PROJECT_AMOUNT'] * $affiliate['programmer_project_fee']/100; ?>). Plus
-                                                          <?php if(isset($affiliate['programmer_project_fee'])) echo $affiliate['programmer_project_fee']; ?>
-                                                          % of fee charged to selected Programmer.</td>
+                                                          <?php if(isset($affiliate['seller_project_fee'])) echo $affiliate['seller_project_fee']; ?>
+                                                          %</b> of Featured project fee ($<? echo $settings['FEATURED_PROJECT_AMOUNT'] * $affiliate['seller_project_fee']/100; ?>). Plus
+                                                          <?php if(isset($affiliate['seller_project_fee'])) echo $affiliate['seller_project_fee']; ?>
+                                                          % of fee charged to selected Seller.</td>
                                                       </tr>
                                                     </tbody>
                                                   </table>

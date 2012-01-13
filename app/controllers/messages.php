@@ -547,7 +547,7 @@ class Messages extends Controller {
 			 $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged to post messages on the Project Message Board')));
 			 redirect('info/index/success');	
 		}
- 	   if($this->input->post('to') == '' and $this->input->post('to_id') =='' and !isProgrammer())
+ 	   if($this->input->post('to') == '' and $this->input->post('to_id') =='' and !isSeller())
 		  {
 		  	$this->load->view('messages/buyerPostmessage',$this->outputData);
 		  }

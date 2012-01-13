@@ -155,7 +155,7 @@ class Dispute extends Controller {
 			}
 		}
 		//Check For Programmer Session
-		if(isProgrammer())
+		if(isSeller())
 		{
         	$provider_id = $this->loggedInUser->id;
 			$conditions3		= array('bids.user_id '=>$provider_id,'projects.project_status =' => '2','projects.programmer_id' => $provider_id);
@@ -250,7 +250,7 @@ class Dispute extends Controller {
 				  $res = $this->skills_model->getProjects($condition2);
 				  $prj = $res->row();
 				  
-				  if(isProgrammer()){
+				  if(isSeller()){
 				  	$other_user = $prj->user_name;
 					$user_type = 'Provider';
 				  }
@@ -379,7 +379,7 @@ class Dispute extends Controller {
 				  $res = $this->skills_model->getProjects($condition2);
 				  $prj = $res->row();
 				  
-				  if(isProgrammer()){
+				  if(isSeller()){
 				  	$other_user = $prj->user_name;
 					$user_type = 'Provider';
 				  }

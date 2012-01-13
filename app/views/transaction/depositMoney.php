@@ -20,7 +20,7 @@
                               <h3><span class="clsDepositFunds"><?php echo $this->lang->line('Deposit Funds');?></span></h3>
 							<?php $condition1=array('subscriptionuser.username'=>$loggedInUser->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition1);?>
-							  <p><span><?php echo $this->lang->line('User name :');?></span><?php echo $this->lang->line('user_name'); ?><a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name?></a><?php if(count($certified1->result())>0)
+							  <p><span><?php echo $this->lang->line('User name :');?></span><?php echo $this->lang->line('user_name'); ?><a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name?></a><?php if(count($certified1->result())>0)
 								{?>
 								<img src="<?php echo image_url('certified.gif');?>" />
 								<?php }?></p>
@@ -93,7 +93,7 @@
 									  <tr>
 									  <td class="<?php echo $class; ?>"><?php echo $k; ?></td>
 									  <td class="<?php echo $class1; ?>"><?php foreach($usersList->result() as $user) { if($user->id == $res->creator_id) { ?>
-									   <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('programmer/viewProfile/'.$user->id);?>"> <?php  echo $user->user_name;
+									   <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('seller/viewProfile/'.$user->id);?>"> <?php  echo $user->user_name;
 									      
 												   $condition=array('subscriptionuser.username'=>$user->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition);?>

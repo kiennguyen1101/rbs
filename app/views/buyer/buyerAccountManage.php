@@ -244,11 +244,11 @@
                             <tr class="<?php echo $class; ?>">
                               <td><?php echo $i+1;?></td>
                               <td><a href="<?php echo site_url('project/view/'.$closedProject->id); ?>"><?php echo $closedProject->project_name; ?></a></td>
-                              <td><a href="<?php echo site_url('programmer/viewProfile/'.$closedProject->userid);?>"><?php echo $closedProject->user_name; ?></a> </td>
-                              <td><?php echo getLowestBid($closedProject->id,$closedProject->programmer_id); ?></td>
-                              <td><a href="<?php echo site_url('buyer/reviewProgrammer/'.$closedProject->id);?>">
+                              <td><a href="<?php echo site_url('seller/viewProfile/'.$closedProject->userid);?>"><?php echo $closedProject->user_name; ?></a> </td>
+                              <td><?php echo getLowestBid($closedProject->id,$closedProject->seller_id); ?></td>
+                              <td><a href="<?php echo site_url('buyer/reviewSeller/'.$closedProject->id);?>">
 							   <?php
-							  $reviewDetails = getReviewStatus($closedProject->id,$closedProject->programmer_id);
+							  $reviewDetails = getReviewStatus($closedProject->id,$closedProject->seller_id);
 							  $reviewDetails = $reviewDetails->row();
 							  if(!is_object($reviewDetails))
 							 	 echo $this->lang->line('Review');
@@ -299,11 +299,11 @@
                             <tr>
                               <td class="<?php echo $class; ?>"><?php echo $k; ?></td>
                               <td class="<?php echo $class1; ?>"><?php foreach($usersList->result() as $user) { if($user->id == $res->creator_id) { ?>
-                                <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('programmer/viewProfile/'.$user->id);?>">
+                                <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('seller/viewProfile/'.$user->id);?>">
                                 <?php  echo $user->user_name; break; } }  ?>
                                 </a></td>
                               <td class="<?php echo $class1; ?>"><?php foreach($usersList->result() as $user) { if($user->id == $res->reciever_id) { ?>
-                                <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('programmer/viewProfile/'.$user->id);?>">
+                                <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('seller/viewProfile/'.$user->id);?>">
                                 <?php  echo $user->user_name; break; } }  ?>
                                 </a></td>
                               <td class="<?php echo $class1; ?>"><?php echo $this->lang->line('$');?> <?php echo $res->amount; ?></td>

@@ -15,17 +15,17 @@
                     <div class="inner_br">
                       <div class="cls100_p">
                         <div class="clsInnerCommon">
-                          <h2><?php echo $this->lang->line('Top Programmers');?></h2>
+                          <h2><?php echo $this->lang->line('Top Sellers');?></h2>
                           <table cellspacing="1" cellpadding="2" width="96%">
                             <tbody>
                               <tr>
                                 <td width="30" class="dt"><?php echo $this->lang->line('Sl.No');?></td>
-                                <td width="250" class="dt"><?php echo $this->lang->line('Programmer Name');?></td>
+                                <td width="250" class="dt"><?php echo $this->lang->line('Seller Name');?></td>
                                 <td width="60" class="dt"><?php echo $this->lang->line('Rating');?></td>
                                 <td width="250" class="dt"><?php echo $this->lang->line('Reviews');?></td>
                               </tr>
                               <?php $i=0;
-								  foreach($getProgrammers as $key=>$value)
+								  foreach($getSellers as $key=>$value)
 									{
 									  $user = getUserInfo($key);
 									  if( $i%2 ==0 )

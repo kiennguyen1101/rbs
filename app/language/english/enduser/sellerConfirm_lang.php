@@ -1,5 +1,5 @@
 <?php
-$lang['programmer_name_validation']	            = 'User Name';
+$lang['seller_name_validation']	            = 'User Name';
 $lang['password_validation']					= 'Password';
 $lang['password_confirm_validation']	   		= 'Confirm Password';
 $lang['rate_validation']						= 'hourly rate';
@@ -13,7 +13,7 @@ $lang['categories_validation']					= 'area of expertise ';
 $lang['signup_agree_terms_validation']			= 'Agree Terms';
 $lang['signup_agree_contact_validation']		= 'Contact Post';
 $lang['activation_key_validation']				= 'Error exist in activation key';
-$lang['programmer_confirm_success']				= 'Provider Account Created Successfully';
+$lang['seller_confirm_success']				= 'Provider Account Created Successfully';
 $lang['singup_2']								= 'New Provider Signup (Step 2)';
 $lang['conform_email']							= 'Confirmed E-mail:';
 $lang['pick_username']							= 'Pick a Username:';
@@ -35,8 +35,8 @@ $lang['country']  						        = 'Country:';
 $lang['state/province']				         	= 'State/Province (optional):';
 $lang['city']  						            = 'City (optional):';
 $lang['sign_up']  					        	= 'Signup'; 
-$lang['programmer_activationkey_error'] 		= 'Invalid activation key';
-$lang['programmer_username_check']				= 'The username is not available';
+$lang['seller_activationkey_error'] 		= 'Invalid activation key';
+$lang['seller_username_check']				= 'The username is not available';
 $lang['Optinal Contact Details']='Optinal Contact Details';
 $lang['Privacy Policy']='Privacy Policy';
 $lang['MSN:']='MSN:';

@@ -34,21 +34,21 @@ if(isset($userDetails) and $userDetails->num_rows()>0)
                         <div class="inner_br">
                           <div class="cls100_p">
                             <div class="clsInnerCommon">
-                              <h2><? echo $this->lang->line('Programmer Profile');?> <?php echo $this->lang->line('-');?> <?php echo $user->user_name;?>
+                              <h2><? echo $this->lang->line('Seller Profile');?> <?php echo $this->lang->line('-');?> <?php echo $user->user_name;?>
 							
 							  </h2>
                              <div align="right" style="padding-right:10px;">
 							 <?php if (isset($loggedInUser->role_id)) {  ?>
 							  <?php if ($loggedInUser->role_id =='1') { ?>
 							  
-							  <a href="<?php if (!isset($loggedInUser->role_id)) echo site_url('users/login'); else  echo site_url('userList/contactProgrammer/'.$user->id); ?>">
-							  <img src="<?php echo image_url('ic_mail.png'); ?>" width="22" height="21" alt="Contact Programmer" title="<?php echo $this->lang->line('Contact Programmer');?>"/>
+							  <a href="<?php if (!isset($loggedInUser->role_id)) echo site_url('users/login'); else  echo site_url('userList/contactSeller/'.$user->id); ?>">
+							  <img src="<?php echo image_url('ic_mail.png'); ?>" width="22" height="21" alt="Contact Seller" title="<?php echo $this->lang->line('Contact Seller');?>"/>
 							  
 							  </a>
 							  
 							  					  
-							  <a href="<?php if (!isset($loggedInUser->role_id)) echo site_url('users/login'); else echo site_url('userList/inviteProgrammer/'.$user->id); ?>">
-						       <img src="<?php echo image_url('ic_invite.png'); ?>" width="22" height="21" alt="Invite Programmer" title="<?php echo $this->lang->line('Invite Programmer');?>"/>
+							  <a href="<?php if (!isset($loggedInUser->role_id)) echo site_url('users/login'); else echo site_url('userList/inviteSeller/'.$user->id); ?>">
+						       <img src="<?php echo image_url('ic_invite.png'); ?>" width="22" height="21" alt="Invite Seller" title="<?php echo $this->lang->line('Invite Seller');?>"/>
 							  
 							  </a>
 							  

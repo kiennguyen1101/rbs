@@ -37,7 +37,7 @@
                               <p><span><?php echo $this->lang->line('project_title'); ?>:</span><a href="<?php echo site_url('dispute/view/'.$projectCase->project_id);?>" class="glow"><?php echo $projectCase->project_name;?></a></p>
                               <p><span><?php echo $this->lang->line('project_id'); ?>:</span><?php echo $projectCase->project_id;?></p>
                               <p><span><?php echo $this->lang->line('Buyer'); ?>:</span><a href="<?php echo site_url('buyer/viewProfile/'.$projectCase->creator_id);?>" class="glow"> <?php echo getUserDetails($projectCase->creator_id,'user_name');?></a></p>
-                              <p><span><?php echo $this->lang->line('Provider'); ?>:</span><a href="<?php echo site_url('programmer/viewProfile/'.$projectCase->programmer_id);?>" class="glow"><?php echo getUserDetails($projectCase->programmer_id,'user_name');?></a></p>
+                              <p><span><?php echo $this->lang->line('Provider'); ?>:</span><a href="<?php echo site_url('seller/viewProfile/'.$projectCase->seller_id);?>" class="glow"><?php echo getUserDetails($projectCase->seller_id,'user_name');?></a></p>
                               <p><span><?php echo $this->lang->line('Case Type');?>:</span><?php echo $projectCase->case_type;?></p>
                               <p><span><?php echo $this->lang->line('Case Reason');?>:</span><?php echo $projectCase->case_reason;?></p>
                               <p><span><?php echo $this->lang->line('payment_requested')?>:</span>$<?php echo $projectCase->payment;?></p>

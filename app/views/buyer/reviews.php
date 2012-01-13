@@ -50,7 +50,7 @@
 							$chj = getAvgReview($reviewDetail->provider_id,'provider_id');
 							echo $buyer->user_name;
 							?>
-							<img src="<?php echo image_url('rating_'.$chj.'.gif');?>" /> ( <a href="<?php echo site_url('programmer/review/'.$buyer->id);?>">
+							<img src="<?php echo image_url('rating_'.$chj.'.gif');?>" /> ( <a href="<?php echo site_url('seller/review/'.$buyer->id);?>">
 							<?php echo getNumReviews($reviewDetail->provider_id,'provider_id')." reviews";?></a> )
 								  </td>			
 								  <td class="<?php echo $class; ?>"><?php echo $reviewDetail->comments; ?></td>					  

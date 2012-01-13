@@ -127,7 +127,7 @@
                          <tbody>
                             <tr>
 								<td width="47%" class="vtop" > 
-									 <h3><span class="clsMyEscrow"><?php echo $this->lang->line('Programmer Account Management');?></span></h3>
+									 <h3><span class="clsMyEscrow"><?php echo $this->lang->line('Seller Account Management');?></span></h3>
 								</td>
 								<td width="47%" class="vtop">
 									<h3><span class="clsNewMethod"><?php echo $this->lang->line('Subscription Details'); ?></span></h3>
@@ -376,7 +376,7 @@
                             <td><?php echo getLowestBid($closedProject->id,$closedProject->seller_id); ?> </td>
 									
                             <td><a href="<?php echo site_url('seller/reviewBuyer/'.$closedProject->id);?>">
-						<?php $reviewDetails = getReviewStatusProgrammer($closedProject->id,$closedProject->seller_id);
+						<?php $reviewDetails = getReviewStatusSeller($closedProject->id,$closedProject->seller_id);
 							$reviewDetails = $reviewDetails->row();
 							if(!is_object($reviewDetails))
 										 echo $this->lang->line('Review');

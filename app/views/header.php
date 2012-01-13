@@ -49,14 +49,14 @@
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
-			else if($this->session->userdata('role')!='programmer'){?>
+			else if($this->session->userdata('role')!='seller'){?>
 			<li><a href="<?php echo site_url('buyer/signUp'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }?>
-			<?php if($this->session->userdata('role')=='programmer') {?>
-			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<?php if($this->session->userdata('role')=='seller') {?>
+			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php }
 			else if ($this->session->userdata('role')!='buyer') {?>
-			<li><a href="<?php echo site_url('programmer/signUp'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
 		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
@@ -70,14 +70,14 @@
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>" class="current"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
-			else if($this->session->userdata('role')!='programmer'){?>
+			else if($this->session->userdata('role')!='seller'){?>
 			<li><a href="<?php echo site_url('buyer/signUp'); ?>" class="current"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }?>
-			<?php if($this->session->userdata('role')=='programmer') {?>
-			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<?php if($this->session->userdata('role')=='seller') {?>
+			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php }
 			else if ($this->session->userdata('role')!='buyer'){?>
-			<li><a href="<?php echo site_url('programmer/signUp'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
 		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
@@ -92,14 +92,14 @@
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
-			else if($this->session->userdata('role')!='programmer'){?>
+			else if($this->session->userdata('role')!='seller'){?>
 			<li><a href="<?php echo site_url('buyer/signUp'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }?>
-			<?php if($this->session->userdata('role')=='programmer') {?>
-			<li><a href="<?php echo site_url('account'); ?>" class="current"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<?php if($this->session->userdata('role')=='seller') {?>
+			<li><a href="<?php echo site_url('account'); ?>" class="current"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php }
 			else if ($this->session->userdata('role')!='buyer'){?>
-			<li><a href="<?php echo site_url('programmer/signUp'); ?>" class="current"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<li><a href="<?php echo site_url('seller/signUp'); ?>" class="current"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
 		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
@@ -114,14 +114,14 @@
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
-			else if($this->session->userdata('role')!='programmer'){?>
+			else if($this->session->userdata('role')!='seller'){?>
 			<li><a href="<?php echo site_url('buyer/signUp'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }?>
-			<?php if($this->session->userdata('role')=='programmer') {?>
-			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<?php if($this->session->userdata('role')=='seller') {?>
+			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php }
 			else if ($this->session->userdata('role')!='buyer'){?>
-			<li><a href="<?php echo site_url('programmer/signUp'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
 		  <li><a href="<?php echo site_url('?c=rss'); ?>" class="current"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
@@ -136,14 +136,14 @@
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
-			else if($this->session->userdata('role')!='programmer'){?>
+			else if($this->session->userdata('role')!='seller'){?>
 			<li><a href="<?php echo site_url('buyer/signUp'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }?>
-			<?php if($this->session->userdata('role')=='programmer') {?>
-			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<?php if($this->session->userdata('role')=='seller') {?>
+			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php }
 			else if ($this->session->userdata('role')!='buyer'){?>
-			<li><a href="<?php echo site_url('programmer/signUp'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
 		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
@@ -158,14 +158,14 @@
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
-			else if($this->session->userdata('role')!='programmer'){?>
+			else if($this->session->userdata('role')!='seller'){?>
 			<li><a href="<?php echo site_url('buyer/signUp'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }?>
-			<?php if($this->session->userdata('role')=='programmer') {?>
-			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<?php if($this->session->userdata('role')=='seller') {?>
+			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php }
 			else if ($this->session->userdata('role')!='buyer'){?>
-			<li><a href="<?php echo site_url('programmer/signUp'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
+			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
 		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>

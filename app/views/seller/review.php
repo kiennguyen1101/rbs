@@ -15,7 +15,7 @@
                         <div class="inner_br">
                           <div class="cls100_p">
                             <div class="clsInnerCommon">
-                              <h2><?php echo $this->lang->line('Reviews of Programmer');?> <?php echo $this->lang->line('-');?> <?php echo $userDetails->user_name;?></h2>
+                              <h2><?php echo $this->lang->line('Reviews of Seller');?> <?php echo $this->lang->line('-');?> <?php echo $userDetails->user_name;?></h2>
                              <table cellspacing="1" cellpadding="2" width="96%">
                                 <tbody><tr>
                                   <td width="10%" class="dt"><?php echo $this->lang->line('Rating');?></td>
