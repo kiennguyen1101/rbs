@@ -1,7 +1,7 @@
 </div> <!--END OF CONTENT BLOCK-->
 </div>
   <div id="footer">
-	<p><?php echo $this->lang->line('&copy; Copyright Cogzidel 2010');?> </p>
+	<p>&copy; Copyright iCrowdShop 2012</p>
   </div>
 
 </div>

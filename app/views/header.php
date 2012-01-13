@@ -33,9 +33,9 @@
 	<div id="selRightHeader">
 	<div id="selTopNavigation">
       <ul>
-        <li><a href="<?php echo site_url('faq'); ?>"><?php echo $this->lang->line('Faqs'); ?></a></li>
-        <li><a href="<?php echo site_url('reports'); ?>"><?php echo $this->lang->line('Reports'); ?></a></li>
-        <li class="clsNoborder"><a href="<?php echo site_url('contact'); ?>"><?php echo $this->lang->line('Contact'); ?></a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="http://kabada.in/icrowd/index.php/buyer/signUp">Register</a></li>
+        
       </ul>
     </div>
     <div id="selSubHeader">
@@ -45,7 +45,7 @@
 		<?php if($current_page == 'home'){?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>" class="current"><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Projects'); ?></span></a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>"><span>Add new Product</a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
@@ -59,7 +59,7 @@
 			<li><a href="<?php echo site_url('programmer/signUp'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		 
 		</ul>
 		<?php } 
 		elseif($current_page == 'buyer'){
@@ -80,7 +80,7 @@
 			<li><a href="<?php echo site_url('programmer/signUp'); ?>"><span><?php echo $this->lang->line('Programmers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		  
 		</ul>
 		<?php
 		}
