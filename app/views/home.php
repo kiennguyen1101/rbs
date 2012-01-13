@@ -7,12 +7,46 @@
   <!--category-->
   <div id="category">
 	<ul>
+	
+	<!-- single category -->
 	<li class="box">
 		<h1>Category title</h1>
 		<table>
 			<tr>
 				<td class="item">Item</td>
+				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
 				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+		</table>
+		<span class="viewmore"><a href="#">View more</a></span>
+	</li>
+	<!-- end single category -->
+	
+	<!-- single category -->
+	<li class="box">
+		<h1>Category title</h1>
+		<table>
+			<tr>
+				<td class="item">Item</td>
+				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
@@ -35,10 +69,30 @@
 			</tr>
 		</table>
 	</li>
+	<!-- end single category -->
 	
+	<!-- single category -->
 	<li class="box">
 		<h1>Category title</h1>
 		<table>
+			<tr>
+				<td class="item">Item</td>
+				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
 			<tr>
 				<td class="item">Item</td>
 				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
@@ -46,10 +100,30 @@
 			</tr>
 		</table>
 	</li>
+	<!-- end single category -->
 	
+	<!-- single category -->
 	<li class="box">
 		<h1>Category title</h1>
 		<table>
+			<tr>
+				<td class="item">Item</td>
+				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
 			<tr>
 				<td class="item">Item</td>
 				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
@@ -57,10 +131,30 @@
 			</tr>
 		</table>
 	</li>
+	<!-- end single category -->
 	
+	<!-- single category -->
 	<li class="box">
 		<h1>Category title</h1>
 		<table>
+			<tr>
+				<td class="item">Item</td>
+				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
 			<tr>
 				<td class="item">Item</td>
 				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
@@ -68,10 +162,30 @@
 			</tr>
 		</table>
 	</li>
+	<!-- end single category -->
 	
+	<!-- single category -->
 	<li class="box">
 		<h1>Category title</h1>
 		<table>
+			<tr>
+				<td class="item">Item</td>
+				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
+			<tr>
+				<td class="item">Item</td>
+				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td class="price">$00.00</td>
+			</tr>
+			
 			<tr>
 				<td class="item">Item</td>
 				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
@@ -79,17 +193,10 @@
 			</tr>
 		</table>
 	</li>
+	<!-- end single category -->
 	
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
+	
+	
 	</ul>
   </div>
   <!-- end category-->

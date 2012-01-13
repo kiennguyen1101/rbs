@@ -1147,12 +1147,12 @@ overflow:hidden;
 	margin:0 0.1em;
 }
 /* addition homepage css */
-#category{margin: 15px 0px;}
-#category ul {height:350px}
+#category{margin: 35px 0px;}
+#category ul {height:370px}
 #category ul li{list-style: none;
 display: inline;
 float: left;
-height:150px}
+height:160px}
 #category .box{
 background:#DFF2FF url(../images/sea_tb.jpg) 0px top repeat-x;
 width: 300px;
@@ -1162,11 +1162,12 @@ margin:10px
 #category .box img{width:70px}
 #category .box .item{width:180px;font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
 font-size: 12px;}
+#category .box .viewmore{text-align:center;}
 #category .box table{}
 #category .box h1{background:url(../images/sea_bb.jpg) right bottom repeat-x;margin-left: -10px;
 margin-right: -10px;
 margin-top: -10px;
-padding:0px 0px 5px 10px;
+padding:5px 0px 5px 10px;
 font-size: 14px;}
 
 
