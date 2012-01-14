@@ -131,7 +131,11 @@ class Seller extends Controller {
                 $conditionUserMail = array('email_templates.type' => 'sellers_signup');
                 $result = $this->email_model->getEmailSettings($conditionUserMail);
                 $rowUserMailConent = $result->row();
-                $splVars = array("!site_title" => $this->config->item('site_title'), "!activation_url" => site_url('seller/confirm/' . $insertData['activation_key']), "!contact_url" => site_url('contact'));
+                $activation_url = site_url('seller/confirm/' . $insertData['activation_key']);
+                $activation_link = "<a href='$activation_url'>$activation_url</a>";
+                $contact_url = site_url('contact');
+                $contact_link = "<a href='$contact_url'>$contact_url</a>";
+                $splVars = array("!site_title" => $this->config->item('site_title'), "!contact_link" =>  $contact_link, "!activation_link" => $activation_link);
                 $mailSubject = strtr($rowUserMailConent->mail_subject, $splVars);
                 $mailContent = strtr($rowUserMailConent->mail_body, $splVars);
                 $toEmail = $insertData['email'];

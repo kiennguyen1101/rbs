@@ -122,7 +122,7 @@ class FileExpiery extends Controller {
 			if($file->id == $id )
 			  {
 			    $deleteid = '0';
-			  	$condition = array('files.id'=>$deleteid)
+			  	$condition = array('files.id'=>$deleteid);
 				$this->file_model->deleteFile($condition);
 			  }	
 		  }

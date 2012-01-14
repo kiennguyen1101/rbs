@@ -9,7 +9,7 @@
  * @category	Buyer 
  * @author		
  * @version		
- * @created		Feburary 04 2009
+ * @created		
  * @link		
  
  <Reverse bidding system> 
@@ -27,10 +27,9 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    
-    
-
+        
  */
+
 class Mail extends Controller {
 
 	//Global variable  
