@@ -7,11 +7,7 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Buyer 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @created		December 31 2008
- * @link		http://www.cogzidel.com
- 
+
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
 
@@ -25,11 +21,8 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact  
  */
+
 class Affiliate extends Controller {
 
 	//Global variable  
@@ -169,8 +162,8 @@ class Affiliate extends Controller {
 				
 				if(isset($this->loggedInUser->id) and !isset($affiliate_email_result['email']))
 				{
-					///$this->outputData['question_failed'] 		= "You cannot post a message as a guest because we found an account with the email address ".$email.'.';	
-					$this->outputData['question_failed'] 		= "Please use your system email address. Your email is ".$user_email.'.';	
+					///$this->outputData['question_failed'] = "You cannot post a message as a guest because we found an account with the email address ".$email.'.';	
+					$this->outputData['question_failed'] 	= "Please use your system email address. Your email is ".$user_email.'.';	
 				}
 				if(!isset($this->loggedInUser->id) and isset($affiliate_email_result['email']))
 				{

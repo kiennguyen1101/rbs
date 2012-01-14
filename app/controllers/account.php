@@ -7,10 +7,6 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Buyer 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @created		February 02 2009
- * @link		http://www.cogzidel.com
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -384,8 +380,8 @@ class Account extends Controller {
 		 //Set the user role
 		 $this->outputData['role']  =  '2';
 		 // pr($this->outputData['transaction']->result());
-		  //Load Programmer Account View	
-	     $this->load->view('programmer/programmerAccountManage',$this->outputData);
+		  //Load Seller Account View	
+	     $this->load->view('seller/sellerAccountManage',$this->outputData);
 		 
 		 }
 		if($this->loggedInUser->role_name == 'buyer')

@@ -6,11 +6,8 @@
  *
  * @package		Reverse bidding system
  * @subpackage	Controllers
- * @category	Buyer 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @created		December 31 2008
- * @link		http://www.cogzidel.com
+ * @category	Seller 
+
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -23,14 +20,10 @@
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
- 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    GNU General Public License for more details. 
 
  */
+
 class Seller extends Controller {
 	//Global variable  
     public $outputData;		//Holds the output data for each view
@@ -121,7 +114,7 @@ class Seller extends Controller {
 				  }				  
 				$insertData              		  = array();	
 			    $insertData['email']    		  = $this->input->post('email');
-				$insertData['role_id']   		  = $this->user_model->getRoleId('seller');
+				$insertData['role_id']   		  = $this->user_model->getRoleId('programmer');
 				$insertData['activation_key']   = md5(time());
 				$insertData['created']  		  = get_est_time();
 				//Create User
@@ -187,9 +180,9 @@ class Seller extends Controller {
 			$this->form_validation->set_rules('email2','lang:seller_email_validation','required|trim|valid_email|xss_clean|callback__check_resendseller_email');
 			if($this->form_validation->run())
 			{
-				$email    		  = $this->input->post('email2',TRUE);
+				$email    	 = $this->input->post('email2',TRUE);
 				//Conditions
-				$conditions		= array('users.email' => $email,'users.role_id'=> $this->user_model->getRoleId('seller'));
+				$conditions	= array('users.email' => $email,'users.role_id'=> $this->user_model->getRoleId('programmer'));
 				$query 			= $this->user_model->getUsers($conditions);
 				$userRow = $query->row();
 				
@@ -274,32 +267,19 @@ class Seller extends Controller {
 
 				  }				  
 
-				  	
 
-				  $updateData              		  = array();
-				  
-				  $updateData['refid'] 				= $this->session->userdata('refId');  	
-
+				  $updateData              		  = array();				  
+				  $updateData['refid'] 				= $this->session->userdata('refId');  
 			      $updateData['user_name']    	  = $this->input->post('username');
-
 				  $updateData['password']    	  = md5($this->input->post('pwd'));
-
 				  $updateData['name']    		  = $this->input->post('name');
-
 				  $updateData['profile_desc']     = $this->input->post('profile');
-
 				  $updateData['rate']    		  = $this->input->post('rate');
-
 				  $updateData['project_notify']   = $this->input->post('notify_project');
-
 				  $updateData['message_notify']   = $this->input->post('notify_message');
-
 				  $updateData['country_symbol']   = $this->input->post('country');
-
 				  $updateData['state']    		  = $this->input->post('state');
-
-				  $updateData['city']    		  = $this->input->post('city');
-				  
+				  $updateData['city']    		  = $this->input->post('city');				  
 				  $updateData['user_status']    	= '1';
 				  
 				if(isset($this->outputData['file'])){
@@ -311,36 +291,24 @@ class Seller extends Controller {
 				  //Create User
 
 				  $updateKey 		= array('activation_key'=>$this->input->post('confirmKey'));
-
-				  $this->user_model->updateUser($updateKey,$updateData);
-				  
-				  $this->session->unset_userdata('refId');
-				  
+				  $this->user_model->updateUser($updateKey,$updateData);				  
+				  $this->session->unset_userdata('refId');		  
 
 				  $condition                      = array('users.activation_key'=>$check_key);
-				  $users                          = $this->user_model->getUserslist($condition);
-				  
+				  $users                          = $this->user_model->getUserslist($condition);  
 				  $users                          = $users->row();
-				  
-
 				  $conditions		= array('users.role_id' => '2','users.activation_key'=>$this->input->post('confirmKey'));
-
-
 				  $query 			= $this->user_model->getUsers($conditions);
-				  
-				  $row = $query->row();
+				   $row = $query->row();
 				  
 				   //Work With Project Categories
 
 				  $categories = $this->input->post('categories');
 
-				  $ids 							 				 = implode(',',$categories);	
-
+				  $ids 	= implode(',',$categories);	
+                                  
 				  $insertData['user_categories']       			 = $ids;
-
-
 				  $insertData['user_id']         				 = $users->id;
-
 				  $insertData['user_id']         				 = $row->id;
 
 
@@ -399,50 +367,28 @@ class Seller extends Controller {
 
 		} //If - Form Submission End	
 
-	
-
 		//Get Categories
-
 		$this->outputData['categories']	=	$this->skills_model->getCategories();
 
-		
-
 		//Get Countries
-
 		$this->outputData['countries']	=	$this->common_model->getCountries();
 
-	
-
 		//Get Activation Key
-
 		$activation_key = $this->uri->segment(3,'0');
 
-		
-
 		//Conditions
-
 		$conditions		= array('users.role_id' => '2','users.activation_key'=>$activation_key);
 
-		
-
 		$query 			= $this->user_model->getUsers($conditions);
-
+                
 		//pr($query->row());exit;
-
-		
-
-		if($query->num_rows==1)		
-
+		if($query->num_rows==1)	
 		{
-
 			$row 			= $query->row();
 
 		} else {
-
 			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('seller_activationkey_error')));
-
 			redirect('seller/signUp');
-
 		}	
 
 		//Puhal changes To get the Privacy Policy Contents
@@ -455,162 +401,90 @@ class Seller extends Controller {
 	    $like1 = array('page.url'=>'%cond%');
 	    $this->outputData['page_content1']	=	$this->page_model->getPages(NULL,$like,$like1);			
 			
-
 		$this->outputData['confirmed_mail']	= $row->email;		
-
-		
 
 		$this->load->view('seller/sellerConfirm',$this->outputData);
 
 		
-
 	}//Function confirm End
-
-	
 
 	// --------------------------------------------------------------------
 
 	
-
 	/**
-
 	 * Loads confirm page for buyer
-
 	 *
-
 	 * @access	public
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function _logo_check()
-
 	{
-
-		if(isset($_FILES) and $_FILES['logo']['name']=='')				
+		if(isset($_FILES) and $_FILES['logo']['name']=='')			
 
 			return true;
-
 		
-
 		$config['upload_path'] 		='files/logos/';
-
 		$config['allowed_types'] 	='jpeg|jpg|png|gif|JPEG|JPG|PNG';
-
 		$config['max_size'] 		= $this->config->item('max_upload_size');
-
 		$config['encrypt_name'] 	= TRUE;
-
 		$config['remove_spaces'] 	= TRUE;
 
-		
-
 		$this->load->library('upload', $config);
-
-		
-
 		if ($this->upload->do_upload('logo'))
-
 		{
-
-			$this->outputData['file'] = $this->upload->data();			
-
+			$this->outputData['file'] = $this->upload->data();	
 			return true;			
 
 		} else {
-
 			$this->form_validation->set_message('_logo_check', $this->upload->display_errors($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag')));
-
 			return false;
-
 		}//If end 
 
-	
-
 	}//Function logo_check End
-
-	
 
 	// --------------------------------------------------------------------
 
 	
-
 	/**
-
 	 * Loads confirm page for buyer
-
 	 *
-
 	 * @access	public
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function _check_activation_key($activation_key=0)
-
 	{
-
 		//Conditions
-
 		$conditions		= array('users.activation_key'=>$activation_key);
-
-		
-
 		$query 			= $this->user_model->getUsers($conditions);
-
-		
-
 		if($query->num_rows==1)
-
 		{		
-
 			return true;	
-
 		} else {
-
 			$this->form_validation->set_message('check_activation_key', $this->lang->line('activation_key_validation'));
-
 			return false;
-
 		}
 
 	}//Function check_activation_key End
 
-	
-
 	// --------------------------------------------------------------------
 
-	
 
 	/**
-
 	 * Loads ediit Seller Profile .
-
 	 *
-
 	 * @access	public
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */	
 
 	function editProfile()
-
 	{	
-
 		//language file
-
 		$this->lang->load('enduser/editProfile', $this->config->item('language_code'));
-		
-		
 		//Check Whether User Logged In Or Not
 	    if(!isset($this->loggedInUser->id))
 		  {
@@ -621,242 +495,123 @@ class Seller extends Controller {
    	//Check Whether User Logged In Or Not
 
 	    if(isLoggedIn()===false)
-
 		{
-
 			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('not_access')));
-
 			redirect('info');
-
 		}
 
 		//load validation library
-
 		$this->load->library('form_validation');
-
-		
-
+                
 		//Load Form Helper
-
 		$this->load->helper('form');
 
-		
-
 		//Intialize values for library and helpers	
-
 		$this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
 
-		
-
 		  // Azeem modifiyed
-
 		  // feb 13.2009
-
 		if($this->input->post('updateSellerConfirm'))
-
 		{	
-
-			
-
 			//Set rules
-
 			$this->form_validation->set_rules('logo','lang:logo_validation','callback__logo_check');
-
 			$this->form_validation->set_rules('name','lang:seller_name_validation','required|trim|min_length[5]|xss_clean');
-
 			$this->form_validation->set_rules('categories[]','lang:categories_validation','required|xss_clean');
-
 			$this->form_validation->set_rules('email','Email','required|trim|min_length[5]|xss_clean');
-
 			$this->form_validation->set_rules('rate','lang:rate_validation','required|trim|integer|xss_clean|abs');
-
 			
-
            	if($this->form_validation->run())
-
 			{	
-
-					
-
 				  $updateData              		  = array();	
-
 				  if($this->input->post('pwd') != '')
-
 				  {
 					//echo md5($this->input->post('pwd'));
 				  	$updateData['password']    	  = md5($this->input->post('pwd'));
-
 				  }
 
 				  $updateData['name']    		  = $this->input->post('name',TRUE);
-
 				  $updateData['email']    		  = $this->input->post('email',TRUE);
-
 				  $updateData['profile_desc']     = $this->input->post('profile',TRUE);
-
 				  $updateData['project_notify']   = $this->input->post('notify_project',TRUE);
-
 				  $updateData['message_notify']   = $this->input->post('notify_message',TRUE);
 
-				  
-
-			
-
 				  if(($this->loggedInUser->logo != '') and (isset($this->outputData['file']['file_name'])))
-
 					{
-
 					 	$filepath = $this->config->item('basepath').'files/logos/'.$this->loggedInUser->logo;
 					//echo $filepath;exit;
 						@unlink ($filepath);
-
 						 if(isset($this->outputData['file']['file_name'])) 
-
-						 $updateData['logo']   = $this->outputData['file']['file_name']; 
-						 
-						 $thumb1 = $this->outputData['file']['file_path'].$this->outputData['file']['raw_name']."_thumb".$this->outputData['file']['file_ext'];	
-						 
+						 $updateData['logo']   = $this->outputData['file']['file_name'];			 
+						 $thumb1 = $this->outputData['file']['file_path'].$this->outputData['file']['raw_name']."_thumb".$this->outputData['file']['file_ext'];							 
 						 GenerateThumbFile($this->outputData['file']['full_path'],$thumb1,49,48);
-
 
 					}
-
 				   else
-
 				      {
-
 					    if(isset($this->outputData['file']['file_name'])) {
-
-				  		$updateData['logo']  = $this->outputData['file']['file_name'];	
-						
-						$thumb1 = $this->outputData['file']['file_path'].$this->outputData['file']['raw_name']."_thumb".$this->outputData['file']['file_ext'];	
-						 
+				  		$updateData['logo']  = $this->outputData['file']['file_name'];			
+						$thumb1 = $this->outputData['file']['file_path'].$this->outputData['file']['raw_name']."_thumb".$this->outputData['file']['file_ext'];							 
 						 GenerateThumbFile($this->outputData['file']['full_path'],$thumb1,49,48);
 						}
-
 					 }		
 
-			
-
 				  $updateData['country_symbol']  		 = $this->input->post('country',TRUE);
-
 				  $updateData['state']    		  		 = $this->input->post('state',TRUE);
-
 				  $updateData['city']  					 = $this->input->post('city',TRUE);
-
 				  $updateData['rate']    		  		 = $this->input->post('rate',TRUE);
 
-				  
-
 				  //update data's in userContacts table
-
 				  $userContacts['msn']					=  $this->input->post('contact_msn',TRUE);
-
 				  $userContacts['gtalk']				=  $this->input->post('contact_gtalk',TRUE);
-
 				  $userContacts['yahoo']				=  $this->input->post('contact_yahoo',TRUE);
-
 				  $userContacts['skype']				=  $this->input->post('contact_skype',TRUE);
 
 				  //
-
-				  
-
 				  $userCategoryId                      = $this->loggedInUser->id;
 
 				 //Get Activation Key
-
 		          $activation_key = $this->uri->segment(3,'0');
 
 				  //Create User
-
 				  $updateKey 						= array('id'=>$this->loggedInUser->id);
 
-					 				   
-
-				   // Update process for users table
-
+				 // Update process for users table
 				   $this->user_model->updateUser($updateKey,$updateData);
+				   $updateKey1 	= array('users.activation_key'=>$this->input->post('confirmKey'));
 
-				   
-
-				   $updateKey1 							= array('users.activation_key'=>$this->input->post('confirmKey'));
-
-				   $query 			        			= $this->user_model->getUsers($updateKey1);
-
-				  	
-
+				   $query	= $this->user_model->getUsers($updateKey1);	
 				  $row = $query->row();
-
 				  $userid = $row->id;
-
-				  $updateKey2 							= array('user_contacts.user_id'=>$this->loggedInUser->id);
-
-				  $query2			       			    = $this->user_model->getUserContacts($updateKey2);
-
-				  $userDetails				 			= $query2->row();
-
-				  
-
-				  
+				  $updateKey2 	= array('user_contacts.user_id'=>$this->loggedInUser->id);
+				  $query2	= $this->user_model->getUserContacts($updateKey2);
+				  $userDetails	= $query2->row();
 
 				  //pr($query2->num_rows());exit;
-
 				 if($query2->num_rows() == 0)
-
 				   	{
-
-					  $insertData              			= array();
-
+					  $insertData             			= array();
 					  $insertData['user_id'] 			= $this->loggedInUser->id;
-
 					  $insertData['msn']    	  		= $this->input->post('contact_msn',TRUE);
-
 					  $insertData['gtalk']    			= $this->input->post('contact_gtalk',TRUE);
-
 					  $insertData['yahoo']    			= $this->input->post('contact_yahoo',TRUE);
-
-					  $insertData['skype']    			= $this->input->post('contact_skype',TRUE);
-
-					 
-
-					  $this->user_model->insertUserContacts($insertData);
-
+					  $insertData['skype']    			= $this->input->post('contact_skype',TRUE);                                          $this->user_model->insertUserContacts($insertData);
 				  }
-
 				  else
-
 				 	 {
-
 					  //update data's in userContacts table
-
 					  $userContacts['msn']				=  $this->input->post('contact_msn',TRUE);
-
 					  $userContacts['gtalk']			=  $this->input->post('contact_gtalk',TRUE);
-
 					  $userContacts['yahoo']			=  $this->input->post('contact_yahoo',TRUE);
-
 					  $userContacts['skype']			=  $this->input->post('contact_skype',TRUE);
-
-					  //
-
-							
-
+					 
 					// update process for Content	  
-
 					  $this->user_model->updateUserContacts($userContacts,$updateKey2);
-
 				 	 }
-
 				// user categories 
 
-				 
-
 				  if($this->input->post('categories') != '')
-
 				  {
 
-				 
 
 				  $userid = $this->loggedInUser->id;
 
@@ -1011,156 +766,65 @@ class Seller extends Controller {
 
 		 	}  //Form Validation End
 
-			
 
 		} //If - Form Submission End	
 
-		
-
 		//Get Categories
-
 		$this->outputData['categories']					=	$this->skills_model->getCategories();
-
-		
-
+                
 		//Get Countries
-
 		$this->outputData['countries']					=	$this->common_model->getCountries();
 
-	
-
-		
-
 		 //Conditions
-
-		 $conditions									= array('users.id'=>$this->loggedInUser->id);
-
-		
-
+		 $conditions							= array('users.id'=>$this->loggedInUser->id);
 		 $this->outputData['userInfo'] 					= $this->user_model->getUsers($conditions);
-
-		 
 
 		  // get Users Categories  from user Categories  table
 
-	     $conditions								= array('user_categories.user_id'=>$this->loggedInUser->id);
-
+	     $conditions		= array('user_categories.user_id'=>$this->loggedInUser->id);
 		 $this->outputData['userCategories'] 		= $this->user_model->getUserCategories($conditions);
 
-		
-
 		// pr($this->outputData['userCategories']->result());exit;
-
 		 // get Users Contact Informations from user Contacts  table
 
-	     $conditions								= array('user_contacts.user_id'=>$this->loggedInUser->id);
-
+	     $conditions		= array('user_contacts.user_id'=>$this->loggedInUser->id);
 		 $this->outputData['userContactInfo'] 		= $this->user_model->getUserContacts($conditions);
-
-		
-
-		
-
-		
-
+                 
 		$this->load->view('seller/editSellerProfile',$this->outputData);
 
-				
-
 	} //Function ediitProfile End
-
-	
 
 	// --------------------------------------------------------------------
 
 
-
 	/**
-
-
-
 	 * Check for seller mail id
-
-
-
 	 *
-
-
-
 	 * @access	public
-
-
-
 	 * @param	nil
-
-
-
 	 * @return	void
-
-
-
 	 */ 
 
-
-
 	function _check_seller_email($mail)
-
 	{
 
 		//language file
-
-
-
 		$this->lang->load('enduser/sellerSignup', $this->config->item('language_code'));
-
-
-
+                
 		//Get Role Id For Buyers
-
-
-
-	  	$role_id	= $this->user_model->getRoleId('seller');
-
-			
-
+	  	$role_id	= $this->user_model->getRoleId('programmer');
+                
 		//Conditions
-
-
-
 		$conditions		= array('users.email'=>$mail,'users.role_id'=>$role_id);
-
-
-
 		$result 		= $this->user_model->getUsers($conditions);
-
-		
-
 		$conditions2		= array('bans.ban_value'=>$mail,'bans.ban_type'=>'EMAIL');
-
 		$result2 		= $this->user_model->getBans($conditions2);
-
-
-
 		if ($result->num_rows()==0 && $result2->num_rows() == 0)
-
 		{
-
 			return true;			
-
-
-
 		} else {
-
-
-
 			$this->form_validation->set_message('_check_seller_email', $this->lang->line('seller_email_check'));
-
-
-
 			return false;
-
-
-
 		}//If end 
 
 
@@ -1182,7 +846,7 @@ class Seller extends Controller {
 		//language file
 		$this->lang->load('enduser/sellerSignup', $this->config->item('language_code'));
 		//Get Role Id For Buyers
-	  	$role_id	= $this->user_model->getRoleId('seller');
+	  	$role_id	= $this->user_model->getRoleId('programmer');
 			
 		//Conditions
 		$conditions		= array('users.email'=>$mail,'users.role_id'=>$role_id,'users.user_status' => '0');
@@ -1218,85 +882,33 @@ class Seller extends Controller {
 	{
 
 		//language file
-
-
-
 		$this->lang->load('enduser/sellerSignup', $this->config->item('language_code'));
 
-
-
 		//Get Role Id For Buyers
-
-
-
-	  	$role_id	= $this->user_model->getRoleId('seller');
-
-			
-
+	  	$role_id	= $this->user_model->getRoleId('programmer');
+                
 		//Conditions
-
-
-
 		$conditions		= array('users.user_name'=>$username,'users.role_id'=>$role_id);
-
-
-
 		$result 		= $this->user_model->getUsers($conditions);
-
-		
-
 		$conditions2		= array('bans.ban_value'=>$username,'bans.ban_type'=>'USERNAME');
-
 		$result2 		= $this->user_model->getBans($conditions2);
-
-
-
 		if ($result->num_rows()==0 && $result2->num_rows() == 0)
-
 		{
-
-			return true;			
-
-
-
+			return true;		
 		} else {
-
-
-
 			$this->form_validation->set_message('_check_username', $this->lang->line('seller_username_check'));
-
-
-
 			return false;
-
-
-
 		}//If end 
-
-
-
 	}//Function  _check_usernam End
-
-	
 
 	// --------------------------------------------------------------------
 
-	
-
-	
-
 	/**
-
 	 * View seller's profile
-
 	 *
-
 	 * @access	public
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function viewProfile()
@@ -1304,111 +916,57 @@ class Seller extends Controller {
 	{
 
 		
-		
 		//Load Language
-
 		$this->lang->load('enduser/viewProfile', $this->config->item('language_code'));
-
 		if(!is_numeric($this->uri->segment(3)))  
 		  {
 		  	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You can not access to this page')));
 			 redirect('info');
 		  } 	
-
 		$sellerId = $this->uri->segment(3,'0');
 
-		
-
 		//Get user details
-
-		
-
 		$conditions = array('users.id' => $sellerId);
-
-		
-
-		$user = $this->user_model->getUsers($conditions);	
-
-		 
-
+		$user = $this->user_model->getUsers($conditions);
 		$this->outputData['userDetails'] = $user;
-
-		
-
 		$urow = $user->row();
 
-		
-
 		//Get Portfolio
-
 		$condition = array('portfolio.user_id' => $sellerId);
-
 		$this->outputData['portfolio']	= $this->user_model->getPortfolio($condition);
 
-
-
 		//Get user contacts
-
-		
-
 		$conditions2 = array('user_contacts.user_id' => $sellerId);
 
 		
 
 		$this->outputData['userContacts'] = $this->user_model->getUserContacts($conditions2);
 
-		
-
-		
-
 		$country = $this->common_model->getCountries(array('country_symbol' => $urow->country_symbol));
-
-
-
 		$this->outputData['country'] = $country->row();
-
-		
 
 		// get Users Categories  from user Categories  table
 
 	     $conditions								= array('user_categories.user_id'=>$sellerId);
 
 		 $this->outputData['userCategories'] 		= $this->user_model->getUserCategories($conditions);
-
 		 
-
-		
-
 		 //Get Categories
-
-		$this->outputData['categories']					=	$this->skills_model->getCategories();
-
-		
-
+		$this->outputData['categories']			= $this->skills_model->getCategories();
 		$this->load->view('seller/viewProfile',$this->outputData);
 
 		
-
 	}//Function _check_activation_key End
-
-	
 
 	// --------------------------------------------------------------------
 
-	
 
 	/**
-
 	 * View projects bidding by a seller
-
 	 *
-
 	 * @access	Private
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function viewMyProjects()
@@ -1594,32 +1152,20 @@ class Seller extends Controller {
 
 	}//Function viewMyProjects End
 
-	
-
 	// --------------------------------------------------------------------
 
 	
-
 	/**
-
 	 * review buyers
-
 	 *
-
 	 * @access	private
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function reviewBuyer()
-
-	{
-		
+	{		
 		//Load Language
-
 		$this->lang->load('enduser/review', $this->config->item('language_code'));
 		
 		//Check For Buyer Session
@@ -1629,31 +1175,20 @@ class Seller extends Controller {
 			redirect('info');
 		}
 		
-
 		if($this->input->post('reviewBuy')){
-
 			$insertData = array();
-
 			$insertData['comments'] = $this->input->post('comment',true);
-
 			$insertData['rating'] = $this->input->post('rate',true);
-
 			$insertData['review_type'] = '1';
-
 			$insertData['review_time'] = get_est_time();
-
 			$insertData['project_id'] = $this->input->post('pid',true);
-
 			$insertData['buyer_id'] = $this->input->post('bid',true);
-
 			$insertData['provider_id'] = $this->loggedInUser->id;
 
 			//Create Review
-
 			$reviewId = $this->skills_model->createReview($insertData);
 
 			//Update projects
-
 			$this->skills_model->updateProjects($insertData['project_id'],array('buyer_rated' => '1'));
 			
 			$condition = array('reviews.project_id' => $insertData['project_id']);
@@ -1682,20 +1217,15 @@ class Seller extends Controller {
 			//Send mail
 			$this->email_model->sendHtmlMail($toEmail,$fromEmail,$mailSubject,$mailContent);
 			
-			if($rev->num_rows() == 2){
-				
-				//Increase number of reviews
-	
+			if($rev->num_rows() == 2){		
+                            
+				//Increase number of reviews	
 				$num_reviews = ($user->num_reviews)+1;
 	
-				//Rating
-	
-				if($user->user_rating == 0)
-	
-					$rating = $insertData['rating'];
-	
-				else
-	
+				//Rating	
+				if($user->user_rating == 0)	
+					$rating = $insertData['rating'];	
+				else	
 					$rating = ($user->user_rating + $insertData['rating']) / 2;
 					
 				$tot_rating2 = ($rating * $num_reviews);
@@ -1737,23 +1267,16 @@ class Seller extends Controller {
 			}
 			if($rev->num_rows() == 1){
 			
-				$insertData2 = array();
-				
-				$insertData2['rating'] = $insertData['rating'];
-				
-				$insertData2['user_id'] = $insertData['buyer_id'];
-				
-				$insertData2['project_id'] = $insertData['project_id'];
-				
-				$this->skills_model->insertRatingHold($insertData2);
-				
+				$insertData2 = array();				
+				$insertData2['rating'] = $insertData['rating'];				
+				$insertData2['user_id'] = $insertData['buyer_id'];				
+				$insertData2['project_id'] = $insertData['project_id'];				
+				$this->skills_model->insertRatingHold($insertData2);				
 				$this->skills_model->updateReviews($reviewId,array('reviews.hold' => '1'));
 			}
 
 			//Notification message
-
-			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('review_added')));
-			
+			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('review_added')));			
 			redirect('info/index/success');
 
 		}
@@ -1761,66 +1284,38 @@ class Seller extends Controller {
 		//Get project id
 
 		$projectid	 = $this->uri->segment(3,'0');
-
 		$condition = array('projects.id' => $projectid);
-
 		$projectDetails = $this->skills_model->getProjects($condition);
-
 		$this->outputData['projectDetails'] = $projectDetails;
-
 		$prjRow = $projectDetails->row();
 
-		
-
 		$condition2 = array('reviews.project_id' => $projectid,'reviews.buyer_id' => $prjRow->creator_id,'reviews.review_type' => '1');
-
 		$this->outputData['reviewDetails'] = $this->skills_model->getReviews($condition2);
 
-		//pr($this->outputData['reviewDetails']->result());exit;
-
-		
+		//pr($this->outputData['reviewDetails']->result());exit;		
 
 		$this->load->view('seller/reviewBuyer',$this->outputData);
-
 		
-
 	}//Function reviewBuyer End
-
-	
 
 	// --------------------------------------------------------------------
 
 	
-
 	/**
-
 	 * Lists review of a provider
-
 	 *
-
 	 * @access	public
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */	
 
 	function review()
-
 	{	
-
 		//Load Language
-
 		$this->lang->load('enduser/review', $this->config->item('language_code'));
 
-		
-
 		//Load helper
-
 		$this->load->helper('reviews');
-
-		
 
 		if(!is_numeric($this->uri->segment(3)))  
 		  {
@@ -1830,88 +1325,43 @@ class Seller extends Controller {
 
 		$userId = $this->uri->segment(3,'0');
 
-
-
 		//Get user details
-
-		
-
 		$conditions = array('users.id' => $userId);
-
-		
-
-		$user = $this->user_model->getUsers($conditions);	
-
-		
-
+		$user = $this->user_model->getUsers($conditions);
 		$urow = $user->row();
-
-		 
-
 		$this->outputData['userDetails'] = $urow;
 
-	
-
 		//pr($urow);exit;
-
 		//Get reviews
-
 		$condition2 = array('reviews.provider_id' => $urow->id,'reviews.review_type' => '2','reviews.hold' => '0');
-
-		
-
 		$this->outputData['reviewDetails'] = $this->skills_model->getReviews($condition2);
-
-		
-
 		//pr($this->outputData['reviewDetails']->result());exit;
-
-		
-
 		$this->load->view('seller/review',$this->outputData);
-
-				
 
 	} //Function logout End
 
 	
-
 	// --------------------------------------------------------------------
-
 	
 
 	 /**
-
 	 * Get top sellers
-
 	 *
-
 	 * Returns all sellers rating reviews
-
 	 *
-
 	 * @access	private
-
 	 * @param	string
-
 	 * @return	string
-
 	 */
 
-	function getSellersreview()
-	{
+	function getSellersreview()	{
 	
 	  //language file
 		$this->lang->load('enduser/review', $this->config->item('language_code'));
 		
-		
-	
 		//Get reviews
-
 		$result     = $this->skills_model->getTopsellers();
-
 		$this->outputData['getSellers'] =  $result;	
-
 		$this->load->view('seller/topSellers',$this->outputData);
 
 	} //End of getBuyerReview function
@@ -1919,31 +1369,20 @@ class Seller extends Controller {
 	// --------------------------------------------------------------------
 
 	
-
 	 /**
-
 	 * Manage potfolio of providers
-
 	 *
-
 	 * Returns all sellers rating reviews
-
 	 *
-
 	 * @access	private
-
 	 * @param	string
-
 	 * @return	string
-
 	 */
 
 	function managePortfolio()
-
 	{
 
 		//language file
-
 		$this->lang->load('enduser/editProfile', $this->config->item('language_code'));
 		
 		/*//Check For Buyer Session
@@ -1954,119 +1393,75 @@ class Seller extends Controller {
 		}*/
 
 		//load validation libraray
-
 		$this->load->library('form_validation');
-
+                
 		//Load Form Helper
-
 		$this->load->helper('form');
 
 		//Intialize values for library and helpers	
-
 		$this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
 
 		//Get Form Data	
 
 		if($this->input->post('createPortfolio'))
-
 		{	
 
 			//Set rules
-
 			$this->form_validation->set_rules('title','lang:portfolio_title_validation','required|trim|xss_clean');
-
 			$this->form_validation->set_rules('description','lang:portfolio_description_validation','required|trim|xss_clean');
-
 			$this->form_validation->set_rules('categories[]','lang:portfolio_categories_validation','required');
-
 			$this->form_validation->set_rules('thumbnail','lang:portfolio_thumbnail_validation','callback__thumbnail_check');
-
 			$this->form_validation->set_rules('attachment1','lang:portfolio_attachment1_validation','callback__attachment1_check');
-
 			$this->form_validation->set_rules('attachment2','lang:portfolio_attachment2_validation','callback__attachment2_check');
-
-
-
+                        
 			if($this->form_validation->run())
-
 			{	
-
 				  if(check_form_token()===false)
-
 				  {
-
 				  	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('token_error')));
-
 				  	redirect('info');
-
 				  }				  
 
 				  //pr($this->outputData['file']);exit;
-
 				   $categories = $this->input->post('categories');
-
 				   $ids 	   = implode(',',$categories);
-
 				  $insertData              	  = array();	
-
 			      $insertData['title']    	  = $this->input->post('title');
-
 				  $insertData['description']  = $this->input->post('description');
-
 				  $insertData['categories']   = $ids;
-
 				  $insertData['user_id']      = $this->loggedInUser->id;
-
 				  $insertData['main_img']     = $this->outputData['file']['file_name'];
-
-				  
 
 				  if(isset($this->outputData['file1']))
 				  {
 
 				  	$insertData['attachment1']    		  = $this->outputData['file1']['file_name'];
-
 					$thumb1 = $this->outputData['file1']['file_path'].$this->outputData['file1']['raw_name']."_thumb".$this->outputData['file1']['file_ext'];
-
 					GenerateThumbFile($this->outputData['file1']['full_path'],$thumb1,120,90);
-
 				  }
 
 				  if(isset($this->outputData['file2']))
 				  {
-
 				  	$insertData['attachment2']    		  = $this->outputData['file2']['file_name'];
-
 					$thumb2 = $this->outputData['file2']['file_path'].$this->outputData['file2']['raw_name']."_thumb".$this->outputData['file2']['file_ext'];
-
 					GenerateThumbFile($this->outputData['file2']['full_path'],$thumb2,120,90);
-
 				  }
 
 
-
 				  //Create Portfolio
-
 				  $this->user_model->insertPortfolio($insertData);
 
-				  
-
 				  //Notification message
-
 				  $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('provider_portfolio_success')));
-
 				  redirect('seller/managePortfolio');
 
 		 	}  //Form Validation End
 
 			
-
 		} //If - Form Submission End	
 
 		
-
 		//Get Categories
-
 		$this->outputData['categories']	=	$this->skills_model->getCategories();
 
 		//pr($this->outputData['categories']);exit;
@@ -2075,19 +1470,14 @@ class Seller extends Controller {
 		if($this->loggedInUser)
 		{
 		$condition = array('portfolio.user_id' => $this->loggedInUser->id);
-
 		$this->outputData['portfolio']	= $this->user_model->getPortfolio($condition);
-
 		$condition2 = array('portfolio.id' => $this->uri->segment(3));
-
 		$this->outputData['editPortfolio']	= $this->user_model->getPortfolio($condition2);
 		
 		 //Get Categories
-
-		$this->outputData['categories']					=	$this->skills_model->getCategories();	
+		$this->outputData['categories']		=	$this->skills_model->getCategories();	
 
 		}
-
 		
        
 		//pr($this->outputData['getPortfolio']->result());exit;
@@ -2096,38 +1486,24 @@ class Seller extends Controller {
 
 	} //End of getBuyerReview function
 
-	
-
 	// --------------------------------------------------------------------
 
 	
-
 	 /**
-
 	 * Edit potfolio of providers
-
 	 *
-
 	 * Returns all sellers rating reviews
-
 	 *
-
 	 * @access	private
-
 	 * @param	string
-
 	 * @return	string
-
 	 */
 
 	function editPortfolio()
-
 	{
 
 		//language file
-
 		$this->lang->load('enduser/editProfile', $this->config->item('language_code'));
-
 		
 		//Check For Buyer Session
 		if(!isSeller())
@@ -2136,112 +1512,68 @@ class Seller extends Controller {
 			redirect('info');
 		}
 			
-
 		//load validation libraray
-
 		$this->load->library('form_validation');
 
-		
-
 		//Load Form Helper
-
 		$this->load->helper('form');
 
-		
 
-		//Intialize values for library and helpers	
-
+		//Intialize values for library and helpers
 		$this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
 
-		
 
 		//Get Form Data	
-
 		if($this->input->post('editPortfolio'))
-
 		{	
-			//Set rules
-			
+			//Set rules			
 			//echo $_FILES['attachment1']['name'];exit;
 
 			$this->form_validation->set_rules('title','lang:portfolio_title_validation','required|trim|xss_clean');
-
 			$this->form_validation->set_rules('description','lang:portfolio_description_validation','required|trim|xss_clean');
-
 			$this->form_validation->set_rules('categories[]','lang:portfolio_categories_validation','required');
-
 			if($_FILES['thumbnail']['name'] !='')
-
 			$this->form_validation->set_rules('thumbnail','lang:portfolio_thumbnail_validation','callback__thumbnail_check');
-
 			if($_FILES['attachment1']['name'] !='')
-
-			$this->form_validation->set_rules('attachment1','lang:portfolio_attachment1_validation','callback__attachment1_check');
-
+                            $this->form_validation->set_rules('attachment1','lang:portfolio_attachment1_validation','callback__attachment1_check');
 			if($_FILES['attachment2']['name'] !='')
-
-			$this->form_validation->set_rules('attachment2','lang:portfolio_attachment2_validation','callback__attachment2_check');
-
-
+                            $this->form_validation->set_rules('attachment2','lang:portfolio_attachment2_validation','callback__attachment2_check');
 
 			if($this->form_validation->run())
-
 			{	
-
 				  if(check_form_token()===false)
-
 				  {
-
 				  	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('token_error')));
-
 				  	redirect('info');
-
 				  }				  
 
 				  //pr($this->outputData['file']);exit;
-
 				   $categories = $this->input->post('categories');
-
 				   $ids 	   = implode(',',$categories);
-
 				  $updateData              		  = array();	
-
 			      $updateData['title']    	  = $this->input->post('title');
-
 				  $updateData['description']    		  = $this->input->post('description');
-
 				  $updateData['categories']     = $ids;
-
 				  $updateData['user_id']    		  = $this->loggedInUser->id;
-
-
 				  $condition2 = array('portfolio.id' => $this->input->post('portid'));
-
 				  $port	= $this->user_model->getPortfolio($condition2);
-
 				  $folio = $port->row();
-
 				  $path = $this->config->item('basepath').'files/portfolios/';
-
 				  if(isset($this->outputData['file'])){
 
 				  	$files = array($folio->main_img);
-
 					//delete image files from server
 
 					delete_file($path,$files);
-
 				  	$updateData['main_img']    		  = $this->outputData['file']['file_name'];
 					
-
 				  }
 
 				  if(isset($this->outputData['file1'])){
 
 				  	$files = array($folio->attachment1);
-
+                                        
 					//delete image files from server
-
 					delete_file($path,$files);
 
 				  	$updateData['attachment1']    		  = $this->outputData['file1']['file_name'];
@@ -2273,57 +1605,37 @@ class Seller extends Controller {
 					//$this->skills_model->cr_thumb($this->outputData['file2']['full_path']);
 
 				  }
-
 					
-
 				  $updateKey = array('portfolio.id' => $this->input->post('portid'));
 
 				  //Edit Portfolio
-
 				  $this->user_model->updatePortfolio($updateKey,$updateData);
-
 				  
-
 				  //Notification message
-
 				  $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('provider_portfolio_success')));
 
 				  redirect('seller/managePortfolio');
 
 		 	}  //Form Validation End
 
-			
 
 		} //If - Form Submission End	
 
-		
-
 		//Get Categories
-
 		$this->outputData['categories']	=	$this->skills_model->getCategories();
 
-		
-
 		//Get Portfolio
-
 		$condition = array('portfolio.user_id' => $this->loggedInUser->id);
-
 		$this->outputData['portfolio']	= $this->user_model->getPortfolio($condition);
 
-		
-
 		$condition2 = array('portfolio.id' => $this->uri->segment(3));
-
 		$this->outputData['editPortfolio']	= $this->user_model->getPortfolio($condition2);
 
-		
 
 		 //Get Categories
-
 		$this->outputData['categories']					=	$this->skills_model->getCategories();	
 
 		//pr($this->outputData['getPortfolio']->result());exit;
-
 		$this->load->view('seller/managePorfolio',$this->outputData);
 
 	} //End of editPortfolio function
@@ -2332,32 +1644,20 @@ class Seller extends Controller {
 
 	// --------------------------------------------------------------------
 
-	
 
 	 /**
-
 	 * Edit potfolio of providers
-
 	 *
-
 	 * Returns all sellers rating reviews
-
 	 *
-
 	 * @access	public
-
 	 * @param	string
-
 	 * @return	string
-
 	 */
 
 	function viewPortfolio()
-
 	{
-
 		//language file
-
 		$this->lang->load('enduser/editProfile', $this->config->item('language_code'));
 
 		if(!is_numeric($this->uri->segment(3)))  
@@ -2367,17 +1667,13 @@ class Seller extends Controller {
 		}
 
 		$condition2 = array('portfolio.id' => $this->uri->segment(3));
-
 		$this->outputData['portfolio']	= $this->user_model->getPortfolio($condition2);
 
-		
 
 		//Get Categories
-
 		$this->outputData['categories']	=	$this->skills_model->getCategories();
 
 		//pr($this->outputData['portfolio']->row());exit;
-
 		$this->load->view('seller/viewPortfolio',$this->outputData);
 
 	}
@@ -2386,156 +1682,88 @@ class Seller extends Controller {
 
 	// --------------------------------------------------------------------
 
-	
-
 	/**
-
 	 * Loads confirm page for buyer
-
 	 *
-
 	 * @access	public
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function _thumbnail_check()
-
 	{
-
 		//pr($_FILES);exit;		
 
 		if($_FILES['thumbnail']['name'] == ''){
-
 		$this->form_validation->set_message('_thumbnail_check', $this->lang->line('portfolio_thumb_check'));
-
 			return false;				
 
 		}		
 
 		$config['upload_path'] 		='files/portfolios/';
-
 		$config['allowed_types'] 	='jpeg|jpg|png|gif|JPEG|JPG|PNG|GIF';
-
 		$config['max_size'] 		= $this->config->item('max_upload_size');
-
 		$config['encrypt_name'] 	= TRUE;
-
 		$config['remove_spaces'] 	= TRUE;
-
-		
 
 		$this->load->library('upload', $config);
 
-		
-
 		if ($this->upload->do_upload('thumbnail'))
-
 		{
-
 			$this->outputData['file'] = $this->upload->data();	
 
 			//pr($this->outputData['file']);exit;
 
 			$this->skills_model->cr_thumb($this->outputData['file']['full_path']);
-
 			
-
 			return true;			
 
 		} else {
-
 			$this->form_validation->set_message('_thumbnail_check', $this->lang->line('portfolio_thumb_check'));
-
 			return false;
-
 		}//If end 
 
-	
-
 	}//Function logo_check End
-
-	
-
 	// --------------------------------------------------------------------
 
-	
-
 	/**
-
 	 * deletePortfolio function
-
 	 *
-
 	 * @access	public
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function deletePortfolio(){
 
 		$pid = $this->uri->segment(3,'0');
-
 		$condition  = array('portfolio.id'=>$pid);
-
 		$port = $this->user_model->getPortfolio($condition);
-
 		$folio = $port->row();
 
-		
-
 		//Main image paths
-
 		$path = $this->config->item('basepath').'files/portfolios/';
-
 		$filepath = $folio->main_img;
-
 		$attachment1 = $folio->attachment1;
-
 		$attachment2 = $folio->attachment2;
-
 		$files = array($filepath,$attachment1,$attachment2);
-
+                
 		//delete image files from server
-
 		delete_file($path,$files);
-
-		
-
 		$this->user_model->deletePortfolio($condition);
-
-		
-
-		
-
 		redirect('seller/managePortfolio');
 
 	}//Function deletePortfolio End
 
-	
-
 	// --------------------------------------------------------------------
 
 	
-
 	/**
-
 	 * Loads confirm page for buyer
-
 	 *
-
 	 * @access	public
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function _attachment1_check()
@@ -2544,27 +1772,17 @@ class Seller extends Controller {
 
 			return true;
 
-		
-
 		$config['upload_path'] 		='files/portfolios/';
-
 		$config['allowed_types'] 	='jpeg|jpg|png|gif|JPEG|JPG|PNG|GIF';
-
 		$config['max_size'] 		= $this->config->item('max_upload_size');
-
 		$config['encrypt_name'] 	= TRUE;
-
-		$config['remove_spaces'] 	= TRUE;
-		
+		$config['remove_spaces'] 	= TRUE;		
 		$this->load->library('upload', $config);
-
 		
-
 		if ($this->upload->do_upload('attachment1'))
 		{
 
-			$this->outputData['file1'] = $this->upload->data();
-			
+			$this->outputData['file1'] = $this->upload->data();			
 			//pr($this->outputData['file1']);exit;
 			//exit;
 			return true;			
@@ -2572,96 +1790,56 @@ class Seller extends Controller {
 		} else {
 
 			$this->form_validation->set_message('_attachment1_check', $this->lang->line('portfolio_attach_check'));
-
 			return false;
 
 		}//If end 
 
-	
-
 	}//Function logo_check End
-
-	
 
 	// --------------------------------------------------------------------
 
 	
-
 	/**
-
 	 * Loads confirm page for buyer
-
 	 *
-
 	 * @access	public
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function _attachment2_check()
-
 	{
 
-		
-
-		if(isset($_FILES) and $_FILES['attachment2']['name']=='')				
-
+		if(isset($_FILES) and $_FILES['attachment2']['name']=='')	
 			return true;
-
-		
-
+                
 		$config['upload_path'] 		='files/portfolios/';
-
 		$config['allowed_types'] 	='jpeg|jpg|png|gif|JPEG|JPG|PNG|GIF';
-
 		$config['max_size'] 		= $this->config->item('max_upload_size');
-
 		$config['encrypt_name'] 	= TRUE;
-
 		$config['remove_spaces'] 	= TRUE;
 		
-		
-
-		$this->load->library('upload', $config);
-
-		
+		$this->load->library('upload', $config);		
 
 		if ($this->upload->do_upload('attachment2'))
-
 		{
-
 			$this->outputData['file2'] = $this->upload->data();	
-
-			return true;			
-
+			return true;
 		} else {
-
 			$this->form_validation->set_message('_attachment2_check', $this->lang->line('portfolio_attach_check'));
-
 			return false;
-
 		}//If end 
 
 	
-
 	}//Function logo_check End
 	
 	// --------------------------------------------------------------------
 	/**
-
 	 * Remove portfolio attachments
-
 	 *
-
 	 * @access	private
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function removeAttachment()
@@ -2676,20 +1854,13 @@ class Seller extends Controller {
 			redirect('info');
 		}
 		
-		$portid = $this->uri->segment(4);
-		
+		$portid = $this->uri->segment(4);		
 		$type = $this->uri->segment(3);
-
-		$path = $this->config->item('basepath').'files/portfolios/';
-		
+		$path = $this->config->item('basepath').'files/portfolios/';		
 		$condition2 = array('portfolio.id' => $portid);
-
 		$port	= $this->user_model->getPortfolio($condition2);
-		
-		$folio = $port->row();
-		
-		$att = "attachment".$type;
-		
+		$folio = $port->row();		
+		$att = "attachment".$type;		
 		$files = array($folio->$att);
 
 		//delete image files from server
@@ -2710,15 +1881,10 @@ class Seller extends Controller {
 	/**
 
 	 * Remove Profile image
-
 	 *
-
 	 * @access	private
-
 	 * @param	nil
-
 	 * @return	void
-
 	 */ 
 
 	function removePhoto()
@@ -2742,23 +1908,16 @@ class Seller extends Controller {
 			}
 		}
 		
-		$userid = $this->uri->segment(3);
-		
-		$path = $this->config->item('basepath').'files/logos/';
-		
+		$userid = $this->uri->segment(3);		
+		$path = $this->config->item('basepath').'files/logos/';		
 		$condition2 = array('users.id' => $userid);
-
-		$port	= $this->user_model->getUsers($condition2);
-		
+		$port	= $this->user_model->getUsers($condition2);		
 		$folio = $port->row();
 		//$arr = explode(".",$folio->logo);
 		//$thumb = $arr[0]."_thumb.".$arr[1];
 		$files = array($folio->logo);
-
-		delete_file($path,$files);
-		
-		$updateData['users.logo'] = '';
-		
+		delete_file($path,$files);		
+		$updateData['users.logo'] = '';		
 		$updateKey = array('users.id' => $userid);
 
 		//Edit Portfolio
@@ -2785,6 +1944,6 @@ class Seller extends Controller {
 
 /* End of file Seller.php */ 
 
-/* Location: ./app/controllers/Buyer.php */
+/* Location: ./app/controllers/Seller.php */
 
 ?>

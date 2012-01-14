@@ -1,6 +1,6 @@
 <?php $this->load->view('header'); ?>
 <?php $this->load->view('sidebar'); ?>
-<?
+<?php
 			//Show Flash Message
 			if($msg = $this->session->flashdata('flash_message'))
 			{
@@ -9,7 +9,7 @@
 			
 
 ?>
-<?
+<?php
 	// Total Affiliate Earnings
 	$cur_month	=	 date('Ym');
 	//$condition = 'sales.refid = "'.$this->loggedInUser->user_name.'" AND MONTH( sales.created_date) = MONTH( CURRENT_DATE )';
@@ -141,7 +141,7 @@ if(isset($_POST['aff_m']) and isset($_POST['aff_y']))
 										  <div class="clsInnerCommon">
                  
                                              <h3><span class="clsAffil">Affiliate Center</span></h3>
-                                              <p>Your referral URL is<?php echo site_url();?>/affiliate/ref/<? echo $this->loggedInUser->user_name; ?></p>
+                                              <p>Your referral URL is<?php echo site_url();?>/affiliate/ref/<?php echo $this->loggedInUser->user_name; ?></p>
                                               <p><a href="<?php echo site_url(); ?>/affiliate">View</a> affiliate program details. </p>
                                               <br/>
                                               <p>Total Affiliate Earnings: 	$
@@ -166,7 +166,7 @@ if(isset($_POST['aff_m']) and isset($_POST['aff_y']))
                                                       <td width="248" class="dt"><?php echo $this->lang->line('Account Type');?></td>
                                                       <td width="148" class="dt"><?php echo $this->lang->line('Date');?></td>
                                                     </tr>
-                                                    <?
+                                                    <?php
 								$i=0;
 								foreach($affiliate_search->result() as $k) {
 									$affiliate_sale_result['referral'] 		=  $k->user_name;
@@ -182,11 +182,11 @@ if(isset($_POST['aff_m']) and isset($_POST['aff_y']))
 									if(isset($affiliate_sale_result['referral']) and isset($affiliate_sale_result['account_type']) and $affiliate_sale_result['signup_date'] != 0) {
 								?>
                                                     <tr>
-                                                      <td  class="<? echo $class; ?>"><? echo $affiliate_sale_result['referral']; ?></td>
-                                                      <td class="<? echo $class; ?>"><? if($affiliate_sale_result['account_type'] == 1) echo $this->lang->line('Buyer'); else if($affiliate_sale_result['account_type'] == 2) echo $this->lang->line('Provider'); ?></td>
-                                                      <td class="<? echo $class." "."dt0"; ?>"><? echo get_date($affiliate_sale_result['signup_date']); ?></td>
+                                                      <td  class="<?php echo $class; ?>"><?php echo $affiliate_sale_result['referral']; ?></td>
+                                                      <td class="<?php echo $class; ?>"><?php if($affiliate_sale_result['account_type'] == 1) echo $this->lang->line('Buyer'); else if($affiliate_sale_result['account_type'] == 2) echo $this->lang->line('Provider'); ?></td>
+                                                      <td class="<?php echo $class." "."dt0"; ?>"><?php echo get_date($affiliate_sale_result['signup_date']); ?></td>
                                                     </tr>
-                                                    <?
+                                                    <?php
 								}
 								$i++;
 								}
@@ -221,19 +221,19 @@ if(isset($_POST['aff_m']) and isset($_POST['aff_y']))
 		 
 		 ?>
                                               <p>
-                                                <? if(isset($_POST['aff_m'])) echo $month; if($month == '') echo date('F'); ?>
+                                                <?php if(isset($_POST['aff_m'])) echo $month; if($month == '') echo date('F'); ?>
                                                 Earnings: 	$
-                                                <? if(isset($affiliate_sales_total2->total)) echo $affiliate_sales_total2->total; else echo "0.00"; ?>
+                                                <?php if(isset($affiliate_sales_total2->total)) echo $affiliate_sales_total2->total; else echo "0.00"; ?>
                                               </p>
                                               <p>
-                                                <? if(isset($_POST['aff_m'])) echo $month; if($month == '') echo date('F'); ?>
+                                                <?php if(isset($_POST['aff_m'])) echo $month; if($month == '') echo date('F'); ?>
                                                 Released Earnings: <font color="green"><b>$
                                                 <?php if(isset($arr_released->total)) echo $arr_released->total; else echo "0.00"; ?>
                                                 </b></font></p>
                                               <p>
-                                                <? if(isset($_POST['aff_m'])) echo $month; if($month == '') echo date('F'); ?>
+                                                <?php if(isset($_POST['aff_m'])) echo $month; if($month == '') echo date('F'); ?>
                                                 Unreleased Earnings: 	$
-                                                <? if(isset($arr_unreleased->total)) echo $arr_unreleased->total; else echo "0.00"; ?>
+                                                <?php if(isset($arr_unreleased->total)) echo $arr_unreleased->total; else echo "0.00"; ?>
                                               </p>
                                               <br/>
                                               <!--	  <p><b>Affiliate Stats</b></p>-->
@@ -246,7 +246,7 @@ if(isset($_POST['aff_m']) and isset($_POST['aff_y']))
                                                       <td width="248" class="dt"><?php echo $this->lang->line('Referral');?></td>
                                                       <td width="148" class="dt"><?php echo $this->lang->line('Date');?></td>
                                                     </tr>
-                                                    <?
+                                                    <?php
 								$i=0;
 								foreach($affiliate_sales->result() as $k) {
 									$affiliate_sale_result['created_date'] 		=  $k->created_date;
@@ -260,11 +260,11 @@ if(isset($_POST['aff_m']) and isset($_POST['aff_y']))
 									$class = "dt2";
 								?>
                                                     <tr>
-                                                      <td  class="<? echo $class; ?>"><? echo $affiliate_sale_result['payment']; ?></td>
-                                                      <td class="<? echo $class; ?>"><? echo $affiliate_sale_result['referral']; ?></td>
-                                                      <td class="<? echo $class." "."dt0"; ?>"><? echo $affiliate_sale_result['created_date']; ?></td>
+                                                      <td  class="<?php echo $class; ?>"><?php echo $affiliate_sale_result['payment']; ?></td>
+                                                      <td class="<?php echo $class; ?>"><?php echo $affiliate_sale_result['referral']; ?></td>
+                                                      <td class="<?php echo $class." "."dt0"; ?>"><?php echo $affiliate_sale_result['created_date']; ?></td>
                                                     </tr>
-                                                    <?
+                                                    <?php
 								$i++;
 								}
 								?>
@@ -311,7 +311,7 @@ if(isset($_POST['aff_m']) and isset($_POST['aff_y']))
                                               </form>
                                         
                                               <br/>
-                                              <p>Your referral URL is <?php echo site_url(); ?>/affiliate/ref/<? echo $this->loggedInUser->user_name; ?></p>
+                                              <p>Your referral URL is <?php echo site_url(); ?>/affiliate/ref/<?php echo $this->loggedInUser->user_name; ?></p>
                                               <br>
                                               <p><b>Referral Welcome Message</b></p>
                                               <p style="width:400px">You can display a welcome message to your referrals when they signup. 
@@ -336,9 +336,9 @@ if(isset($_POST['aff_m']) and isset($_POST['aff_y']))
                                               <!--		   <div class="clsAffiliateQuestion">
 		   <form name="affiliateQuestionForm" action="<?php echo site_url() ?>/affiliate" method="post">
 		      <h3>Affiliate Questions</h3>
-			  <? if(isset($email_exist)) {?>
-			  <p style="color:#FF0000"><label>&nbsp;</label><? if(isset($email_exist)) echo $email_exist; ?></p>
-			  <? } ?>
+			  <?php if(isset($email_exist)) {?>
+			  <p style="color:#FF0000"><label>&nbsp;</label><?php if(isset($email_exist)) echo $email_exist; ?></p>
+			  <?php } ?>
 			  <p><label>Your Email:</label><input class="clsTextBox" type="text" value="" name="your_email" /><?php echo form_error('your_email'); ?></p>
 			  <p><label>Subject:</label><input class="clsTextBox" type="text" value="Affiliate Question" name="Subject" /></p>
 			  <p><label>Your Question:</label><textarea cols="50" name="description" rows="10"></textarea></p>

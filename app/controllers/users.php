@@ -6,11 +6,7 @@
  *
  * @package		Reverse bidding system
  * @subpackage	Controllers
- * @category	Project 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @created		December 31 2008
- * @link		http://www.cogzidel.com
+ * @category	Users 
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -23,18 +19,14 @@
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
- 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    GNU General Public License for more details. 
 
  */ 
+
 class Users extends Controller {
 
 	//Global variable
-    public $outputData;		//Holds the output data for each view
+        public $outputData;		//Holds the output data for each view
 	public $loggedInUser;
 	   
 	/**
@@ -79,7 +71,7 @@ class Users extends Controller {
 		
 		//language file
 		$this->lang->load('enduser/common', $this->config->item('language_code'));
-		$this->lang->load('enduser/programmerConfirm', $this->config->item('language_code'));
+		$this->lang->load('enduser/sellerConfirm', $this->config->item('language_code'));
 	} //Controller End 
 	// --------------------------------------------------------------------
 	
@@ -159,7 +151,7 @@ class Users extends Controller {
 		 		}
 			
 			
-				// Puhal Changes Removed the role Id from the conditions, inorder to remove the buyer and programmer radio button (Sep 17 Issue 4)
+				// Puhal Changes Removed the role Id from the conditions, inorder to remove the buyer and seller radio button (Sep 17 Issue 4)
 				
 			 	$conditions 		=  array('user_name'=>$this->input->post('username'),'password' => md5($this->input->post('pwd')),'users.user_status' => '1');
 				
