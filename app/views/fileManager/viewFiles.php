@@ -50,7 +50,7 @@
 									</td>
 									</tr>
 								</table>
-								<? }?>
+								<?php}?>
                             </div>
                           </div>
                         </div>

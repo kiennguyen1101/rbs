@@ -5,7 +5,7 @@
   <!--NEW BUYERS SIGN-UP-->
   <div id="selSignUp">
     <form method="post" action=""  enctype="multipart/form-data">
-      <?=form_token();?>
+      <?phpform_token();?>
       <h2>New Seller Signup (Step 2)</h2>
       <p> Confirmed E-mail1:
         <?php if(isset($confirmed_mail)) echo $confirmed_mail; ?>

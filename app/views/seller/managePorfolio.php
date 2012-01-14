@@ -98,7 +98,7 @@
                           <div class=" clsEditProfile">
                             <?php if(is_object($editPortfolio)){?>
                             <form method="post" action="<?php echo site_url('seller/editPortfolio');?>" enctype="multipart/form-data" name="myForm">
-                              <?=form_token();?>
+                              <?phpform_token();?>
                               <p><span><?php echo $this->lang->line('title'); ?></span>
                                 <input type="text" size="35" value="<?php echo $editPortfolio->title; ?>" name="title"/>
                                 <?php echo form_error('title'); ?> </p>
@@ -162,7 +162,7 @@
                             </form>
                             <?php } else{?>
                             <form method="post" action="" enctype="multipart/form-data" name="myForm">
-                              <?=form_token();?>
+                              <?phpform_token();?>
                               <p><span><?php echo $this->lang->line('title'); ?>:</span>
                                 <input name="title" type="text" value="<?php echo set_value('title'); ?>" size="35" maxlength="25"/>
                                 <?php echo form_error('title'); ?> </p>

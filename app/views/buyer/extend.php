@@ -22,7 +22,7 @@ if(isset($project) and $project->num_rows()>0)
                       <div class="cls100_p">
 						  <form method="post">
                         <div class="clsInnerCommon">
-                          <h2><? echo $this->lang->line('Extend');?> - <?php echo $project->project_name;?></h2>
+                          <h2><?phpecho $this->lang->line('Extend');?> - <?php echo $project->project_name;?></h2>
                           <p><?php echo $this->lang->line("Extend this project by");?>
                             <select name="openDays">
 							<?php for($i=1;$i<=$project_period;$i++){?>

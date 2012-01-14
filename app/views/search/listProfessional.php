@@ -21,7 +21,7 @@
                             <tbody>
                               <tr>
                                 <td width="30" class="dt"><?php echo $this->lang->line('SI.No');?></td>
-                                <td width="250" class="dt"><? 
+                                <td width="250" class="dt"><?php
 						  $odr = 'ASC';
 						  if($order == 'ASC')
 						  $odr = 'DESC';

@@ -42,12 +42,12 @@
                                               <div class="clsTextLink">
                                                 <h2>Text Link</h2>
                                                 <br/>
-                                                <p>All you have to do is link to: <? echo site_url(); ?>/affiliate/ref/<span><? if(isset($this->loggedInUser->user_name))echo $this->loggedInUser->user_name; else echo"USER";?>
+                                                <p>All you have to do is link to: <?phpecho site_url(); ?>/affiliate/ref/<span><?phpif(isset($this->loggedInUser->user_name))echo $this->loggedInUser->user_name; else echo"USER";?>
                                                   </span></big></p>
                                                 <br/>
-                                                <? if(!isset($this->loggedInUser->user_name)) { ?>
+                                                <?phpif(!isset($this->loggedInUser->user_name)) { ?>
                                                 <p>(Replace<span>USER</span>with your username.)</p>
-                                                <? } ?>
+                                                <?php} ?>
                                               </div>
                                             </div>
                                           </div>

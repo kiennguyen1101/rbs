@@ -21,7 +21,7 @@
 							  <!--NEW BUYERS SIGN-UP-->
 							  <div id="selSignUp">
 								<form method="post" action=""  enctype="multipart/form-data">
-								  <?=form_token();?>
+								  <?phpform_token();?>
 								  <h3><span class="clsNewBuyer"><?php echo $this->lang->line('New buyer Signup (Step 2)');?></span></h3>
 								  <p> <?php echo $this->lang->line('Confirmed E-mail1:');?>
 									<?php if(isset($confirmed_mail)) echo $confirmed_mail; ?>

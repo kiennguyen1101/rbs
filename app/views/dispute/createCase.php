@@ -18,7 +18,7 @@
 						<h2><?php echo $this->lang->line('Open new case');?></h2>
                           <div class="clsSitelinks clsEditProfile">
                             <form method="post" action="" name="myForm">
-							<?=form_token();?>
+							<?phpform_token();?>
 							  <p><span><?php echo $this->lang->line('project_title'); ?>:</span><a href="<?php echo site_url('dispute/view/'.$project->id);?>" class="glow"><?php echo $project->project_name;?></a></p>
 							  <p><span><?php echo $this->lang->line('project_id'); ?>:</span><?php echo $project->id;?></p>
 							  <p><span><?php echo $this->lang->line('Buyer'); ?>:</span><a href="<?php echo site_url('buyer/viewProfile/'.$project->userid);?>" class="glow"><?php echo $project->user_name;?></a></p>

@@ -48,7 +48,7 @@
                                                 <p>Size: <b>17.8 KB</b></p>
                                                 <p><img src="<?php echo base_url() ?>app/css/images/banner_9_468x60.jpg" width="468" height="60" alt="banner"/></p>
                                                 <p>
-                                                  <textarea cols="70" rows="3" name="select1"><a href="<? echo base_url(); ?>index.php/affiliate/ref/<? if(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<? echo base_url(); ?>app/css/images/banner_9_468x60.jpg" WIDTH="468" HEIGHT="60" BORDER="0" ALT="Find sellers and graphic design experts at ifindaudio.com"></a></textarea>
+                                                  <textarea cols="70" rows="3" name="select1"><a href="<?phpecho base_url(); ?>index.php/affiliate/ref/<?phpif(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<?phpecho base_url(); ?>app/css/images/banner_9_468x60.jpg" WIDTH="468" HEIGHT="60" BORDER="0" ALT="Find sellers and graphic design experts at ifindaudio.com"></a></textarea>
                                                 </p>
                                                 <p><a href="#">Select HTML</a></p>
                                               </div>
@@ -59,7 +59,7 @@
                                                 <p>Size: <b>31 KB</b></p>
                                                 <p><img src="<?php echo base_url() ?>app/css/images/banner_4_728x90.jpg" width="728" height="90" alt="banner"/></p>
                                                 <p>
-                                                  <textarea cols="70" rows="3" name="select1"><a href="<? echo base_url(); ?>index.php/affiliate/ref/<? if(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<? echo base_url(); ?>app/css/images/banner_4_728x90.jpg" WIDTH="728" HEIGHT="90" BORDER="0" ALT="Outsource your programming projects at ifindaudio.com today - Free signup"></a></textarea>
+                                                  <textarea cols="70" rows="3" name="select1"><a href="<?phpecho base_url(); ?>index.php/affiliate/ref/<?phpif(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<?phpecho base_url(); ?>app/css/images/banner_4_728x90.jpg" WIDTH="728" HEIGHT="90" BORDER="0" ALT="Outsource your programming projects at ifindaudio.com today - Free signup"></a></textarea>
                                                 </p>
                                                 <p><a href="#">Select HTML</a></p>
                                               </div>
@@ -70,7 +70,7 @@
                                                 <p>Size: <b>49.8 KB</b></p>
                                                 <p><img src="<?php echo base_url() ?>app/css/images/banner_2_300x250.jpg" width="300" height="250" alt="banner"/></p>
                                                 <p>
-                                                  <textarea cols="70" rows="3" name="select1"><a href="<? echo base_url(); ?>index.php/affiliate/ref/<? if(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<? echo base_url(); ?>app/css/images/banner_2_300x250.jpg" WIDTH="300" HEIGHT="250" BORDER="0" ALT="Outsource your projects to thousands of sellers at ifindaudio.com"></a></textarea>
+                                                  <textarea cols="70" rows="3" name="select1"><a href="<?phpecho base_url(); ?>index.php/affiliate/ref/<?phpif(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<?phpecho base_url(); ?>app/css/images/banner_2_300x250.jpg" WIDTH="300" HEIGHT="250" BORDER="0" ALT="Outsource your projects to thousands of sellers at ifindaudio.com"></a></textarea>
                                                 </p>
                                                 <p><a href="#">Select HTML</a></p>
                                               </div>
@@ -81,7 +81,7 @@
                                                 <p>Size: <b>32.6 KB</b></p>
                                                 <p><img src="<?php echo base_url() ?>app/css/images/banner_8_120x600.jpg" width="120" height="600" alt="banner"/></p>
                                                 <p>
-                                                  <textarea cols="70" rows="3" name="select1"><a href="<? echo base_url(); ?>index.php/affiliate/ref/<? if(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<? echo base_url(); ?>app/css/images/banner_8_120x600.jpg" WIDTH="120" HEIGHT="600" BORDER="0" ALT="Thousands of experts bid on your personal project at ifindaudio.com"></a></textarea>
+                                                  <textarea cols="70" rows="3" name="select1"><a href="<?phpecho base_url(); ?>index.php/affiliate/ref/<?phpif(isset($loggedInUser->user_name)) echo $loggedInUser->user_name; else echo 'USER'; ?>"><IMG SRC="<?phpecho base_url(); ?>app/css/images/banner_8_120x600.jpg" WIDTH="120" HEIGHT="600" BORDER="0" ALT="Thousands of experts bid on your personal project at ifindaudio.com"></a></textarea>
                                                 </p>
                                                 <p><a href="#">Select HTML</a></p>
                                               </div>

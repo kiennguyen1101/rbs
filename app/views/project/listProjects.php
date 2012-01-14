@@ -30,7 +30,7 @@
                             <tbody>
                               <tr>
                                 <td width="30" class="dt"><?php echo $this->lang->line('SI.No');?></td>
-                                <td width="" class="dt"><? 
+                                <td width="" class="dt"><?php
 						  $odr = 'ASC';
 						  if($order == 'ASC')
 						  $odr = 'DESC';
@@ -90,10 +90,10 @@
 								   <?php } 
 								   if($project->is_feature == 1) { ?>
 								    &nbsp;&nbsp;<img src="<?php echo image_url('featured2.gif');?>" width="14" height="14" title="Featured projects" alt="Featured project" />
-								   <? } 
+								   <?php} 
 								    if($project->is_private == 1) { ?>
 								    &nbsp;&nbsp;<img src="<?php echo image_url('private.png');?>" width="14" height="14" title="Featured projects" alt="Private project" />
-								   <? } 
+								   <?php} 
 								   ?>
 								</td>
                                 <?php if($this->session->userdata('show_cat')):	?>

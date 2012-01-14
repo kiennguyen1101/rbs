@@ -33,7 +33,7 @@
                           </div>
                           <div class="clsSitelinks clsEditProfile">
                             <form method="post" action="" name="myForm">
-                              <?=form_token();?>
+                              <?phpform_token();?>
                               <p><span><?php echo $this->lang->line('project_title'); ?>:</span><a href="<?php echo site_url('dispute/view/'.$projectCase->project_id);?>" class="glow"><?php echo $projectCase->project_name;?></a></p>
                               <p><span><?php echo $this->lang->line('project_id'); ?>:</span><?php echo $projectCase->project_id;?></p>
                               <p><span><?php echo $this->lang->line('Buyer'); ?>:</span><a href="<?php echo site_url('buyer/viewProfile/'.$projectCase->creator_id);?>" class="glow"> <?php echo getUserDetails($projectCase->creator_id,'user_name');?></a></p>

@@ -26,9 +26,9 @@
 									$class = "dt2";
 								?>
                                 <tr>
-                                  <td class="<? echo $class." "."dt0"; ?>"><? echo $affiliate_email_result['email']; ?></td>								
-                                  <td class="<? echo $class; ?>"><? echo $affiliate_email_result['subject']; ?></td>
-                                  <td  class="<? echo $class; ?>"><? echo $affiliate_email_result['questions']; ?></td>
+                                  <td class="<?phpecho $class." "."dt0"; ?>"><?phpecho $affiliate_email_result['email']; ?></td>								
+                                  <td class="<?phpecho $class; ?>"><?phpecho $affiliate_email_result['subject']; ?></td>
+                                  <td  class="<?phpecho $class; ?>"><?phpecho $affiliate_email_result['questions']; ?></td>
                                 </tr>
 								
 								<?

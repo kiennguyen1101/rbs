@@ -23,7 +23,7 @@ $userCategoryInfo = $userCategories->row();
                             <div class="clsInnerCommon clsFormSpan">
 
 								<form method="post" action="<?php echo site_url('seller/editProfile') ;  ?>" enctype="multipart/form-data">
-								  <?=form_token();?>
+								  <?phpform_token();?>
 								  <h2><?php echo $this->lang->line('edit_account'); ?></h2>
 								  <p><span><?php echo $this->lang->line('name'); ?></span> <?php echo $userData->user_name; ?></p>
 								  <?php echo form_error('username'); ?>
