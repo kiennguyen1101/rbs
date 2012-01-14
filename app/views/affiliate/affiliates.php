@@ -85,12 +85,12 @@
                                                         <td class="dt2 dt0 "><b>Featured Project (?)</b></td>
                                                         <td class="dt2"><b>
                                                           <?php if(isset($affiliate['buyer_project_fee'])) echo $affiliate['buyer_project_fee']; ?>
-                                                          %</b> of Featured project fee ($<?phpecho $settings['FEATURED_PROJECT_AMOUNT'] * $affiliate['buyer_project_fee']/100; ?>). Plus
+                                                          %</b> of Featured project fee ($<?php echo $settings['FEATURED_PROJECT_AMOUNT'] * $affiliate['buyer_project_fee']/100; ?>). Plus
                                                           <?php if(isset($affiliate['buyer_project_fee'])) echo $affiliate['buyer_project_fee']; ?>
                                                           % of fee charged to selected Seller.</td>
                                                         <td  class="dt2"><b>
                                                           <?php if(isset($affiliate['seller_project_fee'])) echo $affiliate['seller_project_fee']; ?>
-                                                          %</b> of Featured project fee ($<?phpecho $settings['FEATURED_PROJECT_AMOUNT'] * $affiliate['seller_project_fee']/100; ?>). Plus
+                                                          %</b> of Featured project fee ($<?php echo $settings['FEATURED_PROJECT_AMOUNT'] * $affiliate['seller_project_fee']/100; ?>). Plus
                                                           <?php if(isset($affiliate['seller_project_fee'])) echo $affiliate['seller_project_fee']; ?>
                                                           % of fee charged to selected Seller.</td>
                                                       </tr>
@@ -119,13 +119,13 @@
                                                 <div class="clsAffiliateQuestion1">
                                                   <form name="affiliateQuestionForm" action="<?php echo site_url() ?>/affiliate" method="post">
                                                     <h3>Affiliate Questions</h3>
-                                                    <?phpif(isset($question_failed)) {?>
+                                                    <?php if(isset($question_failed)) {?>
                                                     <p style="color:#FF0000">
                                                       <label>&nbsp;</label>
-                                                      <?phpif(isset($question_failed)) echo $question_failed; ?>
+                                                      <?php if(isset($question_failed)) echo $question_failed; ?>
                                                     </p>
                                                     <br/>
-                                                    <?php} ?>
+                                                    <?php } ?>
                                                     <p>
                                                       <label>Your Email:</label>
                                                       <input class="clsAffiliateTextBox" type="text" value="" name="your_email" />
