@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Project 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		March 31 2009
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
  */
 class Dispute extends Controller {
  
@@ -64,8 +64,8 @@ class Dispute extends Controller {
 		//Page Title and Meta Tags
 		$this->outputData = $this->common_model->getPageTitleAndMetaData();
 		
-		//Get Top programmers
-		$topProgrammers = $this->common_model->getPageTitleAndMetaData();
+		//Get Top sellers
+		$topSellers = $this->common_model->getPageTitleAndMetaData();
 		
 		//Get Logged In user
 		$this->loggedInUser					= $this->common_model->getLoggedInUser();
@@ -154,11 +154,11 @@ class Dispute extends Controller {
 				}
 			}
 		}
-		//Check For Programmer Session
+		//Check For Seller Session
 		if(isSeller())
 		{
         	$provider_id = $this->loggedInUser->id;
-			$conditions3		= array('bids.user_id '=>$provider_id,'projects.project_status =' => '2','projects.programmer_id' => $provider_id);
+			$conditions3		= array('bids.user_id '=>$provider_id,'projects.project_status =' => '2','projects.seller_id' => $provider_id);
 			$this->outputData['projects']  =  $this->skills_model->getProjectByBid($conditions3);
 		}
 		if(isBuyer())
@@ -255,7 +255,7 @@ class Dispute extends Controller {
 					$user_type = 'Provider';
 				  }
 				  if(isBuyer()){
-				  	$provider_id = $prj->programmer_id;
+				  	$provider_id = $prj->seller_id;
 					$providerRow = getUserInfo($provider_id);
 					$other_user = $providerRow->user_name;
 					$user_type = 'Buyer';
@@ -296,7 +296,7 @@ class Dispute extends Controller {
 		$condition2 = array('projects.id' => $project_id);
 		$res = $this->skills_model->getProjects($condition2);
 		$this->outputData['project'] = $res->row();
-		$this->outputData['provider'] = getUserInfo($this->outputData['project']->programmer_id);
+		$this->outputData['provider'] = getUserInfo($this->outputData['project']->seller_id);
 		$this->load->view('dispute/createCase',$this->outputData);
 	}//End of createCase function
 	
@@ -384,7 +384,7 @@ class Dispute extends Controller {
 					$user_type = 'Provider';
 				  }
 				  if(isBuyer()){
-				  	$provider_id = $prj->programmer_id;
+				  	$provider_id = $prj->seller_id;
 					$providerRow = getUserInfo($provider_id);
 					$other_user = $providerRow->user_name;
 					$user_type = 'Buyer';
@@ -458,7 +458,7 @@ class Dispute extends Controller {
 		$this->outputData['caseResolution'] = $this->dispute_model->getProjectCases($condition3);
 
 		//pr($this->outputData['projectCase']);exit;
-		//$this->outputData['provider'] = getUserInfo($this->outputData['project']->programmer_id);
+		//$this->outputData['provider'] = getUserInfo($this->outputData['project']->seller_id);
 		$this->load->view('dispute/viewCase',$this->outputData);
 	}//End of ViewCase function
 	
@@ -494,12 +494,12 @@ class Dispute extends Controller {
 		$this->load->helper('projectcases');
 		
 		$condition2 = array('project_cases.case_type' => 'cancel','project_cases.parent' => '0','project_cases.status' => 'open');
-		$orCondition = "(projects.creator_id = '".$this->loggedInUser->id."' or projects.programmer_id = '".$this->loggedInUser->id."')";
-		//'projects.creator_id' => $this->loggedInUser->id,'projects.programmer_id' => $this->loggedInUser->id;
+		$orCondition = "(projects.creator_id = '".$this->loggedInUser->id."' or projects.seller_id = '".$this->loggedInUser->id."')";
+		//'projects.creator_id' => $this->loggedInUser->id,'projects.seller_id' => $this->loggedInUser->id;
 		$this->outputData['cancellation'] = $this->dispute_model->getProjectCases($condition2,$orCondition);
 		
 		$condition3 = array('project_cases.case_type' => 'dispute','project_cases.parent' => '0','project_cases.status' => 'open');
-		$orCondition2 = "(projects.creator_id = '".$this->loggedInUser->id."' or projects.programmer_id = '".$this->loggedInUser->id."')";
+		$orCondition2 = "(projects.creator_id = '".$this->loggedInUser->id."' or projects.seller_id = '".$this->loggedInUser->id."')";
 		$this->outputData['disputes'] = $this->dispute_model->getProjectCases($condition3,$orCondition2);
 		//pr($this->outputData['disputes']->result());exit;
 		
@@ -538,12 +538,12 @@ class Dispute extends Controller {
 		$this->load->helper('projectcases');
 		
 		$condition2 = array('project_cases.case_type' => 'cancel','project_cases.parent' => '0','project_cases.status' => 'closed');
-		$orCondition = "(projects.creator_id = '".$this->loggedInUser->id."' or projects.programmer_id = '".$this->loggedInUser->id."')";
-		//'projects.creator_id' => $this->loggedInUser->id,'projects.programmer_id' => $this->loggedInUser->id;
+		$orCondition = "(projects.creator_id = '".$this->loggedInUser->id."' or projects.seller_id = '".$this->loggedInUser->id."')";
+		//'projects.creator_id' => $this->loggedInUser->id,'projects.seller_id' => $this->loggedInUser->id;
 		$this->outputData['cancellation'] = $this->dispute_model->getProjectCases($condition2,$orCondition);
 		
 		$condition3 = array('project_cases.case_type' => 'dispute','project_cases.parent' => '0','project_cases.status' => 'closed');
-		$orCondition2 = "(projects.creator_id = '".$this->loggedInUser->id."' or projects.programmer_id = '".$this->loggedInUser->id."')";
+		$orCondition2 = "(projects.creator_id = '".$this->loggedInUser->id."' or projects.seller_id = '".$this->loggedInUser->id."')";
 		$this->outputData['disputes'] = $this->dispute_model->getProjectCases($condition3,$orCondition2);
 		//pr($this->outputData['disputes']->result());exit;
 		

@@ -7,11 +7,11 @@
  * @package		Reverse bidding system
  * @subpackage	Models
  * @category	package_model 
- * @author		Cogzidel Dev Team
+ * @author		
  * @version		Version 1.6
  * @created     April 27 2010
  * @created by  Saradha.P
- * @link		http://www.cogzidel.com
+ * @link		
  
   <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -28,8 +28,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact 
+    
+     
  
  
  */ 

@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Buyer 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		December 31 2008
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
 
  */
 class Messages extends Controller { 
@@ -393,8 +393,8 @@ class Messages extends Controller {
 				
 				//Set rules
 				$this->form_validation->set_rules('message','lang:message_validation','required|min_length[5]|trim|xss_clean|callback_emailpresent_projectname_check|callback_emailpresent_check|callback__phonenumber_check|callback__phonenumber_projectname_check');
-				$this->form_validation->set_rules('to','Programmer Id','trim|xss_clean');
-				$this->form_validation->set_rules('toid','Programmer Id','trim|is_no|xss_clean');
+				$this->form_validation->set_rules('to','Seller Id','trim|xss_clean');
+				$this->form_validation->set_rules('toid','Seller Id','trim|is_no|xss_clean');
 				if($this->form_validation->run())
 				{
 					  $insertData              		  	= array();	
@@ -451,7 +451,7 @@ class Messages extends Controller {
 									$insertData['created']       	= get_est_time();
 									$this->messages_model->postMessage($insertData);
 								 // echo $users_email->email; 
-								  //send email to the buyer or programmer receive new mail or PMB
+								  //send email to the buyer or seller receive new mail or PMB
 								  $this->load->model('email_model');
 								  $conditionUserMail = array('email_templates.type'=>'message_template');
 								  $result            = $this->email_model->getEmailSettings($conditionUserMail);
@@ -486,7 +486,7 @@ class Messages extends Controller {
 							  $insertData['created']       		= get_est_time();
 							  $this->messages_model->postMessage($insertData);
 							  
-							  //send email to the buyer or programmer receive new mail or PMB
+							  //send email to the buyer or seller receive new mail or PMB
 							  $this->load->model('email_model');
 							  $conditionUserMail = array('email_templates.type'=>'message_template');
 							  $result            = $this->email_model->getEmailSettings($conditionUserMail);
@@ -510,7 +510,7 @@ class Messages extends Controller {
 								  $user          = $users->row();
 								  if(isset($user) and isset($user->email))
 								  {
-								  //send email to the buyer or programmer receive new mail or PMB
+								  //send email to the buyer or seller receive new mail or PMB
 								  $this->load->model('email_model');
 								  $conditionUserMail = array('email_templates.type'=>'message_template');
 								  $result            = $this->email_model->getEmailSettings($conditionUserMail);
@@ -537,7 +537,7 @@ class Messages extends Controller {
 		}
 		 else
 		  {
-			 $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Please choose programmer to post message')));
+			 $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Please choose seller to post message')));
 		  }	
 		//Get Project Id
 		$conditions = array('projects.id'=>$project_id);
@@ -1465,7 +1465,7 @@ class Messages extends Controller {
 		 
 		//Get all the users projects who are all won the projects
 		if($logged_userrole == '2')
-		   $conditions = array('projects.programmer_id'=>$user_id,'projects.project_status !='=>'2','projects.flag'=>'0');
+		   $conditions = array('projects.seller_id'=>$user_id,'projects.project_status !='=>'2','projects.flag'=>'0');
         if($logged_userrole == '1')
 		   $conditions = array('projects.creator_id'=>$user_id,'projects.project_status !='=>'2','projects.flag'=>'0');		   
 		
@@ -1507,20 +1507,20 @@ class Messages extends Controller {
 				  	{
 					   if($this->loggedInUser->role_id == '1')
 					     {
-					        $programmer_id =  $res->programmer_id;
+					        $seller_id =  $res->seller_id;
 						 }
 					   else if($this->loggedInUser->role_id == '2')	 
 					     {
-					   	    $programmer_id  = $res->creator_id; 
+					   	    $seller_id  = $res->creator_id; 
 						 }
 					   else	
 					     {
-						 	$programmer_id = '0';
+						 	$seller_id = '0';
 						 } 
 					}
 				  $insertData              		  	= array();	
 			      $insertData['project_id']  	  	= $this->input->post('to');
-				  $insertData['to_id']      		= $programmer_id;
+				  $insertData['to_id']      		= $seller_id;
 				  $insertData['from_id']    	  	= $this->loggedInUser->id;
 				  $insertData['message']       		= $this->input->post('message');
 				  $insertData['created']       		= get_est_time();
@@ -1565,7 +1565,7 @@ class Messages extends Controller {
 									$insertData['message']       	= $this->input->post('message');
 									$insertData['created']       	= get_est_time();
 									$this->messages_model->postMessage($insertData);
-								  //send email to the buyer or programmer receive new mail or PMB
+								  //send email to the buyer or seller receive new mail or PMB
 								  $this->load->model('email_model');
 								  $conditionUserMail = array('email_templates.type'=>'message_template');
 								  $result            = $this->email_model->getEmailSettings($conditionUserMail);
@@ -1600,7 +1600,7 @@ class Messages extends Controller {
 							  $insertData['created']       		= get_est_time();
 							  $this->messages_model->postMessage($insertData);
 							  
-							  //send email to the buyer or programmer receive new mail or PMB
+							  //send email to the buyer or seller receive new mail or PMB
 							  $this->load->model('email_model');
 							  $conditionUserMail = array('email_templates.type'=>'message_template');
 							  $result            = $this->email_model->getEmailSettings($conditionUserMail);
@@ -1621,7 +1621,7 @@ class Messages extends Controller {
 						  $user          = $user->row();
 						  if(isset($user->email))  
 						  {
-						 //send email to the buyer or programmer receive new mail or PMB
+						 //send email to the buyer or seller receive new mail or PMB
 						  $this->load->model('email_model');
 						  $conditionUserMail = array('email_templates.type'=>'message_template');
 						  $result            = $this->email_model->getEmailSettings($conditionUserMail);
@@ -1641,7 +1641,7 @@ class Messages extends Controller {
 							  $user          = $this->user_model->getUsers();
 							  foreach($user->result() as $user) 
 							  {
-								 //send email to the buyer or programmer receive new mail or PMB
+								 //send email to the buyer or seller receive new mail or PMB
 								  $this->load->model('email_model');
 								  $conditionUserMail = array('email_templates.type'=>'message_template');
 								  $result            = $this->email_model->getEmailSettings($conditionUserMail);

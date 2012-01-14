@@ -1,8 +1,8 @@
 <?php
-$lang['You must be logged in as a Programmer to bid projects']					= 'You must be logged in as a Provider to bid projects';
+$lang['You must be logged in as a Seller to bid projects']					= 'You must be logged in as a Provider to bid projects';
 $lang['Bid_Amount_validation'] 													= 'Bid Amount';
 $lang['Bid_days_validation'] 													= 'Days';
-$lang['You must be logged in as a programmer to place a bid']	            	= 'You must be logged in as a Provider to place a bid';
+$lang['You must be logged in as a seller to place a bid']	            	= 'You must be logged in as a Provider to place a bid';
 $lang['Bid on Project']	            											= 'Bid on Project';
 $lang['Your Bid']	            												= 'Your Bid';
 $lang['Delivery Time']	            											= 'Delivery Time';
@@ -18,7 +18,7 @@ $lang['Your bid Has Been Posted Successfully']	            					= 'Your bid has 
 $lang['Your are not having sufficient Balance']	            					= 'Your are not having sufficient Balance';
 $lang['Project Fee for Bid']	            					                = 'Project Fee for Bid';
 $lang['Project Fee']	            					                        = 'Project Fee';
-$lang['Programmer']	            					                            = 'Providers';
+$lang['Seller']	            					                            = 'Providers';
 $lang['Buyer']	            					                                = 'buyer';
 $lang['Project Fee for Featured Project']	            					    = 'Featured';
 $lang['Project Fee for Urgent Project']	            					        = 'Urgent';

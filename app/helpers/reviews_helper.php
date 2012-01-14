@@ -61,21 +61,21 @@
 	} //End of getBuyerReview function
 
 
-   function getReviewStatus($projectid,$programmer_id)
+   function getReviewStatus($projectid,$seller_id)
    {
    		$CI 	=& get_instance();
 		$mod 	= $CI->load->model('skills_model');
-		$condition2 = array('reviews.project_id' => $projectid,'reviews.provider_id' => $programmer_id,'reviews.review_type' => '2');
+		$condition2 = array('reviews.project_id' => $projectid,'reviews.provider_id' => $seller_id,'reviews.review_type' => '2');
 		
 		$reviewDetails = $CI->skills_model->getReviews($condition2);
 		return $reviewDetails; 
    }
    
-   function getReviewStatusProgrammer($projectid,$programmer_id)
+   function getReviewStatusSeller($projectid,$seller_id)
    {
    		$CI 	=& get_instance();
 		$mod 	= $CI->load->model('skills_model');
-		$condition2 = array('reviews.project_id' => $projectid,'reviews.provider_id' => $programmer_id,'reviews.review_type' => '1');
+		$condition2 = array('reviews.project_id' => $projectid,'reviews.provider_id' => $seller_id,'reviews.review_type' => '1');
 		$reviewDetails = $CI->skills_model->getReviews($condition2);
 				
 		return $reviewDetails; 

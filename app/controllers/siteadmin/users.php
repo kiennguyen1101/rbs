@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Settings 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		Feb 19 2009
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
 
  */
 class Users extends Controller {
@@ -454,7 +454,7 @@ class Users extends Controller {
 		
 	}
 	
-	function viewProgrammeruser()
+	function viewSelleruser()
 	{
 	 
 		 $condition = array('users.role_id'=>2);
@@ -478,12 +478,12 @@ class Users extends Controller {
 		
 		//Pagination
 		$this->load->library('pagination');
-		$config['base_url'] 	 = admin_url('users/viewProgrammeruser');
+		$config['base_url'] 	 = admin_url('users/viewSelleruser');
 		$config['total_rows'] 	 = $userDetail->num_rows();		
 		$config['per_page']     = $page_rows; 
 		$config['cur_page']     = $start;
 		$this->pagination->initialize($config);		
-		$this->outputData['pagination']   = $this->pagination->create_links2(false,'viewProgrammeruser');
+		$this->outputData['pagination']   = $this->pagination->create_links2(false,'viewSelleruser');
 	 
 		$this->load->view('admin/users/viewUsers',$this->outputData);
 		
@@ -883,7 +883,7 @@ class Users extends Controller {
 
 	/**
 
-	 * Check for programmer mail id
+	 * Check for seller mail id
 
 	 *
 

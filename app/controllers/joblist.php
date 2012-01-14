@@ -7,11 +7,11 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	JobList 
- * @author		Cogzidel Dev Team
+ * @author		
  * @version		Version 1.6
  * @created		April 22  2010
  * @created By  Saradha.P 
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -28,8 +28,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact  
+    
+      
  */
 class Joblist extends Controller {
  
@@ -77,8 +77,8 @@ class Joblist extends Controller {
 		//Page Title and Meta Tags
 		$this->outputData = $this->common_model->getPageTitleAndMetaData();
 		
-		//Get Top programmers
-		$topProgrammers = $this->common_model->getPageTitleAndMetaData();
+		//Get Top sellers
+		$topSellers = $this->common_model->getPageTitleAndMetaData();
 		
 		//Get Logged In user
 		$this->loggedInUser					= $this->common_model->getLoggedInUser();
@@ -1096,7 +1096,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 	// --------------------------------------------------------------------
 
 /**
-	 * view project by buyer or programmer
+	 * view project by buyer or seller
 	 *
 	 * @access	private
 	 * @param	nil
@@ -1137,7 +1137,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 		  {
 			$updateKey                         = array('project_invitation.project_id'=>$project_id,'project_invitation.receiver_id'=>$this->loggedInUser->id);
 		    $updateData['notification_status'] = '1';
-		    $this->user_model->updateProgrammerInvitation($updateKey,$updateData);
+		    $this->user_model->updateSellerInvitation($updateKey,$updateData);
 		  }
 		  
 		$conditions = array('projects.id'=>$project_id);
@@ -1185,7 +1185,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 	
 	
 	/**
-	 * view all the jobs by buyer or programmer 
+	 * view all the jobs by buyer or seller 
 	 *
 	 * @access	private
 	 * @param	nil

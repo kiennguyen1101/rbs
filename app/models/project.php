@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Project 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @created		December 31 2008
- * @link		http://www.cogzidel.com
+ * @author		
+ * @version		
+ * @created		
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,10 +27,10 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact 
+    
  
  */
+
 class Project extends Controller {
  
 	//Global variable  
@@ -67,8 +67,8 @@ class Project extends Controller {
 		//Page Title and Meta Tags
 		$this->outputData = $this->common_model->getPageTitleAndMetaData();
 		
-		//Get Top programmers
-		$topProgrammers = $this->common_model->getPageTitleAndMetaData();
+		//Get Top sellers
+		$topSellers = $this->common_model->getPageTitleAndMetaData();
 		
 		//Get Logged In user
 		$this->loggedInUser					= $this->common_model->getLoggedInUser();
@@ -564,7 +564,7 @@ class Project extends Controller {
 		//Check For Buyer Session
 		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer to bid projects')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller to bid projects')));
 			redirect('info');
 		}	
 		
@@ -645,7 +645,7 @@ class Project extends Controller {
 		//Check For Buyer Session
 		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer to bid projects')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller to bid projects')));
 			redirect('info');
 		}	
 		
@@ -947,10 +947,10 @@ class Project extends Controller {
 		//Load Language
 		$this->lang->load('enduser/postBid', $this->config->item('language_code'));
 		
-		//Check For Programmer Session
+		//Check For Seller Session
 		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('You must be logged in as a programmer to place a bid')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('You must be logged in as a seller to place a bid')));
 			redirect('info');
 		}
 		
@@ -1080,7 +1080,7 @@ class Project extends Controller {
 	// --------------------------------------------------------------------
 	
 	/**
-	 * List bids on the particular project to pick a Programmer
+	 * List bids on the particular project to pick a Seller
 	 *
 	 * @access	public
 	 * @param	project id
@@ -1224,7 +1224,7 @@ class Project extends Controller {
 	// --------------------------------------------------------------------
 	
 	/**
-	 * List bids on the particular project to pick a Programmer
+	 * List bids on the particular project to pick a Seller
 	 *
 	 * @access	public
 	 * @param	project id
@@ -1286,10 +1286,10 @@ class Project extends Controller {
 		//Load Language
 		$this->lang->load('enduser/acceptProject', $this->config->item('language_code'));
 		
-		//Check For Programmer Session
+		//Check For Seller Session
 		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a programmer to accept projects')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a seller to accept projects')));
 			redirect('users/login');
 		}
 		
@@ -1297,7 +1297,7 @@ class Project extends Controller {
 		$project_id	 = $this->uri->segment(3,'0');
 		$checkstamp = $this->uri->segment(4,'0');
 		
-		$conditions = array('projects.id'=>$project_id,'projects.checkstamp'=>$checkstamp,'projects.project_status' => '1','projects.programmer_id' => $this->loggedInUser->id);
+		$conditions = array('projects.id'=>$project_id,'projects.checkstamp'=>$checkstamp,'projects.project_status' => '1','projects.seller_id' => $this->loggedInUser->id);
 		$project = $this->skills_model->getProjects($conditions);
 		$projectRow = $project->row();
 		
@@ -1308,20 +1308,20 @@ class Project extends Controller {
 		
 		
 		$buyerId = $projectRow->creator_id;
-		$programmerId = $projectRow->programmer_id;
+		$sellerId = $projectRow->seller_id;
 		
 		$conditions2 = array('users.id' => $buyerId);
 		$buyer = $this->user_model->getUsers($conditions2);
 		$buyerRow = $buyer->row();
 		
-		$conditions3 = array('users.id' => $programmerId);
-		$programmer = $this->user_model->getUsers($conditions3);
-		$programmerRow = $programmer->row();
+		$conditions3 = array('users.id' => $sellerId);
+		$seller = $this->user_model->getUsers($conditions3);
+		$sellerRow = $seller->row();
 				
 		$updateKey = array(
 					'projects.id' => $project_id,
 					'projects.checkstamp' => $checkstamp,
-					'projects.programmer_id' => $programmerId
+					'projects.seller_id' => $sellerId
 			   		);
 		$updateData = array('projects.project_status'=> '2');
 		$upProject = $this->skills_model->accpetProject($updateKey,$updateData);
@@ -1336,7 +1336,7 @@ class Project extends Controller {
 			
 			$rowUserMailConent = $result->row();
 			
-			$splVars = array("!programmer_username" => $programmerRow->user_name, "!project_title" => $projectRow->project_name, "!programmer_email" => $programmerRow->email,"!contact_url" => site_url('contact'));
+			$splVars = array("!seller_username" => $sellerRow->user_name, "!project_title" => $projectRow->project_name, "!seller_email" => $sellerRow->email,"!contact_url" => site_url('contact'));
 			$mailSubject = $this->lang->line($rowUserMailConent->mail_subject);
 			$mailContent = strtr($rowUserMailConent->mail_body, $splVars);
 			$toEmail = $buyerRow->email;
@@ -1344,8 +1344,8 @@ class Project extends Controller {
 
 			$this->email_model->sendHtmlMail($toEmail,$fromEmail,$mailSubject,$mailContent);
 			
-			//Send Mail to Programmer
-			$conditionUserMail2 = array('email_templates.type'=>'project_accepted_programmer');
+			//Send Mail to Seller
+			$conditionUserMail2 = array('email_templates.type'=>'project_accepted_seller');
 			$result2           = $this->email_model->getEmailSettings($conditionUserMail2);
 			
 			$rowUserMailConent2 = $result2->row();
@@ -1353,7 +1353,7 @@ class Project extends Controller {
 			$splVars2 = array("!project_title" => $projectRow->project_name, "!buyer_username" => $buyerRow->user_name, "!buyer_email" => $buyerRow->email,"!contact_url" => site_url('contact'));
 			$mailSubject2 = $this->lang->line($rowUserMailConent2->mail_subject);
 			$mailContent2 = strtr($rowUserMailConent2->mail_body, $splVars2);
-			$toEmail2 = $programmerRow->email;
+			$toEmail2 = $sellerRow->email;
 			$fromEmail2 = $this->config->item('site_admin_mail');
 			//echo $mailContent;exit;
 			$this->email_model->sendHtmlMail($toEmail2,$fromEmail2,$mailSubject2,$mailContent2);
@@ -1383,7 +1383,7 @@ class Project extends Controller {
 		$project_id	 = $this->uri->segment(3,'0');
 		$checkstamp = $this->uri->segment(4,'0');
 		
-		$conditions = array('projects.id'=>$project_id,'projects.checkstamp'=>$checkstamp,'projects.project_status' => '1','projects.programmer_id' => $this->loggedInUser->id);
+		$conditions = array('projects.id'=>$project_id,'projects.checkstamp'=>$checkstamp,'projects.project_status' => '1','projects.seller_id' => $this->loggedInUser->id);
 		$project = $this->skills_model->getProjects($conditions);
 		$projectRow = $project->row();
 		
@@ -1393,22 +1393,22 @@ class Project extends Controller {
 		}
 		
 		$buyerId = $projectRow->creator_id;
-		$programmerId = $projectRow->programmer_id;
+		$sellerId = $projectRow->seller_id;
 		
 		$conditions2 = array('users.id' => $buyerId);
 		$buyer = $this->user_model->getUsers($conditions2);
 		$buyerRow = $buyer->row();
 		
-		$conditions3 = array('users.id' => $programmerId);
-		$programmer = $this->user_model->getUsers($conditions3);
-		$programmerRow = $programmer->row();
+		$conditions3 = array('users.id' => $sellerId);
+		$seller = $this->user_model->getUsers($conditions3);
+		$sellerRow = $seller->row();
 				
 		$updateKey = array(
 					'projects.id' => $project_id,
 					'projects.checkstamp' => $checkstamp,
-					'projects.programmer_id' => $programmerId
+					'projects.seller_id' => $sellerId
 			   		);
-		$updateData = array('projects.project_status'=> '0','projects.programmer_id' => '0');
+		$updateData = array('projects.project_status'=> '0','projects.seller_id' => '0');
 		$upProject = $this->skills_model->accpetProject($updateKey,$updateData);
 		
 		if($upProject == 1){
@@ -1421,7 +1421,7 @@ class Project extends Controller {
 			
 			$rowUserMailConent = $result->row();
 			
-			$splVars = array("!provider_username" => $programmerRow->user_name, "!project_title" => $projectRow->project_name,"!contact_url" => site_url('contact'));
+			$splVars = array("!provider_username" => $sellerRow->user_name, "!project_title" => $projectRow->project_name,"!contact_url" => site_url('contact'));
 			$mailSubject = $this->lang->line($rowUserMailConent->mail_subject);
 			$mailContent = strtr($rowUserMailConent->mail_body, $splVars);
 			$toEmail = $buyerRow->email;
@@ -1647,19 +1647,19 @@ class Project extends Controller {
 			  	  $condition                            = array('user_list.creator_id'=>$this->loggedInUser->id);
 				  $this->outputData['favouriteList']    =   $this->user_model->getFavourite($condition);
 				  //pr($this->outputData['favouriteList']);
-				  $this->load->view('buyer/inviteProgrammer',$this->outputData); 
+				  $this->load->view('buyer/inviteSeller',$this->outputData); 
 			   }
 			else
 			   {
 			   	//Notification message
-				$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be post project to invite programmers')));
+				$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be post project to invite sellers')));
 				redirect('info');	
 			   }
 		  }	      
 	   else
 	    {
 			//Notification message
-			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged to invite programmers')));
+			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged to invite sellers')));
 			redirect('info');
 		}	
 	

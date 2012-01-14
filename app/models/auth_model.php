@@ -7,9 +7,9 @@
  * @package		Reverse bidding system
  * @subpackage	Models
  * @category	Common_model 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @link		http://www.cogzidel.com
+ * @author		
+ * @version		
+ * @link		
  
   <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -24,12 +24,6 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact 
- 
- 
  */ 
 class Auth_model extends Model {
 	 
@@ -109,9 +103,9 @@ class Auth_model extends Model {
 				$this->session->set_userdata($values);
 				break;
 				
-			case 'programmer':
+			case 'seller':
 			
-				$values = array('user_id'=>$row->id,'logged_in'=>TRUE,'role'=>'programmer');
+				$values = array('user_id'=>$row->id,'logged_in'=>TRUE,'role'=>'seller');
 				$this->session->set_userdata($values);
 				break;	
 		}

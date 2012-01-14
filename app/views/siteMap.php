@@ -35,7 +35,7 @@
 									{
 								?>
 									<li><a href=" <?php echo site_url('page')?>/<?php echo $page->url;?>"> <?php echo $page->name; ?></a></li>
-								   <?php} 
+								   <?php } 
 									 }
 								   ?>	
                                 </ul>

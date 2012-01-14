@@ -7,9 +7,9 @@
  * @package		Reverse bidding system
  * @subpackage	Models
  * @category	Skills 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @link		http://www.cogzidel.com
+ * @author		
+ * @version		
+ * @link		
  
   <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -26,11 +26,9 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact 
- 
- 
+     
  */
+
 class Dispute_model extends Model {
 	 
    /**
@@ -130,7 +128,7 @@ class Dispute_model extends Model {
 		if($fields!='')
 				$this->db->select($fields);
 		else 		
-	 		$this->db->select('projects.project_name,projects.id as project_id,project_cases.id,project_cases.user_id,project_cases.created,project_cases.case_reason,projects.creator_id,projects.programmer_id,project_cases.case_type,project_cases.case_reason,project_cases.payment,project_cases.problem_description,project_cases.private_comments,project_cases.parent,project_cases.updates,project_cases.status,project_cases.admin_id,project_cases.review_type');
+	 		$this->db->select('projects.project_name,projects.id as project_id,project_cases.id,project_cases.user_id,project_cases.created,project_cases.case_reason,projects.creator_id,projects.seller_id,project_cases.case_type,project_cases.case_reason,project_cases.payment,project_cases.problem_description,project_cases.private_comments,project_cases.parent,project_cases.updates,project_cases.status,project_cases.admin_id,project_cases.review_type');
 			
 		$result = $this->db->get();
 		//pr($result->result());exit;

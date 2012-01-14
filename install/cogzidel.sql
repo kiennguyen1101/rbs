@@ -23,11 +23,11 @@ CREATE TABLE IF NOT EXISTS `affiliate_payment` (
   `buyer_min_payout` varchar(256) NOT NULL,
   `buyer_max_payout` varchar(256) NOT NULL,
   `buyer_project_fee` varchar(256) NOT NULL,
-  `programmer_affiliate_fee` varchar(256) NOT NULL,
-  `programmer_min_amount` varchar(256) NOT NULL,
-  `programmer_min_payout` varchar(256) NOT NULL,
-  `programmer_max_payout` varchar(256) NOT NULL,
-  `programmer_project_fee` varchar(256) NOT NULL,
+  `seller_affiliate_fee` varchar(256) NOT NULL,
+  `seller_min_amount` varchar(256) NOT NULL,
+  `seller_min_payout` varchar(256) NOT NULL,
+  `seller_max_payout` varchar(256) NOT NULL,
+  `seller_project_fee` varchar(256) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -39,11 +39,11 @@ CREATE TABLE IF NOT EXISTS `affiliate_payment` (
   `buyer_min_payout` varchar(256) NOT NULL,
   `buyer_max_payout` varchar(256) NOT NULL,
   `buyer_project_fee` varchar(256) NOT NULL,
-  `programmer_affiliate_fee` varchar(256) NOT NULL,
-  `programmer_min_amount` varchar(256) NOT NULL,
-  `programmer_min_payout` varchar(256) NOT NULL,
-  `programmer_max_payout` varchar(256) NOT NULL,
-  `programmer_project_fee` varchar(256) NOT NULL,
+  `seller_affiliate_fee` varchar(256) NOT NULL,
+  `seller_min_amount` varchar(256) NOT NULL,
+  `seller_min_payout` varchar(256) NOT NULL,
+  `seller_max_payout` varchar(256) NOT NULL,
+  `seller_project_fee` varchar(256) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `affiliate_payment` (
 -- Dumping data for table `affiliate_payment`
 --
 
-INSERT INTO `affiliate_payment` (`id`, `buyer_affiliate_fee`, `buyer_min_amount`, `buyer_min_payout`, `buyer_max_payout`, `buyer_project_fee`, `programmer_affiliate_fee`, `programmer_min_amount`, `programmer_min_payout`, `programmer_max_payout`, `programmer_project_fee`) VALUES
+INSERT INTO `affiliate_payment` (`id`, `buyer_affiliate_fee`, `buyer_min_amount`, `buyer_min_payout`, `buyer_max_payout`, `buyer_project_fee`, `seller_affiliate_fee`, `seller_min_amount`, `seller_min_payout`, `seller_max_payout`, `seller_project_fee`) VALUES
 (2, '30', '10', '10', 'unlimited', '10', '20', '10', '10', 'unlimited', '20');
 
 CREATE TABLE IF NOT EXISTS `affiliate_questions` (
@@ -441,7 +441,7 @@ CREATE TABLE IF NOT EXISTS `draftprojects` (
   `creator_id` int(10) unsigned NOT NULL,
   `created` int(11) NOT NULL,
   `enddate` int(11) NOT NULL,
-  `programmer_id` int(11) NOT NULL,
+  `seller_id` int(11) NOT NULL,
   `checkstamp` varchar(50) NOT NULL,
   `buyer_rated` enum('0','1') NOT NULL,
   `provider_rated` enum('0','1') NOT NULL,
@@ -466,11 +466,11 @@ CREATE TABLE IF NOT EXISTS `email_templates` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 INSERT INTO `email_templates` (`id`, `type`, `title`, `mail_subject`, `mail_body`) VALUES
-(1, 'programmers_signup', 'programmers signup', 'Confirm E-mail for !site_title', 'Thank you for choosing !site_title for your programming project. Please click here to continue the signup process. \r\n\r\nConfirmation Link: !activation_url \r\n\r\nContact support if you have any problems signing up !contact_url'),
+(1, 'sellers_signup', 'sellers signup', 'Confirm E-mail for !site_title', 'Thank you for choosing !site_title for your programming project. Please click here to continue the signup process. \r\n\r\nConfirmation Link: !activation_url \r\n\r\nContact support if you have any problems signing up !contact_url'),
 (4, 'buyers_signup', 'buyers signup', 'Confirm E-mail for !site_name', 'Thank you for choosing !site_name for your programming project. Please click here to continue the signup process. \r\n\r\nConfirmation Link:!activation_url \r\n\r\nContact support if you have any problems signing up.!contact_url'),
 (5, 'awardBid', 'Award Project', 'Confirmation for bidding on !project_title', 'You were chosen for the project named !project_title.\r\n\r\nImportant: You must first accept (or deny) this offer by going to the following URL: !bid_url\r\nIf you wait too long another provider could be chosen! So accept the bid now.\r\n\r\nIf you have any problems with this step you can contact !contact_url'),
-(6, 'project_accepted_buyer', 'Project accepted - buyer', 'Project start', 'The provider "!programmer_username" accepted the project named "!project_title".\r\n\r\nYou may contact this provider at !programmer_email\r\n\r\nIf you have any problems with this email you can contact !contact_url'),
-(7, 'project_accepted_programmer', 'Project accepted - programmer', 'Project start', 'You have won and accepted the project named "!project_title".\r\n\r\nYou may contact the projects buyer "!buyer_username" at !buyer_email.\r\n\r\nIf you have any problems with this email you can contact !contact_url'),
+(6, 'project_accepted_buyer', 'Project accepted - buyer', 'Project start', 'The provider "!seller_username" accepted the project named "!project_title".\r\n\r\nYou may contact this provider at !seller_email\r\n\r\nIf you have any problems with this email you can contact !contact_url'),
+(7, 'project_accepted_seller', 'Project accepted - seller', 'Project start', 'You have won and accepted the project named "!project_title".\r\n\r\nYou may contact the projects buyer "!buyer_username" at !buyer_email.\r\n\r\nIf you have any problems with this email you can contact !contact_url'),
 (8, 'project_denied_buyer', 'Project denying', 'project denied', 'The provider "!provider_username" did not accept the project named "!project_title".\r\n\r\nThe project is now open again for bidding.\r\n\r\nIf you have any problems with this email you can contact !contact_url'),
 (9, 'privateInvitation', 'Private Project Invitation', '!site_title Favorite Private Project Invitation', 'The Buyer !buyername! has posted a private project (!projectname!)\r\nand has invited you to bid on it. Only invited users can bid on private\r\nprojects.\r\nYou may login and view this project at \r\n!projecturl!\r\n\r\n\r\n--------------------------------------------------\r\nThis message has been sent automatically by !site_title.\r\nIf you need to contact us go to !siteurl!'),
 (10, 'publicInvitation', 'Project Invitation', 'Project Invitation', '!buyername! has just invited you to place a bid on their project. The name of the project is "!projectname!" and you can view it at the following\r\nURL: !projecturl!\r\n\r\n--------------------------------------------------\r\nThis message has been sent automatically by ScriptLance.\r\nIf you need to contact us go to !siteurl!'),
@@ -485,7 +485,7 @@ INSERT INTO `email_templates` (`id`, `type`, `title`, `mail_subject`, `mail_body
 (19, 'message_template', 'Message Template', 'New Message Received on !site_name', 'Hello !username,<br>\r\n\r\nYou are received new message from !sender_name regarding !reason on !site_name.<br>\r\n\r\nYou can login into !site_url and view your new messages. <br>\r\n\r\nYou should not post any question or comments to this email. Please post your comments or question to the url !contact_url.<br>\r\n\r\nThanks and Regards,<br>\r\n\r\nAdmin<br>\r\n!site_name'),
 (20, 'buyer_review', 'Buyer review', 'You''ve got a review from !site_title', 'The Buyer <b>!buyer_name</b> have just posted a review for you on the project <b>!project_name</b> you did.\r\n<br><br>\r\nRegards,<br>\r\n!site_name'),
 (21, 'profile_update', 'Profile Update Notification', 'Profile Update Notification on !site_name', 'Hello !username,<br>\r\n\r\nThanks for using !site_name. <br>\r\n\r\nYour profile has been successfully updated. <br>\r\nYour update profile datas are as follows, <br>\r\n\r\n!data1\r\n!data2\r\n!data3\r\n!data4\r\n!data5\r\n!data6\r\n!data7\r\n!data8\r\n!data9\r\n!data10\r\n!data11\r\n!data12\r\n\r\nYou should not post any question or comments to this email. Please post your comments or question to the url !contact_url.<br>\r\n\r\nThanks and Regards,<br>\r\n\r\nAdmin<br>\r\n!site_name'),
-(22, 'programmer_review', 'Programmer review', 'You''ve got a review from !site_title', 'The Programmer <b>!programmer_name</b> have just posted a review for your project <b>!project_name</b> you did.\r\n<br><br>\r\nRegards,<br>\r\n!site_name'),
+(22, 'seller_review', 'Seller review', 'You''ve got a review from !site_title', 'The Seller <b>!seller_name</b> have just posted a review for your project <b>!project_name</b> you did.\r\n<br><br>\r\nRegards,<br>\r\n!site_name'),
 (23, 'project_cancel', 'Project Cancel', 'Project Cancel on !site_name', 'Hello !username,<br>\r\n\r\nThank you for using !site_name.<br>\r\n\r\nYour project has been cancelled by !creatorname in !site_url. <br>\r\n\r\nThe details as follows,<br>\r\n\r\nProject ID   : !projectid <br>\r\n\r\nProject Name : !projectname <br>\r\n\r\nCreator Name : !creatorname <br>\r\n\r\nYou want to reactive the project, please  login into !site_url. <br>\r\n\r\nYou should not post any question or comments to this email. Please post your comments or question to the url !contact_url.<br>\r\n\r\nThanks and Regards,<br>\r\n\r\nAdmin<br>\r\n!site_name\r\n'),
 (24, 'consolidate_bids', 'Consolidate Bids Details', 'Consolidate Bids Details', 'Hello !username,\r\n\r\nThanks for Using !site_name. <br>\r\n\r\nThe consolidate project bids for your project !projectname as follows, <br>\r\n\r\n!records<br>\r\n\r\nYou should not post any question or comments to this email. Please post your comments or question to the url !contact_url.<br>\r\n\r\nThanks and Regards,<br>\r\n\r\nAdmin<br>\r\n!site_name\r\n\r\n'),
 (25, 'email_banned', 'Email Banned', 'Email Baned in !site_name', 'Hello !username,<br>\r\n\r\nThanks for using !site_name.<br>\r\n\r\nYour !type has been Banned by !site_url.<br>\r\nIf you want to reactive, please contact !site_name or contact admin. <br>\r\n\r\nYou should not post any question or comments to this email. Please post your comments or question to the url !contact_url.<br>\r\n\r\nThanks and Regards,<br>\r\n\r\nAdmin<br>\r\n!site_name\r\n'),
@@ -696,7 +696,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `creator_id` int(10) unsigned NOT NULL,
   `created` int(11) NOT NULL,
   `enddate` int(11) NOT NULL,
-  `programmer_id` int(11) NOT NULL,
+  `seller_id` int(11) NOT NULL,
   `checkstamp` varchar(50) character set utf8 NOT NULL,
   `buyer_rated` enum('0','1') character set utf8 NOT NULL,
   `provider_rated` enum('0','1') character set utf8 NOT NULL,
@@ -732,7 +732,7 @@ CREATE TABLE IF NOT EXISTS `projects_preview` (
   `created` int(11) NOT NULL,
   `enddate` int(11) NOT NULL,
   `open_days` int(11) NOT NULL,
-  `programmer_id` int(11) NOT NULL,
+  `seller_id` int(11) NOT NULL,
   `project_award_date` int(11) default NULL,
   `checkstamp` varchar(50) NOT NULL,
   `buyer_rated` enum('0','1') NOT NULL,
@@ -820,7 +820,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 INSERT INTO `roles` (`id`, `role_name`) VALUES
 (1, 'buyer'),
-(2, 'programmer');
+(2, 'seller');
 
 CREATE TABLE IF NOT EXISTS `sales` (
   `id` int(5) NOT NULL auto_increment,

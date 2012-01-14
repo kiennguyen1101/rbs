@@ -7,11 +7,11 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	JobList 
- * @author		Cogzidel Dev Team
+ * @author		
  * @version		Version 1.6
  * @created		April 22  2010
  * @created By  Saradha.P 
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -28,8 +28,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact  
+    
+      
  */
 class Certificate extends Controller {
 	//Global variable  
@@ -101,7 +101,7 @@ class Certificate extends Controller {
 	{	
 	
 	
-		$certificate_programmer=array();
+		$certificate_seller=array();
 		$certificate_buyer=array();
 		
 		//$condition=array('subscriptionuser.username'=>$this->loggedInUser->id);
@@ -139,14 +139,14 @@ class Certificate extends Controller {
 								else
 								{
 									$condition2 = array('users.id' => $user_id);
-									$certificate_programmer[] = $this->user_model->getUsers($condition2);
+									$certificate_seller[] = $this->user_model->getUsers($condition2);
 								}
 						}
 				 }
 			}
 		}  
 		$this->outputData['certificatebuyer'] =$certificate_buyer;
-		$this->outputData['certificateprogrammer']=$certificate_programmer;
+		$this->outputData['certificateseller']=$certificate_seller;
 		
 		$this->load->view('certificate/viewcertificate',$this->outputData);
 		  

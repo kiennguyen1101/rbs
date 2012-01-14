@@ -152,7 +152,7 @@
 		return $stat;
 	} //End of getLowestBid function
 	
-	function getCurrentStatus($status=NULL,$programmer=NULL,$project_id=NULL)
+	function getCurrentStatus($status=NULL,$seller=NULL,$project_id=NULL)
 
                 {
 
@@ -176,13 +176,13 @@
 
                                                 $stat['status'] = $CI->lang->line('Frozen');
 
-                                                $conditions = array('users.id'=>$programmer);
+                                                $conditions = array('users.id'=>$seller);
 
                                                 $result = $CI->user_model->getUsers($conditions,'users.user_name');
 
                                                 $result= $result->row();
 
-                                                $stat['message'] = '('.$CI->lang->line('Choosen Programmer').':'.$result->user_name.' , '.$CI->lang->line('Waiting For Accept').')';
+                                                $stat['message'] = '('.$CI->lang->line('Choosen Seller').':'.$result->user_name.' , '.$CI->lang->line('Waiting For Accept').')';
 
                                 }             
 
@@ -192,7 +192,7 @@
 
                                                 $stat['status'] = $CI->lang->line('Closed');
 
-                                                $conditions = array('users.id'=>$programmer);
+                                                $conditions = array('users.id'=>$seller);
 
                                                
 
@@ -222,11 +222,11 @@
 
                                                 if($payement_status->num_rows()>0)
 
-                                                { $stat['message'] = '('.$CI->lang->line('Choosen Programmer').':'.$result->user_name.' , '.$CI->lang->line('paid').$rating.')'; }
+                                                { $stat['message'] = '('.$CI->lang->line('Choosen Seller').':'.$result->user_name.' , '.$CI->lang->line('paid').$rating.')'; }
 
                                                 else
 
-                                                                $stat['message'] = '('.$CI->lang->line('Choosen Programmer').':'.$result->user_name.' , '.$CI->lang->line('unpaid').')';
+                                                                $stat['message'] = '('.$CI->lang->line('Choosen Seller').':'.$result->user_name.' , '.$CI->lang->line('unpaid').')';
 
                                 }             
 

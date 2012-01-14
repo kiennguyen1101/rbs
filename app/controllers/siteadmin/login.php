@@ -7,8 +7,8 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Access Controll
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		December 22 2008
  * @link		http://www.cogzidel.com
  
@@ -27,7 +27,7 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
+    
     contact us from http://www.cogzidel.com/contact
 
  */
@@ -65,10 +65,10 @@ class Login extends Controller {
 		$this->load->model('admin_model');
 		$buyer_condtition = array('users.role_id'=>'1');
 		$buyer      = $this->admin_model->getUsers($buyer_condtition);
-		$programmer_condtition = array('users.role_id'=>'2');
-		$programmer      = $this->admin_model->getUsers($programmer_condtition);
+		$seller_condtition = array('users.role_id'=>'2');
+		$seller      = $this->admin_model->getUsers($seller_condtition);
 		$this->outputData['$buyers'] =  $buyer->num_rows();
-		$this->outputData['$programmers'] =  $programmer->num_rows();
+		$this->outputData['$sellers'] =  $seller->num_rows();
 		$this->outputData['login'] = 'TRUE';
 		
 	} //Controller Login End

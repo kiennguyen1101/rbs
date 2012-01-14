@@ -58,9 +58,9 @@
 
     along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-    If you want more information, please email me at bala.k@cogzidel.com or 
+    
 
-    contact us from http://www.cogzidel.com/contact 
+     
 
  
 

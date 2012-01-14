@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Projects 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		March 30 2009
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
 
  */
 class ProjectCases extends Controller {
@@ -217,8 +217,8 @@ class ProjectCases extends Controller {
 		
 		$buyer_email = getUserDetails($data->creator_id,'email');
 		$buyer_name = getUserDetails($data->creator_id,'user_name');
-		$provider_email = getUserDetails($data->programmer_id,'email');
-		$provider_name = getUserDetails($data->programmer_id,'user_name');
+		$provider_email = getUserDetails($data->seller_id,'email');
+		$provider_name = getUserDetails($data->seller_id,'user_name');
 		
 		//Send Mail to buyer
 		$conditionUserMail = array('email_templates.type'=>'changeto_dispute_case');
@@ -280,8 +280,8 @@ class ProjectCases extends Controller {
 		
 		$buyer_email = getUserDetails($data->creator_id,'email');
 		$buyer_name = getUserDetails($data->creator_id,'user_name');
-		$provider_email = getUserDetails($data->programmer_id,'email');
-		$provider_name = getUserDetails($data->programmer_id,'user_name');
+		$provider_email = getUserDetails($data->seller_id,'email');
+		$provider_name = getUserDetails($data->seller_id,'user_name');
 		
 		//Send Mail to buyer
 		$conditionUserMail = array('email_templates.type'=>'case_closed');
@@ -341,8 +341,8 @@ class ProjectCases extends Controller {
 		
 		$buyer_email = getUserDetails($data->creator_id,'email');
 		$buyer_name = getUserDetails($data->creator_id,'user_name');
-		$provider_email = getUserDetails($data->programmer_id,'email');
-		$provider_name = getUserDetails($data->programmer_id,'user_name');
+		$provider_email = getUserDetails($data->seller_id,'email');
+		$provider_name = getUserDetails($data->seller_id,'user_name');
 		
 		//Send Mail to buyer
 		$conditionUserMail = array('email_templates.type'=>'project_cancelled_admin');

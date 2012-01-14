@@ -23,8 +23,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact  
+    
+      
 
  */
 class Account extends Controller {
@@ -240,8 +240,8 @@ class Account extends Controller {
 			
 			
 			
-			$result     = $this->skills_model->getTopprogrammers();
-  		    $this->outputData['getProgrammers'] =  $result;	
+			$result     = $this->skills_model->getTopsellers();
+  		    $this->outputData['getSellers'] =  $result;	
 
 			//Get the suers categories
 			//Laod bookmark model
@@ -263,7 +263,7 @@ class Account extends Controller {
 			}
 			//Get the project invitation from the buyer
 			$condition    =  array('project_invitation.receiver_id'=>$this->loggedInUser->id,'project_invitation.notification_status'=>'0');
-			$this->outputData['projectInvitation']  = $this->user_model->getProgrammerInvitation($condition);
+			$this->outputData['projectInvitation']  = $this->user_model->getSellerInvitation($condition);
 
 			//Get the project messages and mail list
 			$condition    =  array('messages.to_id'=>$this->loggedInUser->id,'messages.notification_status'=>'0');
@@ -294,11 +294,11 @@ class Account extends Controller {
 		if(isSeller()){
 			$provider_id	 = $this->loggedInUser->id;
 			
-			$conditions		= array('projects.programmer_id'=>$provider_id,'projects.project_status !=' => '2');
+			$conditions		= array('projects.seller_id'=>$provider_id,'projects.project_status !=' => '2');
 			$this->outputData['myProjects']  =  $this->skills_model->getProjects($conditions,NULL,NULL/*,$max,$orderby*/);
 			$created = $this->skills_model->getProjects($conditions);
 			
-			$conditions		= array('projects.programmer_id'=>$provider_id,'projects.project_status =' => '2');
+			$conditions		= array('projects.seller_id'=>$provider_id,'projects.project_status =' => '2');
 			$this->outputData['closedProjects']  =  $this->skills_model->getProjectsByProvider($conditions);
 			
 			
@@ -375,7 +375,7 @@ class Account extends Controller {
 		}
 		
 		// checking the role of the user
-		if($this->loggedInUser->role_name == 'programmer')
+		if($this->loggedInUser->role_name == 'seller')
 		 {
 		 //Set the user role
 		 $this->outputData['role']  =  '2';
@@ -457,13 +457,13 @@ class Account extends Controller {
 		$this->outputData['projectList']    =   $projectList;
 	
 		// checking the role of the user
-        if($this->loggedInUser->role_name == 'programmer')
+        if($this->loggedInUser->role_name == 'seller')
 		 {
 		 //Set the user role
 		 $this->outputData['role']  =  '2';
-		  //Load Programmer Account View
+		  //Load Seller Account View
 		 
-	     $this->load->view('programmer/programmerAccountManage',$this->outputData);
+	     $this->load->view('seller/sellerAccountManage',$this->outputData);
 		 
 		 }
 		if($this->loggedInUser->role_name == 'buyer')
@@ -537,7 +537,7 @@ class Account extends Controller {
 	if($this->loggedInUser->role_id)
        $this->load->view('buyer/buyerTransaction',$this->outputData);
 	else
-	   $this->load->view('buyer/programmerTransaction',$this->outputData);   
+	   $this->load->view('buyer/sellerTransaction',$this->outputData);   
 	} //Function viewall transaction end
 } //End  Account Class
 

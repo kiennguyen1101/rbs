@@ -2,15 +2,15 @@
 /**
  * Reverse bidding system Mail Class
  *
- * Programmer related functions are handled by this controller.
+ * Seller related functions are handled by this controller.
  *
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Buyer 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		Feburary 04 2009
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
 
  */
 class UserList extends Controller {
@@ -145,13 +145,13 @@ class UserList extends Controller {
 
 
    /**
-	 * contact programmers
+	 * contact sellers
 	 *
 	 * @access	private
 	 * @param	nil
 	 * @return	void
 	 */ 
-	function contactProgrammer()
+	function contactSeller()
 	{	
 		//Load language file
 		$this->lang->load('enduser/postMessage', $this->config->item('language_code'));
@@ -216,19 +216,19 @@ class UserList extends Controller {
 		}	
 		//Load the userlist view
 		
-		$this->load->view('messages/contactProgrammer',$this->outputData);	
+		$this->load->view('messages/contactSeller',$this->outputData);	
 	   
-	} //Function contactprogrammer End
+	} //Function contactseller End
   //--------------------------------------------------------------------------------------//	
   
   /**
-	 * inviteProgrammer 
+	 * inviteSeller 
 	 *
 	 * @access	private
 	 * @param	nil
 	 * @return	void
 	 */ 
-	function inviteProgrammer()
+	function inviteSeller()
 	{	
 		//Load language file
 		$this->lang->load('enduser/postMessage', $this->config->item('language_code'));
@@ -255,7 +255,7 @@ class UserList extends Controller {
 			$res = $this->skills_model->getUsersproject($condition);
 			if($res->num_rows() > 0 )
 			{
-		    if($this->input->post('inviteProgrammer'))
+		    if($this->input->post('inviteSeller'))
 			  {
 				if($this->input->post('projects'))
 				{
@@ -266,7 +266,7 @@ class UserList extends Controller {
 					$buyer = $this->user_model->getUsers($conditions2);
 					$buyerRow = $buyer->row();
 		
-					//Send Mail to programmer as invitaion
+					//Send Mail to seller as invitaion
 					$conditionUserMail = array('email_templates.type'=>'privateInvitation');
 					$result            = $this->email_model->getEmailSettings($conditionUserMail);
 					
@@ -318,7 +318,7 @@ class UserList extends Controller {
 						$insertData['sender_id']    = $this->loggedInUser->id;
 						$insertData['receiver_id']  = $this->input->post('toid');
 						$insertData['invite_date']  = get_est_time();
-						$this->user_model->insertProgrammerInvitation($insertData);
+						$this->user_model->insertSellerInvitation($insertData);
 					}
 					
 					$others = $this->input->post('otheruser');
@@ -341,7 +341,7 @@ class UserList extends Controller {
 						   $insertData['sender_id']    = $this->loggedInUser->id;
 						   $insertData['receiver_id']  = $buyerRow->id;
 						   $insertData['invite_date']  = get_est_time();
-						   $this->user_model->insertProgrammerInvitation($insertData);
+						   $this->user_model->insertSellerInvitation($insertData);
 						}
 					}
 					
@@ -359,18 +359,18 @@ class UserList extends Controller {
 	      else
 		    {
 				//Notification message
-			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be post project to invite programmers')));
+			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be post project to invite sellers')));
 			redirect('info');	
 			}
 		}
 	  else
 	    {
 			//Notification message
-			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged to invite programmers')));
+			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged to invite sellers')));
 			redirect('info');
 		}	
 		$this->load->view('buyer/inviteIndividual',$this->outputData);
-	} //Function inviteprogrammer End
+	} //Function inviteseller End
   //--------------------------------------------------------------------------------------//		
 	
 	/**
@@ -419,7 +419,7 @@ class UserList extends Controller {
 								 {
 								   //check the logged user role id
 								   if($creator_role == '1')
-										$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter programmer name only')));
+										$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter seller name only')));
 								   if($creator_role == '2')
 										$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter buyer name only')));
 								   redirect('userList');
@@ -537,7 +537,7 @@ class UserList extends Controller {
 								 {
 								   //check the logged user role id
 								   if($this->loggedInUser->role_id == '1')
-										$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter programmer name only')));
+										$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter seller name only')));
 								   if($this->loggedInUser->role_id == '2')
 										$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter buyer name only')));
 								   redirect('userList');
@@ -724,7 +724,7 @@ class UserList extends Controller {
 						 {
 						   //check the logged user role id
 						   if($creator_role == '1')
-						        $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter programmer name only')));
+						        $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter seller name only')));
 						   if($creator_role == '2')
 						      	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter buyer name only')));
 			               redirect('userList');
@@ -836,7 +836,7 @@ class UserList extends Controller {
 						 {
 						   //check the logged user role id
 						   if($creator_role == '1')
-						        $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter programmer name only')));
+						        $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter seller name only')));
 						   if($creator_role == '2')
 						      	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('Enter buyer name only')));
 			               redirect('userList');

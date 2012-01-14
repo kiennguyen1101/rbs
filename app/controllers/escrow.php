@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Project 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		Feburary 04 2009
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact  
+    
+      
  */
 class Escrow extends Controller {
 
@@ -223,7 +223,7 @@ class Escrow extends Controller {
 					  //Register Transaction
 					  $insertData = array(); 
 					  $insertData['creator_id']   			= $this->loggedInUser->id;
-					  $insertData['reciever_id'] 			= $usersdata->programmer_id;
+					  $insertData['reciever_id'] 			= $usersdata->seller_id;
 					  $insertData['provider_id'] 			= $this->input->post('prog_id');
 					  $insertData['buyer_id']   			= $this->loggedInUser->id;	
 					  $insertData['project_id']  	  		= $this->input->post('type_id');
@@ -238,7 +238,7 @@ class Escrow extends Controller {
 					  $res = $this->transaction_model->addTransaction($insertData);
 					  
 					  
-					    if(getSuspendStatus($usersdata->programmer_id))
+					    if(getSuspendStatus($usersdata->seller_id))
 					  {
 					  	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('The user you are trying to Transfer is currently Suspended')));
 			            redirect('transfer');
@@ -324,18 +324,18 @@ class Escrow extends Controller {
 			$condition            = array('transactions.id'=>$request_id);	
 			$transaction          = $this->transaction_model->getallTransactions($condition);
 			$transaction          = $transaction->row();
-		    $programmer_id        = $transaction->provider_id; 
+		    $seller_id        = $transaction->provider_id; 
 			$ammount              = $transaction->amount;     
-			$condition_balance 	  = array('user_balance.user_id'=>$programmer_id);
-			$programmer_balance 	 			 = $this->transaction_model->getBalance($condition_balance);
+			$condition_balance 	  = array('user_balance.user_id'=>$seller_id);
+			$seller_balance 	 			 = $this->transaction_model->getBalance($condition_balance);
 			
 
-			if($programmer_balance->num_rows()>0)
+			if($seller_balance->num_rows()>0)
 			{
-				$progBalance = $programmer_balance->row();	
+				$progBalance = $seller_balance->row();	
 				$avail_balance_prog =  $progBalance->amount;
 			
-				$updateKey 			  = array('user_balance.user_id'=>$programmer_id);	
+				$updateKey 			  = array('user_balance.user_id'=>$seller_id);	
 				$updateData 		  = array();
 								
 						
@@ -444,14 +444,14 @@ class Escrow extends Controller {
 		
 		// Get the escrow due value
 		$condition=array('projects.id'=>$project_id);
-		$escrow_due_rec=$this->skills_model->getProjects($condition, 'projects.escrow_due, projects.programmer_id');
+		$escrow_due_rec=$this->skills_model->getProjects($condition, 'projects.escrow_due, projects.seller_id');
 		$escrow_due_row=$escrow_due_rec->row();
 		$escrow_due=$escrow_due_row->escrow_due;
 		
 		$escrow_due=($escrow_due==0)?0:($escrow_due-1);	
 		
 		// Get the project bid amount
-		$condition=array('bids.project_id'=>$project_id, 'bids.user_id'=>$escrow_due_row->programmer_id);
+		$condition=array('bids.project_id'=>$project_id, 'bids.user_id'=>$escrow_due_row->seller_id);
 		$condition;
 		$bids_res=$this->skills_model->getBids($condition);
 		$bids=$bids_res->row();
@@ -504,7 +504,7 @@ class Escrow extends Controller {
 			foreach($usersProject->result() as $res)
 			  {
 				if($role == '1')
-				   $userid = $res->programmer_id;
+				   $userid = $res->seller_id;
 				if($role == '2')
 				   $userid = $res->creator_id;
 			  }
@@ -532,7 +532,7 @@ class Escrow extends Controller {
 				<?php 
 				if($role == '1')
 				{ ?>
-					<option value="0"> <?php echo '<b>-- '.$this->lang->line('Select Programmer').' --</b>'; ?></option><?php  
+					<option value="0"> <?php echo '<b>-- '.$this->lang->line('Select Seller').' --</b>'; ?></option><?php  
 				}
 				if($role == '2')
 				{ ?>

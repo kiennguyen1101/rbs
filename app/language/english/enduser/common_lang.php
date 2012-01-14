@@ -22,12 +22,12 @@ $lang['view_profile']				= 'View Profile';
 $lang['Featured Project']			= 'Featured Project';
 $lang['Manage Account']				= 'Manage Account';
 $lang['Post Projects']				= 'Post Projects';
-$lang['Top Programmer']				= 'Top Providers';
+$lang['Top Seller']				= 'Top Providers';
 $lang['Affiliate']			    	= 'Affiliate Program';
-$lang['Invite Programmer']			= 'Invite Providers';
+$lang['Invite Seller']			= 'Invite Providers';
 $lang['Buyers']						= 'Buyers';
-$lang['Programmers']				= 'Providers';
-$lang['Programmer Name']			='Provider Name';
+$lang['Sellers']				= 'Providers';
+$lang['Seller Name']			='Provider Name';
 $lang['Buyer Name']			='Buyer Name';
 $lang['Faqs']						= 'Faqs';
 $lang['Feeds']						= 'Feeds';
@@ -43,7 +43,7 @@ $lang['Search Keyword']				= 'Enter only Character to Search !';
 $lang['Sl.No']			            = 'Sl.No';
 $lang['close_date']			            = 'Closed date';
 
-$lang['Programmer Name']			= 'Provider Name';
+$lang['Seller Name']			= 'Provider Name';
 $lang['Rating']			            = 'Rating';
 $lang['Reviews']			        = 'Reviews';
 $lang['manage_portfolio']			= 'Manage Portfolio';
@@ -110,7 +110,7 @@ $lang['Print']='Print';
 $lang['Notify me by e-mail if someone bids lower than me on this project.']='Notify me by e-mail if someone bids lower than me on this project.';
 $lang['Tip']='Tip: You can post programming code by placing it within [code] and [/code] tags. ';
 $lang['Pick']='Pick';
-$lang['Programmers']='Providers ';
+$lang['Sellers']='Providers ';
 $lang['Bid']='Bid';
 $lang['Delivery Time']='Delivery Time';
 $lang['Time of Bid']='Time of Bid';
@@ -193,7 +193,7 @@ $lang['Urgent Projects']='Urgent Projects';
 $lang['Get Services']='Get Services';
 $lang['Post Your Project']='Post Your Project';
 $lang['Sign Up']='Sign Up';
-$lang['Top Programmers']='Top Providers';
+$lang['Top Sellers']='Top Providers';
 $lang['Latest Projects']='Latest Projects';
 $lang['Services Categories']='Services Categories';
 $lang['Cancel Projects']='Cancel/Dispute';
@@ -222,7 +222,7 @@ $lang['View Job Message Board']='View Job Message Board';
 
 $lang['comments']                                                      = 'Comments';
 
-$lang['Choosen Programmer']                                   = 'Choosen Providers';
+$lang['Choosen Seller']                                   = 'Choosen Providers';
 
 $lang['Waiting For Accept']                                        = 'Waiting For Accept';
 
@@ -231,7 +231,7 @@ $lang['paid']                                                                = '
 $lang['Message']            = 'Message';
 
 $lang['Private Messages']	            = "You may limit your project to certain Providers only. This option is free if your project is Featured or Urgent, or if you are a Certified Member.";
-$lang['add all certified programmers to my list']='Add all certified Providers to my list';
+$lang['add all certified sellers to my list']='Add all certified Providers to my list';
 
 $lang['private invitation list']='private invitation list';
 $lang['one username per line']='One username per line';
@@ -283,8 +283,8 @@ $lang['Featured Project']	    	    = 'Featured Project';
 $lang['Urgent Project']	    	    = 'Urgent Project';
 $lang['Private Project']	    	    = 'Private Project';
 
-$lang['Contact Programmer']	    	    = 'Contact Programmer';
-$lang['Invite Programmer']	    	    = 'Invite Programmer';
+$lang['Contact Seller']	    	    = 'Contact Seller';
+$lang['Invite Seller']	    	    = 'Invite Seller';
 $lang['Add To Favourite']	    	    = 'Add To Favourite';
 $lang['BlackList User']	    	    = 'BlackList User';
 $lang['Message_Display']	    	    = 'Message Display';

@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Project 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		December 31 2008
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
  */
 class Project extends Controller {
  
@@ -78,8 +78,8 @@ class Project extends Controller {
 		//Page Title and Meta Tags
 		$this->outputData = $this->common_model->getPageTitleAndMetaData();
 		
-		//Get Top programmers
-		$topProgrammers = $this->common_model->getPageTitleAndMetaData();
+		//Get Top sellers
+		$topSellers = $this->common_model->getPageTitleAndMetaData();
 		
 		//Get Logged In user
 		$this->loggedInUser					= $this->common_model->getLoggedInUser();
@@ -906,9 +906,9 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 	
 	
 	/**
-	 * function create bid the programmer will create bid for the project
+	 * function create bid the seller will create bid for the project
 	 *
-	 * @access	public for programmer
+	 * @access	public for seller
 	 * @param	nil
 	 * @return	void
 	 */ 
@@ -921,7 +921,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 		//Check For Buyer Session
 		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer to bid projects')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller to bid projects')));
 			redirect('info');
 		}	
 		
@@ -1025,9 +1025,9 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 	// --------------------------------------------------------------------
 	
 	/**
-	 * Programmer will edit the placed bid for the project
+	 * Seller will edit the placed bid for the project
 	 *
-	 * @access	public for programmer
+	 * @access	public for seller
 	 * @param	nil
 	 * @return	void
 	 */ 
@@ -1040,7 +1040,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 		//Check For Buyer Session
 		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Programmer to bid projects')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller to bid projects')));
 			redirect('info');
 		}	
 		
@@ -1257,7 +1257,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 		  {
 			$updateKey                         = array('project_invitation.project_id'=>$project_id,'project_invitation.receiver_id'=>$this->loggedInUser->id);
 		    $updateData['notification_status'] = '1';
-		    $this->user_model->updateProgrammerInvitation($updateKey,$updateData);
+		    $this->user_model->updateSellerInvitation($updateKey,$updateData);
 		  }
 		  
 		$conditions = array('projects.id'=>$project_id);
@@ -1375,7 +1375,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 	/**
 	 * Loads postbid page.
 	 *
-	 * @access	public for programmer
+	 * @access	public for seller
 	 * @param	nil
 	 * @return	void
 	 */ 
@@ -1384,10 +1384,10 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 		//Load Language
 		$this->lang->load('enduser/postBid', $this->config->item('language_code'));
 		
-		//Check For Programmer Session
+		//Check For Seller Session
 		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a programmer to place a bid')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a seller to place a bid')));
 			redirect('info');
 		}
 		  if($this->loggedInUser->suspend_status==1)
@@ -1597,9 +1597,9 @@ return TRUE;
 	// --------------------------------------------------------------------
 	
 	/**
-	 * List bids on the particular project to pick a Programmer
+	 * List bids on the particular project to pick a Seller
 	 *
-	 * @access	public for buyer to pick programmer
+	 * @access	public for buyer to pick seller
 	 * @param	project id
 	 * @return	contents
 	 */ 
@@ -1711,7 +1711,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 	// --------------------------------------------------------------------
 	
 	/**
-	 * List bids on the particular project to pick a Programmer
+	 * List bids on the particular project to pick a Seller
 	 *
 	 * @access	public
 	 * @param	project id
@@ -1735,7 +1735,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 				$bidres = $bidres->row();
 				
 				//Get all user post bids 
-				$condition  =  array('bids.project_id'=>$bidres->id,'bids.user_id !='=>$bidres->programmer_id);
+				$condition  =  array('bids.project_id'=>$bidres->id,'bids.user_id !='=>$bidres->seller_id);
 				$bids       =  $this->skills_model->getBids($condition);
 				foreach($bids->result() as $bids)
 				  {
@@ -1848,10 +1848,10 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 		//Load Language
 		$this->lang->load('enduser/acceptProject', $this->config->item('language_code'));
 		                
-		//Check For Programmer Session
+		//Check For Seller Session
 		if(!isSeller())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a programmer to accept projects')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a seller to accept projects')));
 			redirect('users/login');
 		}
 		
@@ -1866,7 +1866,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 		    $this->skills_model->updateProjects(NULL,$updateData,$updateKey);
 		  }
 		
-		$conditions = array('projects.id'=>$project_id,'projects.checkstamp'=>$checkstamp,'projects.project_status' => '1','projects.programmer_id' => $this->loggedInUser->id);
+		$conditions = array('projects.id'=>$project_id,'projects.checkstamp'=>$checkstamp,'projects.project_status' => '1','projects.seller_id' => $this->loggedInUser->id);
 		$project = $this->skills_model->getProjects($conditions);
 		$projectRow = $project->row();
 		
@@ -1925,7 +1925,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 			
 			if($bal < $min_bal || $rem < $min_bal){
 				$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error','Your account balance is too low'));
-				redirect('programmer/viewMyProjects');
+				redirect('seller/viewMyProjects');
 			}
 			$updateKey 	= array('user_balance.user_id'=>$this->loggedInUser->id);
 			$updateData = array('amount' => $rem);
@@ -1934,24 +1934,24 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 		}
 		else{
 			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error','Your have no balance in your account to accept the projects'));
-			redirect('programmer/viewMyProjects');
+			redirect('seller/viewMyProjects');
 		}
 
 		$buyerId = $projectRow->creator_id;
-		$programmerId = $projectRow->programmer_id;
+		$sellerId = $projectRow->seller_id;
 		
 		$conditions2 = array('users.id' => $buyerId);
 		$buyer = $this->user_model->getUsers($conditions2);
 		$buyerRow = $buyer->row();
 		
-		$conditions3 = array('users.id' => $programmerId);
-		$programmer = $this->user_model->getUsers($conditions3);
-		$programmerRow = $programmer->row();
+		$conditions3 = array('users.id' => $sellerId);
+		$seller = $this->user_model->getUsers($conditions3);
+		$sellerRow = $seller->row();
 				
 		$updateKey = array(
 					'projects.id' => $project_id,
 					'projects.checkstamp' => $checkstamp,
-					'projects.programmer_id' => $programmerId
+					'projects.seller_id' => $sellerId
 			   		);
 		$updateData = array('projects.project_status'=> '2');
 		$upProject = $this->skills_model->accpetProject($updateKey,$updateData);
@@ -1979,11 +1979,11 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 				// get affiliate payments
 			$affiliate_result 			= $this->affiliate_model->getAffiliatePayment();
 			$buyer_affiliate_fee 		= $affiliate_result['buyer_affiliate_fee'];
-			$programmer_affiliate_fee  	= $affiliate_result['programmer_affiliate_fee'];	
+			$seller_affiliate_fee  	= $affiliate_result['seller_affiliate_fee'];	
 			$buyer_min_payout  			= $affiliate_result['buyer_min_payout'];
-			$programmer_min_payout   	= $affiliate_result['programmer_min_payout'];	
+			$seller_min_payout   	= $affiliate_result['seller_min_payout'];	
 			$buyer_project_fee   		= $affiliate_result['buyer_project_fee'];	
-			$programmer_project_fee   	= $affiliate_result['programmer_project_fee'];	
+			$seller_project_fee   	= $affiliate_result['seller_project_fee'];	
 				
 			//get affiliate settings
 			$settings = $this->settings_model->getSiteSettings();
@@ -1991,7 +1991,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 			$provider_settings_fee =  $settings['PROVIDER_COMMISSION_AMOUNT'];
 			$featured_project_amount =  $settings['FEATURED_PROJECT_AMOUNT'];	
 					
-					if($prj->project_status ==2 and $prj->programmer_id == $this->loggedInUser->id and $prj->checkstamp == $checkstamp) {
+					if($prj->project_status ==2 and $prj->seller_id == $this->loggedInUser->id and $prj->checkstamp == $checkstamp) {
 						
 						if(isset($user_data_row->refid) and $user_data_row->refid != "0") {
 							$refid = $user_data_row->refid;
@@ -2010,7 +2010,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 							
 							$signup_date_format = $mon.", ".$year;
 							
-							$conditions = array('bids.user_id' => $prj->programmer_id,'bids.project_id'=>$prj->id);
+							$conditions = array('bids.user_id' => $prj->seller_id,'bids.project_id'=>$prj->id);
 							$totbid  =  $this->skills_model->getBids($conditions);
 							$result_bid = $totbid->row();
 							
@@ -2060,14 +2060,14 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 							
 							if($role_id == 2) {
 								if($prj->is_feature == 1) {	
-									$featured_project_amount = $settings['FEATURED_PROJECT_AMOUNT'] * ($programmer_project_fee/100);
+									$featured_project_amount = $settings['FEATURED_PROJECT_AMOUNT'] * ($seller_project_fee/100);
 									$provider_percentage_amount = $bid_amount * ($provider_settings_fee/100);
-									$commision = $provider_percentage_amount * ($programmer_project_fee/100);	
+									$commision = $provider_percentage_amount * ($seller_project_fee/100);	
 									$commision_amount	=	$featured_project_amount + $commision;
 					
 								} else {				
-									$programmer_percentage_amount = $bid_amount * ($provider_settings_fee/100);
-									$commision_amount = $programmer_percentage_amount * ($programmer_affiliate_fee/100);
+									$seller_percentage_amount = $bid_amount * ($provider_settings_fee/100);
+									$commision_amount = $seller_percentage_amount * ($seller_affiliate_fee/100);
 								}
 								 
 								  // insert affiliate sales 					  
@@ -2123,7 +2123,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 							
 							$signup_date_format = $mon.", ".$year;
 							
-							$conditions2 = array('bids.user_id' => $prj->programmer_id,'bids.project_id'=>$prj->id);
+							$conditions2 = array('bids.user_id' => $prj->seller_id,'bids.project_id'=>$prj->id);
 							$totbid  =  $this->skills_model->getBids($conditions2);
 							$result_bid = $totbid->row();
 							
@@ -2172,13 +2172,13 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 							
 							if($role_id == 2) {
 								if($prj->is_feature == 1) {	
-									$featured_project_amount = $settings['FEATURED_PROJECT_AMOUNT'] * ($programmer_project_fee/100);
+									$featured_project_amount = $settings['FEATURED_PROJECT_AMOUNT'] * ($seller_project_fee/100);
 									$provider_percentage_amount = $bid_amount * ($provider_settings_fee/100);
-									$commision = $provider_percentage_amount * ($programmer_project_fee/100);	
+									$commision = $provider_percentage_amount * ($seller_project_fee/100);	
 									$commision_amount	=	$featured_project_amount + $commision;
 								} else {				
-									$programmer_percentage_amount = $bid_amount * ($provider_settings_fee/100);
-									$commision_amount = $programmer_percentage_amount * ($programmer_affiliate_fee/100);
+									$seller_percentage_amount = $bid_amount * ($provider_settings_fee/100);
+									$commision_amount = $seller_percentage_amount * ($seller_affiliate_fee/100);
 								}
 								 
 								
@@ -2225,7 +2225,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 			$result            = $this->email_model->getEmailSettings($conditionUserMail);
 			$rowUserMailConent = $result->row();
 			
-			$splVars = array("!programmer_username" => $programmerRow->user_name, "!project_title" => $projectRow->project_name, "!programmer_email" => $programmerRow->email,"!contact_url" => site_url('contact'));
+			$splVars = array("!seller_username" => $sellerRow->user_name, "!project_title" => $projectRow->project_name, "!seller_email" => $sellerRow->email,"!contact_url" => site_url('contact'));
 			$mailSubject = $this->lang->line($rowUserMailConent->mail_subject);
 			$mailContent = strtr($rowUserMailConent->mail_body, $splVars);
 			$toEmail = $buyerRow->email;
@@ -2233,15 +2233,15 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 
 			$this->email_model->sendHtmlMail($toEmail,$fromEmail,$mailSubject,$mailContent);
 			
-			//Send Mail to Programmer
-			$conditionUserMail2 = array('email_templates.type'=>'project_accepted_programmer');
+			//Send Mail to Seller
+			$conditionUserMail2 = array('email_templates.type'=>'project_accepted_seller');
 			$result2           = $this->email_model->getEmailSettings($conditionUserMail2);
 			$rowUserMailConent2 = $result2->row();
 			
 			$splVars2 = array("!project_title" => $projectRow->project_name, "!buyer_username" => $buyerRow->user_name, "!buyer_email" => $buyerRow->email,"!contact_url" => site_url('contact'));
 			$mailSubject2 = $this->lang->line($rowUserMailConent2->mail_subject);
 			$mailContent2 = strtr($rowUserMailConent2->mail_body, $splVars2);
-			$toEmail2 = $programmerRow->email;
+			$toEmail2 = $sellerRow->email;
 			$fromEmail2 = $this->config->item('site_admin_mail');
 			$this->email_model->sendHtmlMail($toEmail2,$fromEmail2,$mailSubject2,$mailContent2);
 			
@@ -2253,9 +2253,9 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 	// --------------------------------------------------------------------
 	
 	/**
-	 * deny project from programmer 
+	 * deny project from seller 
 	 *
-	 * @access	public for programmer
+	 * @access	public for seller
 	 * @param	project id and checkstamp
 	 * @return	contents
 	 */ 
@@ -2273,7 +2273,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 		    $this->skills_model->updateProjects(NULL,$updateData,$updateKey);
 		  }
 		
-		$conditions = array('projects.id'=>$project_id,'projects.checkstamp'=>$checkstamp,'projects.project_status' => '1','projects.programmer_id' => $this->loggedInUser->id);
+		$conditions = array('projects.id'=>$project_id,'projects.checkstamp'=>$checkstamp,'projects.project_status' => '1','projects.seller_id' => $this->loggedInUser->id);
 		$project = $this->skills_model->getProjects($conditions);
 		$projectRow = $project->row();
 		
@@ -2283,22 +2283,22 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 		}
 		
 		$buyerId = $projectRow->creator_id;
-		$programmerId = $projectRow->programmer_id;
+		$sellerId = $projectRow->seller_id;
 		
 		$conditions2 = array('users.id' => $buyerId);
 		$buyer = $this->user_model->getUsers($conditions2);
 		$buyerRow = $buyer->row();
 		
-		$conditions3 = array('users.id' => $programmerId);
-		$programmer = $this->user_model->getUsers($conditions3);
-		$programmerRow = $programmer->row();
+		$conditions3 = array('users.id' => $sellerId);
+		$seller = $this->user_model->getUsers($conditions3);
+		$sellerRow = $seller->row();
 				
 		$updateKey = array(
 					'projects.id' => $project_id,
 					'projects.checkstamp' => $checkstamp,
-					'projects.programmer_id' => $programmerId
+					'projects.seller_id' => $sellerId
 			   		);
-		$updateData = array('projects.project_status'=> '0','projects.programmer_id' => '0');
+		$updateData = array('projects.project_status'=> '0','projects.seller_id' => '0');
 		$upProject = $this->skills_model->accpetProject($updateKey,$updateData);
 		
 		if($upProject == 1){
@@ -2310,7 +2310,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 			$result            = $this->email_model->getEmailSettings($conditionUserMail);
 			$rowUserMailConent = $result->row();
 			
-			$splVars = array("!provider_username" => $programmerRow->user_name, "!project_title" => $projectRow->project_name,"!contact_url" => site_url('contact'));
+			$splVars = array("!provider_username" => $sellerRow->user_name, "!project_title" => $projectRow->project_name,"!contact_url" => site_url('contact'));
 			$mailSubject = $this->lang->line($rowUserMailConent->mail_subject);
 			$mailContent = strtr($rowUserMailConent->mail_body, $splVars);
 			$toEmail = $buyerRow->email;
@@ -2785,7 +2785,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 	/**
 	 * Post report regardign the project violation
 	 *
-	 * @access	public for programmer
+	 * @access	public for seller
 	 * @param	project id
 	 * @return	contents
 	 */ 
@@ -2962,19 +2962,19 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 			   {	
 			  	  $condition                            = array('user_list.creator_id'=>$this->loggedInUser->id);
 				  $this->outputData['favouriteList']    =   $this->user_model->getFavourite($condition);
-				  $this->load->view('buyer/inviteProgrammer',$this->outputData); 
+				  $this->load->view('buyer/inviteSeller',$this->outputData); 
 			   }
 			else
 			   {
 			   	//Notification message
-				$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be post project to invite programmers')));
+				$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be post project to invite sellers')));
 				redirect('info');	
 			   }
 		  }	      
 	   else
 	    {
 			//Notification message
-			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged to invite programmers')));
+			$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged to invite sellers')));
 			redirect('info');
 		}	
 	}//Function inviteUser End
@@ -3251,7 +3251,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 				$bidres = $bidres->row();
 				
 				//Get all user post bids 
-				$condition  =  array('bids.project_id'=>$bidres->id,'bids.user_id !='=>$bidres->programmer_id);
+				$condition  =  array('bids.project_id'=>$bidres->id,'bids.user_id !='=>$bidres->seller_id);
 				$bids       =  $this->skills_model->getBids($condition);
 				foreach($bids->result() as $bids)
 				  {

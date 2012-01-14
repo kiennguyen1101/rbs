@@ -8,9 +8,9 @@
  * @package		Reverse bidding system
  * @subpackage	Models
  * @category	Common_model 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @link		http://www.cogzidel.com
+ * @author		
+ * @version		
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact 
+    
+     
  
  */
  class Contact_model extends Model {
