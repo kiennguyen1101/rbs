@@ -43,7 +43,7 @@ $next='';
 							 		$role=$this->lang->line('Provider Profile');				 
 							 }
 							 ?>
-                              <h2><? echo $role;?>&nbsp;<?php echo $this->lang->line('-');?>&nbsp;<?php echo $user->user_name;?></h2>
+                              <h2><?phpecho $role;?>&nbsp;<?php echo $this->lang->line('-');?>&nbsp;<?php echo $user->user_name;?></h2>
                              <table cellspacing="1" cellpadding="2" width="96%">
                                 <tbody><tr>
                                   <td width="15%" class="dt"><?php echo $this->lang->line('Username:');?></td>

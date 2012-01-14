@@ -2,15 +2,15 @@
 /**
  * Reverse bidding system Mail Class
  *
- * Programmer related functions are handled by this controller.
+ * Seller related functions are handled by this controller.
  *
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Buyer 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @created		Feburary 04 2009
- * @link		http://www.cogzidel.com
+ * @author		
+ * @version		
+ * @created		
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,10 +27,9 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
-
+        
  */
+
 class Mail extends Controller {
 
 	//Global variable  
@@ -959,7 +958,7 @@ class Mail extends Controller {
 		 
 		//Get all the users projects who are all won the projects
 		if($logged_userrole == '2')
-		   $conditions = array('projects.programmer_id'=>$user_id);
+		   $conditions = array('projects.seller_id'=>$user_id);
         if($logged_userrole == '1')
 		   $conditions = array('projects.creator_id'=>$user_id);		   
 		$wonProjects  = $this->skills_model->getUsersproject($conditions);

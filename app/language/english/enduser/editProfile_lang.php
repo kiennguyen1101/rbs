@@ -1,5 +1,5 @@
 <?php
-$lang['programmer_name_validation']	            = 'User Name';
+$lang['seller_name_validation']	            = 'User Name';
 $lang['password_validation']					= 'Password';
 $lang['password_confirm_validation']	   		= 'Confirm Password';
 $lang['email_validation']	 			  		= 'Email';
@@ -14,9 +14,9 @@ $lang['categories_validation']					= 'area of expertise ';
 $lang['signup_agree_terms_validation']			= 'Agree Terms';
 $lang['signup_agree_contact_validation']		= 'Contact Post';
 $lang['activation_key_validation']				= 'Error exist in activation key';
-$lang['programmer_confirm_success']				= 'Provider Account Created Successfully';
+$lang['seller_confirm_success']				= 'Provider Account Created Successfully';
 $lang['not_access']								= 'Dont have rights to access this page';
-$lang['update_programmer_confirm_success']	    = 'Provider Account Updated Successfully';
+$lang['update_seller_confirm_success']	    = 'Provider Account Updated Successfully';
 $lang['update_buyer_confirm_success']	        = 'Buyer Account Updated Successfully';
 $lang['username']	       						= 'User name';
 $lang['pick_password']	       					= 'enter your password';
@@ -72,5 +72,5 @@ $lang['(']='(';
 $lang[')']=')';
 $lang['.)']='.)';
 $lang['$']='$';
-$lang['You must be logged in as a Programmer'] = 'You must be logged in as a Provider';
+$lang['You must be logged in as a Seller'] = 'You must be logged in as a Provider';
 ?>

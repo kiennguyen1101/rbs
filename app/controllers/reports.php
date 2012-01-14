@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Common Display 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		December 30 2008
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
 
  */
 class Reports extends Controller {
@@ -121,7 +121,7 @@ class Reports extends Controller {
 		$data_2 = array();
 		$mon = array();
 		$bid	= $this->user_model->getRoleId('buyer');
-		$pid	= $this->user_model->getRoleId('programmer');
+		$pid	= $this->user_model->getRoleId('seller');
 		for( $i=0; $i<6; $i++ )
 		{
 		  $lastmonth = mktime(0, 0, 0, date("m")-$i, date("d"),   date("Y"));
@@ -141,7 +141,7 @@ class Reports extends Controller {
 		
 		// we add the 3 line types and key labels
 		$g->line_dot( 3, 5, '0x0033CC', 'Buyers', 12 );
-		$g->line_dot( 3, 5, '0x009900', 'Programmers', 12);    // <-- 3px thick + dots
+		$g->line_dot( 3, 5, '0x009900', 'Sellers', 12);    // <-- 3px thick + dots
 		
 		$g->set_x_labels($mon );
 		$g->set_x_label_style( 10, '0x000000', 0, 1 );

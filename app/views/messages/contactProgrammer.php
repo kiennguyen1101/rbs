@@ -16,7 +16,7 @@
                           <div class="cls100_p">
                             <div class="clsInnerCommon">
 							 <div class="clsContactForm">
-							 <h2><?php echo 'Contact Programmer'?></h2>
+							 <h2><?php echo 'Contact Seller'?></h2>
 							 <p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a href="#" class="glow"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a> <?php echo $this->lang->line('(');?><a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout') ?></a><?php echo $this->lang->line(').');?>
 						</p>
 <br />
@@ -45,7 +45,7 @@
 								 } 
 							  }
 							?>
-							<form method="post" action="<?php echo site_url('userList/contactProgrammer'); ?>" >
+							<form method="post" action="<?php echo site_url('userList/contactSeller'); ?>" >
 							<input type="hidden" name="fromId" value="<?php echo $loggedInUser->id; ?>" />
 							<input type="hidden" name="toId" value="<?php if(isset($touser)) echo $touser; ?>" />
 							  <!--PROJECT MESSAGE BOARD-->

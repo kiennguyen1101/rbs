@@ -1,0 +1,13 @@
+# Use PHP5CGI as default
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond $1 !^(index\.php|images|robots\.txt)
+RewriteRule ^(.*)$ /index.php/$1 [L]
+
+	
+	
+	
+</IfModule>
+<IfModule mod_php5.c>
+php_value upload_max_filesize 8M
+</IfModule>

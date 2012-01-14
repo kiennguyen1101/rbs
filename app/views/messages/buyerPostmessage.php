@@ -169,7 +169,7 @@
 											 </select>
 							  </p>
 							 <!-- <p><span><?php echo $this->lang->line('Private Messsage'); ?>:</span><input type="text" name="toid" value="<?php echo set_value('toid'); ?>" class="clsText"><?php if(form_error('toid')) echo form_error('toid').'<br><br><br>'; ?></p>-->
-							  <!--<p><span>&nbsp;</span> <?php echo $this->lang->line('Note: Only private message to programmer'); ?></p>-->
+							  <!--<p><span>&nbsp;</span> <?php echo $this->lang->line('Note: Only private message to seller'); ?></p>-->
    						        <p><span><b><?php echo $this->lang->line('Message'); ?>:</b></span>
 	                              <textarea rows="10" name="message" cols="60"><?php echo set_value('message'); ?></textarea>
 						          <p><span>&nbsp;</span><?php if(form_error('message')) { echo form_error('message').'<br>'; } ?></p>

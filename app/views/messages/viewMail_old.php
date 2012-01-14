@@ -25,7 +25,7 @@
                       <div class="cls100_p ">
                         <div class="clsEditProfile clsSitelinks">
                           <h3><span class="clsPMB"><?php echo $this->lang->line('Project Mail Board'); ?></span></h3>
-                          <p class="clsSitelinks"><span><?php echo $this->lang->line('user');?>:</span> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name; ?></a> </p>
+                          <p class="clsSitelinks"><span><?php echo $this->lang->line('user');?>:</span> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name; ?></a> </p>
                           <p><span><?php echo $this->lang->line('User ID:');?></span> <?php echo $this->loggedInUser->id; ?></p>
                           <?php 
 							  //Show Flash error Message  for keyword field is empty
@@ -50,7 +50,7 @@
 							   } 
 							if($logged_userrole == '1')	
 							   { ?>
-                                <option name="user" value="user">Programmer</option>
+                                <option name="user" value="user">Seller</option>
                                 <?php
 							   } ?>
                               </select>
@@ -148,7 +148,7 @@
 													{
 														if($userlist->id == $Inbox->from_id )
 														  { ?>
-                                  <a href="<?php if($userlist->role_id == '2') echo site_url('programmer/viewProfile/'.$userlist->id); else echo site_url('buyer/viewProfile/'.$userlist->id); ?>">
+                                  <a href="<?php if($userlist->role_id == '2') echo site_url('seller/viewProfile/'.$userlist->id); else echo site_url('buyer/viewProfile/'.$userlist->id); ?>">
                                   <?php 
 															  echo $userlist->user_name; ?>
                                   </a>
@@ -237,7 +237,7 @@
 													{
 														if($userlist->id == $Inbox->from_id )
 														  { ?>
-                                      <a href="<?php if($userlist->role_id == '2') echo site_url('programmer/viewProfile/'.$userlist->id); else echo site_url('buyer/viewProfile/'.$userlist->id); ?>">
+                                      <a href="<?php if($userlist->role_id == '2') echo site_url('seller/viewProfile/'.$userlist->id); else echo site_url('buyer/viewProfile/'.$userlist->id); ?>">
                                       <?php 
 															  echo $userlist->user_name; ?>
                                       </a>
@@ -407,7 +407,7 @@
 										{
 											if($userlist->id == $Outbox->to_id )
 											  {?>
-                                <a href="<?php if($userlist->role_id == '2') echo site_url('programmer/viewProfile/'.$userlist->id); else echo site_url('buyer/viewProfile/'.$userlist->id); ?>">
+                                <a href="<?php if($userlist->role_id == '2') echo site_url('seller/viewProfile/'.$userlist->id); else echo site_url('buyer/viewProfile/'.$userlist->id); ?>">
                                 <?php 
 															  echo $userlist->user_name; ?>
                                 </a>
@@ -487,7 +487,7 @@
 										if($userlist->id == $Outbox->to_id )
 										  {
 											?>
-                                <a href="<?php if($userlist->role_id == '2') echo site_url('programmer/viewProfile/'.$userlist->id); else echo site_url('buyer/viewProfile/'.$userlist->id); ?>">
+                                <a href="<?php if($userlist->role_id == '2') echo site_url('seller/viewProfile/'.$userlist->id); else echo site_url('buyer/viewProfile/'.$userlist->id); ?>">
                                 <?php 
 															  echo $userlist->user_name; ?>
                                 </a>
@@ -598,7 +598,7 @@
 <script type="text/javascript">
 <!-- Function used to load the corresponding users to make transfer for corresponding project
 // Argument                   --     Nil
-//Return value                --     Programmername or buyername -->
+//Return value                --     Sellername or buyername -->
 function load_user()
 {
 	var url = '<?php echo site_url('transfer/load_users');?>';

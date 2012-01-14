@@ -41,20 +41,20 @@
           </table></td>
           <td><table class="table4"  border="0">
             <tr>
-              <td><?php echo $this->lang->line('Programmer Affiliate Fee'); ?> :</td>
-              <td><input class="clsTextBox" type="text" name="programmer_affiliate_fee" value="<?php if(isset($affiliates['programmer_affiliate_fee'])) echo $affiliates['programmer_affiliate_fee']; else echo $this->input->post('programmer_affiliate_fee'); ?>"/><div><?php echo form_error('programmer_affiliate_fee'); ?></div></td>
+              <td><?php echo $this->lang->line('Seller Affiliate Fee'); ?> :</td>
+              <td><input class="clsTextBox" type="text" name="seller_affiliate_fee" value="<?php if(isset($affiliates['seller_affiliate_fee'])) echo $affiliates['seller_affiliate_fee']; else echo $this->input->post('seller_affiliate_fee'); ?>"/><div><?php echo form_error('seller_affiliate_fee'); ?></div></td>
             </tr>
             <tr>
-              <td><?php echo $this->lang->line('Programmer Minimum Amount'); ?> :</td>
-              <td><input class="clsTextBox" type="text" name="programmer_min_amount" value="<?php if(isset($affiliates['programmer_min_amount'])) echo $affiliates['programmer_min_amount']; else echo $this->input->post('programmer_min_amount'); ?>"/><div><?php echo form_error('programmer_min_amount'); ?></div></td>
+              <td><?php echo $this->lang->line('Seller Minimum Amount'); ?> :</td>
+              <td><input class="clsTextBox" type="text" name="seller_min_amount" value="<?php if(isset($affiliates['seller_min_amount'])) echo $affiliates['seller_min_amount']; else echo $this->input->post('seller_min_amount'); ?>"/><div><?php echo form_error('seller_min_amount'); ?></div></td>
             </tr>
             <tr>
-              <td><?php echo $this->lang->line('Programmer Minimum Payout'); ?> : </td>
-              <td><input class="clsTextBox" type="text" name="programmer_min_payout" value="<?php if(isset($affiliates['programmer_min_payout'])) echo $affiliates['programmer_min_payout']; else echo $this->input->post('programmer_min_payout'); ?>"/><div><?php echo form_error('programmer_min_payout'); ?></div></td>
+              <td><?php echo $this->lang->line('Seller Minimum Payout'); ?> : </td>
+              <td><input class="clsTextBox" type="text" name="seller_min_payout" value="<?php if(isset($affiliates['seller_min_payout'])) echo $affiliates['seller_min_payout']; else echo $this->input->post('seller_min_payout'); ?>"/><div><?php echo form_error('seller_min_payout'); ?></div></td>
             </tr>
             <tr>
-              <td><?php echo $this->lang->line('Programmer Maximum Payout'); ?> :</td>
-              <td><input class="clsTextBox" type="text" name="programmer_max_payout" value="<?php if(isset($affiliates['programmer_max_payout'])) echo $affiliates['programmer_max_payout']; else echo $this->input->post('programmer_max_payout'); ?>"/><div><?php echo form_error('programmer_max_payout'); ?></div></td>
+              <td><?php echo $this->lang->line('Seller Maximum Payout'); ?> :</td>
+              <td><input class="clsTextBox" type="text" name="seller_max_payout" value="<?php if(isset($affiliates['seller_max_payout'])) echo $affiliates['seller_max_payout']; else echo $this->input->post('seller_max_payout'); ?>"/><div><?php echo form_error('seller_max_payout'); ?></div></td>
             </tr>
           </table></td>
         </tr>
@@ -72,8 +72,8 @@
           </table></td>
           <td><table class="table4"  border="0">
             <tr>
-              <td><?php echo $this->lang->line('Featured Project Fee for Programmer'); ?>:</td>
-              <td><input class="clsTextBox" type="text" name="programmer_project_fee" value="<?php if(isset($affiliates['programmer_project_fee'])) echo $affiliates['programmer_project_fee']; else echo $this->input->post('programmer_project_fee'); ?>"/><div><?php echo form_error('programmer_project_fee'); ?></div></td>
+              <td><?php echo $this->lang->line('Featured Project Fee for Seller'); ?>:</td>
+              <td><input class="clsTextBox" type="text" name="seller_project_fee" value="<?php if(isset($affiliates['seller_project_fee'])) echo $affiliates['seller_project_fee']; else echo $this->input->post('seller_project_fee'); ?>"/><div><?php echo form_error('seller_project_fee'); ?></div></td>
             </tr>
           </table></td>
         </tr>
@@ -90,12 +90,12 @@
 <script>
 function isChecked() {
 	if(document.affiliateForm.buyer.checked) {
-		document.affiliateForm.programmer.checked = false;
+		document.affiliateForm.seller.checked = false;
 	} 		
 }
 
 function isChecked1() {
-	if(document.affiliateForm.programmer.checked) {
+	if(document.affiliateForm.seller.checked) {
 		document.affiliateForm.buyer.checked = false;
 	} 
 }

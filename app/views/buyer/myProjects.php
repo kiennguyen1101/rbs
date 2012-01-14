@@ -58,7 +58,7 @@
                                     <?php } 
 								   if($myProjects->is_feature == 1) { ?>
                                     &nbsp;&nbsp;<img src="<?php echo image_url('featured2.gif');?>" width="14" height="14" title="Featured project" alt="<?php echo $this->lang->line('Featured Project'); ?>" />
-                                    <? }
+                                    <?php}
 									if($myProjects->is_private == 1) {?>
 									
 									 &nbsp;&nbsp;<img src="<?php echo image_url('private.png');?>" width="14" height="14" title="private project" alt="<?php echo $this->lang->line('Private Project'); ?>" /><?php }
@@ -134,7 +134,7 @@
 								{
 								 $condition=array('subscriptionuser.username'=>$closedProject->userid);
 								$certified2= $this->certificate_model->getCertificateUser($condition);
-									$reviewDetails = getReviewStatus($closedProject->id,$closedProject->programmer_id);
+									$reviewDetails = getReviewStatus($closedProject->id,$closedProject->seller_id);
 									
 									$reviewDetails = $reviewDetails->row();
 									
@@ -151,16 +151,16 @@
                                     <?php } 
 								   if($closedProject->is_feature == 1) { ?>
                                     &nbsp;&nbsp;<img src="<?php echo image_url('featured2.gif');?>" width="14" height="14" title="Featured project" alt="<?php echo $this->lang->line('Featured Project'); ?>" />
-                                    <? }
+                                    <?php}
 									if($closedProject->is_private == 1) {?>
 									
 									&nbsp;&nbsp;<img src="<?php echo image_url('private.png');?>" width="14" height="14" title="private project" alt="<?php echo $this->lang->line('Private Project'); ?>" /><?php }
-									 ?></td><td><a href="<?php echo site_url('programmer/viewProfile/'.$closedProject->userid);?>"><?php echo $closedProject->user_name; ?></a>
+									 ?></td><td><a href="<?php echo site_url('seller/viewProfile/'.$closedProject->userid);?>"><?php echo $closedProject->user_name; ?></a>
 								<?php	if(count($certified2->result())>0)
 								{?>
 								<img src="<?php echo image_url('certified.gif');?>" title="<?php echo $this->lang->line('Certified Member') ?>" alt="<?php  echo $this->lang->line('Certified Member')?>" />
 								<?php }?>
-									 </td><td> <?php echo getLowestBid($closedProject->id,$closedProject->programmer_id); ?> </td><td> <a href="<?php echo site_url('buyer/reviewProgrammer/'.$closedProject->id);?>"><?php echo $this->lang->line('view review');?></a></td><td>
+									 </td><td> <?php echo getLowestBid($closedProject->id,$closedProject->seller_id); ?> </td><td> <a href="<?php echo site_url('buyer/reviewSeller/'.$closedProject->id);?>"><?php echo $this->lang->line('view review');?></a></td><td>
 								  <?php  if($closedProject->flag == 0)
 								  
 								 {
@@ -214,7 +214,7 @@
                                     <?php } 
 								   if($bookMark->is_feature == 1) { ?>
                                     &nbsp;&nbsp;<img src="<?php echo image_url('featured2.gif');?>" width="14" height="14" title="Featured project" alt="<?php echo $this->lang->line('Featured Project'); ?>" />
-                                    <? }
+                                    <?php}
 									if($bookMark->is_private == 1) {?>
 									
 									 &nbsp;&nbsp;<img src="<?php echo image_url('private.png');?>" width="14" height="14" title="private project" alt="<?php echo $this->lang->line('Private Project'); ?>" /><?php }

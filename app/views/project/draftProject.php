@@ -35,7 +35,7 @@
 								<p> <?php echo $this->lang->line('note1');?> <a href="#"><?php echo $this->lang->line('Click here');?></a> <?php echo $this->lang->line('to post a job listing instead.');?> </p>
 								<h3><span class="clsFileManager"><?php echo $this->lang->line('Account Login Details...');?></span></h3>
 
-				<p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a><?php 
+				<p class="clsSitelinks"><?php echo $this->lang->line('You are currently logged in as');?> <a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"><?php if(isset($loggedInUser) and is_object($loggedInUser))  echo $loggedInUser->user_name;?></a><?php 
 
 								  $condition1=array('subscriptionuser.username'=>$loggedInUser->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition1);
@@ -208,16 +208,16 @@
 									<li>
 									<?php if($draft->is_private==0) { ?>
 									<ul class="clsLiFloat clsClearFix">
-									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Programmers'); ?></b><br /><br />
-									   <span><a href="#private_list" onclick="javascript:loadProgrammers('<?php foreach($favouriteUsers->result() as $users) {  
+									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Sellers'); ?></b><br /><br />
+									   <span><a href="#private_list" onclick="javascript:loadSellers('<?php foreach($favouriteUsers->result() as $users) {  
 									   echo $users->user_name.',\n';  } ?>');"><?php echo $this->lang->line('Invite Favourite'); ?></a> </span></li>
 									   <li class="clsRate"></li>
 									  <li class="clsDescription"> <span><textarea name="private_list" id="private_listfill" rows="7" cols="30" disabled="disabled" ><?php echo $draft->private_users;?></textarea></span></li>
 									 </ul> 
 									 <?php } else {?>
 									 <ul class="clsLiFloat clsClearFix">
-									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Programmers'); ?></b><br /><br />
-									   <span><a href="#private_list" onclick="javascript:loadProgrammers('<?php foreach($favouriteUsers->result() as $users) {  
+									  <li class="clsDeatils"><b><?php echo $this->lang->line('Invite Sellers'); ?></b><br /><br />
+									   <span><a href="#private_list" onclick="javascript:loadSellers('<?php foreach($favouriteUsers->result() as $users) {  
 									   echo $users->user_name.',\n';  } ?>');"><?php echo $this->lang->line('Invite Favourite'); ?></a> </span></li>
 									   <li class="clsRate"></li>
 									  <li class="clsDescription"> <span><textarea name="private_list" id="private_listfill" rows="7" cols="30" ><?php echo $draft->private_users;?></textarea></span></li>
@@ -277,7 +277,7 @@ function submitDraft()
 </script>
 <script type="text/javascript">
 /* For laod favouriteusers list into the textarea box */
-function loadProgrammers(num)
+function loadSellers(num)
 {
    document.getElementById('private_listfill').value += num;
    return TRUE;

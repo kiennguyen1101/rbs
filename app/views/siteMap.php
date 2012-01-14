@@ -25,8 +25,8 @@
                                 <ul>
                                   <li><a href="<?php echo site_url('?c=rss'); ?>"><?php echo $this->lang->line('RSS Feeds');?></a></li>
                                   <li><a href="<?php echo site_url('faq'); ?>"><?php echo $this->lang->line('FAQs');?></a></li>
-                                  <li><a href="<?php echo site_url('programmer/getProgrammersreview');?>"><?php echo $this->lang->line('Reports');?></a></li>
-								  <li><a href="<?php echo site_url('programmer/getProgrammersreview');?>"><?php echo $this->lang->line('Contacts');?></a></li>
+                                  <li><a href="<?php echo site_url('seller/getSellersreview');?>"><?php echo $this->lang->line('Reports');?></a></li>
+								  <li><a href="<?php echo site_url('seller/getSellersreview');?>"><?php echo $this->lang->line('Contacts');?></a></li>
 								  <li><a href="<?php echo site_url('users/forgotPassword');?>"><?php echo $this->lang->line('Forgot Password?');?></a></li>
 								 <?php
 								if(isset($pages))
@@ -35,7 +35,7 @@
 									{
 								?>
 									<li><a href=" <?php echo site_url('page')?>/<?php echo $page->url;?>"> <?php echo $page->name; ?></a></li>
-								   <? } 
+								   <?php } 
 									 }
 								   ?>	
                                 </ul>
@@ -47,7 +47,7 @@
                             
 
                                 <ul>
-                                  <li><a href="<?php echo site_url('programmer/signUp');?>"><?php echo $this->lang->line('Sign Up');?></a></li>
+                                  <li><a href="<?php echo site_url('seller/signUp');?>"><?php echo $this->lang->line('Sign Up');?></a></li>
                                   <li><a href="<?php echo base_url();?>"><?php echo $this->lang->line('Find Projects');?></a></li>
                                   <li><a href="<?php echo site_url('project/viewAllProjects/all');?>"><?php echo $this->lang->line('Latest Projects');?> </a></li>
                                   <li><a href="<?php echo site_url('project/viewAllProjects/all');?>"><?php echo $this->lang->line('Featured Projects');?> </a></li>
@@ -64,7 +64,7 @@
                                 <ul>
                                   <li><a href="<?php echo site_url('project/create');?>"> <?php echo $this->lang->line('Post Your Project');?></a></li>
                                   <li><a href="<?php echo site_url('buyer/signUp');?>"><?php echo $this->lang->line('Sign Up');?></a></li>
-                                  <li><a href="<?php echo site_url('programmer/getProgrammersreview');?>"><?php echo $this->lang->line('Top Programmers');?></a></li>
+                                  <li><a href="<?php echo site_url('seller/getSellersreview');?>"><?php echo $this->lang->line('Top Sellers');?></a></li>
                                 </ul>
                               </div>
                               <div class="clear"></div>

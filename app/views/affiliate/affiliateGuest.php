@@ -12,7 +12,7 @@
 								  <td width="248" class="dt">Subject</td>
                                   <td width="248" align="center" class="dt">Questions</td>
                                 </tr>
-								<?
+								<?php
 								$i=0;
 								foreach($affiliate_guest as $k) {
 									$affiliate_email_result['email'] 		=  $k->email;
@@ -26,12 +26,12 @@
 									$class = "dt2";
 								?>
                                 <tr>
-                                  <td class="<? echo $class." "."dt0"; ?>"><? echo $affiliate_email_result['email']; ?></td>								
-                                  <td class="<? echo $class; ?>"><? echo $affiliate_email_result['subject']; ?></td>
-                                  <td  class="<? echo $class; ?>"><? echo $affiliate_email_result['questions']; ?></td>
+                                  <td class="<?php echo $class." "."dt0"; ?>"><?php echo $affiliate_email_result['email']; ?></td>								
+                                  <td class="<?php echo $class; ?>"><?php echo $affiliate_email_result['subject']; ?></td>
+                                  <td  class="<?php echo $class; ?>"><?php echo $affiliate_email_result['questions']; ?></td>
                                 </tr>
 								
-								<?
+								<?php
 								$i++;
 								}
 								?>

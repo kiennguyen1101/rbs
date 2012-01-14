@@ -109,12 +109,12 @@ class Affiliate_model extends Model {
 							affiliate_payment.buyer_min_amount,
 							affiliate_payment.buyer_min_payout, 
 							affiliate_payment.buyer_max_payout, 
-							affiliate_payment.programmer_affiliate_fee,
-							affiliate_payment.programmer_min_amount, 
-							affiliate_payment.programmer_min_payout, 
-							affiliate_payment.programmer_max_payout,
+							affiliate_payment.seller_affiliate_fee,
+							affiliate_payment.seller_min_amount, 
+							affiliate_payment.seller_min_payout, 
+							affiliate_payment.seller_max_payout,
 							affiliate_payment.buyer_project_fee,
-							affiliate_payment.programmer_project_fee'
+							affiliate_payment.seller_project_fee'
 							);
 			
 		$affiliate_result = $this->db->get();
@@ -128,12 +128,12 @@ class Affiliate_model extends Model {
 				$affiliates['buyer_min_amount'] 		=  $k->buyer_min_amount;
 				$affiliates['buyer_min_payout'] 		=  $k->buyer_min_payout ;
 				$affiliates['buyer_max_payout'] 		=  $k->buyer_max_payout;
-				$affiliates['programmer_affiliate_fee'] =  $k->programmer_affiliate_fee; 
-				$affiliates['programmer_min_amount'] 	=  $k->programmer_min_amount; 
-				$affiliates['programmer_min_payout'] 	=  $k->programmer_min_payout; 
-				$affiliates['programmer_max_payout'] 	=  $k->programmer_max_payout; 
+				$affiliates['seller_affiliate_fee'] =  $k->seller_affiliate_fee; 
+				$affiliates['seller_min_amount'] 	=  $k->seller_min_amount; 
+				$affiliates['seller_min_payout'] 	=  $k->seller_min_payout; 
+				$affiliates['seller_max_payout'] 	=  $k->seller_max_payout; 
 				$affiliates['buyer_project_fee'] 		=  $k->buyer_project_fee; 
-				$affiliates['programmer_project_fee'] 	=  $k->programmer_project_fee;
+				$affiliates['seller_project_fee'] 	=  $k->seller_project_fee;
 				
 				if($affiliate_result->num_rows() > 0 ) {
 					$affiliates['num_rows'] 			=  $affiliate_result->num_rows();                				               

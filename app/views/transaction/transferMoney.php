@@ -20,7 +20,7 @@
                              <h3><span class="clsEscrow"><?php echo $this->lang->line('Transfer Funds');?></span></h3>
 							<?php $condition1=array('subscriptionuser.username'=>$loggedInUser->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition1);?>
-							<p><span><?php echo $this->lang->line('User name :');?></span><a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'programmer'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name?></a>
+							<p><span><?php echo $this->lang->line('User name :');?></span><a class="glow" href="<?php if($loggedInUser->role_id == '1') $res = 'buyer'; else $res = 'seller'; echo site_url($res.'/viewprofile/'.$loggedInUser->id); ?>"> <?php echo $loggedInUser->user_name?></a>
 							<?php if(count($certified1->result())>0)
 								{?>
 								<img src="<?php echo image_url('certified.gif');?>" />
@@ -46,27 +46,27 @@
 											print_r($projectList_tranferamount);				
 									  foreach($projectList_tranferamount as $res)
 										{ 
-										  //Make transfer only for buyer to programmer
+										  //Make transfer only for buyer to seller
 										  if($logged_userrole == '1')
 											{
-											  if($res->creator_id == $loggedInUser->id and $res->programmer_id != '0')
+											  if($res->creator_id == $loggedInUser->id and $res->seller_id != '0')
 												{ ?>
 												  <option value="<?php echo $res->id; ?>" > <?php echo $res->id.' -- '.$res->project_name; ?></option> 
 												  <?php 	
 												}	
 											}
 																				  
-										  //Make transfer only for programmer to buyer
+										  //Make transfer only for seller to buyer
 										  if($logged_userrole == '2')
 											{
-											  if($res->programmer_id == $loggedInUser->id)
+											  if($res->seller_id == $loggedInUser->id)
 												{ ?>
 												 <option value="<?php echo $res->id; ?>" > <?php echo $res->id.' -- '.$res->project_name; ?></option> <?php 	
 												}	
 											}	
 									  }	//foreah end here  ?>
 								 </select></p>
-								 <p><span><?php if($loggedInUser->role_id == '1') echo $this->lang->line('Select Programmer'); else echo $this->lang->line('Select Buyer');?>:</span>
+								 <p><span><?php if($loggedInUser->role_id == '1') echo $this->lang->line('Select Seller'); else echo $this->lang->line('Select Buyer');?>:</span>
 								<select name="users_load" id="users_load" class="clsListBox">
 								 												
 									 <?php 
@@ -76,7 +76,7 @@
 									   } 
 									 if($logged_userrole == '1')	
 									   { ?>
-									     <option value="0" selected="selected"> <?php echo '<b>-- '.$this->lang->line('Select Programmer').' --</b>'; ?> </option> <?php 
+									     <option value="0" selected="selected"> <?php echo '<b>-- '.$this->lang->line('Select Seller').' --</b>'; ?> </option> <?php 
 									   } ?>
 								</select>
 							  </p>
@@ -126,7 +126,7 @@
 									  <tr>
 									  <td class="<?php echo $class; ?>"><?php echo $k; ?></td>
 									  <td class="<?php echo $class1; ?>"><?php foreach($usersList->result() as $user) { if($user->id == $res->creator_id) { ?>
-									   <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('programmer/viewProfile/'.$user->id);?>"> <?php  echo $user->user_name; 
+									   <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('seller/viewProfile/'.$user->id);?>"> <?php  echo $user->user_name; 
 									   
 									   		   $condition=array('subscriptionuser.username'=>$user->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition);?>
@@ -138,7 +138,7 @@
 									  
 									  
 									  <td class="<?php echo $class1; ?>"><?php foreach($usersList->result() as $user) { if($user->id == $res->reciever_id) { ?>
-									   <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('programmer/viewProfile/'.$user->id);?>"> <?php  echo $user->user_name; break; } }  ?></a></td> 
+									   <a href="<?php if($user->role_id == '1') echo site_url('buyer/viewProfile/'.$user->id); if($user->role_id=='2') echo site_url('seller/viewProfile/'.$user->id);?>"> <?php  echo $user->user_name; break; } }  ?></a></td> 
 									   								  
 									  <td class="<?php echo $class1; ?>"> $ <?php echo $res->amount; ?></td>
 									  <td class="<?php echo $class1; ?>"><?php echo get_datetime($res->transaction_time); ?></td>
@@ -174,7 +174,7 @@
 <script type="text/javascript">
 <!-- Function used to load the corresponding users to make transfer for corresponding project
 // Argument                   --     Nil
-//Return value                --     Programmername or buyername -->
+//Return value                --     Sellername or buyername -->
 function load_user()
 {
 	var url = '<?php echo site_url('transfer/load_users');?>';

@@ -30,7 +30,7 @@
 									<p>
 									  <label><b><?php echo $this->lang->line('are you sure to delete'); ?> </b></label> &nbsp;&nbsp;
 									  <input type="submit" name="delete" value="Yes" class="clsSmall" />
-									  <input type="submit" name="viewProject" value="No" class="clsSmall" onclick="javascript:submit1(<?=$res->id?>)"/>
+									  <input type="submit" name="viewProject" value="No" class="clsSmall" onclick="javascript:submit1(<?php$res->id?>)"/>
 									</p>
 									
 								</form>

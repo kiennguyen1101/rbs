@@ -16,7 +16,7 @@ $lang['Urgent Projects']='Urgent Projects';
 $lang['Get Services']='Get Services';
 $lang['Post Your Project']='Post Your Project';
 $lang['Sign Up']='Sign Up';
-$lang['Top Programmers']='Top Providers';
+$lang['Top Sellers']='Top Providers';
 $lang['Latest Projects']='Latest Projects';
 $lang['Services Categories']='Services Categories';
 

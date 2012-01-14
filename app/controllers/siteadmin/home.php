@@ -6,11 +6,7 @@
  *
  * @package		Reverse bidding system
  * @subpackage	Controllers
- * @category	Access Controll
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @created		December 22 2008
- * @link		http://www.cogzidel.com
+ * @category	Access Controll 
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,10 +23,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
-
  */
+
 class Home extends Controller {
 	public $outputData;
 	public $loggedInUser;
@@ -86,10 +80,10 @@ class Home extends Controller {
 		$buyer      = $this->admin_model->getUsers($buyer_condtition);
 		$this->outputData['buyers'] =  $buyer->num_rows();
 		
-		//Get total programmer
-		$programmer_condtition = array('users.role_id'=>'2');
-		$programmer      = $this->admin_model->getUsers($programmer_condtition);
-		$this->outputData['programmers'] =  $programmer->num_rows();
+		//Get total seller
+		$seller_condtition = array('users.role_id'=>'2');
+		$seller      = $this->admin_model->getUsers($seller_condtition);
+		$this->outputData['sellers'] =  $seller->num_rows();
 		
 		//Get total open projects
 		//$this->load->model('skills_model');
@@ -172,7 +166,7 @@ class Home extends Controller {
 	} //Function Index End
 	
 }
-//Class Login End 
+//Class Home End 
 
-/* End of file login.php */
-/* Location: ./system/application/controllers/admin/login.php */
+/* End of file home.php */
+/* Location: ./app/controllers/siteadmin/home.php */

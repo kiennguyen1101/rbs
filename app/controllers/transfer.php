@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Project 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		Feburary 04 2009
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
 
  */
 class Transfer extends Controller {
@@ -314,7 +314,7 @@ class Transfer extends Controller {
 		  {
 		    
 		  	if($role == '1')
-			   $userid = $res->programmer_id;
+			   $userid = $res->seller_id;
 			if($role == '2')
 			   $userid = $res->creator_id;
 		  }
@@ -346,7 +346,7 @@ class Transfer extends Controller {
 				<?php 
 				if($role == '1')
 				{ ?>
-					<option value="0"> <?php echo '<b>-- '.$this->lang->line('Select Programmer').' --</b>'; ?></option>	<?php 
+					<option value="0"> <?php echo '<b>-- '.$this->lang->line('Select Seller').' --</b>'; ?></option>	<?php 
 				}
 				if($role == '2')
 				{ ?>
@@ -385,7 +385,7 @@ class Transfer extends Controller {
 		  {
 		    
 		  	if($role == '1')
-			   $userid = $res->programmer_id;
+			   $userid = $res->seller_id;
 			if($role == '2')
 			   $userid = $res->creator_id;
 		  }
@@ -447,7 +447,7 @@ class Transfer extends Controller {
 		  {
 		    
 		  	if($role == '1')
-			   $userid = $res->programmer_id;
+			   $userid = $res->seller_id;
 			if($role == '2')
 			   $userid = $res->creator_id;
 		  }

@@ -93,14 +93,14 @@
                                                         <div class="clsTopLeft clsFloatLeft">
                                                           <p class="clsBorder">
                                                             <?php 
-								 foreach($certificateprogrammer as $certficates_programmer)
+								 foreach($certificateseller as $certficates_seller)
 								{
-								foreach($certficates_programmer->result() as $certficate_programmer)
+								foreach($certficates_seller->result() as $certficate_seller)
 								{
 								?>
-                                                          <h5><a href="<?php echo site_url('programmer/viewProfile/'.$certficate_programmer->id) ?>"><?php echo $certficate_programmer->user_name;?></a><img src="<?php echo image_url('certified.gif');  ?>" title="<?php echo $this->lang->line('Certified Member') ?>" alt="<?php echo $this->lang->line('Certified Member') ?>" /></h5>
+                                                          <h5><a href="<?php echo site_url('seller/viewProfile/'.$certficate_seller->id) ?>"><?php echo $certficate_seller->user_name;?></a><img src="<?php echo image_url('certified.gif');  ?>" title="<?php echo $this->lang->line('Certified Member') ?>" alt="<?php echo $this->lang->line('Certified Member') ?>" /></h5>
                                                           </p>
-                                                          <!--<p><?php echo character_limiter($certficate_programmer->profile_desc,'115');?></p>-->
+                                                          <!--<p><?php echo character_limiter($certficate_seller->profile_desc,'115');?></p>-->
                                                           <br>
                                                           <?php 
 								}

@@ -21,7 +21,7 @@
                             <tbody>
                               <tr>
                                 <td width="30" class="dt"><?php echo $this->lang->line('SI.No');?></td>
-                                <td width="250" class="dt"><? 
+                                <td width="250" class="dt"><?php
 						  $odr = 'ASC';
 						  if($order == 'ASC')
 						  $odr = 'DESC';
@@ -46,7 +46,7 @@
 								?>
                               <tr class="<?php echo $class; ?>">
                                 <td><?php echo $j;  ?></td>
-                                <td><a href="<?php echo site_url('programmer/viewProfile/'.$users->id); ?>"><?php echo $users->user_name; ?> </td>
+                                <td><a href="<?php echo site_url('seller/viewProfile/'.$users->id); ?>"><?php echo $users->user_name; ?> </td>
                                 <td><?php $user_cat = explode(',',$users->user_categories); foreach($user_cat as $res) {  foreach($categories->result() as $cat) { if($res == $cat->id){ echo $cate[$i++] = $cat->category_name.' '; }   } }  ?>
                                 </td>
                                

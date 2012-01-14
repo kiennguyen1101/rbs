@@ -45,15 +45,15 @@
                                                   <p>If you want to display a list of open projects on your website, copy and paste the following javascript tag onto your website pages:</p>
                                                   <br/>
                                                   <p>
-                                                    <textarea cols="70" rows="4" name="select1"><script src="<? echo site_url(); ?>/affiliate/projectList/<? if(isset($this->loggedInUser->user_name)) echo $this->loggedInUser->user_name; else echo 'USER'; ?>"></script>
+                                                    <textarea cols="70" rows="4" name="select1"><script src="<?php echo site_url(); ?>/affiliate/projectList/<?php if(isset($this->loggedInUser->user_name)) echo $this->loggedInUser->user_name; else echo 'USER'; ?>"></script>
 </textarea>
                                                   </p>
                                                   <br/>
                                                   <p><a href="#">Select HTML</a></p>
                                                   <br/>
-                                                  <? if(!isset($this->loggedInUser->user_name)) { ?>
+                                                  <?php if(!isset($this->loggedInUser->user_name)) { ?>
                                                   <p>(Replace <span>USER</span> with your username.)</p>
-                                                  <? } else echo '';?>
+                                                  <?php } else echo '';?>
                                                 </div>
                                               </div>
                                             </div>

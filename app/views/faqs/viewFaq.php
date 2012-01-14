@@ -29,7 +29,7 @@
 							<!--  <p><b>Related Topics:</b></p>-->
 						<!--		<ul>
 									<li><a href="#">Buyers</a></li>		
-									<li><a href="#">Programmers</a></li>
+									<li><a href="#">Sellers</a></li>
 								</ul>-->
 							  </div>
 							  <!--END OF FAQ ANSWER-->

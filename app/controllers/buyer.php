@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Buyer 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		December 31 2008
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact  
+    
+      
  */
 class Buyer extends Controller {
 
@@ -435,7 +435,7 @@ class Buyer extends Controller {
 	// --------------------------------------------------------------------
 	
 	/**
-	 * editProfile for both buyer and programmer for edit his profile
+	 * editProfile for both buyer and seller for edit his profile
 	 *
 	 * @access	public
 	 * @param	nil
@@ -469,7 +469,7 @@ class Buyer extends Controller {
 		{	
 			//Set rules
 			$this->form_validation->set_rules('logo','lang:logo_validation','callback__logo_check');
-			$this->form_validation->set_rules('name','lang:programmer_name_validation','required|trim|min_length[5]|xss_clean');
+			$this->form_validation->set_rules('name','lang:seller_name_validation','required|trim|min_length[5]|xss_clean');
 			$this->form_validation->set_rules('email','Email','required|trim|min_length[5]|xss_clean');
           	if($this->form_validation->run())
 			{
@@ -1057,13 +1057,13 @@ class Buyer extends Controller {
 	// --------------------------------------------------------------------
 	
 	/**
-	 * review Programmers
+	 * review Sellers
 	 *
 	 * @access	private
 	 * @param	nil
 	 * @return	void
 	 */ 
-	function reviewProgrammer()
+	function reviewSeller()
 	{
 		
 		//Load Language
@@ -1072,11 +1072,11 @@ class Buyer extends Controller {
 		//Check For Buyer Session
 		if(!isBuyer())
 		{
-        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a buyer to review programmer')));
+        	$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a buyer to review seller')));
 			redirect('info');
 		}
 		
-		if($this->input->post('reviewProgrammer')){
+		if($this->input->post('reviewSeller')){
 			$insertData = array();
 			$insertData['comments'] = $this->input->post('comment',TRUE);
 			$insertData['rating'] = $this->input->post('rate',TRUE);
@@ -1201,17 +1201,17 @@ class Buyer extends Controller {
 		$prjRow = $projectDetails->row();
 		
 		//Get provider details
-		$condition3 = array('users.id' => $prjRow->programmer_id);
+		$condition3 = array('users.id' => $prjRow->seller_id);
 		$providerDetails = $this->user_model->getUsers($condition3);
 		$this->outputData['providerDetails'] = $providerDetails->row();
 
 		//Get review details
-		$condition2 = array('reviews.project_id' => $projectid,'reviews.provider_id' => $prjRow->programmer_id,'reviews.review_type' => '2');
+		$condition2 = array('reviews.project_id' => $projectid,'reviews.provider_id' => $prjRow->seller_id,'reviews.review_type' => '2');
 		$this->outputData['reviewDetails'] = $this->skills_model->getReviews($condition2);
 		
-		$this->load->view('buyer/reviewProgrammer',$this->outputData);
+		$this->load->view('buyer/reviewSeller',$this->outputData);
 		
-	}//Function reviewProgrammer End
+	}//Function reviewSeller End
 	
 	// --------------------------------------------------------------------
 	

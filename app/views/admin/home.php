@@ -16,11 +16,11 @@
             <div class="selQuickStatusRight clsFloatRight">
               <h2><b><span style="padding-left:20px; float:right;"><?php echo $this->lang->line('Admin Balance'); ?>:$<?php if(isset($adminBalance)) echo sprintf("%01.2f",$adminBalance); else echo '0.00'; ?></span> </b><?php echo $this->lang->line('Quick Status'); ?></h2>
              <ul class="clearfix">
-             <li class="clsMember clear"><table width="300"><tr><td width="60%"><?php echo $this->lang->line('Total Users'); ?> :</td> <td width="10%"><?php if(isset($buyers)) echo $buyers+$programmers; ?></td> <td width="30%"><a href="<?php echo admin_url('users/viewUsers'); ?>"><?php echo $this->lang->line('Members'); ?></a></td></tr></table></li>
+             <li class="clsMember clear"><table width="300"><tr><td width="60%"><?php echo $this->lang->line('Total Users'); ?> :</td> <td width="10%"><?php if(isset($buyers)) echo $buyers+$sellers; ?></td> <td width="30%"><a href="<?php echo admin_url('users/viewUsers'); ?>"><?php echo $this->lang->line('Members'); ?></a></td></tr></table></li>
 			 
              <li class="clspros"><table width="300"><tr><td width="60%"><?php echo $this->lang->line('Total Buyers'); ?> :</td> <td width="10%"><?php if(isset($buyers)) echo $buyers; ?></td><td width="30%"><a href="<?php echo admin_url('users/viewBuyeruser'); ?>"> <?php echo $this->lang->line('Members'); ?></a></td></tr></table></li>
 			 
-             <li class="clspros clear"><table width="300"><tr><td width="60%"><?php echo $this->lang->line('Total Providers'); ?> :</td> <td width="10%"> <?php if(isset($programmers)) echo $programmers; ?></td><td width="30%"><a href="<?php echo admin_url('users/viewProgrammeruser'); ?>"> <?php echo $this->lang->line('Members'); ?></a></td></tr></table></li>
+             <li class="clspros clear"><table width="300"><tr><td width="60%"><?php echo $this->lang->line('Total Providers'); ?> :</td> <td width="10%"> <?php if(isset($sellers)) echo $sellers; ?></td><td width="30%"><a href="<?php echo admin_url('users/viewSelleruser'); ?>"> <?php echo $this->lang->line('Members'); ?></a></td></tr></table></li>
              
 			  <li class="clsToday"><table width="300"><tr><td width="60%"><?php echo $this->lang->line('Today'); ?> : </td> <td width="10%"><?php if(isset($today)) echo $today; ?></td><td width="30%"><a href="<?php echo admin_url('skills/todayProjects'); ?>">  <?php echo $this->lang->line('Projects'); ?></a></td></tr></table></li>
 			  

@@ -7,4 +7,4 @@
 							    {
 								   echo site_url('buyer/editProfile'); 
 								}
-								else if($this->loggedInUser->role_id=='2') {  echo site_url('programmer/editProfile'); } ?>"><?php echo $this->lang->line('edit profile'); ?></a></p></h3>
+								else if($this->loggedInUser->role_id=='2') {  echo site_url('seller/editProfile'); } ?>"><?php echo $this->lang->line('edit profile'); ?></a></p></h3>

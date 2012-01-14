@@ -14,7 +14,7 @@
                             <h3><?php echo $this->lang->line('Services_And_Features');?></h3>
                             <ul class="links">
 							<?php 
-								if(!isProgrammer())
+								if(!isSeller())
 								{
 		?>
                               <li><a href="<?php echo site_url('project/create'); ?>"><?php echo $this->lang->line('Post a Project');?></a></li>
@@ -33,7 +33,7 @@
 							  
 							  <li><a href="<?php echo site_url('dispute/openCase'); ?>"><?php echo $this->lang->line('Cancel Projects');?></a></li>
 							  <li><a href="<?php echo site_url('certificate/viewcontent'); ?>"><?php echo $this->lang->line('Certified Members');?></a></li>
-                              <li><a href="<?php echo site_url('programmer/getProgrammersreview'); ?>"><?php echo $this->lang->line('Top Programmers');?></a></li>
+                              <li><a href="<?php echo site_url('seller/getSellersreview'); ?>"><?php echo $this->lang->line('Top Sellers');?></a></li>
 							  <li><a href="<?php echo site_url('buyer/getBuyersreview'); ?>"><?php echo $this->lang->line('Top Buyers');?></a></li>
 							  <li><a href="<?php echo site_url('affiliate/'); ?>"><?php echo $this->lang->line('Affiliate');?></a></li>
                           <?php /*?>   <li ><a href="<?php echo site_url('affiliateprojects/'); ?>">Script Lance Projects</a></li> <?php */?>

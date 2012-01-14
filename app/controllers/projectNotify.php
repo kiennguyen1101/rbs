@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Buyer 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0 
+ * @author		
+ * @version		 
  * @created		December 31 2008
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
 
  */
 class ProjectNotify extends Controller { 
@@ -296,7 +296,7 @@ class ProjectNotify extends Controller {
 		{
 			$updateKey                         = array('project_invitation.id'=>$this->uri->segment(3));
 		    $updateData['notification_status'] = '1';
-		    //$this->user_model->updateProgrammerInvitation(NULL,$updateData,$updateKey);
+		    //$this->user_model->updateSellerInvitation(NULL,$updateData,$updateKey);
 		}
 	}//Function invitationupdate End
 	// --------------------------------------------------------------------

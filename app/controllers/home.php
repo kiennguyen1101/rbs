@@ -7,10 +7,6 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Common Display 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @created		December 30 2008
- * @link		http://www.cogzidel.com
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -25,11 +21,8 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact  
  */
+
 class Home extends Controller {
 
 	//Global variable  
@@ -61,7 +54,7 @@ class Home extends Controller {
 		$this->outputData = $this->common_model->getPageTitleAndMetaData();
 		
 		//Get Logged In user
-		$this->loggedInUser					= $this->common_model->getLoggedInUser();
+		$this->loggedInUser			= $this->common_model->getLoggedInUser();
 		$this->outputData['loggedInUser'] 	= $this->loggedInUser;
 		
 		//Get Latest Projects
@@ -133,7 +126,7 @@ class Home extends Controller {
 		$this->outputData['groups_row'] = $this->outputData['groups']->row();
 		
 		$limit = array('4');
-		$this->outputData['topProviders'] = $this->skills_model->getTopprogrammers();
+		$this->outputData['topProviders'] = $this->skills_model->getTopsellers();
 		$this->outputData['topBuyers'] = $this->skills_model->getTopBuyers();
 
 		//Get Footer content

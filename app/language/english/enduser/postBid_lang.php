@@ -1,5 +1,5 @@
 <?php
-$lang['You must be logged in as a programmer to place a bid']	            	= 'You must be logged in as a Provider to place a bid';
+$lang['You must be logged in as a seller to place a bid']	            	= 'You must be logged in as a Provider to place a bid';
 $lang['Bid on Project']	            											= 'Bid on Project';
 $lang['Your Bid']	            												= 'Your Bid';
 $lang['Delivery Time']	            											= 'Delivery Time';

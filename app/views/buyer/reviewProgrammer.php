@@ -36,7 +36,7 @@ $projectDetails = $projectDetails->row();
 								<td width="10%" class="dt"><?php echo $this->lang->line('comments');?></td>
                               </tr>
                               <tr>
-                                <td><a href="<?php echo site_url('programmer/viewProfile/'.$provider->id);?>"><?php echo $provider->user_name; ?></a></td>
+                                <td><a href="<?php echo site_url('seller/viewProfile/'.$provider->id);?>"><?php echo $provider->user_name; ?></a></td>
                                 <td><a href="<?php echo site_url('project/view/'.$reviewDetails->projectid);?>"><?php echo $reviewDetails->project_name; ?></a></td>
                                 <td><?php echo get_date($reviewDetails->created); ?></td>
                                 <td><img src="<?php echo image_url('rating_'.$reviewDetails->rating.'.gif');?>" /></td>
@@ -68,8 +68,8 @@ $projectDetails = $projectDetails->row();
                               <textarea id="comment" rows="5" cols="50" name="comment"/></textarea>
                             </p>
                             <input type="hidden" value="<?php echo $projectDetails->id;?>" id="projectid" name="projectid"/>
-                            <input type="hidden" value="<?php echo $projectDetails->programmer_id;?>" id="providerid" name="providerid"/>
-                            <p class="clsEditProfile"> <span>&nbsp;</span> <input type="submit" value="<?php echo $this->lang->line('Submit');?>" name="reviewProgrammer" class="clsMini"/></p>
+                            <input type="hidden" value="<?php echo $projectDetails->seller_id;?>" id="providerid" name="providerid"/>
+                            <p class="clsEditProfile"> <span>&nbsp;</span> <input type="submit" value="<?php echo $this->lang->line('Submit');?>" name="reviewSeller" class="clsMini"/></p>
                           </form>
                           <?php } ?>
                         </div>

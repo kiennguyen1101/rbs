@@ -1,6 +1,6 @@
 <?php 
 $lang['token_error']	                = 'Invalid Form Token';
-$lang['Invite Programmers']	            = 'Invite Providers';
+$lang['Invite Sellers']	            = 'Invite Providers';
 $lang['Invite Favourite']	            = 'Invite Favourite Providers';
 $lang['Private Invitation']	            = 'Make Project Private';
 $lang['Private Messages']	            = "You may limit your project to certain Providers only. This option is free if your project is Featured or Urgent, or if you are a Certified Member.";

@@ -40,7 +40,7 @@
 								<form action="<?php echo site_url('project/postBidReport/'.$getBids->id); ?>" name="projectReport" method="post">
 									
 									<p><span><b><?php echo $this->lang->line('username'); ?></b></span>
-									   <span><a href="<?php echo site_url('programmer/viewProfile/'.$getUsers->id); ?>"><?php echo $getUsers->user_name; ?></a></span>
+									   <span><a href="<?php echo site_url('seller/viewProfile/'.$getUsers->id); ?>"><?php echo $getUsers->user_name; ?></a></span>
 									</p>
 									<p><span><label><b><?php echo $this->lang->line('Project');?></b></label></span>
 									   <span><label><a href="<?php echo site_url('project/view/'.$postSimilar->id); ?>"><?php echo $postSimilar->project_name; ?></a></label></span>

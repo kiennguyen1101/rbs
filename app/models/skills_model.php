@@ -7,9 +7,9 @@
  * @package		Reverse bidding system
  * @subpackage	Models
  * @category	Skills 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
- * @link		http://www.cogzidel.com
+ * @author		
+ * @version		
+ * @link		
  
   <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -26,8 +26,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact 
+    
+     
  
  
  */
@@ -131,7 +131,7 @@ class Skills_model extends Model {
 		if($fields!='')
 				$this->db->select($fields);
 		else 		
-	 		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.is_private,projects.is_private,private_users,projects.enddate,projects.programmer_id,projects.project_award_date,projects.project_award_date,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,projects.flag,bookmark.id,bookmark.creator_name,bookmark.project_id,bookmark.project_name,bookmark.project_creator');
+	 		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.is_private,projects.is_private,private_users,projects.enddate,projects.seller_id,projects.project_award_date,projects.project_award_date,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,projects.flag,bookmark.id,bookmark.creator_name,bookmark.project_id,bookmark.project_name,bookmark.project_creator');
 			
 		$result = $this->db->get();
 		return $result;		
@@ -310,7 +310,7 @@ class Skills_model extends Model {
 	 	if(count($conditions)>0)		
 	 		$this->db->where($conditions);
 		$this->db->from('projects_preview');
-		$this->db->select('projects_preview.id,projects_preview.project_name,projects_preview.project_status,projects_preview.description,projects_preview.budget_min,projects_preview.budget_max,projects_preview.project_categories,projects_preview.creator_id,projects_preview.is_feature,projects_preview.is_urgent,projects_preview.is_hide_bids,projects_preview.created,projects_preview.enddate,projects_preview.programmer_id,projects_preview.project_award_date,projects_preview.flag,projects_preview.contact,projects_preview.salary,projects_preview.salarytype');
+		$this->db->select('projects_preview.id,projects_preview.project_name,projects_preview.project_status,projects_preview.description,projects_preview.budget_min,projects_preview.budget_max,projects_preview.project_categories,projects_preview.creator_id,projects_preview.is_feature,projects_preview.is_urgent,projects_preview.is_hide_bids,projects_preview.created,projects_preview.enddate,projects_preview.seller_id,projects_preview.project_award_date,projects_preview.flag,projects_preview.contact,projects_preview.salary,projects_preview.salarytype');
 			
 		$result = $this->db->get();
 		//pr($result->result());exit;
@@ -568,7 +568,7 @@ class Skills_model extends Model {
 		if($fields!='')
 				$this->db->select($fields);
 		else 		
-	 		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.attachment_name,projects.attachment_url,users.user_name,projects.enddate,projects.programmer_id,projects.project_award_date,projects.project_award_date,projects.contact,projects.salary,projects.flag,projects.escrow_due,users.id as userid,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,projects.is_private,projects.private_users,users.user_rating,users.num_reviews,users.email');	
+	 		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.attachment_name,projects.attachment_url,users.user_name,projects.enddate,projects.seller_id,projects.project_award_date,projects.project_award_date,projects.contact,projects.salary,projects.flag,projects.escrow_due,users.id as userid,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,projects.is_private,projects.private_users,users.user_rating,users.num_reviews,users.email');	
 		$result =$this->db->get();
 		
 		return $result;
@@ -623,7 +623,7 @@ class Skills_model extends Model {
 		if($fields!='')
 				$this->db->select($fields);
 		else 		
-	 		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,users.user_name,projects.enddate,projects.programmer_id,projects.project_award_date,projects.project_award_date,users.id as userid,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,users.user_rating,users.num_reviews');
+	 		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,users.user_name,projects.enddate,projects.seller_id,projects.project_award_date,projects.project_award_date,users.id as userid,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,users.user_rating,users.num_reviews');
 			
 		$result = $this->db->get();
 		//pr($result->result());exit;
@@ -660,7 +660,7 @@ class Skills_model extends Model {
 		$this->db->from('projects');
 		$this->db->join('users', 'users.id = projects.creator_id','left');
 		//Check For Fields	 
-	 	$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,users.user_name,projects.enddate,projects.programmer_id,projects.project_award_date,projects.project_award_date,users.id as userid,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,projects.is_private,projects.private_users,users.user_rating,users.num_reviews');
+	 	$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,users.user_name,projects.enddate,projects.seller_id,projects.project_award_date,projects.project_award_date,users.id as userid,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,projects.is_private,projects.private_users,users.user_rating,users.num_reviews');
 			
 		$result = $this->db->get();
 		
@@ -751,7 +751,7 @@ class Skills_model extends Model {
 		if($fields!='')
 				$this->db->select($fields);
 		else 		
-	 		$this->db->select('draftprojects.id,draftprojects.project_name,draftprojects.project_status,draftprojects.description,draftprojects.budget_min,draftprojects.budget_max,draftprojects.project_categories,draftprojects.creator_id,draftprojects.is_feature,draftprojects.is_urgent,draftprojects.is_hide_bids,draftprojects.created,users.user_name,draftprojects.enddate,draftprojects.programmer_id,draftprojects.flag,draftprojects.salary,draftprojects.contact,draftprojects.salarytype,users.id as userid,draftprojects.checkstamp,draftprojects.provider_rated,draftprojects.buyer_rated,draftprojects.project_paid,draftprojects.is_private,draftprojects.private_users');
+	 		$this->db->select('draftprojects.id,draftprojects.project_name,draftprojects.project_status,draftprojects.description,draftprojects.budget_min,draftprojects.budget_max,draftprojects.project_categories,draftprojects.creator_id,draftprojects.is_feature,draftprojects.is_urgent,draftprojects.is_hide_bids,draftprojects.created,users.user_name,draftprojects.enddate,draftprojects.seller_id,draftprojects.flag,draftprojects.salary,draftprojects.contact,draftprojects.salarytype,users.id as userid,draftprojects.checkstamp,draftprojects.provider_rated,draftprojects.buyer_rated,draftprojects.project_paid,draftprojects.is_private,draftprojects.private_users');
 			
 		$result = $this->db->get();
 		//pr($result->result());exit;
@@ -790,12 +790,12 @@ class Skills_model extends Model {
 		}	
 			
 		$this->db->from('projects');
-		$this->db->join('users', 'users.id = projects.programmer_id','left');
+		$this->db->join('users', 'users.id = projects.seller_id','left');
 		//Check For Fields	 
 		if($fields!='')
 				$this->db->select($fields);
 		else 		
-	 		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,users.user_name,projects.enddate,projects.programmer_id,projects.project_award_date,users.id as userid,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,projects.is_private,projects.flag');
+	 		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,users.user_name,projects.enddate,projects.seller_id,projects.project_award_date,users.id as userid,projects.checkstamp,projects.provider_rated,projects.buyer_rated,projects.project_paid,projects.is_private,projects.flag');
 			
 		$result = $this->db->get();
 		//pr($result->result());exit;
@@ -850,14 +850,14 @@ class Skills_model extends Model {
 	
 	
 	/**
-	 * Get Top programmer List
+	 * Get Top seller List
 	 *
 	 * @access	private
 	 * @param	array	conditions to fetch data
 	 * @return	object	object with result set
 	 */
 	 
-	 function getTopprogrammers($limit=array())
+	 function getTopsellers($limit=array())
 	 {
 	 	$conditions = array('role_id' => '2','users.user_status' => '1');
 	 	$users = $this->user_model->getUsers($conditions);
@@ -871,13 +871,13 @@ class Skills_model extends Model {
 		}
 		arsort($uarray);
 		return $uarray;
-	 }//End of getTopprogrammers Function
+	 }//End of getTopsellers Function
 	 
 	 // --------------------------------------------------------------------
 	
 	
 	/**
-	 * Get Top programmer List
+	 * Get Top seller List
 	 *
 	 * @access	private
 	 * @param	array	conditions to fetch data
@@ -915,7 +915,7 @@ class Skills_model extends Model {
 	 function getProjectslist()
 	 {
 	 	$this->db->from('projects');
-		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.enddate,projects.programmer_id');
+		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.enddate,projects.seller_id');
 			
 		$result = $this->db->get();
 		//pr($result->result());exit;
@@ -938,7 +938,7 @@ class Skills_model extends Model {
 	 	if(count($conditions)>0)		
 	 		$this->db->where($conditions);
 		$this->db->from('projects');
-		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.enddate,projects.programmer_id,projects.project_award_date,projects.flag,projects.contact,projects.salary,projects.salarytype,projects.is_private,projects.private_users');
+		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.enddate,projects.seller_id,projects.project_award_date,projects.flag,projects.contact,projects.salary,projects.salarytype,projects.is_private,projects.private_users');
 		$result = $this->db->get();
 		//pr($result->result());exit;
 		return $result;
@@ -954,7 +954,7 @@ class Skills_model extends Model {
 			 $this->db->where($cod); 
 			}
 		$this->db->from('projects');
-		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.enddate,projects.programmer_id,projects.project_award_date,projects.flag,projects.contact,projects.salary,projects.salarytype,projects.is_private,projects.private_users');
+		$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.enddate,projects.seller_id,projects.project_award_date,projects.flag,projects.contact,projects.salary,projects.salarytype,projects.is_private,projects.private_users');
 		$result = $this->db->get();
 		return $result;
 		
@@ -977,7 +977,7 @@ class Skills_model extends Model {
 		$this->db->from('projects');
 		
 			
-	 	$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.enddate,projects.programmer_id,projects.project_award_date');
+	 	$this->db->select('projects.id,projects.project_name,projects.project_status,projects.description,projects.budget_min,projects.budget_max,projects.project_categories,projects.creator_id,projects.is_feature,projects.is_urgent,projects.is_hide_bids,projects.created,projects.enddate,projects.seller_id,projects.project_award_date');
 			
 		$result = $this->db->get();
 		//pr($result->result());exit;
@@ -1025,7 +1025,7 @@ class Skills_model extends Model {
 		if($fields!='')
 				$this->db->select($fields);
 		else 		
-	 		$this->db->select('projects.project_name,projects.checkstamp,projects.is_urgent,projects.is_feature,projects.is_private,projects.private_users,users.email,projects.id,projects.project_status,projects.created,projects.programmer_id,bids.escrow_flag,bids.id as bidid');
+	 		$this->db->select('projects.project_name,projects.checkstamp,projects.is_urgent,projects.is_feature,projects.is_private,projects.private_users,users.email,projects.id,projects.project_status,projects.created,projects.seller_id,bids.escrow_flag,bids.id as bidid');
 			
 		$result = $this->db->get();
 		return $result;
@@ -1282,7 +1282,7 @@ class Skills_model extends Model {
 		$checkstamp = md5("Cogzidel:".$prog_id.":".$row->project_id.":".microtime());
 		//echo $checkstamp;exit;
 		$data = array(
-               'programmer_id' => $prog_id,
+               'seller_id' => $prog_id,
                'checkstamp' => $checkstamp,
                'project_status' => '1',
 			   'project_award_date' => get_est_time()

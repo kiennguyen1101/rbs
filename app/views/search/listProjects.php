@@ -22,7 +22,7 @@
                             <tbody>
                               <tr>
                                 <td width="30" class="dt"><?php echo $this->lang->line('SI.No');?></td>
-                                <td width="250" class="dt"><? 
+                                <td width="250" class="dt"><?php
 						  $odr = 'ASC';
 						  if($order == 'ASC')
 						  $odr = 'DESC';
@@ -80,7 +80,7 @@
 								   <?php } 
 								   if($project->is_feature == 1) { ?>
 								    &nbsp;&nbsp;<img src="<?php echo image_url('featured2.gif');?>" width="14" height="14" title="Featured project" alt="<?php echo $this->lang->line('Featured Project'); ?>" />
-								   <? } 
+								   <?php} 
 								    if($project->is_private == 1) { ?>
 								    &nbsp;&nbsp;<img src="<?php echo image_url('private.png');?>" width="14" height="14" title="Private project" alt="<?php echo $this->lang->line('Private Project'); ?>" />
 								  <?php } ?>

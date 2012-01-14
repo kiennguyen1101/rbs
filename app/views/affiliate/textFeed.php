@@ -44,7 +44,7 @@
                                                   <br/>
                                                   <p>If you want to grab a list of our projects to include in a script, connect to the following URL. This prints out the projects 1 per line, with each data field seperated by a tab space. The following project data is printed, in order: title, url, number of bids, start time (in epoch seconds), end time, categories (seperated by pipelines: | ), and the word "featured" IF it's a featured project.</p>
                                                   <br/>
-                                                  <p><? echo site_url(); ?>/affiliate/textFeed/<font color="red">Y</font>/<font color="red"><? if(isset($this->loggedInUser->user_name)) echo $this->loggedInUser->user_name; else echo "USER";?>
+                                                  <p><?php echo site_url(); ?>/affiliate/textFeed/<font color="red">Y</font>/<font color="red"><?php if(isset($this->loggedInUser->user_name)) echo $this->loggedInUser->user_name; else echo "USER";?>
                                                     </font></span></p>
                                                   <br/>
                                                   <p>(Replace <span>Y</span> with 1 to display only featured projects, or with 0 to display all.)</p>

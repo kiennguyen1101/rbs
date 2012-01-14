@@ -7,10 +7,10 @@
  * @package		Reverse bidding system
  * @subpackage	Controllers
  * @category	Settings 
- * @author		Cogzidel Dev Team
- * @version		Version 1.0
+ * @author		
+ * @version		
  * @created		December 22 2008
- * @link		http://www.cogzidel.com
+ * @link		
  
  <Reverse bidding system> 
     Copyright (C) <2009>  <Cogzidel Technologies>
@@ -27,8 +27,8 @@
  
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-    If you want more information, please email me at bala.k@cogzidel.com or 
-    contact us from http://www.cogzidel.com/contact
+    
+    
 
  */
 class AffiliateSettings extends Controller {
@@ -106,19 +106,19 @@ class AffiliateSettings extends Controller {
 			$this->form_validation->set_rules('buyer_min_amount','lang:buyer_min_amount_validation','required|trim|xss_clean|is_natural');
 			$this->form_validation->set_rules('buyer_min_payout','lang:buyer_min_payout_validation','required|trim|xss_clean|is_natural');
 			$this->form_validation->set_rules('buyer_max_payout','lang:buyer_max_payout_validation','required|trim|xss_clean');
-			$this->form_validation->set_rules('programmer_affiliate_fee','lang:programmer_affiliate_fee_validation','required|trim|xss_clean|is_natural');
-			$this->form_validation->set_rules('programmer_min_amount','lang:programmer_min_amount_validation','required|trim|xss_clean|is_natural');
-			$this->form_validation->set_rules('programmer_min_payout','lang:programmer_min_payout_validation','required|trim|xss_clean|is_natural');
-			$this->form_validation->set_rules('programmer_max_payout','lang:programmer_max_payout_validation','required|trim|xss_clean');
+			$this->form_validation->set_rules('seller_affiliate_fee','lang:seller_affiliate_fee_validation','required|trim|xss_clean|is_natural');
+			$this->form_validation->set_rules('seller_min_amount','lang:seller_min_amount_validation','required|trim|xss_clean|is_natural');
+			$this->form_validation->set_rules('seller_min_payout','lang:seller_min_payout_validation','required|trim|xss_clean|is_natural');
+			$this->form_validation->set_rules('seller_max_payout','lang:seller_max_payout_validation','required|trim|xss_clean');
 			
 			$this->outputData['buyer_affiliate_fee'] 		= $this->input->post('buyer_affiliate_fee');
 			$this->outputData['buyer_min_amount'] 			= $this->input->post('buyer_min_amount');
 			$this->outputData['buyer_min_payout'] 			= $this->input->post('buyer_min_payout');
 			$this->outputData['buyer_max_payout'] 			= $this->input->post('buyer_max_payout');
-			$this->outputData['programmer_affiliate_fee'] 	= $this->input->post('programmer_affiliate_fee');
-			$this->outputData['programmer_min_amount'] 		= $this->input->post('programmer_min_amount');
-			$this->outputData['programmer_min_payout'] 		= $this->input->post('programmer_min_payout');
-			$this->outputData['programmer_max_payout'] 		= $this->input->post('programmer_max_payout');
+			$this->outputData['seller_affiliate_fee'] 	= $this->input->post('seller_affiliate_fee');
+			$this->outputData['seller_min_amount'] 		= $this->input->post('seller_min_amount');
+			$this->outputData['seller_min_payout'] 		= $this->input->post('seller_min_payout');
+			$this->outputData['seller_max_payout'] 		= $this->input->post('seller_max_payout');
 			
 			if($this->form_validation->run())
 			{	
@@ -129,10 +129,10 @@ class AffiliateSettings extends Controller {
 					  $insertData['buyer_min_amount']  			= $this->input->post('buyer_min_amount');
 					  $insertData['buyer_min_payout']  			= $this->input->post('buyer_min_payout');
 					  $insertData['buyer_max_payout']  			= $this->input->post('buyer_max_payout');
-					  $insertData['programmer_affiliate_fee']  	= $this->input->post('programmer_affiliate_fee');
-					  $insertData['programmer_min_amount']  	= $this->input->post('programmer_min_amount');
-					  $insertData['programmer_min_payout']  	= $this->input->post('programmer_min_payout');
-					  $insertData['programmer_max_payout']  	= $this->input->post('programmer_max_payout');
+					  $insertData['seller_affiliate_fee']  	= $this->input->post('seller_affiliate_fee');
+					  $insertData['seller_min_amount']  	= $this->input->post('seller_min_amount');
+					  $insertData['seller_min_payout']  	= $this->input->post('seller_min_payout');
+					  $insertData['seller_max_payout']  	= $this->input->post('seller_max_payout');
 					  
 					  //print_r($insertData);
 	
@@ -147,10 +147,10 @@ class AffiliateSettings extends Controller {
 					  $updateData['buyer_min_amount']    		= $this->input->post('buyer_min_amount');
 					  $updateData['buyer_min_payout']   		= $this->input->post('buyer_min_payout');
 					  $updateData['buyer_max_payout']    		= $this->input->post('buyer_max_payout');
-					  $updateData['programmer_affiliate_fee']   = $this->input->post('programmer_affiliate_fee');
-					  $updateData['programmer_min_amount']   	= $this->input->post('programmer_min_amount');
-					  $updateData['programmer_min_payout']    	= $this->input->post('programmer_min_payout');
-					  $updateData['programmer_max_payout']    	= $this->input->post('programmer_max_payout');
+					  $updateData['seller_affiliate_fee']   = $this->input->post('seller_affiliate_fee');
+					  $updateData['seller_min_amount']   	= $this->input->post('seller_min_amount');
+					  $updateData['seller_min_payout']    	= $this->input->post('seller_min_payout');
+					  $updateData['seller_max_payout']    	= $this->input->post('seller_max_payout');
 					  //Update Site Settings
 					  $this->affiliate_model->updateAffiliateSettings($updateKey,$updateData);				  
 				  }
@@ -167,10 +167,10 @@ class AffiliateSettings extends Controller {
 		{	
 			//Set rules
 			$this->form_validation->set_rules('buyer_project_fee','lang:buyer_project_fee_validation','required|trim|xss_clean|is_natural');
-			$this->form_validation->set_rules('programmer_project_fee','lang:programmer_project_fee_validation','required|trim|xss_clean|is_natural');
+			$this->form_validation->set_rules('seller_project_fee','lang:seller_project_fee_validation','required|trim|xss_clean|is_natural');
 			
 			$this->outputData['buyer_project_fee'] 				= $this->input->post('buyer_project_fee');
-			$this->outputData['programmer_project_fee'] 		= $this->input->post('programmer_project_fee');
+			$this->outputData['seller_project_fee'] 		= $this->input->post('seller_project_fee');
 			
 			if($this->form_validation->run())
 			{	
@@ -178,7 +178,7 @@ class AffiliateSettings extends Controller {
 					  //prepare insert data
 					  $insertData                  	  			= array();	
 					  $insertData['buyer_project_fee']  		= $this->input->post('buyer_project_fee');
-					  $insertData['programmer_project_fee']  	= $this->input->post('programmer_project_fee');
+					  $insertData['seller_project_fee']  	= $this->input->post('seller_project_fee');
 					  
 					  //print_r($insertData);
 	
@@ -190,7 +190,7 @@ class AffiliateSettings extends Controller {
 					  
 					  $updateData                  	  			= array();	
 					  $updateData['buyer_project_fee']  		= $this->input->post('buyer_project_fee');
-					  $updateData['programmer_project_fee']    	= $this->input->post('programmer_project_fee');
+					  $updateData['seller_project_fee']    	= $this->input->post('seller_project_fee');
 
 					  //Update Site Settings
 					  $this->affiliate_model->updateAffiliateSettings($updateKey,$updateData);				  

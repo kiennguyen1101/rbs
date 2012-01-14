@@ -359,7 +359,7 @@
 							?>
                             <div class="clsTop clearfix">
                               <div class="clsTopLeft clsFloatLeft">
-                                <p class="clsBorder"><a href="<?php echo site_url('programmer/viewProfile/'.$user2->id);?>">
+                                <p class="clsBorder"><a href="<?php echo site_url('seller/viewProfile/'.$user2->id);?>">
                                   <?php 
 
 
@@ -374,7 +374,7 @@
                                   </a></p>
                               </div>
                               <div class="clsTopRight clsFloatLeft">
-                                <h5><a href="<?php echo site_url('programmer/viewProfile/'.$user2->id);?>"><?php echo $user2->user_name;?></a>
+                                <h5><a href="<?php echo site_url('seller/viewProfile/'.$user2->id);?>"><?php echo $user2->user_name;?></a>
 								<?php if(count($certified1->result())>0)
 								{?>
 								<img src="<?php echo image_url('certified.gif');?>" />
@@ -385,7 +385,7 @@
                             </div>
                             <?php } ?>
                             <div class="alignRight">
-                              <p><a href="<?php echo site_url('programmer/getProgrammersreview');?>"><img src="<?php echo image_url('bt_viewall.jpg');?>" width="92" height="41" alt="view all" /></a></p>
+                              <p><a href="<?php echo site_url('seller/getSellersreview');?>"><img src="<?php echo image_url('bt_viewall.jpg');?>" width="92" height="41" alt="view all" /></a></p>
                             </div>
                             <?php } 
 

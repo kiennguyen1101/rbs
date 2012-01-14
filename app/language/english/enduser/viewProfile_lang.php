@@ -1,6 +1,6 @@
 <?php
 $lang['Buyer Profile'] = 'Buyer Profile';
-$lang['Programmer Profile'] = 'Provider Profile';
+$lang['Seller Profile'] = 'Provider Profile';
 $lang['Username'] = 'Username';
 $lang['Provider Profile'] = 'Provider Profile';
 $lang['user_not_available'] = 'User is not available';
@@ -26,8 +26,8 @@ $lang['Title:']='Title:';
 $lang['Description:']='Description:';
 $lang['Category:']='Category:';
 $lang['/hour']='/hour';
-$lang['Contact Programmer']='Contact Provider';
-$lang['Invite Programmer']='Invite Provider';
+$lang['Contact Seller']='Contact Provider';
+$lang['Invite Seller']='Invite Provider';
 $lang['Portfolio:']='Portfolio:';
 $lang['Attachement1:']='Attachement1:';
 $lang['Attachement2:']='Attachement2:';

@@ -90,7 +90,7 @@ $userData = $userInfo->row();
 								<p><span><?php echo $this->lang->line('Current Photo'); ?> : </span>
 								<?php if($userData->logo){?>
                                   <img src="<?php echo uimage_url(get_thumb($userData->logo));?>"/>
-								  <a href="<?php echo site_url('programmer/removePhoto/'.$userData->id."/1");?>" onclick="return confirm('Do you want to delete this image?');"><img src="<?php echo image_url('delete.png');?>" border="0" alt="delete" title="delete"/></a>
+								  <a href="<?php echo site_url('seller/removePhoto/'.$userData->id."/1");?>" onclick="return confirm('Do you want to delete this image?');"><img src="<?php echo image_url('delete.png');?>" border="0" alt="delete" title="delete"/></a>
                                   <?php } 
 								  else
 								  echo '<img src="'.image_url('noImage.jpg').'" width="49" height="48" />';
