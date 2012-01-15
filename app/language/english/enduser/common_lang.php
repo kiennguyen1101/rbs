@@ -288,4 +288,7 @@ $lang['Invite Seller']	    	    = 'Invite Seller';
 $lang['Add To Favourite']	    	    = 'Add To Favourite';
 $lang['BlackList User']	    	    = 'BlackList User';
 $lang['Message_Display']	    	    = 'Message Display';
+
+$lang['Find Buyer'] = "Find Buyers in your area";
+$lang['Find Seller'] = "Find Sellers in your area";
 ?>
