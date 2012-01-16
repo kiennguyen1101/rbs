@@ -457,8 +457,10 @@ class Seller extends Controller {
      * @return	void
      */
     function editProfile() {
+        
         //language file
         $this->lang->load('enduser/editProfile', $this->config->item('language_code'));
+        
         //Check Whether User Logged In Or Not
         if (!isset($this->loggedInUser->id)) {
             $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('You must be login access to this page')));
@@ -466,7 +468,6 @@ class Seller extends Controller {
         }
 
         //Check Whether User Logged In Or Not
-
         if (isLoggedIn() === false) {
             $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('not_access')));
             redirect('info');

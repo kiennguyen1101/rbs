@@ -78,7 +78,7 @@
 										<td class="<?php echo $class2; ?>">Expiery</td>
 										<td class="<?php echo $class2; ?>"><?php echo $fileDate->description; ?></td>
 										<td class="<?php echo $class2; ?>"><?php echo site_url('?c=file&m=download&key=');?><?php echo $fileDate->key ; ?></td></tr>
-										<?php} ?>	
+										<?php } ?>	
 																        						
 								  
                                 </tbody>

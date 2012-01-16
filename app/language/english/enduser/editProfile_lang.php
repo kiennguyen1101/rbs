@@ -73,4 +73,5 @@ $lang[')']=')';
 $lang['.)']='.)';
 $lang['$']='$';
 $lang['You must be logged in as a Seller'] = 'You must be logged in as a Provider';
+$lang['detect_area'] = 'Click to auto detect your area';
 ?>

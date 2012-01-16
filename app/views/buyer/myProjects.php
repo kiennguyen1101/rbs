@@ -58,7 +58,7 @@
                                     <?php } 
 								   if($myProjects->is_feature == 1) { ?>
                                     &nbsp;&nbsp;<img src="<?php echo image_url('featured2.gif');?>" width="14" height="14" title="Featured project" alt="<?php echo $this->lang->line('Featured Project'); ?>" />
-                                    <?php}
+                                    <?php }
 									if($myProjects->is_private == 1) {?>
 									
 									 &nbsp;&nbsp;<img src="<?php echo image_url('private.png');?>" width="14" height="14" title="private project" alt="<?php echo $this->lang->line('Private Project'); ?>" /><?php }
@@ -151,7 +151,7 @@
                                     <?php } 
 								   if($closedProject->is_feature == 1) { ?>
                                     &nbsp;&nbsp;<img src="<?php echo image_url('featured2.gif');?>" width="14" height="14" title="Featured project" alt="<?php echo $this->lang->line('Featured Project'); ?>" />
-                                    <?php}
+                                    <?php }
 									if($closedProject->is_private == 1) {?>
 									
 									&nbsp;&nbsp;<img src="<?php echo image_url('private.png');?>" width="14" height="14" title="private project" alt="<?php echo $this->lang->line('Private Project'); ?>" /><?php }
@@ -214,7 +214,7 @@
                                     <?php } 
 								   if($bookMark->is_feature == 1) { ?>
                                     &nbsp;&nbsp;<img src="<?php echo image_url('featured2.gif');?>" width="14" height="14" title="Featured project" alt="<?php echo $this->lang->line('Featured Project'); ?>" />
-                                    <?php}
+                                    <?php }
 									if($bookMark->is_private == 1) {?>
 									
 									 &nbsp;&nbsp;<img src="<?php echo image_url('private.png');?>" width="14" height="14" title="private project" alt="<?php echo $this->lang->line('Private Project'); ?>" /><?php }

@@ -183,7 +183,11 @@ $userCategoryInfo = $userCategories->row();
                                     <option value="<?php echo $this->lang->line('Hourly'); ?>" <?php if($userData->message_notify=='Hourly') echo 'selected="selected"'; ?>><?php echo $this->lang->line('Hourly'); ?></option>
                                     <option value="<?php echo $this->lang->line('Daily'); ?>"  <?php if($userData->message_notify=='Daily') echo 'selected="selected"'; ?>><?php echo $this->lang->line('Daily'); ?></option>
                                   </select> </p>
-								
+					
+                                  <p>                                  
+                                  <button id="detect_area" name="detect_area" > <?php echo $this->lang->line('detect_area'); ?></button>
+                              </p>
+                                  
                                 <?php if(form_error('notify_message')) echo '<p><span>&nbsp;</span>'.form_error('notify_message').'<br></p>'; ?>
                               <p><span><?php echo $this->lang->line('country'); ?></span>
 							  
@@ -210,6 +214,7 @@ $userCategoryInfo = $userCategories->row();
                               <p><span><?php echo $this->lang->line('city'); ?></span>
                                 <input type="text" name="city" value="<?php echo $userData->city; ?>" maxlength="50" size="30"/>
 							  </p>
+                              
 							  <!--<p><span>&nbsp;</span>	
 							  	
                                 <input type="checkbox" name="signup_agree_contact" value="1" <?php echo set_checkbox('signup_agree_contact', '1'); ?>/ >
