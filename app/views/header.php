@@ -102,7 +102,7 @@
 			<li><a href="<?php echo site_url('seller/signUp'); ?>" class="current"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		  <!--<li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>-->
 		</ul>
 		<?php
 		}
@@ -124,7 +124,7 @@
 			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>" class="current"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		  <!--<li><a href="<?php echo site_url('?c=rss'); ?>" class="current"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>-->
 		</ul>
 		<?php
 		}
@@ -146,7 +146,7 @@
 			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		  <!--<li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>-->
 		</ul>
 		<?php
 		}
@@ -168,7 +168,7 @@
 			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		  <!--<li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>-->
 		</ul>
 		<?php
 		}?>
