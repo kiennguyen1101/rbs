@@ -19,7 +19,7 @@
 								  
                               <div class="clsMainInfo">
 							  <form method="post" action="" enctype="multipart/form-data">
-								  <?phpform_token();?>
+								  <?php form_token();?>
 								  <p><span> <?php echo $this->lang->line('conform_email'); ?></span>
 									<?php if(isset($confirmed_mail)) echo $confirmed_mail; ?>
 								  </p>
