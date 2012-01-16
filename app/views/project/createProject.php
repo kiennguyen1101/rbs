@@ -73,19 +73,19 @@
 
 							   (<a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout') ?></a>).</p>
 
-                              <h3><span class="clsOptDetial"><?php echo $this->lang->line('Required Project Details...');?></span></h3>
+                              <h3><span class="clsOptDetial"><?php echo $this->lang->line('Required Product Details...');?></span></h3>
 							  <form method="post" action="<?php echo site_url('project/create'); ?>" name="form"  enctype="multipart/form-data">
                               <ul>
                                 <li>
-                                  <h5><?php echo $this->lang->line('Project Name');?></h5>
-                                  <p><?php echo $this->lang->line('Do not put a domain/URL in your project name.');?></p>
+                                  <h5><?php echo $this->lang->line('Product Name');?></h5>
+                                  <p><?php echo $this->lang->line('Do not put a domain/URL in your product name.');?></p>
                                   <p>
                                    <input name="projectName" value="<?php echo set_value('projectName'); ?>" maxlength="50" size="50" type="text"/>
 	                               <?php echo form_error('projectName'); ?>
                                   </p>
                                 </li>
                                 <li>
-                                  <h5><?php echo $this->lang->line('Describe the project in detail:');?></h5>
+                                  <h5><?php echo $this->lang->line('Describe the product in detail:');?></h5>
                                   <p><?php echo $this->lang->line('Do not post any contact info.');?> <!--( <a href="#"><?php echo $this->lang->line('Why?');?></a> | <a href="#"><?php echo $this->lang->line('Review Terms');?></a> )--></p>
 									<p>
 									  <textarea rows="10" name="description" cols="70"><?php echo set_value('description'); ?></textarea>
@@ -93,7 +93,7 @@
 									</p>
                                   <p><?php echo $this->lang->line('Tip');?></p>
                                 </li>
-								<li><h5><b><?php echo $this->lang->line('I want my project to stay open for bidding for');?>
+								<li><h5><b><?php echo $this->lang->line('I want my product to stay open for bidding for');?>
 									<select name="openDays">
 									
 									<?php for($i=1;$i<=$project_period;$i++){?>
@@ -102,7 +102,7 @@
 									</select>&nbsp;<?php echo $this->lang->line('days');?>
                                   </b></h5></li>
                                 <li>
-                                  <h5><?php echo $this->lang->line('Job Type: (Make up to 5 selections.)');?></span></h5>
+                                  <h5><?php echo $this->lang->line('Product Type: (Make up to 5 selections.)');?></span></h5>
                                   
                                   <!--OPTION LIST-->
 									<?php

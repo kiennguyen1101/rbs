@@ -33,8 +33,8 @@
 	<div id="selRightHeader">
 	<div id="selTopNavigation">
       <ul>
-        <li><a href="#">Login</a></li>
-        <li><a href="http://kabada.in/icrowd/index.php/buyer/signUp">Register</a></li>
+        <li><a href="<?php echo site_url('users/login');?>">Login</a></li>
+        <li><a href="<?php echo site_url('buyer/signUp');?>">Register</a></li>
         
       </ul>
     </div>

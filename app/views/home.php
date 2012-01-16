@@ -231,7 +231,7 @@
 
 
 		 </div>-->
-      <div class="clsInfoBox">
+      <!--<div class="clsInfoBox">
         <div class="block">
           <div class="grey_t">
             <div class="grey_r">
@@ -315,10 +315,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!--END OF TOP BUYERS -->
     <!--CERTIFIED BUYERS -->
-    <div class="col-2 left">
+    <!--<div class="col-2 left">
       <div class="clsInfoBox">
         <div class="block">
           <div class="grey_t">
@@ -405,7 +405,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!--END OF CERTIFIED BUYERS -->
   </div>
   <!--CATEGORIES-->
@@ -475,8 +475,8 @@ $base_url = str_replace($this->config->item('index_page'),"",base_url());
 $base_url .= $this->config->item('index_page');
 ?>
 <script type="text/javascript" >
-document.getElementById('test').innerHTML = '<img src="<?php echo image_url('load3.gif');?>" alt="loading" />' + 'Loading'
-new Ajax.Request('<?php echo $base_url.'/home/listProjects/latest'; ?>',
+//document.getElementById('test').innerHTML = '<img src="<?php echo image_url('load3.gif');?>" alt="loading" />' + 'Loading'
+/*new Ajax.Request('<?php echo $base_url.'/home/listProjects/latest'; ?>',
 
   {
 
@@ -493,7 +493,7 @@ new Ajax.Request('<?php echo $base_url.'/home/listProjects/latest'; ?>',
       var response = transport.responseText || "no response text";
 
 
-      document.getElementById('test').innerHTML = response
+      document.getElementById('test').innerHTML = response;
 
 
 
@@ -505,7 +505,7 @@ new Ajax.Request('<?php echo $base_url.'/home/listProjects/latest'; ?>',
 
 
 
-  });
+  });*/
 
 
 

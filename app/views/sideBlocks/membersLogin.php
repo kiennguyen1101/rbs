@@ -1,5 +1,5 @@
       <!--MEMBER LOGIN-->
-     <div class="block">
+     <!--<div class="block">
         <div class="blue_t">
           <div class="blue_r">
             <div class="blue_b">
@@ -77,7 +77,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <!--END OF MEMBER LOGIN-->
 	  <script language="javascript" type="text/javascript">
 	   function SwapPassword()
