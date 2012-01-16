@@ -409,7 +409,7 @@
     <!--END OF CERTIFIED BUYERS -->
   </div>
   <!--CATEGORIES-->
-  <div id="selCategories">
+  <!--<div id="selCategories">
     <div class="slidetabsmenu menu_fix">
       <ul>
         <?php
@@ -459,7 +459,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!--END OF CATEGORIES-->
 </div>
 <!--END OF MAIN-->
@@ -699,7 +699,7 @@ if($groups->num_rows()>0)
 ?>
 
  <?php if($groups_num > 0){?>
- getCat('0','<?php echo $row_count; ?>','<?php echo $firstcatid; ?>');
+ //getCat('0','<?php echo $row_count; ?>','<?php echo $firstcatid; ?>');
  <?php } ?>
 
 
