@@ -47,6 +47,7 @@ $lang['Submit']='Submit';
 $lang['Preview']='Preview';
 $lang['Options']='Options';
 $lang['Reply']='Reply';
-$lang['You must be logged in as a buyer to post projects']='You must be logged in as a buyer to post projects';
+$lang['You must be logged in as a buyer to post projects']='You must be logged in as a buyer to post products';
+$lang['You must be logged in as a buyer to post products']='You must be logged in as a buyer to post products';
 
 ?>

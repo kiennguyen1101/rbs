@@ -7,7 +7,8 @@ $lang['budget_max_validation']					                            = 'Max Rate';
 $lang['private_list']					= ' Provider ';
 $lang['contactinfo_validation']					= ' Contact Information ';
 
-$lang['You must be logged in as a buyer to post projects']					= 'You must be logged in as a buyer to post projects';
+$lang['You must be logged in as a buyer to post projects']					= 'You must be logged in as a buyer to post products';
+$lang['You must be logged in as a buyer to post products']					= 'You must be logged in as a buyer to post products';
 $lang['Post Message']							                            = 'Post Message';
 $lang['Project already Exists']							                    = 'Project already Exists';
 $lang['Your Message Has Been Posted Successfully']		                    = 'Your message has been posted successfully';
@@ -35,6 +36,7 @@ $lang['Report Violation content']						                    = 'Users who violate 
 
 $lang['Your are not allow to manage this project']		                     = 'This is not your project. This project was post by another Buyer. Please make sure you followed the correct link and logged into the correct Buyer account.';
 $lang['POST A PROJECT']='POST A PROJECT';
+$lang['POST A PRODUCT']='POST A PRODUCT';
 $lang['POST JOB LIST PROJECT']='POST JOB ';
 
 $lang['Note']='Note: This page is to contract a freelancer to complete a single project. If you want to post a help wanted ad to find a long-term employee/partner, please click here to post a job listing instead.';

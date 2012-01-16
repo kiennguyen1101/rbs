@@ -45,7 +45,7 @@
 		<?php if($current_page == 'home'){?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>" class="current"><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>"><span>Add new Product</a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>"><span>Add Product</a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
@@ -66,7 +66,7 @@
 		?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>" ><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Projects'); ?></span></a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Products'); ?></span></a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>" class="current"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
@@ -132,7 +132,7 @@
 		?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>" ><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>" class="current"><span><?php echo $this->lang->line('Post Projects'); ?></span></a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>" class="current"><span><?php echo $this->lang->line('Post Products'); ?></span></a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
