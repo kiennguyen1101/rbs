@@ -2,7 +2,7 @@
 <div class="clsMainSearch">
   <div class="navmenutabs">
     <ul>
-      <li id="work"><a href="javascript:;" onclick="checkFind('work')"><span><?php echo $this->lang->line('Find Work');?></span></a></li>
+      <li id="work"><a href="javascript:;" onclick="checkFind('work')"><span>Find products</span></a></li>
       <li id="prof"><a href="javascript:;" onclick="checkFind('proff')"><span><?php echo $this->lang->line('Find Profesional');?></span></a></li>
     </ul>
   </div>
