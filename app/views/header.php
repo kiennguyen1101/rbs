@@ -33,8 +33,8 @@
 	<div id="selRightHeader">
 	<div id="selTopNavigation">
       <ul>
-        <li><a href="#">Login</a></li>
-        <li><a href="http://kabada.in/icrowd/index.php/buyer/signUp">Register</a></li>
+        <li><a href="<?php echo site_url('users/login');?>">Login</a></li>
+        <li><a href="<?php echo site_url('buyer/signUp');?>">Register</a></li>
         
       </ul>
     </div>
@@ -45,7 +45,7 @@
 		<?php if($current_page == 'home'){?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>" class="current"><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>"><span>Add new Product</a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>"><span>Add Product</a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
@@ -66,7 +66,7 @@
 		?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>" ><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Projects'); ?></span></a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Products'); ?></span></a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>" class="current"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
@@ -88,7 +88,7 @@
 		?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>" ><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Projects'); ?></span></a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Products'); ?></span></a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
@@ -102,7 +102,7 @@
 			<li><a href="<?php echo site_url('seller/signUp'); ?>" class="current"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		  <!--<li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>-->
 		</ul>
 		<?php
 		}
@@ -110,7 +110,7 @@
 		?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>" ><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Projects'); ?></span></a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Products'); ?></span></a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
@@ -124,7 +124,7 @@
 			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>" class="current"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		  <!--<li><a href="<?php echo site_url('?c=rss'); ?>" class="current"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>-->
 		</ul>
 		<?php
 		}
@@ -132,7 +132,7 @@
 		?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>" ><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>" class="current"><span><?php echo $this->lang->line('Post Projects'); ?></span></a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>" class="current"><span><?php echo $this->lang->line('Post Products'); ?></span></a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
@@ -146,7 +146,7 @@
 			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		  <!--<li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>-->
 		</ul>
 		<?php
 		}
@@ -154,7 +154,7 @@
 		?>
 		<ul class="clearfix">
 			<li><a href="<?php echo base_url(); ?>"><span><?php echo $this->lang->line('Home');?></span></a></li>
-			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Projects'); ?></span></a></li>
+			<li><a href="<?php echo site_url('project/create'); ?>"><span><?php echo $this->lang->line('Post Products'); ?></span></a></li>
 			<?php if($this->session->userdata('role')=='buyer') {?>
 			<li><a href="<?php echo site_url('account'); ?>"><span><?php echo $this->lang->line('Buyers'); ?></span></a></li>
 			<?php }
@@ -168,7 +168,7 @@
 			<li><a href="<?php echo site_url('seller/signUp'); ?>"><span><?php echo $this->lang->line('Sellers'); ?></span></a></li>
 			<?php } ?>
 
-		  <li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>
+		  <!--<li><a href="<?php echo site_url('?c=rss'); ?>"><span><?php echo $this->lang->line('Feeds'); ?></span></a></li>-->
 		</ul>
 		<?php
 		}?>

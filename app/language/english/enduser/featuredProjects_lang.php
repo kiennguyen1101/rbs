@@ -19,7 +19,8 @@ $lang['Results']	            = 'Results';
 $lang['Refresh']	            = 'Refresh';
 $lang['Customize Display']	            = 'Customize Display';
 $lang['Rss Feed']	            = 'Rss Feed';
-$lang['Post Project']	            = 'Post Project';
+$lang['Post Project']	            = 'Post Product';
+$lang['Post Product']	            = 'Post Product';
 $lang['Project Name']	            = 'Project Name';
 $lang['Customize Display:']='Customize Display:';
 

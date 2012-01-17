@@ -14,25 +14,25 @@
 		<table>
 			<tr>
 				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 		</table>
@@ -46,25 +46,25 @@
 		<table>
 			<tr>
 				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 		</table>
@@ -77,25 +77,25 @@
 		<table>
 			<tr>
 				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 		</table>
@@ -108,25 +108,25 @@
 		<table>
 			<tr>
 				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 		</table>
@@ -139,25 +139,25 @@
 		<table>
 			<tr>
 				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 		</table>
@@ -170,25 +170,25 @@
 		<table>
 			<tr>
 				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 			
 			<tr>
 				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
+				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
 				<td class="price">$00.00</td>
 			</tr>
 		</table>
@@ -215,7 +215,7 @@
 		 </ul>
 
 		 </div>-->
-      <div class="clsInfoBox">
+      <!--<div class="clsInfoBox">
         <div class="block">
           <div class="grey_t">
             <div class="grey_r">
@@ -283,10 +283,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!--END OF TOP BUYERS -->
     <!--CERTIFIED BUYERS -->
-    <div class="col-2 left">
+    <!--<div class="col-2 left">
       <div class="clsInfoBox">
         <div class="block">
           <div class="grey_t">
@@ -348,11 +348,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!--END OF CERTIFIED BUYERS -->
   </div>
   <!--CATEGORIES-->
-  <div id="selCategories">
+  <!--<div id="selCategories">
     <div class="slidetabsmenu menu_fix">
       <ul>
         <?php
@@ -395,7 +395,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!--END OF CATEGORIES-->
 </div>
 <!--END OF MAIN-->
@@ -414,8 +414,8 @@ $base_url .= $this->config->item('index_page');
 
     
 
-document.getElementById('test').innerHTML = '<img src="<?php echo image_url('load3.gif');?>" alt="loading" />' + 'Loading'
-new Ajax.Request('<?php echo $base_url.'/home/listProjects/latest'; ?>',
+//document.getElementById('test').innerHTML = '<img src="<?php echo image_url('load3.gif');?>" alt="loading" />' + 'Loading'
+/*new Ajax.Request('<?php echo $base_url.'/home/listProjects/latest'; ?>',
 
   {
     method:'get',
@@ -425,7 +425,7 @@ new Ajax.Request('<?php echo $base_url.'/home/listProjects/latest'; ?>',
     },
 
     onFailure: function(){ alert('Something went wrong...') }
-  });
+  });*/
   
 function checkFind(type){
 
@@ -550,7 +550,7 @@ if($groups->num_rows()>0)
 ?>
 
  <?php if($groups_num > 0){?>
- getCat('0','<?php echo $row_count; ?>','<?php echo $firstcatid; ?>');
+ //getCat('0','<?php echo $row_count; ?>','<?php echo $firstcatid; ?>');
  <?php } ?>
 
 

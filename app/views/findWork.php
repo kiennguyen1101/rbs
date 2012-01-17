@@ -1,4 +1,4 @@
-<h3><span class="clsViewPro"><?php echo $this->lang->line('FIND PROJECTS');?> (<?php echo $numProjects;?>)</span></h3>
+<h3><span class="clsViewPro"><?php echo $this->lang->line('FIND PRODUCTS');?> (<?php echo $numProjects;?>)</span></h3>
 <form method="get" name="searchForm" action="<?php echo base_url(); ?>">
   <p>
     <input type="text" name="keyword" id="keyword" class="clsText"/>
