@@ -530,7 +530,7 @@ class Seller extends Controller {
                 $updateData['city'] = $this->input->post('city', TRUE);
                 $updateData['rate'] = $this->input->post('rate', TRUE);
                 
-                var_dump($updateData);
+                
 
                 //update data's in userContacts table
                 $userContacts['msn'] = $this->input->post('contact_msn', TRUE);

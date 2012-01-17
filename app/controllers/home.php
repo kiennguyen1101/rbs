@@ -205,10 +205,37 @@ class Home extends Controller {
                 $this->load->view('findProf', $this->outputData);
                 break;
             case 's_buyer':
-                echo "find buyers in the same area";
+                $conditions = array('users.id' => $this->loggedInUser->id);
+                $user_info = $this->user_model->getUsers($conditions);
+                $userData = $user_info->row();               
+                $conditions = array(
+                    'users.role_id' => '1',
+                    'country_symbol' => $userData->country_symbol,
+                    'state' => $userData->state,
+                    'city' => $userData->city,
+                    );
+                $results = $this->user_model->getUsers($conditions);
+                foreach ($results->result() as $row)
+                {
+                    var_dump($row);
+                }
+                                
                 break;
             case 's_seller':
-                echo "find sellers in the same area";
+                 $conditions = array('users.id' => $this->loggedInUser->id);
+                $user_info = $this->user_model->getUsers($conditions);
+                $userData = $user_info->row();               
+                $conditions = array(
+                    'users.role_id' => '2',
+                    'country_symbol' => $userData->country_symbol,
+                    'state' => $userData->state,
+                    'city' => $userData->city,
+                    );
+                $results = $this->user_model->getUsers($conditions);
+                foreach ($results->result() as $row)
+                {
+                    var_dump($row);
+                }
                 break;
         }
     }
