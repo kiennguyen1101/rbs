@@ -66,12 +66,12 @@ $userCategoryInfo = $userCategories->row();
 
                                                         <input type="text" name="state" value="<?php echo $userData->state; ?>" maxlength="50" size="30"/></td>
                                                     </p>
-                                                    <?php if (form_error('state'))
+                                                   <p> <?php if (form_error('state'))
     echo '<p><span>&nbsp;</span>' . form_error('state') . '<br></p>'; ?></p>
                                                     <p><span><?php echo $this->lang->line('city'); ?></span>
                                                         <input type="text" name="city" value="<?php echo $userData->city; ?>" maxlength="50" size="30"/>
                                                     </p>
-                                                    <?php if (form_error('city'))
+                                                   <p> <?php if (form_error('city'))
     echo '<p><span>&nbsp;</span>' . form_error('city') . '<br></p>'; ?></p>
                                                     <br />
 <?php $userContact = $userContactInfo->row(); ?>  <h3><span class="clsOptContact"><?php echo $this->lang->line('op_contact_details'); ?></span><?php echo $this->lang->line('('); ?><a href="<?php echo site_url('page/privacy_policy'); ?>"><?php echo $this->lang->line('privacy_policy'); ?></a><?php echo $this->lang->line(')'); ?></h3>
