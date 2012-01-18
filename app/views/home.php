@@ -432,32 +432,22 @@ function checkFind(type){
 document.getElementById('innerContent').innerHTML = '<img src="<?php echo image_url('load2.gif');?>" alt="loading" />' + ' Loading' ;
         
         switch (type) {
-            case 'work':
-                jQuery("#work").attr({
+            case 'product':
+                jQuery("#product").attr({
                     class :"selected",
                     classname: "selected"
                 });
-                jQuery('#prof,#s_buyer,#s_seller').attr({
+                jQuery('#s_buyer,#s_seller').attr({
                     class: "",
                     classname: ""
                 });               	
-                break;
-            case 'prof':
-                jQuery("#prof").attr({
-                    class :"selected",
-                    classname: "selected"
-                });
-                jQuery('#work,#s_buyer,#s_seller').attr({
-                    class: "",
-                    classname: ""
-                });         
-                break;
+                break;         
             case 's_buyer':
                  jQuery("#s_buyer").attr({
                     class :"selected",
                     classname: "selected"
                 });
-                jQuery('#work,#prof,#s_seller').attr({
+                jQuery('#product,#s_seller').attr({
                     class: "",
                     classname: ""
                 });         
@@ -467,7 +457,7 @@ document.getElementById('innerContent').innerHTML = '<img src="<?php echo image_
                     class :"selected",
                     classname: "selected"
                 });
-                jQuery('#work,#prof,#s_buyer').attr({
+                jQuery('#product,#s_buyer').attr({
                     class: "",
                     classname: ""
                 });         
@@ -482,7 +472,7 @@ document.getElementById('innerContent').innerHTML = '<img src="<?php echo image_
       var response = transport.responseText || "no response text";
       document.getElementById('innerContent').innerHTML = response
     },
-    onFailure: function(){ alert('Something went wrong...') }
+    onFailure: function(){ alert('Search functions fail. Cannot send ajax...') }
   });
 }
 
@@ -554,7 +544,7 @@ if($groups->num_rows()>0)
  <?php } ?>
 
 
- checkFind('work');
+ checkFind('product');
 
 </script>
 <?php $this->load->view('footer'); ?>

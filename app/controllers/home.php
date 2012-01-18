@@ -190,7 +190,7 @@ class Home extends Controller {
         $type = $this->uri->segment('3');
 
         switch ($type) {
-            case 'work':
+            case 'product':
                 $urgent_conditions = array('project_status' => '0');
                 $openProjects = $this->skills_model->getProjects($urgent_conditions);
                 $this->outputData['numProjects'] = $openProjects->num_rows();
@@ -205,10 +205,31 @@ class Home extends Controller {
                 $this->load->view('findProf', $this->outputData);
                 break;
             case 's_buyer':
-                echo "find buyers in the same area";
+                $conditions = array('users.id' => $this->loggedInUser->id);
+                $user_info = $this->user_model->getUsers($conditions);
+                $userData = $user_info->row();               
+                $conditions = array(
+                    'users.role_id' => '1',
+                    'country_symbol' => $userData->country_symbol,
+                    'state' => $userData->state,
+                    'city' => $userData->city,
+                    );
+                $this->outputData['results'] = $this->user_model->getUsers($conditions);                
+                $this->load->view('findBuyer',$this->outputData);
+                                
                 break;
             case 's_seller':
-                echo "find sellers in the same area";
+                 $conditions = array('users.id' => $this->loggedInUser->id);
+                $user_info = $this->user_model->getUsers($conditions);
+                $userData = $user_info->row();               
+                $conditions = array(
+                    'users.role_id' => '2',
+                    'country_symbol' => $userData->country_symbol,
+                    'state' => $userData->state,
+                    'city' => $userData->city,
+                    );              
+                $this->outputData['results'] = $this->user_model->getUsers($conditions);
+                $this->load->view('findSeller',$this->outputData);
                 break;
         }
     }
