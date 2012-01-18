@@ -214,11 +214,8 @@ class Home extends Controller {
                     'state' => $userData->state,
                     'city' => $userData->city,
                     );
-                $results = $this->user_model->getUsers($conditions);
-                foreach ($results->result() as $row)
-                {
-                    var_dump($row);
-                }
+                $this->outputData['results'] = $this->user_model->getUsers($conditions);                
+                $this->load->view('findBuyer',$this->outputData);
                                 
                 break;
             case 's_seller':
@@ -230,12 +227,9 @@ class Home extends Controller {
                     'country_symbol' => $userData->country_symbol,
                     'state' => $userData->state,
                     'city' => $userData->city,
-                    );
-                $results = $this->user_model->getUsers($conditions);
-                foreach ($results->result() as $row)
-                {
-                    var_dump($row);
-                }
+                    );              
+                $this->outputData['results'] = $this->user_model->getUsers($conditions);
+                $this->load->view('findSeller',$this->outputData);
                 break;
         }
     }
