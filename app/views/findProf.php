@@ -12,7 +12,7 @@
 	   }   ?>
 	</select>
 	<input type="submit" value="<?php echo $this->lang->line('Search');?>" class="clsMiniBL"   />
-    <input type="hidden" name="c" value="search" />
+        <input type="hidden" name="c" value="search" />
 	<input type="hidden" name="m" value="professional" />
   </p>
 </form>

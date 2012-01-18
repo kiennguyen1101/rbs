@@ -291,4 +291,10 @@ $lang['Message_Display']	    	    = 'Message Display';
 
 $lang['Find Buyer'] = "Find Buyers in your area";
 $lang['Find Seller'] = "Find Sellers in your area";
+$lang['There is'] = "There is";
+$lang['There are'] = "There are";
+$lang['in area'] = "in your area";
+$lang['Seller'] = "Seller";
+$lang['Buyer'] = "Buyer";
+$lang['Search same area'] = "Search for people in the same area with you";
 ?>

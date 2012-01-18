@@ -26,7 +26,7 @@
                           <div id="selSignUp">
                             <h3><span class="clsNewBuyer"><?php echo $this->lang->line('new_buyer_signup'); ?></span></h3>
                             <form method="post" action="<?php echo site_url('buyer/signUp'); ?>">
-                              <?phpform_token(); ?>
+                              <?php form_token(); ?>
                               <input type="hidden" name="new" value="user"/>
                               <p><?php echo $this->lang->line('not_a_buyer'); ?>? <a href="<?php echo site_url('seller/signUp'); ?>"><?php echo $this->lang->line('click_here'); ?></a> <?php echo $this->lang->line('to_sign_seller'); ?></p>
                               <p><strong><?php echo $this->lang->line('email_address'); ?>:</strong>

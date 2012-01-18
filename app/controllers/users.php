@@ -115,7 +115,7 @@ class Users extends Controller {
 						 $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success','Logged In Successfull'));
 						  
 						}
-				redirect('account');
+				redirect('home');
 				}
 				
 		
@@ -234,13 +234,13 @@ class Users extends Controller {
 							   $this->session->unset_userdata('creator_id');		
 							  
 					$this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('This is not your private project')));
-					redirect('info');
+					redirect('home');
 					}
 				}	
 						   
 				if($this->session->userdata('support')=='' and $this->session->userdata('project')=='')
 				{	
-						 redirect('account');	
+						 redirect('home');	
 					}
 				elseif($this->session->userdata('support')!='')
 				{
