@@ -7,8 +7,11 @@
   <!--category-->
   <div id="category">
 	<ul>
-	
+	<?php
+		$categories = array('');
+	?>
 	<!-- single category -->
+	<?php for($i=0;$i<6;$i++): ?>
 	<li class="box">
 		<h1>Category title</h1>
 		<table>
@@ -38,162 +41,10 @@
 		</table>
 		<span class="viewmore"><a href="#">View more</a></span>
 	</li>
+	<?php endfor;?>
 	<!-- end single category -->
 	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
-	<!-- end single category -->
 	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
-	<!-- end single category -->
-	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
-	<!-- end single category -->
-	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
-	<!-- end single category -->
-	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
-	<!-- end single category -->
 		
 	</ul>
   </div>

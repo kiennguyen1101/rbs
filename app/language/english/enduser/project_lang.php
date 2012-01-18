@@ -55,6 +55,7 @@ $lang['( Why? | Review Terms )']='( Why? | Review Terms )';
 $lang['Tip']='Tip: Provide as many details as possible to receive fast, accurate and professional bids from Providers.';
 $lang['Job Type: (Make up to 5 selections.)']='Job Type: (Make up to 5 selections.)';
 $lang['Optional Project Details...']='Optional Project Details...';
+$lang['Optional Product Details...']='Optional Producct Details...';
 $lang['Attachment:']='Attachment:';
 $lang['Project Budget:']='Project Budget:';
 $lang['Minimum:']='Minimum:';

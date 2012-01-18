@@ -15,7 +15,7 @@
                         <div class="inner_br">
                           <div class="cls100_p">
                             <div class="clsPostProject clsSitelinks">
-                              <h2><?php echo $this->lang->line('POST A PROJECT');?> </h2>
+                              <h2><?php echo $this->lang->line('POST A PRODUCT');?> </h2>
 							
 							  <?php echo form_error('total'); 
 								//Show Flash error Message  for deposit minimum amount
@@ -37,8 +37,8 @@
 									$no_of_days = count_days($created,$enddate) - 1;
 								  ?>
 								<?php   
-                             $this->load->view('project/draftControll'); ?>
-                              <p><?php echo $this->lang->line('Note');?></p>
+                             //$this->load->view('project/draftControll'); ?>
+                              <p><?php //echo $this->lang->line('Note');?></p>
                               <h3><span class="clsFileManager"><?php echo $this->lang->line('Account Login Details...');?></span></h3>
 
 
@@ -73,36 +73,36 @@
 
 							   (<a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout') ?></a>).</p>
 
-                              <h3><span class="clsOptDetial"><?php echo $this->lang->line('Required Project Details...');?></span></h3>
+                              <h3><span class="clsOptDetial"><?php echo $this->lang->line('Required Product Details...');?></span></h3>
 							  <form method="post" action="<?php echo site_url('project/create'); ?>" name="form"  enctype="multipart/form-data">
                               <ul>
                                 <li>
-                                  <h5><?php echo $this->lang->line('Project Name');?></h5>
-                                  <p><?php echo $this->lang->line('Do not put a domain/URL in your project name.');?></p>
+                                  <h5><?php echo $this->lang->line('Product Name');?></h5>
+                                  <p><?php echo $this->lang->line('Do not put a domain/URL in your product name.');?></p>
                                   <p>
                                    <input name="projectName" value="<?php echo set_value('projectName'); ?>" maxlength="50" size="50" type="text"/>
 	                               <?php echo form_error('projectName'); ?>
                                   </p>
                                 </li>
                                 <li>
-                                  <h5><?php echo $this->lang->line('Describe the project in detail:');?></h5>
-                                  <p><?php echo $this->lang->line('Do not post any contact info');?> ( <a href="#"><?php echo $this->lang->line('Why?');?></a> | <a href="#"><?php echo $this->lang->line('Review Terms');?></a> )</p>
+                                  <h5><?php echo $this->lang->line('Describe the product in detail:');?></h5>
+                                  <p><?php echo $this->lang->line('Do not post any contact info.');?> <!--( <a href="#"><?php echo $this->lang->line('Why?');?></a> | <a href="#"><?php echo $this->lang->line('Review Terms');?></a> )--></p>
 									<p>
 									  <textarea rows="10" name="description" cols="70"><?php echo set_value('description'); ?></textarea>
 									   <?php echo form_error('description'); ?>
 									</p>
                                   <p><?php echo $this->lang->line('Tip');?></p>
                                 </li>
-								<li><h5><b><?php echo $this->lang->line('I want my project to stay open for bidding for');?>
+								<!--<li><h5><b><?php echo $this->lang->line('I want my project to stay open for bidding for');?>
 									<select name="openDays">
 									
 									<?php for($i=1;$i<=$project_period;$i++){?>
 									<option value="<?php echo $i;?>" <?php if(isset($project_period)) { if($project_period == $i) echo 'selected="selected"'; }?> ><?php echo $i;?></option>
 									<?php } ?>
 									</select>&nbsp;<?php echo $this->lang->line('days');?>
-                                  </b></h5></li>
+                                  </b></h5></li>-->
                                 <li>
-                                  <h5><?php echo $this->lang->line('Job Type: (Make up to 5 selections.)');?></span></h5>
+                                  <h5><?php echo $this->lang->line('Product Type: (Make up to 5 selections.)');?></span></h5>
                                   
                                   <!--OPTION LIST-->
 									<?php
@@ -148,7 +148,7 @@
 								
                               </ul>
                               <div class="clsOptionalDetails">
-                                <h3><span class="clsInvoice"><?php echo $this->lang->line('Optional Project Details...');?></span></h3>
+                                <h3><span class="clsInvoice"><?php echo $this->lang->line('Optional Product Details...');?></span></h3>
                                 <ul>
                                   <li>
                                     <h5><?php echo $this->lang->line('Attachment:');?>
@@ -166,7 +166,7 @@
 									
                                     </h5>
                                     <p><small><?php echo $this->lang->line('info'); ?> <?php echo round($filesize/1024,2);?> <?php echo $this->lang->line('info1');?> <?php echo $maximum_size.' MB'; ?></small></p></li>
-                                  <li>
+                                  <!--<li>
                                     <h5><?php echo $this->lang->line('Project Budget:');?></h5>
                                     <p><?php echo $this->lang->line('Minimum:');?>&nbsp;<span> $
                                       <input name="budget_min" value="<?php echo set_value('budget_min'); ?>" size="5" type="text"/><?php echo form_error('budget_min'); ?>
@@ -174,9 +174,9 @@
                                     <p><?php echo $this->lang->line('Maximum:');?><span> $
                                       <input name="budget_max" value="<?php echo set_value('budget_max'); ?>" size="5" type="text"/><?php echo form_error('budget_max'); ?>
                                       </span></p>
-                                  </li>
+                                  </li>-->
 								  
-								  <li class="clSNoBack">
+								  <!--<li class="clSNoBack">
 									<ul class="clsFloatedList clearfix">
 									  <li class="clsPercent30">
 										<input  name="is_feature" value="1" type="checkbox" <?php echo set_checkbox('is_feature', '1'); ?> onClick="check_featured(this.form)" />
@@ -221,13 +221,13 @@
 									  </span></li>
 									  
 									</ul>  
-								  </li>
+								  </li>-->
 								   <!-- Note: Dont delete this. This will used in phase 2 for private projects to post by buyer -->							  
 							    </ul>
 							  </div>
 							  <p>
-								<input class="clsSmall" value="<?php echo $this->lang->line('Save Draft');?>" name="save_draft" type="submit" />
-								<input class="clsSmall" value="<?php echo $this->lang->line('Preview');?>" name="preview_project" type="submit" onClick="javascript:return formSubmit()" />
+								<!--<input class="clsSmall" value="<?php echo $this->lang->line('Save Draft');?>" name="save_draft" type="submit" />
+								<input class="clsSmall" value="<?php echo $this->lang->line('Preview');?>" name="preview_project" type="submit" onClick="javascript:return formSubmit()" />-->
 								<input class="clsMid" value="<?php echo $this->lang->line('Submit Project');?>" name="createProject" type="submit" />	
 								
                               </p>
