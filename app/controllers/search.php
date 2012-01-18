@@ -398,6 +398,21 @@ class Search extends Controller {
         
         $users = $this->search_model->getUsers($conditions, NULL, $like, $max, $orderby, $like1);
         $users1 = $this->search_model->getUsers($conditions, NULL, $like, NULL, NULL, $like1);
+        
+        //convert country_symbol (ISO code) to name
+        //i.e. US -> United States
+        foreach ($users->result() as $user) {
+             $country = $this->common_model->getCountries(array('country_symbol' => $user->country_symbol));
+             $user->country_name = $country->row()->country_name;
+        }
+        
+         foreach ($users1->result() as $user) {
+             $country = $this->common_model->getCountries(array('country_symbol' => $user->country_symbol));
+             $user->country_name = $country->row()->country_name;
+        }
+        
+       
+ 
        
         if ($users1->num_rows() > 0 and $this->input->get('keyword', true)) {
             $insertData = array();
@@ -408,7 +423,10 @@ class Search extends Controller {
             //Insert keyword for popular search
             $this->skills_model->addPopularSearch($insertData);
         }
+        
+        //load data to view
         $this->outputData['users'] = $users;
+        
         $this->load->library('pagination');
         if (!isset($keyword))
             $keyword = '';

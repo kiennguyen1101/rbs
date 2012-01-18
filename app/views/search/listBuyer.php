@@ -15,8 +15,8 @@
                     <div class="inner_br">
                       <div class="cls100_p">
                         <div class="clsInnerCommon">
-                          <h2><?php echo $this->config->item('site_title'); ?> &nbsp;<?php echo $this->lang->line('Search Results'); ?></h2>
-                          <h3><span class="clsMyOpen"><?php echo $this->lang->line('Search Results'); ?></span></h3>
+                          <h2><?php echo $this->lang->line('Search Results'); ?></h2>
+                          <h3><span class="clsMyOpen">You have <?php echo $users->num_rows() ?> result(s)</span></h3>
                           <table cellspacing="1" cellpadding="2" width="96%">
                             <tbody>
                               <tr>
@@ -38,7 +38,7 @@
 							{
 								foreach($users->result() as $users)
 								{ 
-                                                                    var_dump($users);
+                                                                   
 								if($users->role_id == 1)
 								{
 								 $j=$j+1;
@@ -50,7 +50,7 @@
                               <tr class="<?php echo $class; ?>">
                                 <td><?php echo $j;  ?></td>
                                 <td><a href="<?php echo site_url('seller/viewProfile/'.$users->id); ?>"><?php echo $users->user_name; ?> </td>
-                                <td><?php echo $users->country_symbol; ?>
+                                <td><?php echo $users->country_name; ?>
                                 <td><?php echo $users->state; ?>
                                 <td><?php echo $users->city; ?>
                                 </td>

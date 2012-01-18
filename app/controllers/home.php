@@ -190,7 +190,7 @@ class Home extends Controller {
         $type = $this->uri->segment('3');
 
         switch ($type) {
-            case 'work':
+            case 'product':
                 $urgent_conditions = array('project_status' => '0');
                 $openProjects = $this->skills_model->getProjects($urgent_conditions);
                 $this->outputData['numProjects'] = $openProjects->num_rows();
