@@ -12,7 +12,7 @@
 <link href="<?php echo base_url() ?>app/css/css/menus.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url() ?>app/css/css/icons.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="<?php echo base_url() ?>favicon.ico" type="image/x-icon" />
-
+<script type="text/javascript" src="<?php echo base_url() ?>app/js/jquery-1.7.1.min.js"> </script>
 <script type="text/javascript" src="<?php echo base_url() ?>app/js/prototype.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>app/js/scriptaculous.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>app/js/script.js"></script>
@@ -178,3 +178,4 @@
   <!--END OF HEADER-->
   <!--CONTENT-->
   <div id="content">
+  <!-- test -->

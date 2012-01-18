@@ -9,6 +9,6 @@ $lang['Services & Features']='Services & Features';
 
 $lang['Bids']			 = 'Bids';
 $lang['Avg Bid']			 = 'Avg Bid';
-$lang['Job Type']			 = 'Job Type';
+$lang['Job Type']			 = 'Product Category';
 $lang['Posted']			 = 'Posted';
 ?>

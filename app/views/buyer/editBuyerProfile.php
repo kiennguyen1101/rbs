@@ -33,6 +33,37 @@ $userData = $userInfo->row();
                               <p><span><?php echo 'Email Address'; ?>:</span>
 								 <input type="text" size="25" value="<?php echo $userData->email; ?>" name="email" />
 						      </p>
+                                                      
+                                                      <p><span><?php echo $this->lang->line('country'); ?></span>
+
+                                                        <select name="country" size="1">
+                                                            <option value="">None</option>
+                                                            <?php
+                                                            if (isset($countries) and $countries->num_rows() > 0) {
+                                                                foreach ($countries->result() as $country) {
+                                                                    ?>
+                                                                    <option value="<?php echo $country->country_symbol; ?>"  <?php if ($userData->country_symbol == $country->country_symbol)
+                                                                echo 'selected="selected"'; ?>><?php echo $country->country_name; ?></option>
+                                                                    <?php
+                                                                }//Foreach End
+                                                            }//If End
+                                                            ?>
+                                                        </select>
+<?php if (form_error('country'))
+    echo '<p><span>&nbsp;</span>' . form_error('country') . '<br></p>'; ?></p>
+                                                    
+                                                    <p><span><?php echo $this->lang->line('state/province'); ?></span>
+
+                                                        <input type="text" name="state" value="<?php echo $userData->state; ?>" maxlength="50" size="30"/></td>
+                                                    </p>
+                                                   <p> <?php if (form_error('state'))
+    echo '<p><span>&nbsp;</span>' . form_error('state') . '<br></p>'; ?></p>
+                                                    <p><span><?php echo $this->lang->line('city'); ?></span>
+                                                        <input type="text" name="city" value="<?php echo $userData->city; ?>" maxlength="50" size="30"/>
+                                                    </p>
+                                                   <p> <?php if (form_error('city'))
+    echo '<p><span>&nbsp;</span>' . form_error('city') . '<br></p>'; ?></p>
+                                                      
                               <p class="clsPTB0"><span>&nbsp;</span><small><?php echo $this->lang->line('disp_others'); ?></small></p>
 		
                                 <h3><span class="clsOptContact"><?php echo $this->lang->line('op_contact_details'); ?> <?php echo $this->lang->line('(');?><a href="#"><?php echo $this->lang->line('privacy_policy'); ?></a><?php echo $this->lang->line(')');?> </span></h3>
@@ -113,30 +144,7 @@ $userData = $userInfo->row();
 								  <option value="Hourly" <?php if($userData->message_notify=='Hourly') echo 'selected="selected"'; ?>>Hourly</option>
 								  <option value="Daily"  <?php if($userData->message_notify=='Daily') echo 'selected="selected"'; ?>>Daily</option> 
 							     </select>  <?php echo form_error('notify_message'); ?>
-                                </p>
-								
-								
-                              <p> <span><?php echo $this->lang->line('country'); ?></span>
-							  
-                                <select name="country" size="1">
-									<option value="">None</option>
-									<?php
-										if(isset($countries) and $countries->num_rows()>0)
-										{
-											foreach($countries->result() as $country)
-											{
-									?>
-											<option value="<?php echo $country->country_symbol; ?>" <?php if($userData->country_symbol==$country->country_symbol) echo 'selected="selected"'; ?> ><?php echo $country->country_name; ?></option>
-									<?php
-												}//Foreach End
-											}//If End
-										?>
-							  </select> <?php echo form_error('country_symbol'); ?></p>
-							  <p><span><?php echo $this->lang->line('state/province'); ?></span>
-                                 <input type="text" name="state" value="<?php echo $userData->state; ?>" maxlength="50" size="30"/></p>
-							  <p> <span><?php echo $this->lang->line('city'); ?></span>
-							      <input type="text" name="city" value="<?php echo $userData->city; ?>" maxlength="50" size="25"/>
-							  </p>	  
+                                </p>					
 							 
                               <!--<p><span>&nbsp;</span><input type="checkbox" name="signup_agree_contact" value="1" <?php echo set_checkbox('signup_agree_contact', '1'); ?>/ >
 									<?php echo $this->lang->line('Display my own status.');?></span>

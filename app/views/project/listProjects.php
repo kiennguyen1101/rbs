@@ -90,10 +90,10 @@
 								   <?php } 
 								   if($project->is_feature == 1) { ?>
 								    &nbsp;&nbsp;<img src="<?php echo image_url('featured2.gif');?>" width="14" height="14" title="Featured projects" alt="Featured project" />
-								   <?php} 
+								   <?php } 
 								    if($project->is_private == 1) { ?>
 								    &nbsp;&nbsp;<img src="<?php echo image_url('private.png');?>" width="14" height="14" title="Featured projects" alt="Private project" />
-								   <?php} 
+								   <?php } 
 								   ?>
 								</td>
                                 <?php if($this->session->userdata('show_cat')):	?>

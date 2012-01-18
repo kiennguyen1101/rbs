@@ -2,8 +2,17 @@
 <div class="clsMainSearch">
   <div class="navmenutabs">
     <ul>
-      <li id="work"><a href="javascript:;" onclick="checkFind('work')"><span><?php echo $this->lang->line('Find Work');?></span></a></li>
-      <li id="prof"><a href="javascript:;" onclick="checkFind('proff')"><span><?php echo $this->lang->line('Find Profesional');?></span></a></li>
+      <li id="work"><a href="#" onclick="checkFind('product')"><span><?php echo $this->lang->line('Find Product');?></span></a></li>      
+      <?php if (is_object($loggedInUser))                
+        switch ($loggedInUser->role_name) { 
+          case "seller": ?>
+      <li id="s_buyer" class=""><a href="#" onclick="checkFind('s_buyer')"><span><?php echo $this->lang->line('Find Buyer');?></span></a></li>
+              <?php break; ?>
+         <?php case "buyer": ?>
+      <li id="s_seller" class=""><a href="#" onclick="checkFind('s_seller')"><span><?php echo $this->lang->line('Find Seller');?></span></a></li>
+              <?php break; 
+          }         
+      ?>
     </ul>
   </div>
   <div class="boxholder">

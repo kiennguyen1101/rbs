@@ -28,7 +28,7 @@ margin-right:20px;
                             <div class="clsInnerCommon">
 							<?php  if($project->flag==0) {?>
 							
-                              <h2><?php echo $this->lang->line('Project');?>: <?php echo $project->project_name; ?></h2><?php}else {?>
+                              <h2><?php echo $this->lang->line('Project');?>: <?php echo $project->project_name; ?></h2><?php }else {?>
 							  <h2><?php echo $this->lang->line('Job Listing');?>: <?php echo $project->project_name; ?></h2>
 							  <?php }?>
 							<div class="clsHeads clearfix">
@@ -195,7 +195,7 @@ margin-right:20px;
                                     <?php } 
 								   if($project->is_feature == 1) { ?>
                                     &nbsp;&nbsp;<img src="<?php echo image_url('featured.gif');?>" width="71" height="13" title="Featured project" alt="<?php echo $this->lang->line('Featured Project'); ?>" />
-                                    <?php}
+                                    <?php }
 									if($project->is_private == 1) {?>
 									
 									 &nbsp;&nbsp;<img src="<?php echo image_url('private1.png');?>" width="61" height="13" title="private project" alt="<?php echo $this->lang->line('Private Project'); ?>" /><?php }
@@ -268,7 +268,7 @@ margin-right:20px;
                                   <td class="dt1"><?php echo getCategoryLinks($project->project_categories);?></td>								  
 		                        </tr>
 							<!--	Puhal Changes Start for downloading the Project attachment file (Sep 20 Isssue 17)-->
-								<?phpif(isset($project->attachment_name)) { ?>
+								<?php if(isset($project->attachment_name)) { ?>
 								<tr>
                                   <td class="dt1 dt0"><?php echo $this->lang->line('Project Attachment'); ?>:</td>
          <td class="dt1"><?php echo $project->attachment_name; ?><a href="<?php echo site_url('project/download/'.$project->attachment_url);?>" class="clsDown"><img src="<?php echo base_url();?>app/css/images/download1.png" /></a></td>								  								
@@ -371,7 +371,7 @@ margin-right:20px;
                                 </tr>
 								</tr>
 							<!--	Puhal Changes Start for downloading the Project attachment file (Sep 20 Isssue 17)-->
-								<?phpif(isset($project->attachment_name)) { ?>
+								<?php if(isset($project->attachment_name)) { ?>
 								<tr>
                                   <td class="dt1 dt0"><?php echo $this->lang->line('Project Attachment'); ?>:</td>
          <td class="dt1"><?php echo $project->attachment_name; ?><a href="<?php echo site_url('project/download/'.$project->attachment_url);?>" class="clsDown"><img src="<?php echo base_url();?>app/css/images/download1.png" /></a></td>								  								

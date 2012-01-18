@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://localhost/rbs/";
+$config['base_url']	= "http://localhost/rbs_1.6_RC3/";
 
 /*
 |--------------------------------------------------------------------------
@@ -325,7 +325,7 @@ $config['language_code'] 				= 'english';
 $config['hostname'] = "localhost";
 $config['db_username'] = "root";
 $config['db_password'] = "";
-$config['db'] = "rbs";
+$config['db'] = "rbsrc3";
 //Common listings limit
 $config['listing_limit'] 				= 10;
 
@@ -338,7 +338,7 @@ $config['field_error_end_tag']			= '</span>';
 
 //admin controllers folder name 
 $config['admin_controllers_folder'] 	= 'siteadmin'; //No trailing slash
-$config['basepath'] 				    =  $_SERVER['DOCUMENT_ROOT'].'/rbs/';
+$config['basepath'] 				    =  $_SERVER['DOCUMENT_ROOT'].'/rbs_1.6_RC3/';
 
 //fckEditor
 $config['fckeditor_path']			  = 	$config['basepath'].'fckeditor/';  //FckEditor Path

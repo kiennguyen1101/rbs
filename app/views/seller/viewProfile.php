@@ -34,7 +34,7 @@ if(isset($userDetails) and $userDetails->num_rows()>0)
                         <div class="inner_br">
                           <div class="cls100_p">
                             <div class="clsInnerCommon">
-                              <h2><?phpecho $this->lang->line('Seller Profile');?> <?php echo $this->lang->line('-');?> <?php echo $user->user_name;?>
+                              <h2><?php echo $this->lang->line('Seller Profile');?> <?php echo $this->lang->line('-');?> <?php echo $user->user_name;?>
 							
 							  </h2>
                              <div align="right" style="padding-right:10px;">
