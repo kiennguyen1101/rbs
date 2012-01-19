@@ -7,40 +7,25 @@
   <!--category-->
   <div id="category">
 	<ul>
-	<?php
-		$categories = array('');
-	?>
+	<?php //var_dump($products);?>
 	<!-- single category -->
 	<?php for($i=0;$i<6;$i++): ?>
+		
 	<li class="box">
-		<h1>Category title</h1>
+		<h1><?php echo $homeCategories[$i]->category;?></h1>
+		<?php foreach($products[$i] as $products[$i]):?>
 		<table>
 			<tr>
-				<td class="item">Item</td>
+				<td class="item"><?php echo $products[$i]->project_name;?></td>
 				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
+				<td class="price"><?php echo $products[$i]->number_of_buyers;?></td>
 			</tr>
 			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
 		</table>
-		<span class="viewmore"><a href="#">View more</a></span>
+		<?php endforeach;?>
+		<span class="viewmore"><a href="<?php echo site_url('?keyword=&category='.$products[$i]->project_categories.'&c=search');?>">View more</a></span>
 	</li>
+		
 	<?php endfor;?>
 	<!-- end single category -->
 	
