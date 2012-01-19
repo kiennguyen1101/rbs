@@ -8,36 +8,28 @@
   <div id="category">
 	<ul>
 	<?php
-		$categories = array('');
+		$categories = array('');               
 	?>
 	<!-- single category -->
 	<?php for($i=0;$i<6;$i++): ?>
 	<li class="box">
 		<h1>Category title</h1>
 		<table>
+                    <?php for ($j=0;$j<6;$j++): ?>
+                        
 			<tr>
 				<td class="item">Item</td>
-				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
+                                <?php //check user role
+                                if (is_object($loggedInUser) && $loggedInUser->role_name == 'buyer') : ?>
+                                    <td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
+                                <?php else: ?>
+                                            <td><a href="#">bid</a> &nbsp; </td>    
+                                        
+                                        
+                                <?php endif; //End check user role?>
 				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
+			</tr>			
+                        <?php endfor; ?>
 		</table>
 		<span class="viewmore"><a href="#">View more</a></span>
 	</li>

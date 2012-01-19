@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://localhost/rbs/rbs";
+$config['base_url']	= "http://localhost/rbs";
 
 /*
 |--------------------------------------------------------------------------
@@ -174,7 +174,7 @@ $config['function_trigger'] = 'm';
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 0;
 
 /*
 |--------------------------------------------------------------------------
@@ -325,7 +325,7 @@ $config['language_code'] 				= 'english';
 $config['hostname'] = "localhost";
 $config['db_username'] = "root";
 $config['db_password'] = "";
-$config['db'] = "rbs";
+$config['db'] = "rbsrc3";
 //Common listings limit
 $config['listing_limit'] 				= 10;
 
