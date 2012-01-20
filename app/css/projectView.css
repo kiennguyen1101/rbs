@@ -1,0 +1,19 @@
+#main div {
+    display:block;
+}
+
+#main .clsInnerpageCommon h2 {
+color: white;
+font-size: 1em;
+padding: .8em;
+font-weight: normal;
+background-color: black;
+margin: 0 0 12px 0;
+}
+
+#main .clsHeading {
+background-color: #F3F5F4;
+margin: 0 0.1em;
+padding: 0.1em;
+height: auto;
+}
