@@ -1653,7 +1653,10 @@ class Skills_model extends Model {
 	    $tiny = 'http://tinyurl.com/api-create.php?url=';
 	    return file_get_contents($tiny.urlencode(trim($url)));
 	}
-	 	 
+	
+	function newWantList($insert=array()) {
+		$this->db->insert('want_list', $insert);
+	}
 }
 // End Skills_model Class
    

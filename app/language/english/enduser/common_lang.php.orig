@@ -140,13 +140,8 @@ $lang['Back']='Back';
 $lang['FIND PROFESSIONALS']='FIND PROVIDERS';
 $lang['Popular searches:']='Popular searches:';
 $lang['Search']='Search';
-<<<<<<< HEAD
-$lang['FIND PRODUCTS']='FIND PRODUCTS';
-$lang['FIND PROJECTS']='FIND PRODUCTS';
-=======
 $lang['FIND PROJECTS']='FIND PRODUCTS';
 $lang['FIND PRODUCTS']='FIND PRODUCTS';
->>>>>>> da519423b5fe53144761fa8a5b6eb7c838e6b311
 $lang['Mail']='Mail';
 $lang['Deposit Money']='Deposit ';
 $lang['Transfer Money']='Transfer ';
@@ -297,14 +292,10 @@ $lang['Invite Seller']	    	    = 'Invite Seller';
 $lang['Add To Favourite']	    	    = 'Add To Favourite';
 $lang['BlackList User']	    	    = 'BlackList User';
 $lang['Message_Display']	    	    = 'Message Display';
-
-$lang['Find Buyer'] = "Find Buyers in your area";
-$lang['Find Seller'] = "Find Sellers in your area";
 $lang['There is'] = "There is";
 $lang['There are'] = "There are";
 $lang['in area'] = "in your area";
 $lang['Seller'] = "Seller";
 $lang['Buyer'] = "Buyer";
 $lang['Search same area'] = "Search for people in the same area with you";
-
 ?>

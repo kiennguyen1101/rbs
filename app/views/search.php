@@ -2,9 +2,7 @@
 <div class="clsMainSearch">
   <div class="navmenutabs">
     <ul>
-
       <li id="work"><a href="#" onclick="checkFind('work')"><span><?php echo $this->lang->line('Find Product');?></span></a></li>      
-
       <?php if (is_object($loggedInUser))                
         switch ($loggedInUser->role_name) { 
           case "seller": ?>

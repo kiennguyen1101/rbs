@@ -27,13 +27,17 @@
   <div id="header">
     <div id="selLeftHeader">
 	<div id="selLogo">
+		
       <h1><a href="<?php echo base_url() ?>"><?php echo $this->lang->line('Cogzidel Lance');?></a></h1>
+	  
     </div>
 	</div>
 	<div id="selRightHeader">
 	<div id="selTopNavigation">
       <ul>
+		<?php if (isLoggedIn()===FALSE) { ?>
         <li><a href="<?php echo site_url('users/login');?>">Login</a></li>
+		 <?php } ?>
         <li><a href="<?php echo site_url('buyer/signUp');?>">Register</a></li>
         
       </ul>

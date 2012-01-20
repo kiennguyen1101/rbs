@@ -211,7 +211,7 @@ class Project extends Controller {
 		$this->lang->load('enduser/createProject', $this->config->item('language_code'));
 		
 		$this->outputData['created']          = get_est_time();
-		$this->outputData['enddate']          = get_est_time() + ($this->input->post('openDays') * 86400);
+		$this->outputData['enddate']          = get_est_time() + (7 * 86400);
 		
 		//Check For Buyer Session
 		if(!isBuyer())
@@ -239,7 +239,7 @@ class Project extends Controller {
 		}
 		
 		//Save the draft projects
-		if($this->input->post('save_draft'))
+		/*if($this->input->post('save_draft'))
 		{ 			
 			
 			 if($this->input->post('projectName'))
@@ -273,7 +273,7 @@ class Project extends Controller {
 					}   
 					$insertData['creator_id']       	= $this->loggedInUser->id;
 					$insertData['created']       		= get_est_time();
-					$insertData['enddate']       		= get_est_time() + ($this->input->post('openDays') * 86400);		  
+					$insertData['enddate']       		= get_est_time() + (7 * 86400);		  
 					
 					if($this->input->post('categories'))
 					{
@@ -318,7 +318,7 @@ class Project extends Controller {
 				}   
 				$updateDraft['creator_id']       	= $this->loggedInUser->id;
 				$updateDraft['created']       		= get_est_time();
-				$updateDraft['enddate']       		= get_est_time() + ($this->input->post('openDays') * 86400);		  
+				$updateDraft['enddate']       		= get_est_time() + (7 * 86400);		  
 				
 				if($this->input->post('categories'))
 				{
@@ -348,7 +348,7 @@ class Project extends Controller {
 		   //Notification message
 		   $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('Your project has been saved as Draft')));
 		   redirect('info/index/success');				  
-		  }
+		  }*/
 		
 		if($this->uri->segment(3,0))
 		   $project_id    =    $this->uri->segment(3,0);
@@ -366,24 +366,24 @@ class Project extends Controller {
 			//Set rules
 			// Puhal Changes Start Following validations are to verify the post of Email address and Phone number (Sep 17 Issue 1)	-------------------------------------------		
 		
-$this->form_validation->set_rules('projectName','lang:project_name_validation',							'required|trim|min_length[5]|xss_clean|alpha_space|callback__emailpresent_projectname_check|callback__phonenumber_projectname_check');
+$this->form_validation->set_rules('projectName','lang:project_name_validation','required|trim|min_length[5]|xss_clean|alpha_space|callback__emailpresent_projectname_check|callback__phonenumber_projectname_check|callback__project_exist_check');
 
 // Puhal Changes End Following validations are to verify the post of Email address and Phone number (Sep 17 Issue 1)	-------------------------------------------		
 			$this->form_validation->set_rules('description','lang:description_validation','required|min_length[25]|trim|xss_clean|callback__emailpresent_check|callback__phonenumber_check');
 			$this->form_validation->set_rules('attachment','lang:attachment_validation','callback_attachment_check');
 			$this->form_validation->set_rules('categories[]','lang:categories_validation','required');
-			$this->form_validation->set_rules('is_feature','lang:is_feature_validation','trim');
-			$this->form_validation->set_rules('is_private','lang:is_private_validation','trim');
-			$this->form_validation->set_rules('is_urgent','lang:is_urgent_validation','trim');
-			$this->form_validation->set_rules('is_hide_bids','lang:is_hide_bids_validation','trim');
-			$this->form_validation->set_rules('budget_min','lang:budget_min_validation','trim|integer|is_natural|abs|xss_clean');
-			$this->form_validation->set_rules('budget_max','lang:budget_max_validation','trim|integer|is_natural|abs|xss_clean|callback__maxvalcheck');   
+			//$this->form_validation->set_rules('is_feature','lang:is_feature_validation','trim');
+			//$this->form_validation->set_rules('is_private','lang:is_private_validation','trim');
+			//$this->form_validation->set_rules('is_urgent','lang:is_urgent_validation','trim');
+			//$this->form_validation->set_rules('is_hide_bids','lang:is_hide_bids_validation','trim');
+			//$this->form_validation->set_rules('budget_min','lang:budget_min_validation','trim|integer|is_natural|abs|xss_clean');
+			//$this->form_validation->set_rules('budget_max','lang:budget_max_validation','trim|integer|is_natural|abs|xss_clean|callback__maxvalcheck');   
 			$this->form_validation->set_rules('categories[]','lang:categories_validation','trim|integer|is_natural|abs|xss_clean|callback__maxvalcheckcat');   
-			if($this->input->post('is_private'))
+			/*if($this->input->post('is_private'))
 			{		
 					$this->form_validation->set_rules('private_list','lang:private_list','required'); 
-			}
-			
+			}*/
+			$this->form_validation->set_message('required', 'This field can not be blank');
 			
 			if($this->form_validation->run())
 			{
@@ -426,11 +426,12 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 				  else
 				     $insertData['description']    	= $this->input->post('description');	
 					 
-				  $insertData['budget_min']    	  	= $this->input->post('budget_min');
-				  $insertData['budget_max']       	= $this->input->post('budget_max');
-				  $insertData['is_feature']       	= $this->input->post('is_feature');
-				  $insertData['is_urgent']       	= $this->input->post('is_urgent');
-				  $insertData['is_hide_bids']       = $this->input->post('is_hide_bids');
+				  $insertData['budget_min']    	  	= 0;
+				  $insertData['budget_max']       	= 0;
+				  $insertData['is_feature']       	= 0;
+				  $insertData['is_urgent']       	= 0;
+				  $insertData['is_hide_bids']       = 0;
+				  $insertData['number_of_buyers'] = 1;
 				  $insertData['flag']=0;
 				  if($this->input->post('is_private'))
 					{
@@ -438,11 +439,11 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 					} 
 				  $insertData['creator_id']       	= $this->loggedInUser->id;
 				  $insertData['created']       		= get_est_time();
-				  $insertData['enddate']       		= get_est_time() + ($this->input->post('openDays') * 86400);
+				  $insertData['enddate']       		= get_est_time() + (7 * 86400);
 				  $result                           = '0';
 				  
 				  //Project Preview
-				  if($this->input->post('preview_project'))
+				  /*if($this->input->post('preview_project'))
 		          {
 					   $this->outputData['showPreview']			= true;
 					   $result                                  = '1';
@@ -468,7 +469,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 						} 
 					   $outputData['creator_id']       	= $this->loggedInUser->id;
 					   $outputData['created']       		= get_est_time();
-					   $outputData['enddate']       		= get_est_time() + ($this->input->post('openDays') * 86400);
+					   $outputData['enddate']       		= get_est_time() + (7 * 86400);
 					  if($this->input->post('categories'))
 					  {
 						   $categories = $this->input->post('categories');
@@ -481,7 +482,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 					  //Insert the preview project details
 					 
 					  $this->skills_model->previewProject($outputData);
-		         }
+		         }*/
 				 
 				 //Project Submit
 				 //check the condition for view the preview about the project
@@ -516,7 +517,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 							$this->outputData['hide_project']     = $hide_project;
 							$this->outputData['private_project']   =$private_project; 
 							$this->outputData['created']          = get_est_time();
-							$this->outputData['enddate']          = get_est_time() + ($this->input->post('openDays') * 86400);
+							$this->outputData['enddate']          = get_est_time() + (7 * 86400);
 						}
 				
 						else
@@ -532,7 +533,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 							$this->outputData['hide_project']     = $hide_project;
 							$this->outputData['private_project']   =$private_project; 
 							$this->outputData['created']          = get_est_time();
-							$this->outputData['enddate']          = get_est_time() + ($this->input->post('openDays') * 86400);
+							$this->outputData['enddate']          = get_est_time() + (7 * 86400);
 						}
 					}
 					else{
@@ -547,10 +548,10 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 					  {
 						
 						 	//initial value set for check the featured , urgent, hide projects
-						 	$settingAmount=0;
+						 	//$settingAmount=0;
 						 
 						 	//check the values for featured, urgent, hide projects
-							if($this->input->post('is_feature'))
+							/*if($this->input->post('is_feature'))
 							{
 								$settingAmount=$settingAmount+$feature_project;
 							}
@@ -565,21 +566,21 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 							 if($this->input->post('is_private'))
 							{
 								$settingAmount=$settingAmount+$private_project; 
-							}	
+							}*/	
 
 							//Check User Balance
-							$condition_balance 		 = array('user_balance.user_id'=>$this->loggedInUser->id);
-							$results 	 			 = $this->transaction_model->getBalance($condition_balance);
+							//$condition_balance 		 = array('user_balance.user_id'=>$this->loggedInUser->id);
+							//$results 	 			 = $this->transaction_model->getBalance($condition_balance);
 							//If Record already exists
-							if($results->num_rows()>0)
+							/*if($results->num_rows()>0)
 							{
 								//get balance detail
 								$rowBalance = $results->row();
 								
 								$this->outputData['userAvailableBalance'] = $rowBalance->amount;
-							}
+							}*/
 							
-							if($this->input->post('is_hide_bids',TRUE) or $this->input->post('is_urgent',TRUE) or $this->input->post('is_feature',TRUE) or  $this->input->post('is_private',TRUE)) 
+							/*if($this->input->post('is_hide_bids',TRUE) or $this->input->post('is_urgent',TRUE) or $this->input->post('is_feature',TRUE) or  $this->input->post('is_private',TRUE)) 
 							{
 								$withdrawvalue = $rowBalance->amount - ( $settingAmount + $paymentSettings['PAYMENT_SETTINGS'] );
 								
@@ -653,7 +654,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 									  $this->load->model('transaction_model');
 									  $this->transaction_model->addTransaction($insertTransaction);	
 								}
-							}
+							}*/
 					 }
 					 		
 					//Get payment settings for check minimum balance from settings table
@@ -674,9 +675,13 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 						    	
 						    // insert the projects details into project table
 						    $this->skills_model->createProject($insertData);
+							
 							$projectid=$this->db->insert_id();
 							
-							if($this->input->post('is_private'))
+							$insert['user_id'] = $this->loggedInUser->id;
+							$insert['project_id'] = $projectid;
+							$this->skills_model->newWantList($insert);
+							/*if($this->input->post('is_private'))
 							{
 																
 								$private_users=$this->input->post('private_list',TRUE);
@@ -718,9 +723,9 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 									}	
 								}	
 								
-							}							
+							}*/							
 							
-							if($this->input->post('is_private'))	
+							/*if($this->input->post('is_private'))	
 							{
 							   	//Send Mail
 								$conditionProviderMail     = array('email_templates.type'=>'private_project_provider');
@@ -766,8 +771,8 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 							  }	
 							  
 							  }
-						   }
-						   if($this->input->post('is_private'))	
+						   }*/
+						   /*if($this->input->post('is_private'))	
 							{
 								$conditionUserMail = array('email_templates.type'=>'privateproject_post');
 							$result            = $this->email_model->getEmailSettings($conditionUserMail);
@@ -811,11 +816,11 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 							$this->email_model->sendHtmlMail($toEmail,$fromEmail,$mailSubject,$mailContent);
 							}
 							/* New version as of June 09 2009 */
-							$tuser = $this->config->item('twitter_username');
+							/*$tuser = $this->config->item('twitter_username');
 							$tpass = $this->config->item('twitter_password');
 							$twit_msg = "<".$this->loggedInUser->user_name."> ".$insertData['project_name']." : ".site_url('project/view/'.$this->db->insert_id());
 						    $twit_content= $this->skills_model->tinyUrl(site_url('project/view/'.$this->db->insert_id()));
-							$this->skills_model->sendTwitter($twit_content,$tuser,$tpass);
+							$this->skills_model->sendTwitter($twit_content,$tuser,$tpass);*/
 							
 							//Send instant notification mail to providers
 							$conditions = array('users.role_id' => '2','users.user_status' => '1','user_categories.user_categories !=' => '','users.project_notify' => 'Instantly');
@@ -847,8 +852,8 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation',	
 							}
 							/* end of new vesrion */
 							
-						   $delete_condition   =  array('draftprojects.project_name'=>$this->input->post('projectName'));
-						   $this->skills_model->deletedraftprojects($delete_condition);
+						   //$delete_condition   =  array('draftprojects.project_name'=>$this->input->post('projectName'));
+						   //$this->skills_model->deletedraftprojects($delete_condition);
 						   	
 						   //Notification message
 						   $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('Your Project has been Posted Successfully')));
@@ -2598,7 +2603,7 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 									} 
 								  $insertData['creator_id']       	= $this->loggedInUser->id;
 								  $insertData['created']       		= get_est_time();
-								  $insertData['enddate']       		= get_est_time() + ($this->input->post('openDays') * 86400);
+								  $insertData['enddate']       		= get_est_time() + (7 * 86400);
 								  $result                           = '0';
 								
 								if($this->input->post('categories'))
@@ -3093,13 +3098,13 @@ $this->lang->load('enduser/common', $this->config->item('language_code'));
 			$row = $res->row();
 			$left = days_left($row->enddate,$prjid);
 			if($left == 'Closed')
-					$enddate = get_est_time() + ($this->input->post('openDays') * 86400);
+					$enddate = get_est_time() + (7 * 86400);
 				else{
 					$today = time();
 					$lastday = $row->enddate;
 					$left = $lastday - $today;
 					$val = date('j',$left);
-					$open = $val + $this->input->post('openDays');
+					$open = $val + 7;
 					$enddate = get_est_time() + ($open * 86400);
 					
 				}
@@ -3416,7 +3421,19 @@ return false;
 }
 }	
 
-
+function _project_exist_check() {
+	if($this->input->post('projectName'))
+		$projectName = $this->input->post('projectName');
+	$this->db->where('project_name',$projectName);
+	$this->db->select('project_name');
+	$query = $this->db->get('projects');
+	if($query->num_rows()!=0) {
+		$this->form_validation->set_message('_project_exist_check','This product has been posted by someone else');
+		return FALSE;
+	}
+	else
+		return TRUE;
+}
 
 } //End  Project Class
 /* End of file Project.php */ 
