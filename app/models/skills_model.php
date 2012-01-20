@@ -1690,7 +1690,27 @@ class Skills_model extends Model {
 			return TRUE;
 	}
 	
-	function isUserInWantList($userID,$productId) {//continue...
+	function isUserInWantList($userId,$productId) {
+		$this->db->select('*');
+		$this->db->from('want_list');
+		$this->db->where('user_id',$userId);
+		$this->db->where('project_id',$productId);
+		$query = $this->db->get();
+		if($query->num_rows() > 0) 
+			return TRUE;
+		else
+			return FALSE;
+	}
+	
+	function addWantList($insert=array()) {
+		$this->db->insert('want_list', $insert);
+	}
+	
+	function updateNumberOfBuyers($productId,$addition) {
+		$this->db->set('number_of_buyers','number_of_buyers + 1',FALSE);
+		$this->db->where('id',$productId);
+		$this->db->update('projects');
+		return TRUE;
 	}
 }
 // End Skills_model Class

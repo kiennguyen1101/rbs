@@ -140,13 +140,8 @@ $lang['Back']='Back';
 $lang['FIND PROFESSIONALS']='FIND PROVIDERS';
 $lang['Popular searches:']='Popular searches:';
 $lang['Search']='Search';
-<<<<<<< HEAD
 $lang['FIND PRODUCTS']='FIND PRODUCTS';
 $lang['FIND PROJECTS']='FIND PRODUCTS';
-=======
-$lang['FIND PROJECTS']='FIND PRODUCTS';
-$lang['FIND PRODUCTS']='FIND PRODUCTS';
->>>>>>> da519423b5fe53144761fa8a5b6eb7c838e6b311
 $lang['Mail']='Mail';
 $lang['Deposit Money']='Deposit ';
 $lang['Transfer Money']='Transfer ';

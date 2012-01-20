@@ -262,14 +262,24 @@ class Home extends Controller {
 		$loggedInUserId = $this->loggedInUser->id;
 		$productId = $this->uri->segment(3);
 		if(!isLoggedIn()) {
-			$this->session->set_flashdata('flash_message','<b>You must log in order to add yourself to the want list</b>');
+			$this->session->set_flashdata('flash_message',$this->common_model->flash_message('error','You must log in order to add yourself to the want list'));
 			redirect('users/login');
 		}
 		if(!$this->skills_model->isProductOpen($productId)) {
-			$this->session->set_flashdata('flash_message','This product post is expired!');
+			$this->session->set_flashdata('flash_message',$this->common_model->flash_message('error','This product post is expired'));
 			redirect('home');
 		}
-		if($this->skills_model)//continue...
+		if($this->skills_model->isUserInWantList($loggedInUserId,$productId)) {
+			$this->session->set_flashdata('flash_message',$this->common_model->flash_message('error','You are already in the want list'));
+			redirect('home');
+		}
+		$insert = array();
+		$insert['user_id'] = $loggedInUserId;
+		$insert['project_id'] = $productId;
+		$this->skills_model->addWantList($insert);
+		$this->skills_model->updateNumberOfBuyers($productId,1);
+		$this->session->set_flashdata('flash_message',$this->common_model->flash_message('success','You have been added to the want list!'));
+		redirect('home');
 	}
 }
 
