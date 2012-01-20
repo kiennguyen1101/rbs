@@ -440,6 +440,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation','
 				  $insertData['creator_id']       	= $this->loggedInUser->id;
 				  $insertData['created']       		= get_est_time();
 				  $insertData['enddate']       		= get_est_time() + (7 * 86400);
+				  $insertData['project_status'] 	= '0';
 				  $result                           = '0';
 				  
 				  //Project Preview
@@ -877,7 +878,7 @@ $this->form_validation->set_rules('projectName','lang:project_name_validation','
 		   $preview   = $this->skills_model->getpreviewProjects($condition);
 		   $this->outputData['preview'] = $preview;
 		   //pr($preview);
-		   
+		 
 		 $this->load->view('project/createProject',$this->outputData);		
 		 }
 	} //Function create End
