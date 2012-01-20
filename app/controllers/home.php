@@ -36,7 +36,8 @@ class Home extends Controller {
      */
     function Home() {
         parent::Controller();
-
+		$this->load->library('session');
+		$this->load->library('encrypt');
         //Get Config Details From Db
         $this->config->db_config_fetch();
         //Manage site Status 
@@ -236,6 +237,19 @@ class Home extends Controller {
         $this->load->view('categoryList', $this->outputData);
     }
 	
+	function want() {
+		$loggedInUserId = $this->loggedInUser->id;
+		$productId = $this->uri->segment(3);
+		if(!isLoggedIn()) {
+			$this->session->set_flashdata('flash_message','<b>You must log in order to add yourself to the want list</b>');
+			redirect('users/login');
+		}
+		if(!$this->skills_model->isProductOpen($productId)) {
+			$this->session->set_flashdata('flash_message','This product post is expired!');
+			redirect('home');
+		}
+		if($this->skills_model)//continue...
+	}
 }
 
 //End  Buyer Class

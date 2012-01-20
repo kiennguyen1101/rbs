@@ -4,6 +4,12 @@
 
 <div id="main">
   <?php $this->load->view('search'); ?>
+  <?php
+							//Show Flash Message
+							if($msg = $this->session->flashdata('flash_message'))
+							{
+								echo $msg;
+							}?>
   <!--category-->
   <div id="category">
 	<ul>
@@ -17,7 +23,18 @@
 		<table>
 			<tr>
 				<td class="item"><?php echo $products[$i]->project_name;?></td>
-				<td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
+				<td><?php
+					if(!isSeller()) { 
+					?>
+					<a href="<?php echo site_url('home/want/'.$products[$i]->id);?>"><img src="<?php echo base_url();?>/app/css/images/want.png"></a></td>
+					<?php 					
+						  } 
+						  else {
+					?>
+					<a href="#"><img src="<?php echo base_url();?>/app/css/images/bid.png"></a></td>
+					<?php
+						  }
+					?>
 				<td class="price"><?php echo $products[$i]->number_of_buyers;?></td>
 			</tr>
 			

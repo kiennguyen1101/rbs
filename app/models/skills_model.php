@@ -1676,6 +1676,22 @@ class Skills_model extends Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	
+	function isProductOpen($productId) {
+		$now = time();
+		$this->db->select('enddate');
+		$this->db->from('projects');
+		$this->db->where('id',$productId);
+		$query = $this->db->get();
+		$result = $query->result();
+		if($now > $result[0]->enddate)
+			return FALSE;
+		else
+			return TRUE;
+	}
+	
+	function isUserInWantList($userID,$productId) {//continue...
+	}
 }
 // End Skills_model Class
    
