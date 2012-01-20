@@ -21,7 +21,7 @@
 		<h1><?php echo $homeCategories[$i]->category;?></h1>
 		<?php foreach($products[$i] as $products[$i]):?>
 		<table>
-			<tr>
+                    <?php for ($j=0;$j<6;$j++): ?>
 				<td class="item"><?php echo $products[$i]->project_name;?></td>
 				<td><?php
 					if(!isSeller()) { 
@@ -36,8 +36,10 @@
 						  }
 					?>
 				<td class="price"><?php echo $products[$i]->number_of_buyers;?></td>
+                                        
 			</tr>
 			
+                        <?php endfor; ?>
 		</table>
 		<?php endforeach;?>
 		<span class="viewmore"><a href="<?php echo site_url('?keyword=&category='.$products[$i]->project_categories.'&c=search');?>">View more</a></span>

@@ -34,12 +34,14 @@
                                 <td width="250" class="dt"><?php echo $this->lang->line('Job Type'); ?></td>
                                 <?php 
 								  }
+                                                                 /*
 								  if($this->session->userdata('show_budget'))
 								  {
 								  ?>
                                 <td width="60" class="dt"><a href="<?php echo $base_url;?>&sort=<?php echo $odr;?>&field=budget_max&p=<?php echo $page;?>"><?php echo $this->lang->line('Budget'); ?></a> </td>
                                 <?php
-								  }
+								  } */
+                                                                 
 								  if($this->session->userdata('show_status'))
 								  {
 								  ?>
@@ -50,11 +52,12 @@
 								  ?>
                                 <td width="70" class="dt"><?php echo $this->lang->line('Bids'); ?></td>
                                 <?php } 
+                                /*
 								  if($this->session->userdata('show_avgbid'))
 								  {
 								  ?>
                                 <td class="dt"><?php echo $this->lang->line('Avg Bid'); ?></td>
-                                <?php } 
+                                <?php } */
 								  if($this->session->userdata('show_date'))
 								  {
 								  ?>
@@ -88,23 +91,34 @@
                                 <?php if($this->session->userdata('show_cat')):	?>
                                 <td><?php echo getCategoryLinks($project->project_categories) ; ?> </td>
                                 <?php endif;
+                                /*
 								if($this->session->userdata('show_budget')):	?>
                                 <td>$<?php echo  $project->budget_max;?></td>
-                                <?php endif; 
+                                <?php endif; */
 								 if($this->session->userdata('show_status')):	?>
                                 <td><?php 
 								  echo getProjectStatus($project->project_status);?>
                                 </td>
-                                <?php endif; 
-								 if($this->session->userdata('show_bids')):	?>
-                                <td><?php echo getNumBid($project->id);?></td>
-                                <?php endif;
+                                <?php endif;                                 
+								
+                                /*
 								  if($this->session->userdata('show_avgbid')):	?>
                                 <td><?php echo getBidsInfo($project->id); ?></td>
-                                <?php endif; 
+                                <?php endif; */
 								  if($this->session->userdata('show_date')):	?>
                                 <td><?php echo get_date($project->created);?></td>
-                                <?php endif;?></tr>
+                                <?php endif;?>
+                                <?php  if($this->session->userdata('show_bids')):	?>
+                                <?php
+                                $secs =( time() - $project->created )/60;
+                                if (Search::_check_7_day($secs)): ?>
+                                <td><?php echo getNumBid($project->id);?></td>
+                                <?php else: ?>
+                                <td><?php echo $this->lang->line("Not Ready"); ?></td>
+                                 
+                                <?php endif; 
+                                endif; ?>
+                              </tr>
                               <tr class="<?php echo $class; ?>">
                                 <td colspan="8"><?php if($this->session->userdata('show_desc')):	?>
                                   <div class="clsDecrip clsAdd">
@@ -129,20 +143,24 @@
                                           <input type="checkbox" value="1" <?php if($this->session->userdata('show_budget')) echo 'checked="checked"'; ?> name="show_budget"/>
                                           <?php echo $this->lang->line('Budget'); ?></label></td>
                                         <td><label>
-                                          <input type="checkbox" value="1" <?php if($this->session->userdata('show_bids')) echo 'checked="checked"'; ?> name="show_bids"/>
+                                          <input type="checkbox" value="1" <?php if($this->session->userdata('show_bids')) echo 'checked="checked"'; ?> name="show_bids"/> 
                                           <?php echo $this->lang->line('Bids'); ?></label></td>
+                                        <!--
                                         <td><label>
-                                          <input type="checkbox" value="1" <?php if($this->session->userdata('show_avgbid')) echo 'checked="checked"'; ?> name="show_avgbid"/>
-                                          <?php echo $this->lang->line('Avg Bid'); ?></label></td>
+                                          <input type="checkbox" value="1" <?php if($this->session->userdata('show_avgbid')) echo 'checked="checked"'; ?> name="show_avgbid"/> 
+                                          <?php echo $this->lang->line('Avg Bid'); ?></label></td> -->
                                         <td><label>
-                                          <input type="checkbox" value="1" <?php if($this->session->userdata('show_status')) echo 'checked="checked"'; ?> name="show_status"/>
+                                          <input type="checkbox" value="1" <?php if($this->session->userdata('show_status')) echo 'checked="checked"'; ?>  name="show_status"/>
                                           <?php echo $this->lang->line('Status'); ?></label></td>
                                         <td><label>
                                           <input type="checkbox" value="1" <?php if($this->session->userdata('show_date')) echo 'checked="checked"'; ?> name="show_date"/>
                                           <?php echo $this->lang->line('Start Date'); ?></label></td>
+                                        <!--
                                         <td><label>
                                           <input type="checkbox" value="1" <?php if($this->session->userdata('show_desc')) echo 'checked="checked"'; ?> name="show_desc"/>
+                                          
                                           <?php echo $this->lang->line('Description'); ?></label></td>
+                                          -->
                                         <td><select name="show_num" size="1">
                                             <option value="5" <?php if($this->session->userdata('show_num') == 5) echo "selected";?>>5</option>
                                             <option value="10" <?php if($this->session->userdata('show_num') == 10) echo "selected";?>>10</option>

@@ -1,5 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
+<<<<<<< HEAD
 ERROR - 2012-01-19 03:02:36 --> Severity: Notice  --> Undefined property: Project::$db D:\wamp\www\rbs\rbs\app\libraries\MY_Config.php 27
 ERROR - 2012-01-19 03:02:58 --> Severity: Notice  --> Undefined property: Project::$db D:\wamp\www\rbs\rbs\app\libraries\MY_Config.php 27
 ERROR - 2012-01-19 03:03:00 --> Severity: Notice  --> Undefined property: Project::$db D:\wamp\www\rbs\rbs\app\libraries\MY_Config.php 27
@@ -85,3 +86,6 @@ ERROR - 2012-01-19 09:16:14 --> Severity: Notice  --> Undefined variable: logged
 ERROR - 2012-01-19 09:16:14 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\rbs\rbs\app\controllers\home.php 245
 ERROR - 2012-01-19 09:25:49 --> Severity: Notice  --> Undefined property: CI_DB_mysql_result::$result D:\wamp\www\rbs\rbs\app\models\skills_model.php 1686
 ERROR - 2012-01-19 09:26:47 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\rbs\rbs\app\models\skills_model.php 1686
+=======
+ERROR - 2012-01-19 03:23:29 --> Unable to select database: rbs
+>>>>>>> kien_seller
