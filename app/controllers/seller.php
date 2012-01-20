@@ -457,8 +457,10 @@ class Seller extends Controller {
      * @return	void
      */
     function editProfile() {
+        
         //language file
         $this->lang->load('enduser/editProfile', $this->config->item('language_code'));
+        
         //Check Whether User Logged In Or Not
         if (!isset($this->loggedInUser->id)) {
             $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('You must be login access to this page')));
@@ -466,7 +468,6 @@ class Seller extends Controller {
         }
 
         //Check Whether User Logged In Or Not
-
         if (isLoggedIn() === false) {
             $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('not_access')));
             redirect('info');
@@ -487,9 +488,12 @@ class Seller extends Controller {
             //Set rules
             $this->form_validation->set_rules('logo', 'lang:logo_validation', 'callback__logo_check');
             $this->form_validation->set_rules('name', 'lang:seller_name_validation', 'required|trim|min_length[5]|xss_clean');
-            $this->form_validation->set_rules('categories[]', 'lang:categories_validation', 'required|xss_clean');
+            $this->form_validation->set_rules('categories[]', 'lang:categories_validation', 'xss_clean');
             $this->form_validation->set_rules('email', 'Email', 'required|trim|min_length[5]|xss_clean');
-            $this->form_validation->set_rules('rate', 'lang:rate_validation', 'required|trim|integer|xss_clean|abs');
+            $this->form_validation->set_rules('rate', 'lang:rate_validation', 'trim|integer|xss_clean|abs');
+            $this->form_validation->set_rules('country', 'lang:country_validation','required|trim');
+            $this->form_validation->set_rules('state', 'lang:state_validation', 'required|trim|xss_clean');
+            $this->form_validation->set_rules('city', 'lang:city_validation', 'required|trim|xss_clean');
 
             if ($this->form_validation->run()) {
                 $updateData = array();
@@ -525,6 +529,8 @@ class Seller extends Controller {
                 $updateData['state'] = $this->input->post('state', TRUE);
                 $updateData['city'] = $this->input->post('city', TRUE);
                 $updateData['rate'] = $this->input->post('rate', TRUE);
+                
+                var_dump($updateData);
 
                 //update data's in userContacts table
                 $userContacts['msn'] = $this->input->post('contact_msn', TRUE);

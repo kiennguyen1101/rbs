@@ -4,204 +4,54 @@
 
 <div id="main">
   <?php $this->load->view('search'); ?>
+  <?php
+							//Show Flash Message
+							if($msg = $this->session->flashdata('flash_message'))
+							{
+								echo $msg;
+							}?>
   <!--category-->
   <div id="category">
 	<ul>
-	
+	<?php //var_dump($products);?>
 	<!-- single category -->
+	<?php for($i=0;$i<6;$i++): ?>
+		
 	<li class="box">
-		<h1>Category title</h1>
+		<h1><?php echo $homeCategories[$i]->category;?></h1>
+		<?php foreach($products[$i] as $products[$i]):?>
 		<table>
 			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
+				<td class="item"><?php echo $products[$i]->project_name;?></td>
+				<td><?php
+					if(!isSeller()) { 
+					?>
+					<a href="<?php echo site_url('home/want/'.$products[$i]->id);?>"><img src="<?php echo base_url();?>/app/css/images/want.png"></a></td>
+					<?php 					
+						  } 
+						  else {
+					?>
+					<a href="#"><img src="<?php echo base_url();?>/app/css/images/bid.png"></a></td>
+					<?php
+						  }
+					?>
+				<td class="price"><?php echo $products[$i]->number_of_buyers;?></td>
 			</tr>
 			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
 		</table>
-		<span class="viewmore"><a href="#">View more</a></span>
+		<?php endforeach;?>
+		<span class="viewmore"><a href="<?php echo site_url('?keyword=&category='.$products[$i]->project_categories.'&c=search');?>">View more</a></span>
 	</li>
-	<!-- end single category -->
-	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
-	<!-- end single category -->
-	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
-	<!-- end single category -->
-	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
-	<!-- end single category -->
-	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
-	<!-- end single category -->
-	
-	<!-- single category -->
-	<li class="box">
-		<h1>Category title</h1>
-		<table>
-			<tr>
-				<td class="item">Item</td>
-				<td><a href="#"><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-			
-			<tr>
-				<td class="item">Item</td>
-				<td><img src="http://kabada.in/icrowd/app/css/images/want.png"></td>
-				<td class="price">$00.00</td>
-			</tr>
-		</table>
-	</li>
+		
+	<?php endfor;?>
 	<!-- end single category -->
 	
 	
-	
+		
 	</ul>
   </div>
   <!-- end category-->
-  
-  
+    
   <!-- PROJECT DETAILS-->
   <div id="test">
     <!--Table will load here-->
@@ -212,26 +62,13 @@
     <div class="col-1 left marginright">
       <!--<div class="slidetabsmenu">
 
-
-
 		<ul>
-
-
-
 		 	<li><a href="#"><span>Top Buyers</span></a></li>
-
-
-
 		 	<li><a href="#"><span>Top Sellers</span></a></li>
-
-
-
 		 </ul>
 
-
-
 		 </div>-->
-      <div class="clsInfoBox">
+      <!--<div class="clsInfoBox">
         <div class="block">
           <div class="grey_t">
             <div class="grey_r">
@@ -246,17 +83,9 @@
                             <?php
 
 							if(count($topBuyers) > 0)
-
 							{
-								 
-
 							foreach($topBuyers as $key=>$value)
-
-
-
 							{
-
-
 
 							$user = getUserInfo($key);
 							
@@ -264,19 +93,13 @@
 								 $condition=array('subscriptionuser.username'=>$user->id);
 								$certified= $this->certificate_model->getCertificateUser($condition);
 								
-								
-								
 							?>
                             <div class="clsTop clearfix">
                               <div class="clsTopLeft clsFloatLeft">
                                 <p class="clsBorder"><a href="<?php echo site_url('buyer/viewProfile/'.$user->id);?>">
                                   <?php 
 
-
-
 								  if($user->logo != NULL){
-
-
 
 								  ?>
                                   <img src="<?php echo uimage_url(get_thumb($user->logo));?>" alt="logo" />
@@ -300,9 +123,7 @@
                             <?php } 
 
 							else 
-
 							echo "<div class=clsTop clearfix>".$this->lang->line('No records found')."</div>";
-
 							?>
                           </div>
                         </div>
@@ -315,10 +136,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!--END OF TOP BUYERS -->
     <!--CERTIFIED BUYERS -->
-    <div class="col-2 left">
+    <!--<div class="col-2 left">
       <div class="clsInfoBox">
         <div class="block">
           <div class="grey_t">
@@ -332,42 +153,20 @@
                           <div class="cls100_p">
                             <h4><span class="clsTopseller"><?php echo $this->lang->line('TOP SELLERS');?></span></h4>
                             <?php
-
-
-
 							if(count($topProviders) > 0)
-
-
-
 							{
-
-
-
 							foreach($topProviders as $key=>$value)
-
-
-
 							{
-
-
-
 							$user2 = getUserInfo($key);
 
 							$condition1=array('subscriptionuser.username'=>$user2->id);
 								$certified1= $this->certificate_model->getCertificateUser($condition1);
-
 							?>
                             <div class="clsTop clearfix">
                               <div class="clsTopLeft clsFloatLeft">
                                 <p class="clsBorder"><a href="<?php echo site_url('seller/viewProfile/'.$user2->id);?>">
                                   <?php 
-
-
-
 							  if($user2->logo != NULL){
-
-
-
 							  ?>
                                   <img src="<?php echo uimage_url(get_thumb($user2->logo));?>" alt="logo"/>
                                   <?php }  ?>
@@ -388,11 +187,8 @@
                               <p><a href="<?php echo site_url('seller/getSellersreview');?>"><img src="<?php echo image_url('bt_viewall.jpg');?>" width="92" height="41" alt="view all" /></a></p>
                             </div>
                             <?php } 
-
 							else
-
 							echo "<div class=clsTop clearfix>".$this->lang->line('No records found')."</div>";
-
 							?>
                           </div>
                         </div>
@@ -405,32 +201,25 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!--END OF CERTIFIED BUYERS -->
   </div>
   <!--CATEGORIES-->
-  <div id="selCategories">
+  <!--<div id="selCategories">
     <div class="slidetabsmenu menu_fix">
       <ul>
         <?php
 
 			if(isset($groups) and $groups->num_rows()>0)
-
-
 			{
-
 			$i=0;
-
 			foreach($groups->result() as $group)
-
 			{
 						?>
         <li id="gr<?php echo $i;?>" class="<?php if($i == '0') echo "selected"; ?>"><a href="javascript:;" onclick="getCat('<?php echo $i ?>','<?php echo $groups->num_rows ?>',<?php echo $group->id;?>);"><span><?php echo $group->group_name;?></span></a></li>
         <?php $i++;}
 
 			}
-
-
 
 			?>
       </ul>
@@ -459,7 +248,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!--END OF CATEGORIES-->
 </div>
 <!--END OF MAIN-->
@@ -475,124 +264,80 @@ $base_url = str_replace($this->config->item('index_page'),"",base_url());
 $base_url .= $this->config->item('index_page');
 ?>
 <script type="text/javascript" >
-document.getElementById('test').innerHTML = '<img src="<?php echo image_url('load3.gif');?>" alt="loading" />' + 'Loading'
-new Ajax.Request('<?php echo $base_url.'/home/listProjects/latest'; ?>',
+
+    
+
+//document.getElementById('test').innerHTML = '<img src="<?php echo image_url('load3.gif');?>" alt="loading" />' + 'Loading'
+/*new Ajax.Request('<?php echo $base_url.'/home/listProjects/latest'; ?>',
 
   {
-
-
-
     method:'get',
-
-
-
     onSuccess: function(transport){
-
-
-
       var response = transport.responseText || "no response text";
-
-
       document.getElementById('test').innerHTML = response
-
-
-
     },
 
-
-
     onFailure: function(){ alert('Something went wrong...') }
-
-
-
-  });
-
-
-
+  });*/
+  
 function checkFind(type){
 
-
-document.getElementById('innerContent').innerHTML = '<img src="<?php echo image_url('load2.gif');?>" alt="loading" />' + ' Loading'
+document.getElementById('innerContent').innerHTML = '<img src="<?php echo image_url('load2.gif');?>" alt="loading" />' + ' Loading' ;
+        
+        switch (type) {
+            case 'work':
+                jQuery("#work").attr({
+                    class :"selected",
+                    classname: "selected"
+                });
+                jQuery('#prof,#s_buyer,#s_seller').attr({
+                    class: "",
+                    classname: ""
+                });               	
+                break;
+            case 'prof':
+                jQuery("#prof").attr({
+                    class :"selected",
+                    classname: "selected"
+                });
+                jQuery('#work,#s_buyer,#s_seller').attr({
+                    class: "",
+                    classname: ""
+                });         
+                break;
+            case 's_buyer':
+                 jQuery("#s_buyer").attr({
+                    class :"selected",
+                    classname: "selected"
+                });
+                jQuery('#work,#prof,#s_seller').attr({
+                    class: "",
+                    classname: ""
+                });         
+                break;
+            case 's_seller':
+               	jQuery("#s_seller").attr({
+                    class :"selected",
+                    classname: "selected"
+                });
+                jQuery('#work,#prof,#s_buyer').attr({
+                    class: "",
+                    classname: ""
+                });         
+                break;
+             default:
+                 break;
+        }
 	
-
-
-
-	if(type == 'work'){
-
-		document.getElementById("work").setAttribute("class", "selected");
-
-
-
-		document.getElementById("prof").setAttribute("class", "");
-
-		
-
-		document.getElementById("work").setAttribute("className", "selected");
-
-
-
-		document.getElementById("prof").setAttribute("className", "");
-
-
-
-	}
-
-
-
-	else{
-
-		document.getElementById("work").setAttribute("class", "");
-
-		document.getElementById("prof").setAttribute("class", "selected");
-
-		document.getElementById("work").setAttribute("className", "");
-
-		document.getElementById("prof").setAttribute("className", "selected");
-
-	}
-	new Ajax.Request('<?php echo $base_url.'/home/checkFind/'; ?>'+type,
-
-
-
-  {
-
-
-
+	new Ajax.Request('<?php echo $base_url.'/home/checkFind/'; ?>'+type,  {
     method:'get',
-
-
-
     onSuccess: function(transport){
-
-
-
       var response = transport.responseText || "no response text";
-
-
-
       document.getElementById('innerContent').innerHTML = response
-
-
-
     },
-
-
-
     onFailure: function(){ alert('Something went wrong...') }
-
-
-
   });
-
-
-
 }
-
-
-
-
-
-
 
 function getCat(id,count,catid){
 
@@ -614,70 +359,29 @@ function getCat(id,count,catid){
   }
 	
 	new Ajax.Request('<?php echo $base_url.'/home/getCate/'; ?>'+catid,
-
-
   {
-
     method:'get',
-
     onSuccess: function(transport){
-
       var response = transport.responseText || "no response text";
-
-      document.getElementById('catInner').innerHTML = response
-
+      document.getElementById('catInner').innerHTML = response;
     },
-
     onFailure: function(){ alert('Something went wrong...') }
 
-
-
   });
-
-
-
 }
 
-
-
-
-
-
-
  function getProjects(type){
-
-	document.getElementById('test').innerHTML = '<img src="<?php echo image_url('load3.gif');?>" alt="loading" />' + 'Loading'
-	
+	document.getElementById('test').innerHTML = '<img src="<?php echo image_url('load3.gif');?>" alt="loading" />' + 'Loading';	
  	new Ajax.Request('<?php echo $base_url.'/home/listProjects/'; ?>'+type,
-
   {
 
-
     method:'get',
-
-
-
     onSuccess: function(transport){
-
-
       var response = transport.responseText || "no response text";
-
-
-
       document.getElementById('test').innerHTML = response
-
-
     },
-
-
     onFailure: function(){ alert('Something went wrong...') }
-
-
-
   });
-
-
-
  }
 
 <?php
@@ -699,7 +403,7 @@ if($groups->num_rows()>0)
 ?>
 
  <?php if($groups_num > 0){?>
- getCat('0','<?php echo $row_count; ?>','<?php echo $firstcatid; ?>');
+ //getCat('0','<?php echo $row_count; ?>','<?php echo $firstcatid; ?>');
  <?php } ?>
 
 

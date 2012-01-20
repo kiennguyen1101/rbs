@@ -1653,7 +1653,45 @@ class Skills_model extends Model {
 	    $tiny = 'http://tinyurl.com/api-create.php?url=';
 	    return file_get_contents($tiny.urlencode(trim($url)));
 	}
-	 	 
+	
+	function newWantList($insert=array()) {
+		$this->db->insert('want_list', $insert);
+	}
+	
+	function getHomeCategories() {
+		$this->db->select('*');
+		$this->db->from('home_category');
+		$query = $this->db->get();
+		$category = array();
+		$category = $query->result();
+		return $category;
+	}
+	
+	function getProductsByCategory($category) {//on home page only
+		$this->db->select('*');
+		$this->db->from('projects');
+		$this->db->where('project_categories',$category);
+		$this->db->order_by('number_of_buyers','desc');
+		$this->db->limit(4);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
+	function isProductOpen($productId) {
+		$now = time();
+		$this->db->select('enddate');
+		$this->db->from('projects');
+		$this->db->where('id',$productId);
+		$query = $this->db->get();
+		$result = $query->result();
+		if($now > $result[0]->enddate)
+			return FALSE;
+		else
+			return TRUE;
+	}
+	
+	function isUserInWantList($userID,$productId) {//continue...
+	}
 }
 // End Skills_model Class
    
