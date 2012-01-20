@@ -1657,6 +1657,61 @@ class Skills_model extends Model {
 	function newWantList($insert=array()) {
 		$this->db->insert('want_list', $insert);
 	}
+	
+	function getHomeCategories() {
+		$this->db->select('*');
+		$this->db->from('home_category');
+		$query = $this->db->get();
+		$category = array();
+		$category = $query->result();
+		return $category;
+	}
+	
+	function getProductsByCategory($category) {//on home page only
+		$this->db->select('*');
+		$this->db->from('projects');
+		$this->db->where('project_categories',$category);
+		$this->db->order_by('number_of_buyers','desc');
+		$this->db->limit(4);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
+	function isProductOpen($productId) {
+		$now = time();
+		$this->db->select('enddate');
+		$this->db->from('projects');
+		$this->db->where('id',$productId);
+		$query = $this->db->get();
+		$result = $query->result();
+		if($now > $result[0]->enddate)
+			return FALSE;
+		else
+			return TRUE;
+	}
+	
+	function isUserInWantList($userId,$productId) {
+		$this->db->select('*');
+		$this->db->from('want_list');
+		$this->db->where('user_id',$userId);
+		$this->db->where('project_id',$productId);
+		$query = $this->db->get();
+		if($query->num_rows() > 0) 
+			return TRUE;
+		else
+			return FALSE;
+	}
+	
+	function addWantList($insert=array()) {
+		$this->db->insert('want_list', $insert);
+	}
+	
+	function updateNumberOfBuyers($productId,$addition) {
+		$this->db->set('number_of_buyers','number_of_buyers + 1',FALSE);
+		$this->db->where('id',$productId);
+		$this->db->update('projects');
+		return TRUE;
+	}
 }
 // End Skills_model Class
    

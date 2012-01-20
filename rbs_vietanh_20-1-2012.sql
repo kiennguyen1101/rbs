@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2012 at 02:32 PM
+-- Generation Time: Jan 20, 2012 at 02:56 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -794,6 +794,30 @@ INSERT INTO `groups` (`id`, `group_name`, `descritpion`, `created`, `modified`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `home_category`
+--
+
+CREATE TABLE IF NOT EXISTS `home_category` (
+  `id` int(11) NOT NULL,
+  `category` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `home_category`
+--
+
+INSERT INTO `home_category` (`id`, `category`) VALUES
+(1, 'Table'),
+(2, 'Smart Phone'),
+(3, 'TV'),
+(4, 'chair'),
+(5, 'bed'),
+(6, 'DVD Player');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ipn_return`
 --
 
@@ -949,7 +973,7 @@ CREATE TABLE IF NOT EXISTS `popular_search` (
   `type` enum('work','user') CHARACTER SET utf8 NOT NULL,
   `created` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
 
 --
 -- Dumping data for table `popular_search`
@@ -968,7 +992,30 @@ INSERT INTO `popular_search` (`id`, `keyword`, `type`, `created`) VALUES
 (20, '', 'work', 1326862234),
 (21, 'tv', 'work', 1326862251),
 (22, 'tv', 'work', 1326862268),
-(23, '', 'work', 1326862748);
+(23, '', 'work', 1326862748),
+(24, '', 'work', 1326934131),
+(25, '', 'work', 1326934144),
+(26, '', 'work', 1326934167),
+(27, '', 'work', 1326934171),
+(28, '', 'work', 1326934178),
+(29, '', 'work', 1326934254),
+(30, '', 'work', 1326934272),
+(31, '', 'work', 1326934289),
+(32, 'tv', 'work', 1326934371),
+(33, '', 'work', 1326934376),
+(34, 'tv', 'work', 1326934382),
+(35, '', 'work', 1326934711),
+(36, '', 'work', 1326934718),
+(37, '', 'work', 1326951293),
+(38, '', 'work', 1327037542),
+(39, '', 'work', 1327041372),
+(40, '', 'work', 1327041380),
+(41, '', 'work', 1327041395),
+(42, '', 'work', 1327041398),
+(43, '', 'work', 1327041402),
+(44, '', 'work', 1327041407),
+(45, '', 'work', 1327041416),
+(46, '', 'work', 1327041429);
 
 -- --------------------------------------------------------
 
@@ -1034,21 +1081,21 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `escrow_due` int(11) NOT NULL,
   `number_of_buyers` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=153 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=156 ;
 
 --
 -- Dumping data for table `projects`
 --
 
 INSERT INTO `projects` (`id`, `project_name`, `project_status`, `description`, `project_categories`, `budget_min`, `budget_max`, `is_feature`, `is_urgent`, `is_hide_bids`, `creator_id`, `created`, `enddate`, `seller_id`, `checkstamp`, `buyer_rated`, `provider_rated`, `project_paid`, `project_award_date`, `notification_status`, `attachment_url`, `attachment_name`, `is_private`, `private_users`, `contact`, `salary`, `flag`, `salarytype`, `escrow_due`, `number_of_buyers`) VALUES
-(132, 'table 4', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Table', 0, 0, 0, 0, 0, 83, 1326861890, 1327466690, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
+(132, 'table 4', '3', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Table', 0, 0, 0, 0, 0, 83, 1326861890, 1326965464, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
 (131, 'table 3', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Table', 0, 0, 0, 0, 0, 83, 1326861875, 1327466675, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
 (130, 'table 2', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Table', 0, 0, 0, 0, 0, 83, 1326861861, 1327466661, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
-(129, 'table 1', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Table', 0, 0, 0, 0, 0, 83, 1326861840, 1327466640, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
-(133, 'smart phone 1', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Smart Phone', 0, 0, 0, 0, 0, 83, 1326861966, 1327466766, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
-(134, 'smart phone 2', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', '', 0, 0, 0, 0, 0, 83, 1326861976, 1327466776, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
-(135, 'smart phone 3', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Smart Phone', 0, 0, 0, 0, 0, 83, 1326861992, 1327466792, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
-(136, 'smart phone 4', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Smart Phone', 0, 0, 0, 0, 0, 83, 1326862011, 1327466811, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
+(129, 'table 1', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Table', 0, 0, 0, 0, 0, 83, 1326861840, 1327466640, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 2),
+(133, 'smart phone 1', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Smart Phone', 0, 0, 0, 0, 0, 83, 1326861966, 1327466766, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 2),
+(134, 'smart phone 2', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Smart Phone', 0, 0, 0, 0, 0, 83, 1326861976, 1327466776, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
+(135, 'smart phone 3', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Smart Phone', 0, 0, 0, 0, 0, 83, 1326861992, 1327466792, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 2),
+(136, 'smart phone 4', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'Smart Phone', 0, 0, 0, 0, 0, 83, 1326862011, 1327466811, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 2),
 (137, 'TV LCD 1', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'TV', 0, 0, 0, 0, 0, 83, 1326862026, 1327466826, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
 (138, 'TV LCD 2', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'TV', 0, 0, 0, 0, 0, 83, 1326862037, 1327466837, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
 (139, 'TV LCD 3', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'TV', 0, 0, 0, 0, 0, 83, 1326862050, 1327466850, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
@@ -1060,11 +1107,14 @@ INSERT INTO `projects` (`id`, `project_name`, `project_status`, `description`, `
 (145, 'bed 1', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'bed', 0, 0, 0, 0, 0, 83, 1326862666, 1327467466, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
 (146, 'bed 2', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'bed', 0, 0, 0, 0, 0, 83, 1326862676, 1327467476, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
 (147, 'bed 3', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'bed', 0, 0, 0, 0, 0, 83, 1326862686, 1327467486, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
-(148, 'bed 4', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'bed', 0, 0, 0, 0, 0, 83, 1326862695, 1327467495, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
+(148, 'bed 4', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'bed', 0, 0, 0, 0, 0, 83, 1326862695, 1327467495, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 2),
 (149, 'dvd player 1', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'DVD player', 0, 0, 0, 0, 0, 83, 1326862706, 1327467506, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
 (150, 'dvd player 2', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit ametlorem ipsum dolo sit amet<br/>', 'DVD player', 0, 0, 0, 0, 0, 83, 1326862719, 1327467519, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
 (151, 'dvd player 3', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'DVD player', 0, 0, 0, 0, 0, 83, 1326862729, 1327467529, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
-(152, 'dvd player 4', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'DVD player', 0, 0, 0, 0, 0, 83, 1326862739, 1327467539, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1);
+(152, 'dvd player 4', '0', 'lorem ipsum dolo sit amet lorem ipsum dolo sit amet lorem ipsum dolo sit amet<br/>', 'DVD player', 0, 0, 0, 0, 0, 83, 1326862739, 1327467539, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 2),
+(153, 'adsf asdf asdf', '0', 'asdf asdf sadf sadf sadf sdf<br/>', 'bed', 0, 0, 0, 0, 0, 83, 1326930023, 1327534823, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
+(154, 'asd asd asd assssss', '0', 'asd asd asd asd asd asd asdasdas<br/>', 'bed', 0, 0, 0, 0, 0, 83, 1326930051, 1327534851, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1),
+(155, 'xxxczxczxczxczxc', '0', 'zxczxczxc zxc zc zc zxc zxc zxc<br/>', '', 0, 0, 0, 0, 0, 83, 1327037554, 1327642354, 0, '', '0', '0', '0', 0, 0, '', NULL, 0, NULL, '', '', 0, '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1483,9 +1533,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `refid`, `user_name`, `name`, `role_id`, `password`, `email`, `profile_desc`, `user_status`, `activation_key`, `country_symbol`, `state`, `city`, `project_notify`, `bid_notify`, `message_notify`, `rate`, `logo`, `created`, `last_activity`, `user_rating`, `num_reviews`, `rating_hold`, `tot_rating`, `suspend_status`, `ban_status`) VALUES
-(81, '0', 'buyer', 'Buyer', 1, 'e10adc3949ba59abbe56e057f20f883e', 'buyer@gmail.com', '', 1, '', 'US', 'New york', 'New York', '', NULL, '', NULL, NULL, 1326688501, 1326753275, 0, 0, 0, 0, '0', '0'),
-(82, '0', 'seller', 'Seller', 2, 'e10adc3949ba59abbe56e057f20f883e', 'seller@gmail.com', '', 1, '', 'US', 'New York', 'New York', '', NULL, '', 0, NULL, 1326688522, 1326758001, 0, 0, 0, 0, '0', '0'),
-(83, '0', 'buyer1', 'Buyer', 1, 'e10adc3949ba59abbe56e057f20f883e', 'buyer1@gmail.com', '', 1, '', 'US', 'New York', 'New York', '', NULL, '', NULL, NULL, 1326757940, 1326861776, 0, 0, 0, 0, '0', '0');
+(81, '0', 'buyer', 'Buyer', 1, 'e10adc3949ba59abbe56e057f20f883e', 'buyer@gmail.com', '', 1, '', 'US', 'New york', 'New York', '', NULL, '', NULL, NULL, 1326688501, 1327044742, 0, 0, 0, 0, '0', '0'),
+(82, '0', 'seller', 'Seller', 2, 'e10adc3949ba59abbe56e057f20f883e', 'seller@gmail.com', '', 1, '', 'US', 'New York', 'New York', '', NULL, '', 0, NULL, 1326688522, 1327056703, 0, 0, 0, 0, '0', '0'),
+(83, '0', 'buyer1', 'Buyer', 1, 'e10adc3949ba59abbe56e057f20f883e', 'buyer1@gmail.com', '', 1, '', 'US', 'New York', 'New York', '', NULL, '', NULL, NULL, 1326757940, 1327055977, 0, 0, 0, 0, '0', '0');
 
 -- --------------------------------------------------------
 
@@ -1589,6 +1639,12 @@ CREATE TABLE IF NOT EXISTS `want_list` (
 --
 
 INSERT INTO `want_list` (`user_id`, `project_id`) VALUES
+(81, 129),
+(81, 133),
+(81, 135),
+(81, 136),
+(81, 148),
+(81, 152),
 (83, 128),
 (83, 129),
 (83, 130),
@@ -1613,4 +1669,7 @@ INSERT INTO `want_list` (`user_id`, `project_id`) VALUES
 (83, 149),
 (83, 150),
 (83, 151),
-(83, 152);
+(83, 152),
+(83, 153),
+(83, 154),
+(83, 155);

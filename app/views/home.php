@@ -4,35 +4,47 @@
 
 <div id="main">
   <?php $this->load->view('search'); ?>
+  <?php
+							//Show Flash Message
+							if($msg = $this->session->flashdata('flash_message'))
+							{
+								echo $msg;
+							}?>
   <!--category-->
   <div id="category">
 	<ul>
-	<?php
-		$categories = array('');               
-	?>
+	<?php //var_dump($products);?>
 	<!-- single category -->
 	<?php for($i=0;$i<6;$i++): ?>
+		
 	<li class="box">
-		<h1>Category title</h1>
+		<h1><?php echo $homeCategories[$i]->category;?></h1>
+		<?php foreach($products[$i] as $products[$i]):?>
 		<table>
                     <?php for ($j=0;$j<6;$j++): ?>
-                        
-			<tr>
-				<td class="item">Item</td>
-                                <?php //check user role
-                                if (is_object($loggedInUser) && $loggedInUser->role_name == 'buyer') : ?>
-                                    <td><a href="#"><img src="<?php echo base_url();?>/app/css/images/want.png"></td>
-                                <?php else: ?>
-                                            <td><a href="#">bid</a> &nbsp; </td>    
+				<td class="item"><?php echo $products[$i]->project_name;?></td>
+				<td><?php
+					if(!isSeller()) { 
+					?>
+					<a href="<?php echo site_url('home/want/'.$products[$i]->id);?>"><img src="<?php echo base_url();?>/app/css/images/want.png"></a></td>
+					<?php 					
+						  } 
+						  else {
+					?>
+					<a href="#"><img src="<?php echo base_url();?>/app/css/images/bid.png"></a></td>
+					<?php
+						  }
+					?>
+				<td class="price"><?php echo $products[$i]->number_of_buyers;?></td>
                                         
-                                        
-                                <?php endif; //End check user role?>
-				<td class="price">$00.00</td>
-			</tr>			
+			</tr>
+			
                         <?php endfor; ?>
 		</table>
-		<span class="viewmore"><a href="#">View more</a></span>
+		<?php endforeach;?>
+		<span class="viewmore"><a href="<?php echo site_url('?keyword=&category='.$products[$i]->project_categories.'&c=search');?>">View more</a></span>
 	</li>
+		
 	<?php endfor;?>
 	<!-- end single category -->
 	

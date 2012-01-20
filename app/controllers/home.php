@@ -36,7 +36,8 @@ class Home extends Controller {
      */
     function Home() {
         parent::Controller();
-
+		$this->load->library('session');
+		$this->load->library('encrypt');
         //Get Config Details From Db
         $this->config->db_config_fetch();
         //Manage site Status 
@@ -48,7 +49,7 @@ class Home extends Controller {
         $this->load->model('common_model');
         $this->load->model('skills_model');
         $this->load->model('page_model');
-
+		
         //Page Title and Meta Tags
         $this->outputData = $this->common_model->getPageTitleAndMetaData();
 
@@ -125,6 +126,14 @@ class Home extends Controller {
             //Get Footer content
             $conditions = array('page.is_active' => 1);
             $this->outputData['pages'] = $this->page_model->getPages($conditions);
+			$homeCategories = $this->skills_model->getHomeCategories();
+			$this->outputData['homeCategories'] = $homeCategories; 
+			$i = 0;
+			foreach ($homeCategories as $homeCategories):
+				$this->outputData['products'][$i] = $this->skills_model->getProductsByCategory($homeCategories->category);
+				$i++;
+			endforeach;
+			
             $this->load->view('home', $this->outputData);
         }
     }
@@ -248,7 +257,30 @@ class Home extends Controller {
         $this->outputData['categories'] = $this->skills_model->getCategories($conditions);
         $this->load->view('categoryList', $this->outputData);
     }
-
+	
+	function want() {
+		$loggedInUserId = $this->loggedInUser->id;
+		$productId = $this->uri->segment(3);
+		if(!isLoggedIn()) {
+			$this->session->set_flashdata('flash_message',$this->common_model->flash_message('error','You must log in order to add yourself to the want list'));
+			redirect('users/login');
+		}
+		if(!$this->skills_model->isProductOpen($productId)) {
+			$this->session->set_flashdata('flash_message',$this->common_model->flash_message('error','This product post is expired'));
+			redirect('home');
+		}
+		if($this->skills_model->isUserInWantList($loggedInUserId,$productId)) {
+			$this->session->set_flashdata('flash_message',$this->common_model->flash_message('error','You are already in the want list'));
+			redirect('home');
+		}
+		$insert = array();
+		$insert['user_id'] = $loggedInUserId;
+		$insert['project_id'] = $productId;
+		$this->skills_model->addWantList($insert);
+		$this->skills_model->updateNumberOfBuyers($productId,1);
+		$this->session->set_flashdata('flash_message',$this->common_model->flash_message('success','You have been added to the want list!'));
+		redirect('home');
+	}
 }
 
 //End  Buyer Class
