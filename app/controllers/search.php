@@ -312,10 +312,10 @@ class Search extends Controller {
      * @param	nil
      * @return	void
      */
-    function buyer() {
+    function user() {
 
         //Load Language
-        $this->lang->load('enduser/searchBuyer', $this->config->item('language_code'));
+        $this->lang->load('enduser/searchUser', $this->config->item('language_code'));
 
         //Load Models
         $this->load->model('search_model');
@@ -376,21 +376,23 @@ class Search extends Controller {
             $like1 = '';
 
         if ($this->uri->segment(3, 0))
-            $conditions = array('users.role_id' => '1', 'users.user_name' => $this->uri->segment(3));
+            $conditions = array('users.role_id' => ($loggedInUser->role_id===1) ? 2 : 1  , 'users.user_name' => $this->uri->segment(3));
         else
-            $conditions = array('users.role_id' => '1');
+            $conditions = array('users.role_id' => ($loggedInUser->role_id===1) ? 2 : 1);
 
         $same_area = $this->input->get('same_area', true);
         if (!is_null($same_area)) {
             $cond = array('users.id' => $this->loggedInUser->id);
             $user_info = $this->user_model->getUsers($cond);
             $userData = $user_info->row();
-            if (!$userData->country_symbol) {
+            if (!$userData->country_symbol) {                
                 switch ($userData->role_name) {
                     case "buyer":
+                        $this->message->set('search_error', $this->lang->line('location set error'), TRUE);
                         redirect("buyer/editProfile");
                         break;
                     case "seller":
+                        $this->message->set('search_error', $this->lang->line('location set error'), TRUE);
                         redirect("seller/editProfile");
                         break;
                 }
@@ -404,8 +406,6 @@ class Search extends Controller {
             $conditions = array_merge((array) $conditions, (array) $cond);
         }
 
-
-
         $users = $this->search_model->getUsers($conditions, NULL, $like, $max, $orderby, $like1);
         $users1 = $this->search_model->getUsers($conditions, NULL, $like, NULL, NULL, $like1);
 
@@ -420,9 +420,6 @@ class Search extends Controller {
             $country = $this->common_model->getCountries(array('country_symbol' => $user->country_symbol));
             $user->country_name = $country->row()->country_name;
         }
-
-
-
 
         if ($users1->num_rows() > 0 and $this->input->get('keyword', true)) {
             $insertData = array();
@@ -449,153 +446,10 @@ class Search extends Controller {
         $this->pagination->initialize($config);
         $this->outputData['base_url'] = $config['base_url'];
         $this->outputData['pagination'] = $this->pagination->create_links(false);
-        $this->load->view('search/listBuyer', $this->outputData);
-
-        // $this->load->view('search/listProfessional', $this->outputData);
-    }
-
-    function seller() {
-
-        //Load Language
-        $this->lang->load('enduser/searchSeller', $this->config->item('language_code'));
-
-        //Load Models
-        $this->load->model('search_model');
-        $this->load->model('user_model');
-
-        //Get Search Parameters
-        if ($this->input->get('keyword', true))
-            $keyword = $this->input->get('keyword', true);
-
-        if ($this->input->get('category', true))
-            $category = $this->input->get('category', true);
-
-        if ($this->uri->segment(3))
-            $keyword = $this->uri->segment(3);
-
-        $this->outputData['category'] = $this->input->get('category', true);
-
-        $page = $this->input->get('p', true);
-        if (isset($page) === false or empty($page)) {
-            $page = 1;
-        }
-        $this->outputData['page'] = $page;
-
-        //Get Sorting order
-        $field = $this->input->get('field', true);
-        $order = $this->input->get('sort', true);
-        $this->outputData['order'] = $order;
-        $orderby = array();
-        if ($field)
-            $orderby = array($field, $order);
-        if ($this->input->post('customizeDisplay')) {
-            //Get Customize data fields
-            $this->session->set_userdata('show_cat', $this->input->post('show_cat', true));
-            $this->session->set_userdata('show_budget', $this->input->post('show_budget', true));
-            $this->session->set_userdata('show_bids', $this->input->post('show_bids', true));
-            $this->session->set_userdata('show_avgbid', $this->input->post('show_avgbid', true));
-            $this->session->set_userdata('show_status', $this->input->post('show_status', true));
-            $this->session->set_userdata('show_date', $this->input->post('show_date', true));
-            $this->session->set_userdata('show_desc', $this->input->post('show_desc', true));
-            $this->session->set_userdata('show_num', $this->input->post('show_num', true));
-        } else {
-            $this->session->set_userdata('show_cat', '1');
-            $this->session->set_userdata('show_budget', '1');
-            $this->session->set_userdata('show_bids', '1');
-            $this->session->set_userdata('show_num', '10');
-        }
-        $page_rows = $this->session->userdata('show_num');
-        $max = array($page_rows, ($page - 1) * $page_rows);
-
-        //Match With The Keywords
-        if ($this->input->get('keyword'))
-            $like = array('users.user_name' => $this->input->get('keyword'));
-        else
-            $like = '';
-        if ($this->input->get('category'))
-            $like1 = array('user_categories.user_categories' => $this->input->get('category'));
-        else
-            $like1 = '';
-
-        if ($this->uri->segment(3, 0))
-            $conditions = array('users.role_id' => '2', 'users.user_name' => $this->uri->segment(3));
-        else
-            $conditions = array('users.role_id' => '2');
-
-        $same_area = $this->input->get('same_area', true);
-        if (!is_null($same_area)) {
-            $cond = array('users.id' => $this->loggedInUser->id);
-            $user_info = $this->user_model->getUsers($cond);
-            $userData = $user_info->row();
-            if (!$userData->country_symbol) {
-                switch ($userData->role_name) {
-                    case "buyer":
-                        redirect("buyer/editBuyerProfile");
-                        break;
-                    case "seller":
-                        redirect("seller/editSellerProfile");
-                        break;
-                }
-            }
-            $cond = array(               
-                'country_symbol' => $userData->country_symbol,
-                'state' => $userData->state,
-                'city' => $userData->city,
-            );
-
-            $conditions = array_merge((array) $conditions, (array) $cond);
-        }
-
-
-
-        $users = $this->search_model->getUsers($conditions, NULL, $like, $max, $orderby, $like1);
-        $users1 = $this->search_model->getUsers($conditions, NULL, $like, NULL, NULL, $like1);
-
-        //convert country_symbol (ISO code) to name
-        //i.e. US -> United States
         
-        foreach ($users->result() as $user) {
-            if ($user->country_symbol)
-            $country = $this->common_model->getCountries(array('country_symbol' => $user->country_symbol));
-            $user->country_name = $country->row()->country_name;
-        }
+        $this->load->view(($this->loggedInUser->role_name=="buyer") ? 'search/listBuyer' : 'search/listSeller', $this->outputData);
         
-        
-        foreach ($users1->result() as $user) {
-            if ($user->country_symbol)
-            $country = $this->common_model->getCountries(array('country_symbol' => $user->country_symbol));
-            $user->country_name = $country->row()->country_name;
-        }
-
-
-
-
-        if ($users1->num_rows() > 0 and $this->input->get('keyword', true)) {
-            $insertData = array();
-            $insertData['keyword'] = $this->input->get('keyword', true);
-            $insertData['type'] = 'user';
-            $insertData['created'] = get_est_time();
-
-            //Insert keyword for popular search
-            $this->skills_model->addPopularSearch($insertData);
-        }
-
-        //load data to view
-        $this->outputData['users'] = $users;
-
-        $this->load->library('pagination');
-        if (!isset($keyword))
-            $keyword = '';
-        if (!isset($category))
-            $category = '';
-        $config['base_url'] = $this->config->item('base_url') . "?c=search&keyword=" . $keyword . "&category=" . $category . '&m=professional';
-        $config['total_rows'] = $users1->num_rows();
-        $config['per_page'] = $page_rows;
-        $config['cur_page'] = $page;
-        $this->pagination->initialize($config);
-        $this->outputData['base_url'] = $config['base_url'];
-        $this->outputData['pagination'] = $this->pagination->create_links(false);
-        $this->load->view('search/listSeller', $this->outputData);
+        //end function search user
     }
 
     static public function _check_7_day($sec) {

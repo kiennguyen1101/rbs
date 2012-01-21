@@ -18,6 +18,13 @@ $userData = $userInfo->row();
                           <div class="cls100_p">
                             <div class="clsInnerCommon clsFormSpan"> 
                               <h2><?php echo $this->lang->line('edit_account'); ?></h2>
+                              
+                                <?php $messages = $this->message->get('search_error'); ?>
+                                                <?php if (!empty($messages)) : ?>
+                                                <p class="help">
+                                                    <?php echo  $this->message->display('search_error');  ?>
+                                                </p>
+                                                <?php endif; ?>
                              
 							   <form method="post" action="<?php echo site_url('buyer/editProfile/'.$userData->activation_key) ;  ?>" enctype="multipart/form-data">
 							   

@@ -21,3 +21,4 @@ $lang['Results']	        = 'Results';
 $lang['Refresh']	        = 'Refresh';
 $lang['Customize Display']	= 'Customize Display';
 $lang['Name']	= 'Name';
+$lang['location set error'] = 'You must set your location before searching';

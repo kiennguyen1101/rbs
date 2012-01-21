@@ -22,7 +22,12 @@ $userCategoryInfo = $userCategories->row();
                                     <div class="inner_br">
                                         <div class="cls100_p">
                                             <div class="clsInnerCommon clsFormSpan">
-
+                                                <?php $messages = $this->message->get('search_error'); ?>
+                                                <?php if (!empty($messages)) : ?>
+                                                <p class="help">
+                                                    <?php echo  $this->message->display('search_error');  ?>
+                                                </p>
+                                                <?php endif; ?>
                                                 <form method="post" action="<?php echo site_url('seller/editProfile'); ?>" enctype="multipart/form-data">
                                                     <?php form_token(); ?>
                                                     <h2><?php echo $this->lang->line('edit_account'); ?></h2>

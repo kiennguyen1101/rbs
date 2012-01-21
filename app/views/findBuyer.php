@@ -20,6 +20,6 @@ echo " ".$results->num_rows . " ".$this->lang->line('Buyer')."(s) ". $this->lang
         <input type="checkbox" name="same_area" value="1" checked="checked"/> <?php echo $this->lang->line('Search same area'); ?><br />
         
         <input type="hidden" name="c" value="search" />
-        <input type="hidden" name="m" value="buyer" />
+        <input type="hidden" name="m" value="user" />
     </p>
 </form>

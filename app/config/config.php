@@ -345,4 +345,13 @@ $config['fckeditor_path']			  = 	$config['basepath'].'fckeditor/';  //FckEditor 
 $config['fckeditor_url']			  = 	$config['base_url'].'fckeditor/';  //FckEditor Url
 $config['fckeditor_height']			  = 	400;	//Editor 	Height
 $config['fckeditor_width']			  = 	600;  	//FckEditor	Width
+
+
+//Message library
+$config['message_prefix'] = '<p>';
+$config['message_suffix'] = '</p>';
+$config['message_folder'] = 'messages/';
+$config['message_view']   = 'message'; // without the _view suffix
+$config['wrapper_prefix'] = '<div class="message">';
+$config['wrapper_suffix'] = '</div>';
 ?>
