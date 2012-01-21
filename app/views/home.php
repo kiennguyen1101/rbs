@@ -13,7 +13,6 @@
   <!--category-->
   <div id="category">
 	<ul>
-	<?php var_dump($products);?>
 	<!-- single category -->
 	<?php for($i=0;$i<6;$i++): ?>
 		
