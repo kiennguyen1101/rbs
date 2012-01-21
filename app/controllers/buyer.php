@@ -142,10 +142,10 @@ class Buyer extends Controller {
 
             if ($this->form_validation->run()) {
                 //Check for cross site request forgery
-                /*if (check_form_token() === false) {
+                if (check_form_token() === false) {
                     $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('token_error')));
                     redirect('buyer/signUp');
-                }*/
+                }
                 $insertData = array();
                 $insertData['email'] = $this->input->post('email', TRUE);
                 $insertData['role_id'] = $this->user_model->getRoleId('buyer');
