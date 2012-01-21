@@ -13,7 +13,7 @@
   <!--category-->
   <div id="category">
 	<ul>
-	<?php //var_dump($products);?>
+	
 	<!-- single category -->
 	<?php for($i=0;$i<6;$i++): ?>
 		
@@ -42,7 +42,9 @@
                         <?php endfor; ?>
 		</table>
 		<?php endforeach;?>
+                <?php if (is_object($products[$i])) : ?>
 		<span class="viewmore"><a href="<?php echo site_url('?keyword=&category='.$products[$i]->project_categories.'&c=search');?>">View more</a></span>
+                <?php endif; ?>
 	</li>
 		
 	<?php endfor;?>

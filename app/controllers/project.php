@@ -983,41 +983,7 @@ class Project extends Controller {
 	} //Function create bid End
 	// --------------------------------------------------------------------
 	
-	/**
-	 * Seller will edit the placed bid for the project
-	 *
-	 * @access	public for seller
-	 * @param	nil
-	 * @return	void
-	 */ 
-	function editBid()
-	{	
-                //Notification message
-                $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success', $this->lang->line('Your bid Has Been Posted Successfully')));
-                redirect('project/view/' . $insertData['project_id']);
-            }//Form Validation End
-            else {
-
-                $project_id = $this->input->post('project_id');
-                $conditions = array('projects.id' => $project_id);
-                $this->outputData['projects'] = $this->skills_model->getProjects($conditions);
-
-                $conditions = array('bids.user_id' => $this->loggedInUser->id, 'bids.project_id' => $project_id);
-                $this->outputData['bid'] = $this->skills_model->getBids($conditions);
-
-                $this->outputData['project_id'] = $project_id;
-                //Get Total Messages
-                $this->load->model('messages_model');
-                $message_conditions = array('messages.project_id' => $project_id);
-                $this->outputData['totalMessages'] = $this->messages_model->getTotalMessages($message_conditions);
-            }
-        }//If - Form Submission End
-        $this->load->view('project/postBid', $this->outputData);
-    }
-
-//Function create bid End
-    // --------------------------------------------------------------------
-
+	
     /**
      * Seller will edit the placed bid for the project
      *

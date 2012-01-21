@@ -385,6 +385,16 @@ class Search extends Controller {
             $cond = array('users.id' => $this->loggedInUser->id);
             $user_info = $this->user_model->getUsers($cond);
             $userData = $user_info->row();
+            if (!$userData->country_symbol) {
+                switch ($userData->role_name) {
+                    case "buyer":
+                        redirect("buyer/editProfile");
+                        break;
+                    case "seller":
+                        redirect("seller/editProfile");
+                        break;
+                }
+            }
             $cond = array(
                 'country_symbol' => $userData->country_symbol,
                 'state' => $userData->state,
@@ -517,7 +527,17 @@ class Search extends Controller {
             $cond = array('users.id' => $this->loggedInUser->id);
             $user_info = $this->user_model->getUsers($cond);
             $userData = $user_info->row();
-            $cond = array(
+            if (!$userData->country_symbol) {
+                switch ($userData->role_name) {
+                    case "buyer":
+                        redirect("buyer/editBuyerProfile");
+                        break;
+                    case "seller":
+                        redirect("seller/editSellerProfile");
+                        break;
+                }
+            }
+            $cond = array(               
                 'country_symbol' => $userData->country_symbol,
                 'state' => $userData->state,
                 'city' => $userData->city,
@@ -533,12 +553,16 @@ class Search extends Controller {
 
         //convert country_symbol (ISO code) to name
         //i.e. US -> United States
+        
         foreach ($users->result() as $user) {
+            if ($user->country_symbol)
             $country = $this->common_model->getCountries(array('country_symbol' => $user->country_symbol));
             $user->country_name = $country->row()->country_name;
         }
-
+        
+        
         foreach ($users1->result() as $user) {
+            if ($user->country_symbol)
             $country = $this->common_model->getCountries(array('country_symbol' => $user->country_symbol));
             $user->country_name = $country->row()->country_name;
         }
