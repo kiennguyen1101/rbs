@@ -53,7 +53,6 @@ class Buyer extends Controller {
         if ($this->config->item('site_status') == 1)
             redirect('offline');
 
-
         //Debug Tool
         //$this->output->enable_profiler=true;		
         //Load Models Common to all the functions in this controller
@@ -63,7 +62,10 @@ class Buyer extends Controller {
         $this->load->model('page_model');
         $this->load->model('email_model');
         $this->load->model('certificate_model');
-
+		
+		$this->load->library('validation');
+        $this->load->helper('recaptcha');
+		
         //Page Title and Meta Tags
         $this->outputData = $this->common_model->getPageTitleAndMetaData();
 
@@ -134,12 +136,20 @@ class Buyer extends Controller {
 
         //Intialize values for library and helpers	
         $this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
-
+		
         //Get Form Data	
         if ($this->input->post('buyerSignup', TRUE)) {
             //Set rules
             $this->form_validation->set_rules('email', 'lang:buyer_email_validation', 'required|trim|valid_email|xss_clean|callback__check_buyer_email');
-
+			$this->validation->set_rules('recaptcha_challenge_field','required|recaptcha_matches');
+			$fields['recaptcha_challenge_field'] = 'answer to the security question';
+			$this->validation->set_fields($fields);
+			
+			if ($this->validation->run() == FALSE)
+			{
+				
+			}
+			
             if ($this->form_validation->run()) {
                 //Check for cross site request forgery
                 if (check_form_token() === false) {
