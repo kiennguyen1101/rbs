@@ -14,10 +14,10 @@
   <div id="category">
 	<ul>
 	<!-- single category -->
-	<?php for($i=0;$i<6;$i++): ?>
+	<?php for($i=0;$i<$count;$i++): ?>
 		
 	<li class="box">
-		<h1><?php echo $homeCategories[$i]->category;?></h1>
+		<h1><?php echo $homeCategories[$i]->category_name;?></h1>
 		<?php foreach($products[$i] as $products[$i]):?>
 		<table>
                     

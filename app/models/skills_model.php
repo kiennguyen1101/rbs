@@ -1658,9 +1658,14 @@ class Skills_model extends Model {
 		$this->db->insert('want_list', $insert);
 	}
 	
+	function countCategories() {
+		$count = $this->db->count_all('categories');
+		return $count;
+	}
+	
 	function getHomeCategories() {
 		$this->db->select('*');
-		$this->db->from('home_category');
+		$this->db->from('categories');
 		$query = $this->db->get();
 		$category = array();
 		$category = $query->result();
@@ -1671,7 +1676,7 @@ class Skills_model extends Model {
 		$this->db->select('*');
 		$this->db->from('projects');
 		$this->db->where('project_categories',$category);
-		$this->db->order_by('number_of_buyers','desc');
+		$this->db->order_by('enddate','asc');
 		$this->db->limit(4);
 		$query = $this->db->get();
 		return $query->result();

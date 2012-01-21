@@ -130,10 +130,10 @@ class Home extends Controller {
 			$this->outputData['homeCategories'] = $homeCategories; 
 			$i = 0;
 			foreach ($homeCategories as $homeCategories):
-				$this->outputData['products'][$i] = $this->skills_model->getProductsByCategory($homeCategories->category);
+				$this->outputData['products'][$i] = $this->skills_model->getProductsByCategory($homeCategories->category_name);
 				$i++;
 			endforeach;
-			
+			$this->outputData['count'] = $this->skills_model->countCategories();
             $this->load->view('home', $this->outputData);
         }
     }
