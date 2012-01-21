@@ -1676,6 +1676,7 @@ class Skills_model extends Model {
 		$this->db->select('*');
 		$this->db->from('projects');
 		$this->db->where('project_categories',$category);
+		$this->db->where('enddate > ',time());
 		$this->db->order_by('enddate','asc');
 		$this->db->limit(4);
 		$query = $this->db->get();
