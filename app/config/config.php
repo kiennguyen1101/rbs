@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://localhost/rbs";
+$config['base_url']	= "http://localhost/rbs/rbs";
 
 /*
 |--------------------------------------------------------------------------
@@ -325,7 +325,7 @@ $config['language_code'] 				= 'english';
 $config['hostname'] = "localhost";
 $config['db_username'] = "root";
 $config['db_password'] = "";
-$config['db'] = "rbsrc3";
+$config['db'] = "rbs";
 //Common listings limit
 $config['listing_limit'] 				= 10;
 

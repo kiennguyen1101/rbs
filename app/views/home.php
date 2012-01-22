@@ -13,15 +13,14 @@
   <!--category-->
   <div id="category">
 	<ul>
-	
 	<!-- single category -->
-	<?php for($i=0;$i<6;$i++): ?>
+	<?php for($i=0;$i<$count;$i++): ?>
 		
 	<li class="box">
-		<h1><?php echo $homeCategories[$i]->category;?></h1>
+		<h1><?php echo $homeCategories[$i]->category_name;?></h1>
 		<?php foreach($products[$i] as $products[$i]):?>
 		<table>
-                    <?php for ($j=0;$j<6;$j++): ?>
+                    
 				<td class="item"><?php echo $products[$i]->project_name;?></td>
 				<td><?php
 					if(!isSeller()) { 
@@ -39,9 +38,10 @@
                                         
 			</tr>
 			
-                        <?php endfor; ?>
+                        
 		</table>
 		<?php endforeach;?>
+		
                 <?php if (is_object($products[$i])) : ?>
 		<span class="viewmore"><a href="<?php echo site_url('?keyword=&category='.$products[$i]->project_categories.'&c=search');?>">View more</a></span>
                 <?php endif; ?>

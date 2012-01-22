@@ -130,10 +130,10 @@ class Home extends Controller {
 			$this->outputData['homeCategories'] = $homeCategories; 
 			$i = 0;
 			foreach ($homeCategories as $homeCategories):
-				$this->outputData['products'][$i] = $this->skills_model->getProductsByCategory($homeCategories->category);
+				$this->outputData['products'][$i] = $this->skills_model->getProductsByCategory($homeCategories->category_name);
 				$i++;
 			endforeach;
-			
+			$this->outputData['count'] = $this->skills_model->countCategories();
             $this->load->view('home', $this->outputData);
         }
     }
@@ -259,12 +259,12 @@ class Home extends Controller {
     }
 	
 	function want() {
-		$loggedInUserId = $this->loggedInUser->id;
 		$productId = $this->uri->segment(3);
 		if(!isLoggedIn()) {
 			$this->session->set_flashdata('flash_message',$this->common_model->flash_message('error','You must log in order to add yourself to the want list'));
 			redirect('users/login');
 		}
+		$loggedInUserId = $this->loggedInUser->id;
 		if(!$this->skills_model->isProductOpen($productId)) {
 			$this->session->set_flashdata('flash_message',$this->common_model->flash_message('error','This product post is expired'));
 			redirect('home');
