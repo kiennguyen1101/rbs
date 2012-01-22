@@ -379,6 +379,8 @@ class Skills_model extends Model {
 	 function createBids($insertData=array())
 	 {
 	 	$this->db->insert('bids', $insertData);
+                $bid_id = $this->db->insert_id();
+                return $bid_id;
 		 
 	 }//End of addGroup Function
 	 
@@ -1045,7 +1047,7 @@ class Skills_model extends Model {
 	 {
 	 	//Get thebid project details for all projects			
 		$this->db->from('bids');
-		$this->db->select('bids.id,bids.project_id,bids.user_id,bids.bid_days,bids.bid_days,bids.bid_hours,bids.bid_amount,bids.bid_time,bids.bid_desc');
+		$this->db->select('bids.id,bids.project_id,bids.user_id,bids.bid_amount,bids.bid_time,bids.bid_desc');
 			
 		$result = $this->db->get();
 		return $result;
@@ -1087,11 +1089,12 @@ class Skills_model extends Model {
 		$this->db->from('bids');
 		$this->db->join('users', 'users.id = bids.user_id','inner');
 		$this->db->join('projects', 'projects.id = bids.project_id','inner');
+               // $this->db->join('product_discount', 'product_discount.id = bids.id','left');
 		//Check For Fields	 
 		if($fields!='')
 				$this->db->select($fields);
 		else 		
-	 		$this->db->select('bids.id,bids.project_id,bids.user_id,bids.bid_days,bids.bid_days,bids.bid_hours,bids.bid_amount,bids.bid_time,bids.bid_desc,bids.escrow_flag,users.user_name,users.id as uid,users.user_rating,users.num_reviews,projects.is_hide_bids,projects.creator_id');
+	 		$this->db->select('bids.id,bids.project_id,bids.user_id,bids.quantity,bids.bid_amount,bids.bid_time,bids.bid_desc,bids.same_area,users.user_name,users.id as uid,users.user_rating,users.num_reviews,projects.is_hide_bids,projects.creator_id');
 			
 		$result = $this->db->get();
 		
@@ -1712,6 +1715,52 @@ class Skills_model extends Model {
 		$this->db->update('projects');
 		return TRUE;
 	}
+        
+        public function createDiscount($bid_id,$discount_percentage,$discount_at) {
+            $count_discount_percentage = count($discount_percentage);
+            $count_discount_at = count($discount_at);
+            if (!is_array($discount_percentage)) {
+                $discount_percentage = array(0,0,0);
+            }
+            elseif ($count_discount_percentage != 3) {
+                if ($count_discount_percentage < 3) 
+                    while (count($count_discount_percentage < 3))
+                        array_push ($discount_percentage, 0);                
+                else       
+                    while (count($count_discount_percentage > 3))
+                        array_pop ($discount_percentage); 
+            }
+            
+            if (!is_array($discount_at)) {
+                $discount_at = array(0,0,0);
+            }
+            elseif ($count_discount_at != 3) {
+                if ($count_discount_at < 3) 
+                    while (count($discount_at < 3))
+                        array_push ($discount_at, 0);                
+                else       
+                    while (count($discount_at > 3))
+                        array_pop ($discount_at); 
+            }
+            
+            $data = array();
+            for ($i=0;$i<3;$i++) {
+                $temp= array();
+                $temp['bids_id'] = $bid_id;
+                $temp['id'] = '';
+                $temp['discount_percentage'] = $discount_percentage[$i];               
+                array_push($data,$temp);
+            }
+            $data[0]['discount_at']  =  $discount_percentage[0];     
+            $data[1]['discount_at']  =  $discount_percentage[0] + $discount_percentage[1];
+            $data[2]['discount_at']  =  $data[1]['discount_at'] + $discount_percentage[2];
+            
+            foreach ($data as $row_data) {
+                $this->db->insert('product_discount', $row_data); 
+            }
+            
+            
+        }
 }
 // End Skills_model Class
    

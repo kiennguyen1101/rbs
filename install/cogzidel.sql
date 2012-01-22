@@ -1018,3 +1018,12 @@ CREATE TABLE IF NOT EXISTS `user_list` (
   `user_role` varchar(256) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+CREATE TABLE IF NOT EXISTS product_discount (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    bids_id int(11) NOT NULL,
+    discount_percentage int(4) NOT NULL,
+    discount_after int(11) NOT NULL,
+    FOREIGN KEY (bids_id) REFERENCES bids (id),
+    PRIMARY KEY (id)
+)ENGINE=MyISAM  DEFAULT CHARSET=latin1;

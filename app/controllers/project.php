@@ -420,7 +420,7 @@ class Project extends Controller {
                 $insertData['creator_id'] = $this->loggedInUser->id;
                 $insertData['created'] = get_est_time();
                 $insertData['enddate'] = get_est_time() + (7 * 86400);
-				  $insertData['project_status'] 	= '0';
+                $insertData['project_status'] = '0';
                 $result = '0';
 
                 //Project Preview
@@ -878,7 +878,7 @@ class Project extends Controller {
     function createBid() {
 
         //Load Language
-        $this->lang->load('enduser/createBids', $this->config->item('language_code'));
+        $this->lang->load('enduser/postBid', $this->config->item('language_code'));
 
         //Check For Buyer Session
         if (!isSeller()) {
@@ -895,32 +895,41 @@ class Project extends Controller {
         //Intialize values for library and helpers	
         $this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
 
+
+
         //Get Form Data	
         if ($this->input->post('postBid')) {
             //Set rules
-            $this->form_validation->set_rules('bidAmt', 'lang:Bid_Amount_validation', 'required|is_natural_no_zero|trim|xss_clean');
-
-            $this->form_validation->set_rules('days', 'lang:Bid_days_validation', 'required|numeric|trim|xss_clean');
-            $this->form_validation->set_rules('hours', 'lang:Hours', 'required|numeric|trim|xss_clean');
-            $this->form_validation->set_rules('message2', 'lang:description_validation', 'required|trim|xss_clean');
-
+            $this->form_validation->set_rules('bidAmt', 'lang:Bid_Amount_validation', 'required|numeric|trim|xss_clean');
+            $this->form_validation->set_rules('quantity', 'lang:quantity_validation', 'required|integer|trim|xss_clean');
+            $this->form_validation->set_rules('message2', 'lang:description_validation', 'trim|xss_clean');
+            
+            //get project details
+            $project_id = $this->input->post('project_id');
+            $condition = array('projects.id' => $project_id);
+            $project = $this->skills_model->getProjects($condition);
+            $projectDetails = $project->row();
+            
             if ($this->form_validation->run()) {
                 $insertData = array();
-                $insertData['project_id'] = $this->input->post('project_id');
-                $insertData['user_id'] = $this->loggedInUser->id;
-                $insertData['bid_days'] = $this->input->post('days');
-                $insertData['bid_hours'] = $this->input->post('hours');
-                $insertData['bid_amount'] = $this->input->post('bidAmt');
-                $insertData['bid_time'] = get_est_time();
-                $insertData['bid_desc'] = $this->input->post('message2');
-                if ($this->input->post('notify'))
-                    $insertData['lowbid_notify'] = $this->input->post('notify');
-                if ($this->input->post('escrow'))
-                    $insertData['escrow_flag'] = $this->input->post('escrow');
-
+                $insertData['project_id']   = $project_id;
+                $insertData['user_id']      = $this->loggedInUser->id;        
+                $insertData['quantity']     = $this->input->post('quantity');
+                $insertData['bid_amount']   = $this->input->post('bidAmt');
+                $insertData['bid_time']     = get_est_time();
+                $insertData['bid_desc']     = $this->input->post('message2');
+                
+                if ($this->input->post('same_area'))
+                    $insertData['same_area'] = $this->input->post('same_area');
+                
                 //Create bids
-                $this->skills_model->createBids($insertData);
-
+                $bid_id = $this->skills_model->createBids($insertData);
+                
+                //Create discounts
+                if ($this->input->post('discount')) {
+                    $this->skills_model->createDiscount($bid_id,$this->input->post('discount_value'),$this->input->post('discount_at'));
+                }
+                
                 //Load Model For Mail
                 $this->load->model('email_model');
 
@@ -929,29 +938,16 @@ class Project extends Controller {
                 $result = $this->email_model->getEmailSettings($conditionUserMail);
                 $rowUserMailConent = $result->row();
 
-                //Project details
-                $condition = array('projects.id' => $insertData['project_id']);
-                $project = $this->skills_model->getProjects($condition);
-                $projectDetails = $project->row();
-
                 //User details
                 $condition2 = array('users.id' => $projectDetails->creator_id);
                 $user = $this->user_model->getUsers($condition2, 'users.user_name,users.email');
                 $userDetails = $user->row();
-
+                
                 //Provider details
                 $condition3 = array('users.id' => $insertData['user_id']);
                 $provider = $this->user_model->getUsers($condition3, 'users.user_name');
                 $providerDetails = $provider->row();
-
-                $btime = '';
-                if ($insertData['bid_hours'] == 0 && $insertData['bid_days'] == 0)
-                    $btime .= $this->lang->line('Immediately');
-                elseif ($insertData['bid_days'] != 0)
-                    $btime .= $insertData['bid_days'] . $this->lang->line('days');
-                if ($insertData['bid_hours'] != 0)
-                    $btime .= $insertData['bid_hours'] . " " . $this->lang->line('hours');
-
+                
                 $splVars = array("!project_name" => '<a href="' . site_url('project/view/' . $projectDetails->id) . '">' . $projectDetails->project_name . '</a>', "!user_name" => $userDetails->user_name, "!provider_name" => $providerDetails->user_name, "!contact_url" => site_url('contact'), '!site_name' => $this->config->item('site_title'), '!bid_time' => $btime, '!bid_amt' => "$" . $insertData['bid_amount']);
                 $mailSubject = strtr($rowUserMailConent->mail_subject, $splVars);
                 $mailContent = strtr($rowUserMailConent->mail_body, $splVars);
@@ -962,28 +958,26 @@ class Project extends Controller {
 				  //Notification message
 				  $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success',$this->lang->line('Your bid Has Been Posted Successfully')));
 				  redirect('project/view/'.$insertData['project_id']);
-			}//Form Validation End
-			else{
-			
-				$project_id = $this->input->post('project_id');
-				$conditions = array('projects.id'=>$project_id);
-				$this->outputData['projects']	 =  $this->skills_model->getProjects($conditions);
-				
-				$conditions = array('bids.user_id'=>$this->loggedInUser->id,'bids.project_id'=>$project_id);
-				$this->outputData['bid']  =  $this->skills_model->getBids($conditions);
-				
-				$this->outputData['project_id'] = $project_id;
-				//Get Total Messages
-				$this->load->model('messages_model');
-				$message_conditions = array('messages.project_id'=>$project_id);
-				$this->outputData['totalMessages']	    =  $this->messages_model->getTotalMessages($message_conditions);
-			}
-		}//If - Form Submission End
-		$this->load->view('project/postBid',$this->outputData);
-	} //Function create bid End
-	// --------------------------------------------------------------------
-	
-	
+                
+            } else {                
+                $this->outputData['projects'] = $project;
+                $conditions = array('bids.user_id' => $this->loggedInUser->id, 'bids.project_id' => $project_id);
+                $this->outputData['bid'] = $this->skills_model->getBids($conditions);
+
+                $this->outputData['project_id'] = $project_id;
+                //Get Total Messages
+                $this->load->model('messages_model');
+                $message_conditions = array('messages.project_id' => $project_id);
+                $this->outputData['totalMessages'] = $this->messages_model->getTotalMessages($message_conditions);
+            } //form validation end
+        } //form submission end
+       
+        $this->load->view('project/postBid', $this->outputData);
+    }
+
+//Function create bid End
+    // --------------------------------------------------------------------
+
     /**
      * Seller will edit the placed bid for the project
      *
@@ -994,7 +988,7 @@ class Project extends Controller {
     function editBid() {
 
         //Load Language
-        $this->lang->load('enduser/createBids', $this->config->item('language_code'));
+        $this->lang->load('enduser/postBid', $this->config->item('language_code'));
 
         //Check For Buyer Session
         if (!isSeller()) {
@@ -1011,46 +1005,10 @@ class Project extends Controller {
         //Intialize values for library and helpers	
         $this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
 
-        //Get Form Data	
-        if ($this->input->post('postBid')) {
-            //Set rules
-            $this->form_validation->set_rules('bidAmt', 'lang:Bid_Amount_validation', 'required|is_natural_no_zero|trim|xss_clean');
-            if (!$this->input->post('hours') && $this->input->post('hours') == "")
-                $this->form_validation->set_rules('days', 'lang:Bid_days_validation', 'required|numeric|trim|xss_clean');
-            $this->form_validation->set_rules('hours', 'lang:Bid_days_validation', 'numeric|trim|xss_clean');
-            if ($this->form_validation->run()) {
-                $updateData = array();
-                $updateData['project_id'] = $this->input->post('project_id');
-                $updateData['user_id'] = $this->loggedInUser->id;
-                $updateData['bid_days'] = $this->input->post('days');
-                $updateData['bid_hours'] = $this->input->post('hours');
-                $updateData['bid_amount'] = $this->input->post('bidAmt');
-                $updateData['bid_desc'] = $this->input->post('message2');
 
-                //Create bids
-                $this->skills_model->updateBids($this->input->post('bidId'), $updateData);
+        var_dump($this->input->post);
 
-                //Notification message
-                $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success', $this->lang->line('Your bid Has Been edited Successfully')));
-                redirect('project/view/' . $updateData['project_id']);
-            }//Form Validation End
-            else {
-                //Get Project Id
-                $project_id = $this->input->post('project_id');
-                $conditions = array('bids.user_id' => $this->loggedInUser->id, 'bids.project_id' => $project_id);
-                $this->outputData['bid'] = $this->skills_model->getBids($conditions);
-
-                $conditions1 = array('projects.id' => $project_id);
-                $this->outputData['projects'] = $this->skills_model->getProjects($conditions1);
-                $this->outputData['project_id'] = $project_id;
-
-                //Get Total Messages
-                $this->load->model('messages_model');
-                $message_conditions = array('messages.project_id' => $project_id);
-                $this->outputData['totalMessages'] = $this->messages_model->getTotalMessages($message_conditions);
-            }
-        }//If - Form Submission End
-        $this->load->view('project/postBid', $this->outputData);
+        $this->load->view('project/test', $this->outputData);
     }
 
 //Function edit bid End
@@ -1165,6 +1123,7 @@ class Project extends Controller {
         $this->lang->load('enduser/common', $this->config->item('language_code'));
         $this->lang->load('enduser/viewProject', $this->config->item('language_code'));
         $this->load->helper('users_helper');
+        $this->load->library('table');
         //Get Project Id
         if ($this->uri->segment(3)) {
             $project_id = $this->uri->segment(3, '0');
@@ -3188,8 +3147,11 @@ class Project extends Controller {
         else
             return TRUE;
     }
-
-   
+    
+    public function discount_check($str) {
+        var_dump($str);
+        return false;
+    }
 
 }
 
