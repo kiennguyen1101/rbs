@@ -18,4 +18,5 @@ $lang['Results']	            = 'Results';
 $lang['Refresh']	            = 'Refresh';
 $lang['Customize Display']	            = 'Customize Display';
 $lang['Not Ready'] = "Not available. Product is still in 7 days hide.";
+$lang['No Records'] = 'No Records Found';
 ?>

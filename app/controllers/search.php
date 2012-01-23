@@ -60,6 +60,9 @@ class Search extends Controller {
         $this->load->model('common_model');
         $this->load->model('skills_model');
         $this->load->model('user_model');
+        
+        //load table library
+        $this->load->library('table');
 
         //Page Title and Meta Tags
         $this->outputData = $this->common_model->getPageTitleAndMetaData();
@@ -134,6 +137,7 @@ class Search extends Controller {
             $this->session->set_userdata('show_bids', '1');
             $this->session->set_userdata('show_num', '10');
             $this->session->set_userdata('show_date', '1');
+            $this->session->set_userdata('show_status', '1');
         }
         $page_rows = $this->session->userdata('show_num');
         $max = array($page_rows, ($page - 1) * $page_rows);
@@ -240,6 +244,9 @@ class Search extends Controller {
             $this->session->set_userdata('show_cat', '1');
             $this->session->set_userdata('show_budget', '1');
             $this->session->set_userdata('show_bids', '1');
+             $this->session->set_userdata('show_status', $this->input->post('show_status', true));
+            $this->session->set_userdata('show_date', $this->input->post('show_date', true));
+            $this->session->set_userdata('show_desc', $this->input->post('show_desc', true));
             $this->session->set_userdata('show_num', '10');
         }
         $page_rows = $this->session->userdata('show_num');
