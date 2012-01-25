@@ -28,7 +28,7 @@
                                 <tbody><tr>
                                   <td width="5%" class="dt"><?php echo $this->lang->line('SI.No');?></td>
                                   <td width="30%" class="dt"><?php echo $this->lang->line('Project Name');?></td>
-								  <td width="10%" class="dt"><?php echo $this->lang->line('Required Escrow');?></td>
+								  
                                   <td width="10%" class="dt"><?php echo $this->lang->line('Bids');?></td>
 								  <td width="10%" class="dt"><?php echo $this->lang->line('Avg Bid');?></td>
 								  <td width="10%" class="dt"><?php echo $this->lang->line('Status');?></td>
@@ -59,7 +59,7 @@
 									
 									 &nbsp;&nbsp;<img src="<?php echo image_url('private1.png');?>" width="14" height="14" title="private project" alt="<?php echo $this->lang->line('Private Project'); ?>" /><?php }
 									 ?></a></td>
-								  <td class="<?php echo $class;?>"><?php if($latestProject->escrow_flag==1){echo $this->lang->line('Yes'); }else{echo $this->lang->line('No');}?></td>
+								 
                                   <td class="<?php echo $class;?>"><?php echo getNumBid($latestProject->id);?></td>
                                   <td class="<?php echo $class;?>"><?php echo getBidsInfo($latestProject->id); ?></td>
 								  <td class="<?php echo $class;?>"><?php echo getProjectStatus($latestProject->project_status);?></td>

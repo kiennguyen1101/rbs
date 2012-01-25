@@ -137,9 +137,17 @@ function getLowBid($projectId=NULL) {
  * @param	string
  * @return	string
  */
-function getProjectStatus($status=NULL) {
+function getProjectStatus($created=NULL, $status = NULL) {
     $CI = & get_instance();
     $CI->lang->load('enduser/viewProject');
+    
+    if ($created && !$status) {
+    $time = get_est_time() - $created;
+    if ($time <60*60*24*7)
+        $status = 0;
+    else
+        $status = 1;
+    }
     switch ($status) {
         case 0:
             $stat = $CI->lang->line('Frozen');

@@ -1027,7 +1027,7 @@ class Skills_model extends Model {
 		if($fields!='')
 				$this->db->select($fields);
 		else 		
-	 		$this->db->select('projects.project_name,projects.checkstamp,projects.is_urgent,projects.is_feature,projects.is_private,projects.private_users,users.email,projects.id,projects.project_status,projects.created,projects.seller_id,bids.escrow_flag,bids.id as bidid');
+	 		$this->db->select('projects.project_name,projects.checkstamp,projects.is_urgent,projects.is_feature,projects.is_private,projects.private_users,users.email,projects.id,projects.project_status,projects.created,projects.seller_id,bids.id as bidid');
 			
 		$result = $this->db->get();
 		return $result;

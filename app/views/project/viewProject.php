@@ -62,26 +62,26 @@ $project = $projects->row();
                     if ($loggedInUser->role_id == '2') {
                         ?>
 
-                                                                                                     <a href="<?php echo site_url('userList/addFavouriteUsers/' . $project->userid); ?>">
-                                                                                                         <img src="<?php echo image_url('star_g.gif'); ?>" width="21" height="28" title="Add To Favourite"  alt="Add To Favourite" /> </a> <a href="<?php echo site_url('userList/addBlockedUsers/' . $project->userid); ?>">
-                                                                                                         <img src="<?php echo image_url('block_g.gif'); ?>" width="21" height="28" alt="BlackList User" title="BlackList User"/> </a> <a href="<?php echo site_url('project/postReport/' . $project->id); ?>">
-                                                                                                         <img src="<?php echo image_url('com_g.gif'); ?>" height="28" width="21" alt="Report Project Violation" title="Report Project Violation"/> 
-                                                                                                     </a>
+                                                                                                             <a href="<?php echo site_url('userList/addFavouriteUsers/' . $project->userid); ?>">
+                                                                                                                 <img src="<?php echo image_url('star_g.gif'); ?>" width="21" height="28" title="Add To Favourite"  alt="Add To Favourite" /> </a> <a href="<?php echo site_url('userList/addBlockedUsers/' . $project->userid); ?>">
+                                                                                                                 <img src="<?php echo image_url('block_g.gif'); ?>" width="21" height="28" alt="BlackList User" title="BlackList User"/> </a> <a href="<?php echo site_url('project/postReport/' . $project->id); ?>">
+                                                                                                                 <img src="<?php echo image_url('com_g.gif'); ?>" height="28" width="21" alt="Report Project Violation" title="Report Project Violation"/> 
+                                                                                                             </a>
 
                         <?php
                     }
                 } else {
                     ?>
 
-                                                         <a href="<?php echo site_url('users/login'); ?>">
-                                                             <img src="<?php echo image_url('star_g.gif'); ?>" width="21" height="28"  alt="Add To Favourite"/> 
-                                                         </a> 
-                                                         <a href="<?php echo site_url('users/login'); ?>">
-                                                             <img src="<?php echo image_url('block_g.gif'); ?>" width="21" height="28" alt="BlackList User"/> 
-                                                         </a> 
-                                                         <a href="<?php echo site_url('users/login'); ?>">
-                                                             <img src="<?php echo image_url('com_g.gif'); ?>" height="28" width="21" alt="Report Project Violation"/> 
-                                                         </a>
+                                                             <a href="<?php echo site_url('users/login'); ?>">
+                                                                 <img src="<?php echo image_url('star_g.gif'); ?>" width="21" height="28"  alt="Add To Favourite"/> 
+                                                             </a> 
+                                                             <a href="<?php echo site_url('users/login'); ?>">
+                                                                 <img src="<?php echo image_url('block_g.gif'); ?>" width="21" height="28" alt="BlackList User"/> 
+                                                             </a> 
+                                                             <a href="<?php echo site_url('users/login'); ?>">
+                                                                 <img src="<?php echo image_url('com_g.gif'); ?>" height="28" width="21" alt="Report Project Violation"/> 
+                                                             </a>
 
                 <?php }
                 ?>
@@ -117,7 +117,7 @@ $project = $projects->row();
         <?php endif; //End check featured    ?>
         <tr>
             <td class="dt2 dt0"><?php echo $this->lang->line('Status'); ?>:</td>
-            <?php $status = getProjectStatus($project->project_status); ?>
+            <?php $status = getProjectStatus($project->created); ?>
             <td class="dt2" style="color: <?php echo ($status == "Open" ? "green" : "red"); ?>">
                 <?php echo $status; ?>
             </td>
@@ -182,7 +182,7 @@ $project = $projects->row();
             <tr>
                 <td class="dt1 dt0"><?php echo $this->lang->line('Project Attachment'); ?>:</td>
                 <td class="dt1"><?php echo $project->attachment_name; ?><a href="<?php echo site_url('project/download/' . $project->attachment_url); ?>" class="clsDown"><img src="<?php echo base_url(); ?>app/css/images/download1.png" /></a></td>								  								
-            </tr><?php endif; //end check attachment                   ?>
+            </tr><?php endif; //end check attachment                    ?>
         <!--	Puhal Changes End for downloading the Project attachment file (Sep 20 Isssue 17)-->
         </tbody>
     </table>
@@ -217,13 +217,16 @@ $project = $projects->row();
 
         //set table heading
         $heading = array($this->lang->line('Sellers'),
-            $this->lang->line('Message'),
             $this->lang->line('Bids'),
-            $this->lang->line('Delivery Time'),
             $this->lang->line('Time of Bid'),
             $this->lang->line('Rating'),
-            $this->lang->line('Options'),
+            $this->lang->line('Message'),
         );
+        
+        if (!empty($loggedInUser))
+            if ($loggedInUser->role_name == "buyer")
+                array_push($heading, $this->lang->line('Options'));
+
         //$this->table->make_columns($columns,count($columns));
         $this->table->set_heading($heading);
 
@@ -236,11 +239,16 @@ $project = $projects->row();
             foreach ($bids->result() as $bid) {
 
                 if ($status == "Frozen") {
-                    if (empty($loggedInUser))
+                    if (empty($loggedInUser)) {
                         break;
-                    //stop processing a bid if project status is frozen and current user is not bidder
-                    elseif ($bid->user_id != $loggedInUser->id)
-                        continue;
+                    }
+
+                    //move on if project status is frozen and current user is not bidder
+                    else {
+                        if
+                        ($bid->user_id != $loggedInUser->id)
+                            continue;
+                    }
                 }
 
                 //prepare table row
@@ -249,11 +257,7 @@ $project = $projects->row();
                 //username
                 array_push($t_row, $bid->user_name);
 
-                //bid description
-                if (isset($bid->bid_desc))
-                    array_push($t_row, $bid->bid_desc);
-
-                //bid armount
+                //get bid armount and discount
                 array_push($t_row, $bid->bid_amount);
 
                 //bid time EST
@@ -268,21 +272,25 @@ $project = $projects->row();
                     array_push($t_row, $bid_feedback);
                 }
 
+                //bid description
+                if (isset($bid->bid_desc))
+                    array_push($t_row, $bid->bid_desc);
+
                 //check user is logged on
                 if (isset($loggedInUser->role_id)) {
 
                     //check for buyer and project status
                     if ($loggedInUser->role_name == 'buyer' && ($status == "Open" || $status == "Closed")) {
-                        array_push($t_row, '<a class="glow" href="' . site_url('project/selProvider/' . $bid->id) . '">' . $this->lang->line('Pick Provider') . '</a>');
+                        array_push($t_row, '<a class="glow" href="' . site_url('seller/coupons/' . $bid->id) . '">' . $this->lang->line('Pick Provider') . '</a>');
                     } elseif ($loggedInUser->role_id == '1' && $loggedInUser->id == $project->creator_id && $project->seller_id != 0) {
                         array_push($t_row, 'Already Picked');
                     }
                 }
-                
-                //end iteration if we found
+
+                //end iteration if we found owner when status is frozen
                 if ($status == "Frozen" && $bid->user_id == $loggedInUser->id) {
                     $this->table->add_row($t_row);
-                    $cell = array('data' => $this->lang->line('Frozen Message'), 'class' => 'help', 'colspan' => 8);
+                    $cell = array('data' => $this->lang->line('Frozen Message'), 'class' => 'help', 'colspan' => count($heading));
                     $this->table->add_row($cell);
                     $status_message = 1;
                     break;
@@ -291,15 +299,15 @@ $project = $projects->row();
                 $this->table->add_row($t_row);
             } //end foreach
             if (!$status_message && $status == "Frozen") {
-                $cell = array('data' => $this->lang->line('Frozen Message'), 'class' => 'help', 'colspan' => 8);
+                $cell = array('data' => $this->lang->line('Frozen Message'), 'class' => 'help', 'colspan' => count($heading));
                 $this->table->add_row($cell);
             }
         } else {
             if (!isSeller()) {
-                $cell = array('data' => $this->lang->line('no_bids1'), 'colspan' => 8);
+                $cell = array('data' => $this->lang->line('no_bids1'), 'colspan' => count($heading));
                 $this->table->add_row($cell);
             } else {
-                $cell = array('data' => $this->lang->line('no_bids'), 'colspan' => 8);
+                $cell = array('data' => $this->lang->line('no_bids'), 'colspan' => count($heading));
                 $this->table->add_row($cell);
             }
         }
