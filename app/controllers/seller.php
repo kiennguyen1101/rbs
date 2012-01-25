@@ -135,7 +135,7 @@ class Seller extends Controller {
                 $activation_link = "<a href='$activation_url'>$activation_url</a>";
                 $contact_url = site_url('contact');
                 $contact_link = "<a href='$contact_url'>$contact_url</a>";
-                $splVars = array("!site_title" => $this->config->item('site_title'), "!contact_link" =>  $contact_link, "!activation_link" => $activation_link);
+                $splVars = array("!site_title" => $this->config->item('site_title'), "!contact_link" => $contact_link, "!activation_link" => $activation_link);
                 $mailSubject = strtr($rowUserMailConent->mail_subject, $splVars);
                 $mailContent = strtr($rowUserMailConent->mail_body, $splVars);
                 $toEmail = $insertData['email'];
@@ -457,10 +457,10 @@ class Seller extends Controller {
      * @return	void
      */
     function editProfile() {
-        
+
         //language file
         $this->lang->load('enduser/editProfile', $this->config->item('language_code'));
-        
+
         //Check Whether User Logged In Or Not
         if (!isset($this->loggedInUser->id)) {
             $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('You must be login access to this page')));
@@ -491,7 +491,7 @@ class Seller extends Controller {
             $this->form_validation->set_rules('categories[]', 'lang:categories_validation', 'xss_clean');
             $this->form_validation->set_rules('email', 'Email', 'required|trim|min_length[5]|xss_clean');
             $this->form_validation->set_rules('rate', 'lang:rate_validation', 'trim|integer|xss_clean|abs');
-            $this->form_validation->set_rules('country', 'lang:country_validation','required|trim');
+            $this->form_validation->set_rules('country', 'lang:country_validation', 'required|trim');
             $this->form_validation->set_rules('state', 'lang:state_validation', 'required|min_length[3]|trim|xss_clean');
             $this->form_validation->set_rules('city', 'lang:city_validation', 'required||min_length[2]trim|xss_clean');
 
@@ -529,8 +529,8 @@ class Seller extends Controller {
                 $updateData['state'] = $this->input->post('state', TRUE);
                 $updateData['city'] = $this->input->post('city', TRUE);
                 $updateData['rate'] = $this->input->post('rate', TRUE);
-                
-                
+
+
 
                 //update data's in userContacts table
                 $userContacts['msn'] = $this->input->post('contact_msn', TRUE);
@@ -1229,280 +1229,6 @@ class Seller extends Controller {
 
 //End of getBuyerReview function
     // --------------------------------------------------------------------
-
-    /**
-     * Manage potfolio of providers
-     *
-     * Returns all sellers rating reviews
-     *
-     * @access	private
-     * @param	string
-     * @return	string
-     */
-    function managePortfolio() {
-
-        //language file
-        $this->lang->load('enduser/editProfile', $this->config->item('language_code'));
-
-        /* //Check For Buyer Session
-          if(!isSeller())
-          {
-          $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error',$this->lang->line('You must be logged in as a Seller')));
-          redirect('info');
-          } */
-
-        //load validation libraray
-        $this->load->library('form_validation');
-
-        //Load Form Helper
-        $this->load->helper('form');
-
-        //Intialize values for library and helpers	
-        $this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
-
-        //Get Form Data	
-
-        if ($this->input->post('createPortfolio')) {
-
-            //Set rules
-            $this->form_validation->set_rules('title', 'lang:portfolio_title_validation', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('description', 'lang:portfolio_description_validation', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('categories[]', 'lang:portfolio_categories_validation', 'required');
-            $this->form_validation->set_rules('thumbnail', 'lang:portfolio_thumbnail_validation', 'callback__thumbnail_check');
-            $this->form_validation->set_rules('attachment1', 'lang:portfolio_attachment1_validation', 'callback__attachment1_check');
-            $this->form_validation->set_rules('attachment2', 'lang:portfolio_attachment2_validation', 'callback__attachment2_check');
-
-            if ($this->form_validation->run()) {
-                if (check_form_token() === false) {
-                    $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('token_error')));
-                    redirect('info');
-                }
-
-                //pr($this->outputData['file']);exit;
-                $categories = $this->input->post('categories');
-                $ids = implode(',', $categories);
-                $insertData = array();
-                $insertData['title'] = $this->input->post('title');
-                $insertData['description'] = $this->input->post('description');
-                $insertData['categories'] = $ids;
-                $insertData['user_id'] = $this->loggedInUser->id;
-                $insertData['main_img'] = $this->outputData['file']['file_name'];
-
-                if (isset($this->outputData['file1'])) {
-
-                    $insertData['attachment1'] = $this->outputData['file1']['file_name'];
-                    $thumb1 = $this->outputData['file1']['file_path'] . $this->outputData['file1']['raw_name'] . "_thumb" . $this->outputData['file1']['file_ext'];
-                    GenerateThumbFile($this->outputData['file1']['full_path'], $thumb1, 120, 90);
-                }
-
-                if (isset($this->outputData['file2'])) {
-                    $insertData['attachment2'] = $this->outputData['file2']['file_name'];
-                    $thumb2 = $this->outputData['file2']['file_path'] . $this->outputData['file2']['raw_name'] . "_thumb" . $this->outputData['file2']['file_ext'];
-                    GenerateThumbFile($this->outputData['file2']['full_path'], $thumb2, 120, 90);
-                }
-
-
-                //Create Portfolio
-                $this->user_model->insertPortfolio($insertData);
-
-                //Notification message
-                $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success', $this->lang->line('provider_portfolio_success')));
-                redirect('seller/managePortfolio');
-            }  //Form Validation End
-        } //If - Form Submission End	
-        //Get Categories
-        $this->outputData['categories'] = $this->skills_model->getCategories();
-
-        //pr($this->outputData['categories']);exit;
-        //Get Portfolio
-        if ($this->loggedInUser) {
-            $condition = array('portfolio.user_id' => $this->loggedInUser->id);
-            $this->outputData['portfolio'] = $this->user_model->getPortfolio($condition);
-            $condition2 = array('portfolio.id' => $this->uri->segment(3));
-            $this->outputData['editPortfolio'] = $this->user_model->getPortfolio($condition2);
-
-            //Get Categories
-            $this->outputData['categories'] = $this->skills_model->getCategories();
-        }
-
-
-        //pr($this->outputData['getPortfolio']->result());exit;
-
-        $this->load->view('seller/managePorfolio', $this->outputData);
-    }
-
-//End of getBuyerReview function
-    // --------------------------------------------------------------------
-
-    /**
-     * Edit potfolio of providers
-     *
-     * Returns all sellers rating reviews
-     *
-     * @access	private
-     * @param	string
-     * @return	string
-     */
-    function editPortfolio() {
-
-        //language file
-        $this->lang->load('enduser/editProfile', $this->config->item('language_code'));
-
-        //Check For Buyer Session
-        if (!isSeller()) {
-            $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('You must be logged in as a Seller')));
-            redirect('info');
-        }
-
-        //load validation libraray
-        $this->load->library('form_validation');
-
-        //Load Form Helper
-        $this->load->helper('form');
-
-
-        //Intialize values for library and helpers
-        $this->form_validation->set_error_delimiters($this->config->item('field_error_start_tag'), $this->config->item('field_error_end_tag'));
-
-
-        //Get Form Data	
-        if ($this->input->post('editPortfolio')) {
-            //Set rules			
-            //echo $_FILES['attachment1']['name'];exit;
-
-            $this->form_validation->set_rules('title', 'lang:portfolio_title_validation', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('description', 'lang:portfolio_description_validation', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('categories[]', 'lang:portfolio_categories_validation', 'required');
-            if ($_FILES['thumbnail']['name'] != '')
-                $this->form_validation->set_rules('thumbnail', 'lang:portfolio_thumbnail_validation', 'callback__thumbnail_check');
-            if ($_FILES['attachment1']['name'] != '')
-                $this->form_validation->set_rules('attachment1', 'lang:portfolio_attachment1_validation', 'callback__attachment1_check');
-            if ($_FILES['attachment2']['name'] != '')
-                $this->form_validation->set_rules('attachment2', 'lang:portfolio_attachment2_validation', 'callback__attachment2_check');
-
-            if ($this->form_validation->run()) {
-                if (check_form_token() === false) {
-                    $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('token_error')));
-                    redirect('info');
-                }
-
-                //pr($this->outputData['file']);exit;
-                $categories = $this->input->post('categories');
-                $ids = implode(',', $categories);
-                $updateData = array();
-                $updateData['title'] = $this->input->post('title');
-                $updateData['description'] = $this->input->post('description');
-                $updateData['categories'] = $ids;
-                $updateData['user_id'] = $this->loggedInUser->id;
-                $condition2 = array('portfolio.id' => $this->input->post('portid'));
-                $port = $this->user_model->getPortfolio($condition2);
-                $folio = $port->row();
-                $path = $this->config->item('basepath') . 'files/portfolios/';
-                if (isset($this->outputData['file'])) {
-
-                    $files = array($folio->main_img);
-                    //delete image files from server
-
-                    delete_file($path, $files);
-                    $updateData['main_img'] = $this->outputData['file']['file_name'];
-                }
-
-                if (isset($this->outputData['file1'])) {
-
-                    $files = array($folio->attachment1);
-
-                    //delete image files from server
-                    delete_file($path, $files);
-
-                    $updateData['attachment1'] = $this->outputData['file1']['file_name'];
-
-                    $thumb1 = $this->outputData['file1']['file_path'] . $this->outputData['file1']['raw_name'] . "_thumb" . $this->outputData['file1']['file_ext'];
-
-                    //createthumb($this->outputData['file1']['full_path'],$thumb1,120,90);
-
-                    GenerateThumbFile($this->outputData['file1']['full_path'], $thumb1, 120, 90);
-
-                    //$this->skills_model->cr_thumb($this->outputData['file1']['full_path']);
-                }
-
-                if (isset($this->outputData['file2'])) {
-
-                    $files = array($folio->attachment2);
-
-                    //delete image files from server
-
-                    delete_file($path, $files);
-
-                    $updateData['attachment2'] = $this->outputData['file2']['file_name'];
-
-                    $thumb2 = $this->outputData['file2']['file_path'] . $this->outputData['file2']['raw_name'] . "_thumb" . $this->outputData['file2']['file_ext'];
-
-                    GenerateThumbFile($this->outputData['file2']['full_path'], $thumb2, 120, 90);
-
-                    //$this->skills_model->cr_thumb($this->outputData['file2']['full_path']);
-                }
-
-                $updateKey = array('portfolio.id' => $this->input->post('portid'));
-
-                //Edit Portfolio
-                $this->user_model->updatePortfolio($updateKey, $updateData);
-
-                //Notification message
-                $this->session->set_flashdata('flash_message', $this->common_model->flash_message('success', $this->lang->line('provider_portfolio_success')));
-
-                redirect('seller/managePortfolio');
-            }  //Form Validation End
-        } //If - Form Submission End	
-        //Get Categories
-        $this->outputData['categories'] = $this->skills_model->getCategories();
-
-        //Get Portfolio
-        $condition = array('portfolio.user_id' => $this->loggedInUser->id);
-        $this->outputData['portfolio'] = $this->user_model->getPortfolio($condition);
-
-        $condition2 = array('portfolio.id' => $this->uri->segment(3));
-        $this->outputData['editPortfolio'] = $this->user_model->getPortfolio($condition2);
-
-
-        //Get Categories
-        $this->outputData['categories'] = $this->skills_model->getCategories();
-
-        //pr($this->outputData['getPortfolio']->result());exit;
-        $this->load->view('seller/managePorfolio', $this->outputData);
-    }
-
-//End of editPortfolio function
-    // --------------------------------------------------------------------
-
-    /**
-     * Edit potfolio of providers
-     *
-     * Returns all sellers rating reviews
-     *
-     * @access	public
-     * @param	string
-     * @return	string
-     */
-    function viewPortfolio() {
-        //language file
-        $this->lang->load('enduser/editProfile', $this->config->item('language_code'));
-
-        if (!is_numeric($this->uri->segment(3))) {
-            $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', $this->lang->line('You can not access to this page')));
-            redirect('info');
-        }
-
-        $condition2 = array('portfolio.id' => $this->uri->segment(3));
-        $this->outputData['portfolio'] = $this->user_model->getPortfolio($condition2);
-
-
-        //Get Categories
-        $this->outputData['categories'] = $this->skills_model->getCategories();
-
-        //pr($this->outputData['portfolio']->row());exit;
-        $this->load->view('seller/viewPortfolio', $this->outputData);
-    }
-
     // --------------------------------------------------------------------
 
     /**
@@ -1691,6 +1417,10 @@ class Seller extends Controller {
      * @return	void
      */
     function removePhoto() {
+
+        //library
+        $this->
+        
         //language file
         $this->lang->load('enduser/editProfile', $this->config->item('language_code'));
 
@@ -1737,6 +1467,18 @@ class Seller extends Controller {
         $bookMarks = $this->common_model->deleteTableData('bookmark', $conditions);
         $this->session->set_flashdata('flash_message', $this->common_model->flash_message('error', 'Bookmark deleted successfully'));
         redirect('seller/viewMyProjects/');
+    }
+
+    function coupons() {
+        
+        $this->load->library('barcode');
+        
+        //language file
+        $this->lang->load('enduser/editProfile', $this->config->item('language_code'));
+        
+        $this->barcode->Barcode39('Hello');
+        
+        $this->load->view('seller/coupons', $this->outputData);
     }
 
 }

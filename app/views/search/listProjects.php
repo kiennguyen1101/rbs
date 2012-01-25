@@ -98,10 +98,7 @@
             //print out the table
             echo $this->table->generate();
             ?>
-
-            <p>
-                <input type="submit" value="<?php echo $this->lang->line('Refresh'); ?>" class="clsSmall" name="customizeDisplay" />
-            </p>
+          
         </form>
         <!--PAGING-->
         <?php if (isset($pagination))

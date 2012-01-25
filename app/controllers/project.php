@@ -84,8 +84,6 @@ class Project extends Controller {
         $this->loggedInUser = $this->common_model->getLoggedInUser();
         $this->outputData['loggedInUser'] = $this->loggedInUser;
 
-
-
         //Get Footer content
         $this->outputData['pages'] = $this->common_model->getPages();
 
