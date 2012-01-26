@@ -200,8 +200,8 @@ class Home extends Controller {
 
         switch ($type) {
             case 'product':
-                $urgent_conditions = array('project_status' => '0');
-                $openProjects = $this->skills_model->getProjects($urgent_conditions);
+               // $urgent_conditions = array('project_status' => '0');
+                $openProjects = $this->skills_model->getProjects();
                 $this->outputData['numProjects'] = $openProjects->num_rows();
                 $this->outputData['popular'] = $this->skills_model->getPopularSearch('work');
                 $this->load->view('findWork', $this->outputData);

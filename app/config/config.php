@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://kabada.in/icrowd";
+$config['base_url']	= "http://localhost/rbs";
 
 /*
 |--------------------------------------------------------------------------
@@ -323,9 +323,9 @@ $config['language_code'] 				= 'english';
 
 //DB
 $config['hostname'] = "localhost";
-$config['db_username'] = "kabadain";
-$config['db_password'] = "charity*12145";
-$config['db'] = "kabadain_rbs";
+$config['db_username'] = "root";
+$config['db_password'] = "";
+$config['db'] = "rbsrc3";
 //Common listings limit
 $config['listing_limit'] 				= 10;
 
@@ -345,7 +345,6 @@ $config['fckeditor_path']			  = 	$config['basepath'].'fckeditor/';  //FckEditor 
 $config['fckeditor_url']			  = 	$config['base_url'].'fckeditor/';  //FckEditor Url
 $config['fckeditor_height']			  = 	400;	//Editor 	Height
 $config['fckeditor_width']			  = 	600;  	//FckEditor	Width
-
 
 //Message library
 $config['message_prefix'] = '<p>';
