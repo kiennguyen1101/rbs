@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://kabada.in/icrowd";
+$config['base_url']	= "http://localhost/rbs/rbs";
 
 /*
 |--------------------------------------------------------------------------
@@ -323,9 +323,9 @@ $config['language_code'] 				= 'english';
 
 //DB
 $config['hostname'] = "localhost";
-$config['db_username'] = "kabadain";
-$config['db_password'] = "charity*12145";
-$config['db'] = "kabadain_rbs";
+$config['db_username'] = "root";
+$config['db_password'] = "";
+$config['db'] = "rbs";
 //Common listings limit
 $config['listing_limit'] 				= 10;
 

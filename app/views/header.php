@@ -37,9 +37,9 @@
       <ul>
 		<?php if (isLoggedIn()===FALSE) { ?>
         <li><a href="<?php echo site_url('users/login');?>">Login</a></li>
-		 <?php } ?>
+		 
         <li><a href="<?php echo site_url('buyer/signUp');?>">Register</a></li>
-        
+        <?php } ?>
       </ul>
     </div>
     <div id="selSubHeader">

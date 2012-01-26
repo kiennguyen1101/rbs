@@ -29,7 +29,7 @@ $userData = $userInfo->row();
 							   <form method="post" action="<?php echo site_url('buyer/editProfile/'.$userData->activation_key) ;  ?>" enctype="multipart/form-data">
 							   
 						        <p><span><?php echo $this->lang->line('username'); ?>:</span>&nbsp;<?php echo $userData->user_name; ?></p>
-                              <p><span><?php echo $this->lang->line('pick_password'); ?>:</span>
+                              <p><span><?php echo "New Password"; ?>:</span>
                                 <input type="password" size="25"  name="pwd" value=""/> <?php if(form_error('pwd')) { echo form_error('pwd'); echo '<br>'; } ?>
                               </p>
 							  <p><?php if(form_error('name')) { echo '<span>&nbsp;</span>'; echo form_error('name'); echo '<br>'; }?></p>							  
@@ -133,7 +133,7 @@ $userData = $userInfo->row();
 								  else
 								  echo '<img src="'.image_url('noImage.jpg').'" width="49" height="48" />';
 								  ?></p>
-                                <p><span><?php echo $this->lang->line('new_project_noti'); ?></span>
+                                <!--<p><span><?php echo $this->lang->line('new_project_noti'); ?></span>
 														
                                   <select name="notify_project" size="1">
 									 <option value="">None</option>
@@ -151,7 +151,7 @@ $userData = $userInfo->row();
 								  <option value="Hourly" <?php if($userData->message_notify=='Hourly') echo 'selected="selected"'; ?>>Hourly</option>
 								  <option value="Daily"  <?php if($userData->message_notify=='Daily') echo 'selected="selected"'; ?>>Daily</option> 
 							     </select>  <?php echo form_error('notify_message'); ?>
-                                </p>					
+                                </p>-->					
 							 
                               <!--<p><span>&nbsp;</span><input type="checkbox" name="signup_agree_contact" value="1" <?php echo set_checkbox('signup_agree_contact', '1'); ?>/ >
 									<?php echo $this->lang->line('Display my own status.');?></span>

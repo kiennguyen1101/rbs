@@ -12,11 +12,11 @@
                           <div id="selLinks">
                              <h3><?php echo $this->lang->line('Welcome'); ?>,<?php if(is_object($loggedInUser))  echo $loggedInUser->user_name;?></h3>
                             <ul class="links">
-							  <li><a href="<?php echo site_url('account'); ?>"><?php echo $this->lang->line('Manage Account'); ?></a></li>
+							  <li><a href="<?php echo site_url('account'); ?>"><?php echo "Account Summary"; ?></a></li>
                              <!-- <li><a href="<?php echo site_url('buyer/viewProfile/'.$loggedInUser->id); ?>"><?php echo $this->lang->line('view_profile'); ?></a></li>-->
 							  <li><a href="<?php echo site_url('buyer/editProfile'); ?>"><?php echo $this->lang->line('edit_profile'); ?></a></li>
 							 <!-- <li><a href="<?php echo site_url('project/create'); ?>"><?php echo $this->lang->line('Post a Project'); ?></a></li>-->
-                              <li><a href="<?php echo site_url('buyer/viewMyProjects'); ?>"><?php echo $this->lang->line('View My Projects'); ?></a></li>
+                              <li><a href="<?php echo site_url('buyer/viewMyProjects'); ?>"><?php echo "View My Products"; ?></a></li>
                               <!--<li><a href="<?php echo site_url('seller/getSellersreview'); ?>"><?php echo $this->lang->line('Top Seller'); ?></a></li>-->
                               <li class="clsNoborder"><a href="<?php echo site_url('users/logout'); ?>"><?php echo $this->lang->line('Logout'); ?></a></li>
 							  

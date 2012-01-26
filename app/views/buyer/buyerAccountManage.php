@@ -4,7 +4,7 @@
 
 <div id="main">
   <!--POST PROJECT-->
-  <?php $this->load->view('innerMenu');
+  <?php //$this->load->view('innerMenu');
         
         $currentDate = current_date(get_est_time());
 		$mailCount = 0;

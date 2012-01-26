@@ -957,7 +957,7 @@ CREATE TABLE IF NOT EXISTS `popular_search` (
 --
 
 INSERT INTO `popular_search` (`id`, `keyword`, `type`, `created`) VALUES
-(1, '', 'work', 1327022861)
+(1, '', 'work', 1327022861),
 (2, '', 'work', 1327212266);
 
 -- --------------------------------------------------------
